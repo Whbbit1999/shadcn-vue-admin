@@ -98,15 +98,15 @@ const onSubmit = handleSubmit((values) => {
               </FormControl>
               <div class="items-center p-1 border-2 rounded-md border-muted hover:border-accent">
                 <div class="space-y-2 rounded-sm bg-[#ecedef] p-2">
-                  <div class="p-2 space-y-2 bg-white rounded-md shadow-sm">
+                  <div class="p-2 space-y-2 bg-white rounded-md shadow-xs">
                     <div class="h-2 w-20 rounded-lg bg-[#ecedef]" />
                     <div class="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
                   </div>
-                  <div class="flex items-center p-2 space-x-2 bg-white rounded-md shadow-sm">
+                  <div class="flex items-center p-2 space-x-2 bg-white rounded-md shadow-xs">
                     <div class="h-4 w-4 rounded-full bg-[#ecedef]" />
                     <div class="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
                   </div>
-                  <div class="flex items-center p-2 space-x-2 bg-white rounded-md shadow-sm">
+                  <div class="flex items-center p-2 space-x-2 bg-white rounded-md shadow-xs">
                     <div class="h-4 w-4 rounded-full bg-[#ecedef]" />
                     <div class="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
                   </div>
@@ -124,15 +124,15 @@ const onSubmit = handleSubmit((values) => {
               </FormControl>
               <div class="items-center p-1 border-2 rounded-md border-muted bg-popover hover:bg-accent hover:text-accent-foreground">
                 <div class="p-2 space-y-2 rounded-sm bg-slate-950">
-                  <div class="p-2 space-y-2 rounded-md shadow-sm bg-slate-800">
+                  <div class="p-2 space-y-2 rounded-md shadow-xs bg-slate-800">
                     <div class="w-20 h-2 rounded-lg bg-slate-400" />
                     <div class="h-2 w-[100px] rounded-lg bg-slate-400" />
                   </div>
-                  <div class="flex items-center p-2 space-x-2 rounded-md shadow-sm bg-slate-800">
+                  <div class="flex items-center p-2 space-x-2 rounded-md shadow-xs bg-slate-800">
                     <div class="w-4 h-4 rounded-full bg-slate-400" />
                     <div class="h-2 w-[100px] rounded-lg bg-slate-400" />
                   </div>
-                  <div class="flex items-center p-2 space-x-2 rounded-md shadow-sm bg-slate-800">
+                  <div class="flex items-center p-2 space-x-2 rounded-md shadow-xs bg-slate-800">
                     <div class="w-4 h-4 rounded-full bg-slate-400" />
                     <div class="h-2 w-[100px] rounded-lg bg-slate-400" />
                   </div>

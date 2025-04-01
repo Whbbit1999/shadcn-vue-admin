@@ -28,7 +28,7 @@ const currentState = computed(() => {
 </script>
 
 <template>
-  <div class="w-full font-mono rounded-lg shadow bg-background">
+  <div class="w-full font-mono rounded-lg shadow-sm bg-background">
     <header class="relative p-5">
       <h1 class="text-lg">
         Billing Card {{ cardNo }}
@@ -67,7 +67,7 @@ const currentState = computed(() => {
         :grid-gap="2"
         color="#60A5FA"
       />
-      <div class="step grid grid-cols-[50px,1fr]">
+      <div class="step grid grid-cols-[50px_1fr]">
         <component :is="currentState?.icon" :style="{ color: currentState?.color }" class="w-8 h-8" />
         <div>
           <h2 class="text-xl">

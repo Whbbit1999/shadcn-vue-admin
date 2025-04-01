@@ -51,7 +51,7 @@ function setActiveTeam(team: Team) {
           </SidebarMenuButton>
         </DropdownMenuTrigger>
         <DropdownMenuContent
-          class="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
+          class="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
           align="start"
           side="bottom"
           :side-offset="4"

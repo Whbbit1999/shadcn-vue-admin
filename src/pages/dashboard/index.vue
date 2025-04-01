@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import Page from '@/components/global-layout/basic-page.vue'
+import { Button } from '@/components/ui/button'
 import OverviewContent from './components/overview-content.vue'
 
 const tabs = ref([
@@ -19,7 +20,7 @@ const activeTab = ref(tabs.value[0].value)
     sticky
   >
     <template #actions>
-      <UiButton>Download</UiButton>
+      <Button>Download</Button>
     </template>
 
     <UiTabs :default-value="activeTab" class="w-full">

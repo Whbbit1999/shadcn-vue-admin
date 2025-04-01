@@ -1530,7 +1530,7 @@ export const colorMapping = {
     'destructive-foreground': '{{base}}-50',
     'border': '{{base}}-200',
     'input': '{{base}}-200',
-    'ring': '{{base}}-950',
+    'ring-3': '{{base}}-950',
   },
   dark: {
     'background': '{{base}}-950',
@@ -1551,6 +1551,6 @@ export const colorMapping = {
     'destructive-foreground': '{{base}}-50',
     'border': '{{base}}-800',
     'input': '{{base}}-800',
-    'ring': '{{base}}-300',
+    'ring-3': '{{base}}-300',
   },
 } as const

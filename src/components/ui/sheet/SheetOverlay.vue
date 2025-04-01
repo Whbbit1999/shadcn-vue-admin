@@ -1,11 +1,11 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { DialogOverlayProps } from 'reka-ui'
-import type { HtmlHTMLAttributes } from 'vue'
+import type { HTMLAttributes } from 'vue'
 import { cn } from '@/lib/utils'
-import { DrawerOverlay } from 'vaul-vue'
+import { DialogOverlay } from 'reka-ui'
 import { computed } from 'vue'
 
-const props = defineProps<DialogOverlayProps & { class?: HtmlHTMLAttributes['class'] }>()
+const props = defineProps<DialogOverlayProps & { class?: HTMLAttributes['class'] }>()
 
 const delegatedProps = computed(() => {
   const { class: _, ...delegated } = props
@@ -15,9 +15,11 @@ const delegatedProps = computed(() => {
 </script>
 
 <template>
-  <DrawerOverlay
-    data-slot="drawer-overlay"
-    v-bind="delegatedProps"
+  <DialogOverlay
+    data-slot="sheet-overlay"
     :class="cn('data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0 fixed inset-0 z-50 bg-black/80', props.class)"
-  />
+    v-bind="delegatedProps"
+  >
+    <slot />
+  </DialogOverlay>
 </template>

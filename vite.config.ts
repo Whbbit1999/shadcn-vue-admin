@@ -1,9 +1,8 @@
 import { fileURLToPath, URL } from 'node:url'
+import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-import autoprefixer from 'autoprefixer'
 import { visualizer } from 'rollup-plugin-visualizer'
-import tailwind from 'tailwindcss'
 import AutoImport from 'unplugin-auto-import/vite'
 import Component from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
@@ -16,6 +15,7 @@ export default defineConfig({
     vue(),
     vueJsx(),
     vueDevTools(),
+    tailwindcss(),
     visualizer({ gzipSize: true, brotliSize: true }),
     Pages({
       routeStyle: 'nuxt',
@@ -56,13 +56,6 @@ export default defineConfig({
       dts: 'src/types/auto-import-components.d.ts', // 类型提示文件
     }),
   ],
-  css: {
-    postcss: {
-      // eslint-disable-next-line ts/ban-ts-comment
-      // @ts-ignore
-      plugins: [tailwind, autoprefixer],
-    },
-  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
