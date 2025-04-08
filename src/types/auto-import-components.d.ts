@@ -103,6 +103,7 @@ declare module 'vue' {
     UiDialogDescription: typeof import('./../components/ui/dialog/DialogDescription.vue')['default']
     UiDialogFooter: typeof import('./../components/ui/dialog/DialogFooter.vue')['default']
     UiDialogHeader: typeof import('./../components/ui/dialog/DialogHeader.vue')['default']
+    UiDialogOverlay: typeof import('./../components/ui/dialog/DialogOverlay.vue')['default']
     UiDialogScrollContent: typeof import('./../components/ui/dialog/DialogScrollContent.vue')['default']
     UiDialogTitle: typeof import('./../components/ui/dialog/DialogTitle.vue')['default']
     UiDialogTrigger: typeof import('./../components/ui/dialog/DialogTrigger.vue')['default']
