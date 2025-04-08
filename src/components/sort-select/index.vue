@@ -1,12 +1,5 @@
 <script setup lang="ts">
 import type { TSort } from './types'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import { ArrowDownAZ, ArrowDownZA, SlidersHorizontal } from 'lucide-vue-next'
 
 const emits = defineEmits<{
@@ -20,28 +13,25 @@ watch(sort, (newValue) => {
 </script>
 
 <template>
-  <Select v-model:model-value="sort">
-    <SelectTrigger class="w-16">
-      <SelectValue>
+  <UiSelect v-model:model-value="sort">
+    <UiSelectTrigger class="w-16">
+      <UiSelectValue>
         <SlidersHorizontal :size="16" />
-      </SelectValue>
-    </SelectTrigger>
-    <SelectContent align="end">
-      <SelectItem value="asc">
+      </UiSelectValue>
+    </UiSelectTrigger>
+    <UiSelectContent align="end">
+      <UiSelectItem value="asc">
         <div class="flex items-center gap-4">
           <ArrowDownAZ :size="16" />
           <span>Ascending</span>
         </div>
-      </SelectItem>
-      <SelectItem value="desc">
+      </UiSelectItem>
+      <UiSelectItem value="desc">
         <div class="flex items-center gap-4">
           <ArrowDownZA :size="16" />
           <span>Descending</span>
         </div>
-      </SelectItem>
-    </SelectContent>
-  </Select>
+      </UiSelectItem>
+    </UiSelectContent>
+  </UiSelect>
 </template>
-
-<style scoped>
-</style>

@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { Button } from '@/components/ui/button'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { useConfigStore } from '@/stores/config'
 import { Paintbrush } from 'lucide-vue-next'
 import { onMounted, watch } from 'vue'
@@ -30,18 +28,18 @@ watch(radius, (radius) => {
 </script>
 
 <template>
-  <Popover>
-    <PopoverTrigger as-child>
-      <Button
+  <UiPopover>
+    <UiPopoverTrigger as-child>
+      <UiButton
         class="w-9 h-9"
         variant="outline"
         size="icon"
       >
         <Paintbrush class="w-4 h-4" />
-      </Button>
-    </PopoverTrigger>
-    <PopoverContent :side-offset="8" align="end" class="w-96">
+      </UiButton>
+    </UiPopoverTrigger>
+    <UiPopoverContent :side-offset="8" align="end" class="w-96">
       <ThemeCustomizer :all-colors="allColors" />
-    </PopoverContent>
-  </Popover>
+    </UiPopoverContent>
+  </UiPopover>
 </template>

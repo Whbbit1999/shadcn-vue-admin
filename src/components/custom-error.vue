@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import Button from './ui/button/Button.vue'
-
 defineProps<{
   code: number
   subtitle: string
@@ -23,12 +21,12 @@ defineProps<{
     <footer class="mt-8">
       <slot>
         <div class="flex justify-center gap-2">
-          <Button variant="outline" @click="$router.back()">
+          <UiButton variant="outline" @click="$router.back()">
             Go Back
-          </Button>
-          <Button @click="$router.push('/')">
+          </UiButton>
+          <UiButton @click="$router.push('/')">
             Back to Home
-          </Button>
+          </UiButton>
         </div>
       </slot>
     </footer>

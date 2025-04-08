@@ -1,11 +1,4 @@
 <script setup lang="ts">
-import {
-  CommandDialog,
-  CommandEmpty,
-  CommandInput,
-  CommandList,
-  CommandSeparator,
-} from '@/components/ui/command'
 import { useMagicKeys } from '@vueuse/core'
 import { Search } from 'lucide-vue-next'
 import { ref, watch } from 'vue'
@@ -42,7 +35,7 @@ const firstKey = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘' 
     >
       <div class="flex items-center gap-2">
         <Search class="w-4 h-4" />
-        <span class="text-xs font-semibold text-primary/30">Search Menu</span>
+        <span class="text-xs font-semibold text-muted-foreground">Search Menu</span>
       </div>
       <kbd
         class="pointer-events-none inline-flex h-5 select-none items-center gap-1 rounded border bg-primary/5 px-1.5 font-mono text-[10px] font-medium text-muted-foreground opacity-100"
@@ -51,17 +44,17 @@ const firstKey = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘' 
       </kbd>
     </div>
 
-    <CommandDialog v-model:open="open">
-      <CommandInput placeholder="Type a command or search..." />
-      <CommandList>
-        <CommandEmpty>
+    <UiCommandDialog v-model:open="open">
+      <UiCommandInput placeholder="Type a command or search..." />
+      <UiCommandList>
+        <UiCommandEmpty>
           No results found.
-        </CommandEmpty>
+        </UiCommandEmpty>
 
         <CommandToPage @click="handleOpenChange" />
-        <CommandSeparator />
+        <UiCommandSeparator />
         <CommandChangeTheme @click="handleOpenChange" />
-      </CommandList>
-    </CommandDialog>
+      </UiCommandList>
+    </UiCommandDialog>
   </div>
 </template>

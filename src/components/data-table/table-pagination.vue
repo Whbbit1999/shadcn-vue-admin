@@ -1,13 +1,5 @@
 <script setup lang="ts" generic="T">
 import type { Table } from '@tanstack/vue-table'
-import { Button } from '@/components/ui/button'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
@@ -29,26 +21,26 @@ defineProps<DataTablePaginationProps>()
         <p class="hidden text-sm font-medium line-clamp-1 md:block">
           Rows per page
         </p>
-        <Select
+        <UiSelect
           :model-value="`${table.getState().pagination.pageSize}`"
           @update:model-value="Number(table.setPageSize)"
         >
-          <SelectTrigger class="h-8 w-[70px]">
-            <SelectValue :placeholder="`${table.getState().pagination.pageSize}`" />
-          </SelectTrigger>
-          <SelectContent side="top">
-            <SelectItem v-for="pageSize in [10, 20, 30, 40, 50]" :key="pageSize" :value="`${pageSize}`">
+          <UiSelectTrigger class="h-8 w-[70px]">
+            <UiSelectValue :placeholder="`${table.getState().pagination.pageSize}`" />
+          </UiSelectTrigger>
+          <UiSelectContent side="top">
+            <UiSelectItem v-for="pageSize in [10, 20, 30, 40, 50]" :key="pageSize" :value="`${pageSize}`">
               {{ pageSize }}
-            </SelectItem>
-          </SelectContent>
-        </Select>
+            </UiSelectItem>
+          </UiSelectContent>
+        </UiSelect>
       </div>
       <div class="flex w-[100px] items-center justify-center text-sm font-medium">
         Page {{ table.getState().pagination.pageIndex + 1 }} of
         {{ table.getPageCount() }}
       </div>
       <div class="flex items-center space-x-2">
-        <Button
+        <UiButton
           variant="outline"
           class="hidden w-8 h-8 p-0 lg:flex"
           :disabled="!table.getCanPreviousPage()"
@@ -56,8 +48,8 @@ defineProps<DataTablePaginationProps>()
         >
           <span class="sr-only">Go to first page</span>
           <ChevronsLeft class="w-4 h-4" />
-        </Button>
-        <Button
+        </UiButton>
+        <UiButton
           variant="outline"
           class="w-8 h-8 p-0"
           :disabled="!table.getCanPreviousPage()"
@@ -65,8 +57,8 @@ defineProps<DataTablePaginationProps>()
         >
           <span class="sr-only">Go to previous page</span>
           <ChevronLeftIcon class="w-4 h-4" />
-        </Button>
-        <Button
+        </UiButton>
+        <UiButton
           variant="outline"
           class="w-8 h-8 p-0"
           :disabled="!table.getCanNextPage()"
@@ -74,8 +66,8 @@ defineProps<DataTablePaginationProps>()
         >
           <span class="sr-only">Go to next page</span>
           <ChevronRightIcon class="w-4 h-4" />
-        </Button>
-        <Button
+        </UiButton>
+        <UiButton
           variant="outline"
           class="hidden w-8 h-8 p-0 lg:flex"
           :disabled="!table.getCanNextPage()"
@@ -83,7 +75,7 @@ defineProps<DataTablePaginationProps>()
         >
           <span class="sr-only">Go to last page</span>
           <ChevronsRight class="w-4 h-4" />
-        </Button>
+        </UiButton>
       </div>
     </div>
   </div>
