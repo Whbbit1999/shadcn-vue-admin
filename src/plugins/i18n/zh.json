@@ -1,0 +1,104 @@
+{
+  "premium": {
+    "premium": "会员计划",
+    "UpgradeNow": "现在升级"
+  },
+  "marketing": {
+    "hero": {
+      "learnPeople": "超过 1K+ 人加入",
+      "getMore": "获取更多",
+      "title": "每个0.01%的进化都在熔铸命运的质变，敢不敢用365天见证脱胎换骨？",
+      "subtitle": "时光沙漏正迸发着惊雷，当量变冲破临界点，你埋首耕耘的每个晨昏都将化作星辰大海！"
+    },
+    "features": {
+      "title": "功能",
+      "feature1": {
+        "title": "使用现代技术",
+        "description": "更加现代化的组件库，自由定制每一个组件"
+      },
+      "feature2": {
+        "title": "部署简单",
+        "description": "一键部署到您的服务器，无需复杂的配置"
+      },
+      "feature3": {
+        "title": "代码开源",
+        "description": "每一行代码都是开源的，您可以自由地修改和扩展"
+      },
+      "feature4": {
+        "title": "社区支持",
+        "description": "你可以在社区中找到帮助，也可以分享你的经验"
+      }
+    },
+    "evaluation": {
+      "title": "评价",
+      "subtitle": "这些评价都是模拟数据，并非实际数据"
+    },
+    "pricingPlans": {
+      "title": "定价计划",
+      "subtitle": "选择最适合你的计划",
+      "buy": "立即购买",
+      "hobby": {
+        "title": "业余爱好者",
+        "description": "三年提高技能",
+        "price": "399",
+        "discount": "599",
+        "unit": "¥",
+        "billing": {
+          "cycle": "",
+          "period": ""
+        },
+        "features": {
+          "feature1": "使用网站部分代码",
+          "feature2": "获取最新的技术更新",
+          "feature3": "超过 100 个组件",
+          "feature4": "超过 100 个页面"
+        }
+      },
+      "starter": {
+        "title": "入门计划",
+        "description": "五年提高技能",
+        "price": "599",
+        "discount": "899",
+        "unit": "¥",
+        "billing": {
+          "cycle": "",
+          "period": ""
+        },
+        "features": {
+          "feature1": "使用网站全部代码",
+          "feature2": "阅读精彩的在线文档",
+          "feature3": "获取最新的技术更新",
+          "feature4": "超过 200 个组件",
+          "feature5": "超过 200 个页面"
+        }
+      },
+      "business": {
+        "title": "商务计划",
+        "description": "十年提高技能",
+        "price": "199",
+        "discount": "399",
+        "unit": "$",
+        "billing": {
+          "cycle": "",
+          "period": ""
+        },
+        "features": {
+          "feature1": "使用网站全部代码",
+          "feature2": "阅读精彩的在线文档",
+          "feature3": "获取最新的技术更新",
+          "feature4": "超过 200 个组件",
+          "feature5": "超过 200 个页面",
+          "feature6": "私人助理支持"
+        }
+      }
+    },
+    "setup": {
+      "title": "快速开始",
+      "subtitle": "只需 3 分钟即可开始使用"
+    }
+  },
+  "login": "登录",
+  "register": "注册",
+  "language": "中文",
+  "changeLanguage": "语言切换"
+}
