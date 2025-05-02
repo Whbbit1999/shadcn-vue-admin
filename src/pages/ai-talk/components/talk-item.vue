@@ -24,7 +24,12 @@ defineProps<Props>()
   >
     <RobotAvatar v-if="type !== 'self'" class="mt-2 mr-2" />
     <div>
-      <p class="p-4 rounded-lg bg-muted">
+      <p
+        :class="cn(
+          'p-4 rounded-lg bg-muted',
+          type === 'self' ? 'bg-primary text-primary-foreground' : 'bg-secondary',
+        )"
+      >
         {{ content }}
       </p>
       <div v-if="type !== 'self'">
