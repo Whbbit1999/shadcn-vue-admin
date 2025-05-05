@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { User } from './types'
+import { useSidebar } from '@/components/ui/sidebar'
 import {
   BadgeCheck,
   Bell,
@@ -15,6 +16,7 @@ const { user } = defineProps<
 >()
 
 const { logout } = useAuth()
+const { isMobile } = useSidebar()
 </script>
 
 <template>
@@ -41,7 +43,7 @@ const { logout } = useAuth()
         </UiDropdownMenuTrigger>
         <UiDropdownMenuContent
           class="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-          side="bottom"
+          :side="isMobile ? 'bottom' : 'right'"
           align="end"
           :side-offset="4"
         >
