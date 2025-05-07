@@ -8,17 +8,9 @@ import { cn } from '@/lib/utils'
 import { toTypedSchema } from '@vee-validate/zod'
 import { ChevronDown } from 'lucide-vue-next'
 import { useForm } from 'vee-validate'
-import { z } from 'zod'
+import { appearanceValidator } from '../validators/appearance.validator'
 
-const appearanceFormSchema = toTypedSchema(z.object({
-  theme: z.enum(['light', 'dark'], {
-    required_error: 'Please select a theme.',
-  }),
-  font: z.enum(['inter', 'manrope', 'system'], {
-    invalid_type_error: 'Select a font',
-    required_error: 'Please select a font.',
-  }),
-}))
+const appearanceFormSchema = toTypedSchema(appearanceValidator)
 
 const { handleSubmit } = useForm({
   validationSchema: appearanceFormSchema,

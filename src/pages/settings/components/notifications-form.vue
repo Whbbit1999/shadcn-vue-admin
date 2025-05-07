@@ -8,18 +8,9 @@ import { Switch } from '@/components/ui/switch'
 import { toast } from '@/components/ui/toast'
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
-import { z } from 'zod'
+import { notificationsValidator } from '../validators/notifications.validator'
 
-const notificationsFormSchema = toTypedSchema(z.object({
-  type: z.enum(['all', 'mentions', 'none'], {
-    required_error: 'You need to select a notification type.',
-  }),
-  mobile: z.boolean().default(false).optional(),
-  communication_emails: z.boolean().default(false).optional(),
-  social_emails: z.boolean().default(false).optional(),
-  marketing_emails: z.boolean().default(false).optional(),
-  security_emails: z.boolean(),
-}))
+const notificationsFormSchema = toTypedSchema(notificationsValidator)
 
 const { handleSubmit } = useForm({
   validationSchema: notificationsFormSchema,

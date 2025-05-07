@@ -23,7 +23,7 @@ import { CalendarDate, DateFormatter, getLocalTimeZone, today } from '@internati
 import { toTypedSchema } from '@vee-validate/zod'
 import { CalendarDays, Check, ChevronsUpDown } from 'lucide-vue-next'
 import { toDate } from 'reka-ui/date'
-import { z } from 'zod'
+import { accountValidator } from '../validators/account.validator'
 
 const open = ref(false)
 const dateValue = ref()
@@ -45,20 +45,7 @@ const df = new DateFormatter('en-US', {
   dateStyle: 'long',
 })
 
-const accountFormSchema = toTypedSchema(z.object({
-  name: z
-    .string({
-      required_error: 'Required.',
-    })
-    .min(2, {
-      message: 'Name must be at least 2 characters.',
-    })
-    .max(30, {
-      message: 'Name must not be longer than 30 characters.',
-    }),
-  dob: z.string().datetime().optional().refine(date => date !== undefined, 'Please select a valid date.'),
-  language: z.string().min(1, 'Please select a language.'),
-}))
+const accountFormSchema = toTypedSchema(accountValidator)
 
 // https://github.com/logaretm/vee-validate/issues/3521
 // https://github.com/logaretm/vee-validate/discussions/3571

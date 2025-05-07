@@ -6,7 +6,7 @@ import { Separator } from '@/components/ui/separator'
 import { toast } from '@/components/ui/toast'
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
-import { z } from 'zod'
+import { displayValidator } from '../validators/display.validator'
 
 const items = [
   {
@@ -35,11 +35,7 @@ const items = [
   },
 ] as const
 
-const displayFormSchema = toTypedSchema(z.object({
-  items: z.array(z.string()).refine(value => value.some(item => item), {
-    message: 'You have to select at least one item.',
-  }),
-}))
+const displayFormSchema = toTypedSchema(displayValidator)
 
 const { handleSubmit } = useForm({
   validationSchema: displayFormSchema,
