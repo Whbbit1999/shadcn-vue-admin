@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { TalkType } from './types'
+import type { IMessage } from '../types'
 import { cn } from '@/lib/utils'
 import ReplyCopy from './reply-copy.vue'
 import ReplyRefresh from './reply-refresh.vue'
@@ -8,11 +8,11 @@ import ThumbDown from './thumb-down.vue'
 import ThumbUp from './thumb-up.vue'
 
 interface Props {
-  content: string
-  type: TalkType
+  talk: IMessage
 }
 
-defineProps<Props>()
+const { talk } = defineProps<Props>()
+const type = computed(() => talk.role === 'user' ? 'self' : 'robot')
 </script>
 
 <template>
@@ -30,11 +30,11 @@ defineProps<Props>()
           type === 'self' ? 'bg-primary text-primary-foreground' : 'bg-secondary',
         )"
       >
-        {{ content }}
+        {{ talk.content }}
       </p>
       <div v-if="type !== 'self'">
         <div class="flex items-center gap-2 mt-2">
-          <ReplyCopy :content="content" />
+          <ReplyCopy :content="talk.content" />
           <ReplyRefresh />
           <ThumbUp />
           <ThumbDown />

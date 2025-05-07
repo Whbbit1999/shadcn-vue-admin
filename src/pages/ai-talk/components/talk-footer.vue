@@ -28,7 +28,7 @@ function handleSubmit() {
         <UiButton variant="ghost">
           <Paperclip class="w-4 h-4" />
         </UiButton>
-        <UiButton variant="outline" size="icon" class="rounded-full" :disabled="text!" @click="handleSubmit">
+        <UiButton variant="outline" size="icon" class="rounded-full" :disabled="!text" @click="handleSubmit">
           <ArrowUp class="w-4 h-4" />
         </UiButton>
       </div>
