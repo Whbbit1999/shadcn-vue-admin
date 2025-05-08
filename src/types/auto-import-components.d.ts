@@ -10,7 +10,8 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppSidebar: typeof import('./../components/app-sidebar/index.vue')['default']
     AppSidebarNavFooter: typeof import('./../components/app-sidebar/nav-footer.vue')['default']
-    AppSidebarNavGroup: typeof import('./../components/app-sidebar/nav-group.vue')['default']
+    AppSidebarNavTeam: typeof import('./../components/app-sidebar/nav-team.vue')['default']
+    AppSidebarNavTeamAdd: typeof import('./../components/app-sidebar/nav-team-add.vue')['default']
     AppSidebarTeamSwitcher: typeof import('./../components/app-sidebar/team-switcher.vue')['default']
     CommandMenuPanel: typeof import('./../components/command-menu-panel/index.vue')['default']
     CommandMenuPanelCommandChangeTheme: typeof import('./../components/command-menu-panel/command-change-theme.vue')['default']
