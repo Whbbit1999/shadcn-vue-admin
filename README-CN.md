@@ -68,6 +68,10 @@ pnpm install
 pnpm dev
 ```
 
+## Tips
+
+如果您需要更改网站样式，可以使用[tweakcn](https://tweakcn.com/editor/theme)网站提供的预设样式。你只需要将 tweakcn 提供的 css 样式 复制到 `index.css` 中，改动 `:root` `:dark` 和 `@theme inline` 部分即可。
+
 ## 作者
 由 [Whbbit](https://github.com/Whbbit1999)创建, 设计来自 [shadcn-admin](https://github.com/satnaing/shadcn-admin)
 
