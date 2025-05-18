@@ -1,6 +1,7 @@
-import { toast } from '@/components/ui/toast'
 import { h } from 'vue'
 import { z } from 'zod'
+
+import { toast } from '@/components/ui/toast'
 
 /**
  * Load .env file and validate it against the schema

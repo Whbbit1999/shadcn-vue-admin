@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { useConfigStore } from '@/stores/config'
 import { Paintbrush } from 'lucide-vue-next'
 import { onMounted, watch } from 'vue'
+
+import { useConfigStore } from '@/stores/config'
+
 import ThemeCustomizer from './theme-customizer.vue'
 import { allColors } from './utils/data'
 

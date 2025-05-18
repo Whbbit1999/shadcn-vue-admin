@@ -1,8 +1,11 @@
 <script setup lang="ts" generic="T">
 import type { Column } from '@tanstack/vue-table'
-import type { FacetedFilterOption } from './types'
-import { cn } from '@/lib/utils'
+
 import { Check, CirclePlus } from 'lucide-vue-next'
+
+import { cn } from '@/lib/utils'
+
+import type { FacetedFilterOption } from './types'
 
 interface DataTableFacetedFilter {
   column?: Column<T, any>

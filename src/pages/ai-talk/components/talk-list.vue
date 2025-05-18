@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { IMessage } from '../types'
+
 import TalkItem from './talk-item.vue'
 
 interface Props {

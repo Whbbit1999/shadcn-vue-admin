@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import type { TSort } from '@/components/sort-select/types'
+
 import Page from '@/components/global-layout/basic-page.vue'
 import SortSelect from '@/components/sort-select/index.vue'
+
 import AppCard from './components/app-card.vue'
 import apps from './data/apps'
 

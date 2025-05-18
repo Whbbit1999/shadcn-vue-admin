@@ -1,11 +1,13 @@
 <script setup lang="ts">
+import { toTypedSchema } from '@vee-validate/zod'
+import { useForm } from 'vee-validate'
+
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Separator } from '@/components/ui/separator'
 import { toast } from '@/components/ui/toast'
-import { toTypedSchema } from '@vee-validate/zod'
-import { useForm } from 'vee-validate'
+
 import { displayValidator } from '../validators/display.validator'
 
 const items = [

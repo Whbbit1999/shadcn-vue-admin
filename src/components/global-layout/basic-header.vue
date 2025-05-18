@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import type { LayoutHeaderProps } from './types'
 import { cn } from '@/lib/utils'
+
+import type { LayoutHeaderProps } from './types'
 
 defineProps<LayoutHeaderProps>()
 </script>

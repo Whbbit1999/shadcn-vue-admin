@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import type { NavGroup, NavItem } from './types'
 import {
   ChevronDown,
   ChevronRight,
 } from 'lucide-vue-next'
+
+import type { NavGroup, NavItem } from './types'
 
 const { navMain } = defineProps<{
   navMain: NavGroup[]

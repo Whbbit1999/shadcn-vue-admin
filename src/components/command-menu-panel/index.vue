@@ -2,6 +2,7 @@
 import { useMagicKeys } from '@vueuse/core'
 import { Search } from 'lucide-vue-next'
 import { ref, watch } from 'vue'
+
 import CommandChangeTheme from './command-change-theme.vue'
 import CommandToPage from './command-to-page.vue'
 

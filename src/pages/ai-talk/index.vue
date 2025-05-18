@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-import type { IMessage } from './types'
 import { toast } from '@/components/ui/toast'
+
+import type { IMessage } from './types'
+
 import TalkFooter from './components/talk-footer.vue'
 import TalkList from './components/talk-list.vue'
 import { exampleTalks } from './data/talks'

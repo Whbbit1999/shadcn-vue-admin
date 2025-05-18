@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
-import { cn } from '@/lib/utils'
+
 import { templateRef } from '@vueuse/core'
 import { animate } from 'motion-v'
+
+import { cn } from '@/lib/utils'
 
 interface Props {
   blur?: number

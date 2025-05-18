@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import type { TSort } from './types'
 import { ArrowDownAZ, ArrowDownZA, SlidersHorizontal } from 'lucide-vue-next'
+
+import type { TSort } from './types'
 
 const emits = defineEmits<{
   (e: 'update:sort', payload: TSort): void

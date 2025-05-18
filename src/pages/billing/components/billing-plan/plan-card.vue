@@ -1,7 +1,8 @@
 <script lang="ts" setup>
+import { BadgeCheck } from 'lucide-vue-next'
+
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
-import { BadgeCheck } from 'lucide-vue-next'
 
 interface Props {
   title: string

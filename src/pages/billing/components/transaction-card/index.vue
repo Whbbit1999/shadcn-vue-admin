@@ -1,8 +1,11 @@
 <script lang="ts" setup>
-import type { PayState } from '../billing-history/data/data'
-import FlickeringGrid from '@/components/inspira-ui/flickering-grid.vue'
 import { Icon } from '@iconify/vue'
 import { useClipboard } from '@vueuse/core'
+
+import FlickeringGrid from '@/components/inspira-ui/flickering-grid.vue'
+
+import type { PayState } from '../billing-history/data/data'
+
 import { statuses } from '../billing-history/data/data'
 
 interface Props {

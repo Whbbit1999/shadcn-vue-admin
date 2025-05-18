@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { toTypedSchema } from '@vee-validate/zod'
+import { useForm } from 'vee-validate'
+
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
@@ -6,8 +9,7 @@ import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Separator } from '@/components/ui/separator'
 import { Switch } from '@/components/ui/switch'
 import { toast } from '@/components/ui/toast'
-import { toTypedSchema } from '@vee-validate/zod'
-import { useForm } from 'vee-validate'
+
 import { notificationsValidator } from '../validators/notifications.validator'
 
 const notificationsFormSchema = toTypedSchema(notificationsValidator)

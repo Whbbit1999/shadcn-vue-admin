@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import type { User } from './types'
-import { useSidebar } from '@/components/ui/sidebar'
 import {
   BadgeCheck,
   Bell,
@@ -10,6 +8,10 @@ import {
   Sparkles,
   UserRoundCog,
 } from 'lucide-vue-next'
+
+import { useSidebar } from '@/components/ui/sidebar'
+
+import type { User } from './types'
 
 const { user } = defineProps<
   { user: User }

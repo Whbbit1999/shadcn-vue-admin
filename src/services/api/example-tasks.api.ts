@@ -1,6 +1,8 @@
 import type { AxiosError } from 'axios'
-import { useAxios } from '@/composables/use-axios'
+
 import { useMutation, useQuery } from '@tanstack/vue-query'
+
+import { useAxios } from '@/composables/use-axios'
 
 interface ITask {}
 export function useGetTaskQuery() {

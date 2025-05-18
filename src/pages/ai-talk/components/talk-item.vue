@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-import type { IMessage } from '../types'
 import { cn } from '@/lib/utils'
+
+import type { IMessage } from '../types'
+
 import ReplyCopy from './reply-copy.vue'
 import ReplyRefresh from './reply-refresh.vue'
 import RobotAvatar from './robot-avatar.vue'

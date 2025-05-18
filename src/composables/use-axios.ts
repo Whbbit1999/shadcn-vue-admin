@@ -1,6 +1,8 @@
 import type { AxiosError } from 'axios'
-import env from '@/utils/env'
+
 import axios from 'axios'
+
+import env from '@/utils/env'
 
 export function useAxios() {
   const axiosInstance = axios.create({

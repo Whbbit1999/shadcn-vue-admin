@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import type { Row } from '@tanstack/vue-table'
 import type { Component } from 'vue'
-import type { Billing } from './data/schema'
+
 import { Ellipsis } from 'lucide-vue-next'
+
+import type { Billing } from './data/schema'
+
 import BillingDetail from './billing-detail.vue'
 import { billingSchema } from './data/schema'
 

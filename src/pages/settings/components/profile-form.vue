@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { toTypedSchema } from '@vee-validate/zod'
+import { X } from 'lucide-vue-next'
+import { FieldArray, useForm } from 'vee-validate'
+
 import { Button } from '@/components/ui/button'
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
@@ -14,9 +18,7 @@ import { Separator } from '@/components/ui/separator'
 import { Textarea } from '@/components/ui/textarea'
 import { toast } from '@/components/ui/toast'
 import { cn } from '@/lib/utils'
-import { toTypedSchema } from '@vee-validate/zod'
-import { X } from 'lucide-vue-next'
-import { FieldArray, useForm } from 'vee-validate'
+
 import { profileValidator } from '../validators/profile.validator'
 
 const verifiedEmails = ref(['m@example.com', 'm@google.com', 'm@support.com'])

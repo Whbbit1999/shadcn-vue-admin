@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import Loading from '@/components/loading.vue'
 import { useRouter } from 'vue-router'
+
+import Loading from '@/components/loading.vue'
 
 const router = useRouter()
 router.push({ name: 'dashboard' })

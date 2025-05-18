@@ -1,4 +1,5 @@
 import type { App } from 'vue'
+
 import { QueryClient, VueQueryPlugin } from '@tanstack/vue-query'
 
 const queryClient = new QueryClient({

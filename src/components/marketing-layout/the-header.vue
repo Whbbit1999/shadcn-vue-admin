@@ -1,9 +1,10 @@
 <script lang="ts" setup>
+import { useColorMode } from '@vueuse/core'
+
 import LanguageChange from '@/components/language-change.vue'
 import SignInButton from '@/components/sign-in-button.vue'
 import SignUpButton from '@/components/sign-up-button.vue'
 import ToggleTheme from '@/components/toggle-theme.vue'
-import { useColorMode } from '@vueuse/core'
 
 const mode = useColorMode()
 </script>

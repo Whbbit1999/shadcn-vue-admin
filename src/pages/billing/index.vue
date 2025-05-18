@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import Page from '@/components/global-layout/basic-page.vue'
+
 import BillingHistory from './components/billing-history/index.vue'
 import BillingPlan from './components/billing-plan/index.vue'
 </script>

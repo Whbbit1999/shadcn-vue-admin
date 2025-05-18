@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import Marquee from '@/components/inspira-ui/marquee/index.vue'
 import { Icon } from '@iconify/vue'
+
+import Marquee from '@/components/inspira-ui/marquee/index.vue'
 
 const types = [
   { name: 'Nuxt', icon: 'simple-icons:nuxt' },

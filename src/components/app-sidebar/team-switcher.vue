@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import type { Team } from './types'
 import {
   ChevronsUpDown,
   Plus,
 } from 'lucide-vue-next'
+
+import type { Team } from './types'
 
 const { teams } = defineProps<{
   teams: Team[]

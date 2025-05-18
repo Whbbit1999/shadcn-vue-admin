@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { sidebarData } from './data/sidebar-data'
-
 import NavFooter from './nav-footer.vue'
 import NavTeam from './nav-team.vue'
 import TeamSwitcher from './team-switcher.vue'

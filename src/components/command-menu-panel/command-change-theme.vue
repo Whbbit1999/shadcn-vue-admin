@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useColorMode } from '@vueuse/core'
 import { Moon, Sun, SunMoon } from 'lucide-vue-next'
+
 import CommandItemHasIcon from './command-item-has-icon.vue'
 
 defineEmits<{

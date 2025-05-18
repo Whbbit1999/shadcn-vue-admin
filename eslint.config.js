@@ -7,6 +7,12 @@ export default antfu({
     '**/dist/**',
     '**/build/**',
     '**/lib/**',
+    '**/components/ui/**',
   ],
+  rules: {
+    'perfectionist/sort-imports': ['error', {
+      tsconfigRootDir: '.',
+    }],
+  },
   ...pluginQuery.configs['flat/recommended'],
 })

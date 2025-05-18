@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { Task } from '../data/schema'
+
 import TaskForm from './task-form.vue'
 
 const props = defineProps<{

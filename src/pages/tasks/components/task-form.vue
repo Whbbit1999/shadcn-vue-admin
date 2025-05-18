@@ -1,10 +1,13 @@
 <script lang="ts" setup>
-import type { Task } from '../data/schema'
-import { FormField } from '@/components/ui/form'
-import { toast } from '@/components/ui/toast/use-toast'
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
 import * as z from 'zod'
+
+import { FormField } from '@/components/ui/form'
+import { toast } from '@/components/ui/toast/use-toast'
+
+import type { Task } from '../data/schema'
+
 import { labels, priorities, statuses } from '../data/data'
 
 const props = defineProps<{

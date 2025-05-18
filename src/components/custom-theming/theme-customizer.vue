@@ -1,7 +1,10 @@
 <script lang="ts" setup>
-import type { Color } from './utils/data'
-import { RADII, useConfigStore } from '@/stores/config'
 import { Check } from 'lucide-vue-next'
+
+import { RADII, useConfigStore } from '@/stores/config'
+
+import type { Color } from './utils/data'
+
 import { colors } from './utils/colors'
 
 defineProps<{

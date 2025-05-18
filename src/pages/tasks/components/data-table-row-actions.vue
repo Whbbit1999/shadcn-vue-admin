@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import type { Row } from '@tanstack/vue-table'
 import type { Component } from 'vue'
-import type { Task } from '../data/schema'
+
 import { Ellipsis, FilePenLine, Trash2 } from 'lucide-vue-next'
+
+import type { Task } from '../data/schema'
+
 import { labels } from '../data/data'
 import { taskSchema } from '../data/schema'
 import TaskDelete from './task-delete.vue'

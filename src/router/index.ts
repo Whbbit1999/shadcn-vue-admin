@@ -1,6 +1,7 @@
+import generatedRoutes from '~pages'
 import { setupLayouts } from 'virtual:generated-layouts'
 import { createRouter, createWebHistory } from 'vue-router'
-import generatedRoutes from '~pages'
+
 import { createRouterGuard } from './guard'
 import publicRoutes from './public-routes'
 

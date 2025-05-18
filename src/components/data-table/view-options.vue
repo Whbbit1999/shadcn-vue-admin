@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="T">
 import type { Table } from '@tanstack/vue-table'
+
 import { Settings2 } from 'lucide-vue-next'
 
 interface DataTableViewOptionsProps {

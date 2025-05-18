@@ -1,8 +1,10 @@
 <script lang="ts" setup>
-import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
-import { toast } from '@/components/ui/toast'
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
+
+import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { toast } from '@/components/ui/toast'
+
 import { teamAddValidator } from './validators/team.validator'
 
 const emits = defineEmits(['close'])

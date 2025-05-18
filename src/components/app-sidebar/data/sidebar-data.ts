@@ -1,12 +1,12 @@
-import type { SidebarData, Team, User } from '../types'
-
-import { useSidebar } from '@/composables/use-sidebar'
-
 import {
   AudioWaveform,
   Command,
   GalleryVerticalEnd,
 } from 'lucide-vue-next'
+
+import { useSidebar } from '@/composables/use-sidebar'
+
+import type { SidebarData, Team, User } from '../types'
 
 const user: User = {
   name: 'shadcn',

@@ -1,5 +1,6 @@
 import nprogress from 'nprogress'
 import 'nprogress/nprogress.css'
+
 import '@/assets/nprogress.css'
 
 export function setupNProgress() {
