@@ -88,3 +88,9 @@ watch(appType, (newValue) => {
 
 <style scoped>
 </style>
+
+<route lang="yaml">
+  name: app.index
+  meta:
+    auth: true
+</route>

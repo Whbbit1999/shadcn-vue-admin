@@ -3,9 +3,9 @@ import type { App } from 'vue'
 import { createPinia } from 'pinia'
 import { createPersistedState } from 'pinia-plugin-persistedstate'
 
-export function setupPinia(app: App) {
-  const pinia = createPinia()
+const pinia = createPinia()
 
+export function setupPinia(app: App) {
   const persistedState = createPersistedState({
     storage: sessionStorage,
   })
@@ -13,3 +13,5 @@ export function setupPinia(app: App) {
   pinia.use(persistedState)
   app.use(pinia)
 }
+
+export default pinia

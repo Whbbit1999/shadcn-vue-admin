@@ -2,6 +2,8 @@ import type { Router } from 'vue-router'
 
 import { startProgress, stopProgress } from '@/utils/nprogress'
 
+import { authGuard } from './auth-guard'
+
 /**
  * global router guard
  * now only used for progress bar
@@ -19,4 +21,5 @@ function setupCommonGuard(router: Router) {
 
 export function createRouterGuard(router: Router) {
   setupCommonGuard(router)
+  authGuard(router)
 }
