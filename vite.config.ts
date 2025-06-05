@@ -17,7 +17,7 @@ export default defineConfig({
   plugins: [
     VueRouter({
       exclude: RouteGenerateExclude,
-      dts: 'src/types/typed-router.d', // 类型提示文件
+      dts: 'src/types/typed-router.d.ts', // 类型提示文件
     }),
     vue(),
     vueJsx(),
