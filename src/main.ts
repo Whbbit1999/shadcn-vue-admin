@@ -6,6 +6,7 @@ import router from './router'
 import './assets/index.css'
 import './assets/themes.css'
 import './assets/scrollbar.css'
+import 'vue-sonner/style.css' // vue sonner style
 
 import '@/utils/env'
 
