@@ -1,7 +1,7 @@
 {
   "name": "shadcn-vue-admin",
   "type": "module",
-  "version": "0.2.5",
+  "version": "0.3.0",
   "private": false,
   "description": "Admin Dashboard UI crafted with Shadcn-vue, Vue3 and Vite. Built with responsiveness and accessibility in mind.",
   "author": "Whbbit1999",

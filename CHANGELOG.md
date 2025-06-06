@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.3.0
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.3.0...v0.3.0)
+
+### 🩹 Fixes
+
+- Use vue-sonner instead of shadcn-vue/toast ([8d020fd](https://github.com/Whbbit1999/shadcn-vue-admin/commit/8d020fd))
+
+### ❤️ Contributors
+
+- Whbbit1999 <luckyboy_dong@sina.com>
+
 ## v0.2.5
 
 [compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.2.4...v0.2.5)
