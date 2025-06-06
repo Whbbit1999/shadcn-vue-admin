@@ -1,6 +1,8 @@
 <script lang="ts" setup>
-import type { TalkType } from './types'
 import { cn } from '@/lib/utils'
+
+import type { IMessage } from '../types'
+
 import ReplyCopy from './reply-copy.vue'
 import ReplyRefresh from './reply-refresh.vue'
 import RobotAvatar from './robot-avatar.vue'
@@ -8,11 +10,11 @@ import ThumbDown from './thumb-down.vue'
 import ThumbUp from './thumb-up.vue'
 
 interface Props {
-  content: string
-  type: TalkType
+  talk: IMessage
 }
 
-defineProps<Props>()
+const { talk } = defineProps<Props>()
+const type = computed(() => talk.role === 'user' ? 'self' : 'robot')
 </script>
 
 <template>
@@ -24,12 +26,17 @@ defineProps<Props>()
   >
     <RobotAvatar v-if="type !== 'self'" class="mt-2 mr-2" />
     <div>
-      <p class="p-4 rounded-lg bg-muted">
-        {{ content }}
+      <p
+        :class="cn(
+          'p-4 rounded-lg bg-muted',
+          type === 'self' ? 'bg-primary text-primary-foreground' : 'bg-secondary',
+        )"
+      >
+        {{ talk.content }}
       </p>
       <div v-if="type !== 'self'">
         <div class="flex items-center gap-2 mt-2">
-          <ReplyCopy :content="content" />
+          <ReplyCopy :content="talk.content" />
           <ReplyRefresh />
           <ThumbUp />
           <ThumbDown />

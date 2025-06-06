@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { UserRoundPlus } from 'lucide-vue-next'
+
 import UserResource from './user-resource.vue'
 
 const isOpen = ref(false)

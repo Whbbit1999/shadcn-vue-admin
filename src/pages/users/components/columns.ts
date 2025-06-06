@@ -1,10 +1,13 @@
 import type { ColumnDef } from '@tanstack/vue-table'
-import type { User } from '../data/schema'
+
+import { h } from 'vue'
 
 import DataTableColumnHeader from '@/components/data-table/column-header.vue'
 import { SelectColumn } from '@/components/data-table/table-columns'
 import Badge from '@/components/ui/badge/Badge.vue'
-import { h } from 'vue'
+
+import type { User } from '../data/schema'
+
 import { callTypes, userTypes } from '../data/data'
 import DataTableRowActions from './data-table-row-actions.vue'
 

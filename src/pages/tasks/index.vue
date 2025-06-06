@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Page from '@/components/global-layout/basic-page.vue'
+
 import { columns } from './components/columns'
 import DataTable from './components/data-table.vue'
 import TaskCreate from './components/task-create.vue'

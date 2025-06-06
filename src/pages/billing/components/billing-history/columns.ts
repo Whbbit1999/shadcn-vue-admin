@@ -1,7 +1,10 @@
 import type { ColumnDef } from '@tanstack/vue-table'
-import type { Billing } from './data/schema'
+
 import DataTableColumnHeader from '@/components/data-table/column-header.vue'
 import { Badge } from '@/components/ui/badge'
+
+import type { Billing } from './data/schema'
+
 import DataTableRowActions from './data-table-row-actions.vue'
 import { statuses } from './data/data'
 

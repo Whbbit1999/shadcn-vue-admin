@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import type { User } from '../data/schema'
 import { toast } from '@/components/ui/toast'
+
+import type { User } from '../data/schema'
 
 const { user } = defineProps<{
   user: User

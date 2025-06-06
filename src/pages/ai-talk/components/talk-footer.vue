@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { ArrowUp, Paperclip } from 'lucide-vue-next'
+
 import TalkType from './talk-type.vue'
 
 const emit = defineEmits(['submit', 'typeChange'])

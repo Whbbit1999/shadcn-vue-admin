@@ -1,8 +1,11 @@
 <script lang="ts" setup>
-import type { User } from '../data/schema'
+import { z } from 'zod'
+
 import AutoForm from '@/components/ui/auto-form/AutoForm.vue'
 import { toast } from '@/components/ui/toast'
-import { z } from 'zod'
+
+import type { User } from '../data/schema'
+
 import { userRoleSchema, userStatusSchema } from '../data/schema'
 
 const { user } = defineProps<{

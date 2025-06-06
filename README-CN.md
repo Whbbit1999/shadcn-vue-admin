@@ -49,6 +49,10 @@ Linting:
   - [ESLint](https://eslint.org/)
   - [antfu/eslint-config](https://github.com/antfu/eslint-config)
 
+Charts:
+  - [vue-chrts](https://github.com/dennisadriaans/vue-chrts)
+> 如果您使用 tailwindcss v4，shadcn-vue charts 已被标记为 'Legacy'。我们现在使用这个库来替代它。
+
 ## 本地运行
 克隆项目至本地
 ```bash
@@ -69,6 +73,10 @@ pnpm install
 ```bash
 pnpm dev
 ```
+
+## Tips
+
+如果您需要更改网站样式，可以使用[tweakcn](https://tweakcn.com/editor/theme)网站提供的预设样式。你只需要将 tweakcn 提供的 css 样式 复制到 `index.css` 中，改动 `:root` `:dark` 和 `@theme inline` 部分即可。
 
 ## 作者
 由 [Whbbit](https://github.com/Whbbit1999)创建, 设计来自 [shadcn-admin](https://github.com/satnaing/shadcn-admin)

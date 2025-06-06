@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { Component } from 'vue'
+
 import { Milestone } from 'lucide-vue-next'
 
 const { icon = Milestone } = defineProps<{

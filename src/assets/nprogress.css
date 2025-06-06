@@ -1,3 +1,5 @@
+@reference './index.css';
+
 /* Make clicks pass-through */
 #nprogress {
   @apply pointer-events-none;

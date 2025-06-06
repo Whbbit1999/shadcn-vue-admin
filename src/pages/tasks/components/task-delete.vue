@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import type { Task } from '../data/schema'
 import { toast } from '@/components/ui/toast/use-toast'
+
+import type { Task } from '../data/schema'
 
 const props = defineProps<{
   task: Task

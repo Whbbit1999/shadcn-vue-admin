@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import type { Table } from '@tanstack/vue-table'
-import type { Task } from '../data/schema'
+
+import { X } from 'lucide-vue-next'
+
 import DataTableFacetedFilter from '@/components/data-table/faceted-filter.vue'
 import DataTableViewOptions from '@/components/data-table/view-options.vue'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { X } from 'lucide-vue-next'
+
+import type { Task } from '../data/schema'
+
 import { priorities, statuses } from '../data/data'
 
 interface DataTableToolbarProps {

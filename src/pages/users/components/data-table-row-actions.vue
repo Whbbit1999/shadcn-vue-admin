@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import type { Row } from '@tanstack/vue-table'
 import type { Component } from 'vue'
-import type { User } from '../data/schema'
+
 import { Ellipsis } from 'lucide-vue-next'
+
+import type { User } from '../data/schema'
 
 interface DataTableRowActionsProps {
   row: Row<User>

@@ -1,36 +1,18 @@
 <script lang="ts" setup>
-import type { TalkType } from './components/types'
 import { toast } from '@/components/ui/toast'
+
+import type { IMessage } from './types'
+
 import TalkFooter from './components/talk-footer.vue'
 import TalkList from './components/talk-list.vue'
+import { exampleTalks } from './data/talks'
 
-const talks = ref<{ type: TalkType, text: string }[]>([
-  {
-    type: 'system',
-    text: `Hello, I'm your smart assistant, how can I help you?`,
-  },
-  {
-    type: 'self',
-    text: '你好，我想了解一下你有什么功能',
-  },
-  {
-    type: 'system',
-    text: `I can answer your questions, provide information, and help you solve your problems. You can ask me anything and I'll do my best to answer it.`,
-  },
-  {
-    type: 'self',
-    text: '你有什么优点和缺点吗？',
-  },
-  {
-    type: 'system',
-    text: 'long text example: 我可以回答你的问题，提供信息，帮助你解决问题。你可以问我任何问题，我会尽力回答。我可以回答你的问题，提供信息，帮助你解决问题。你可以问我任何问题，我会尽力回答。我可以回答你的问题，提供信息，帮助你解决问题。你可以问我任何问题，我会尽力回答。我可以回答你的问题，提供信息，帮助你解决问题。你可以问我任何问题，我会尽力回答。我可以回答你的问题，提供信息，帮助你解决问题。你可以问我任何问题，我会尽力回答。我可以回答你的问题，提供信息，帮助你解决问题。你可以问我任何问题，我会尽力回答。我可以回答你的问题，提供信息，帮助你解决问题。你可以问我任何问题，我会尽力回答。我可以回答你的问题，提供信息，帮助你解决问题。你可以问我任何问题，我会尽力回答。我可以回答你的问题，提供信息，帮助你解决问题。你可以问我任何问题，我会尽力回答。',
-  },
-])
+const talks = ref<IMessage[]>(exampleTalks)
 
-function handleSubmit(text: string) {
+function handleSubmit(content: string) {
   talks.value.push({
-    type: 'self',
-    text,
+    role: 'user',
+    content,
   })
 }
 function handleTypeChange(type: string) {

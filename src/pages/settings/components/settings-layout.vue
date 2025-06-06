@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Page from '@/components/global-layout/basic-page.vue'
+
 import SettingsAside from './settings-aside.vue'
 </script>
 

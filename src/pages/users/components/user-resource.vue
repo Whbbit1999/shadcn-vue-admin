@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { User } from '../data/schema'
+
 import UserForm from './user-form.vue'
 
 const props = defineProps<{

@@ -1,10 +1,13 @@
 import type { ColumnDef } from '@tanstack/vue-table'
-import type { Task } from '../data/schema'
+
+import { h } from 'vue'
 
 import DataTableColumnHeader from '@/components/data-table/column-header.vue'
 import { SelectColumn } from '@/components/data-table/table-columns'
 import { Badge } from '@/components/ui/badge'
-import { h } from 'vue'
+
+import type { Task } from '../data/schema'
+
 import { labels, priorities, statuses } from '../data/data'
 import DataTableRowActions from './data-table-row-actions.vue'
 

@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { Plus } from 'lucide-vue-next'
+
 import TaskResourceDialog from './task-resource-dialog.vue'
 
 const isOpen = ref(false)

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { toast } from '@/components/ui/toast/use-toast'
 import { Download } from 'lucide-vue-next'
+
+import { toast } from '@/components/ui/toast/use-toast'
 
 const isOpen = ref(false)
 const file = ref()

@@ -1,15 +1,9 @@
 <script setup lang="ts" generic="T">
 import type { Column } from '@tanstack/vue-table'
-import { Button } from '@/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { cn } from '@/lib/utils'
+
 import { ArrowDown, ArrowUp, ChevronsUpDown, EyeOff } from 'lucide-vue-next'
+
+import { cn } from '@/lib/utils'
 
 interface DataTableColumnHeaderProps {
   column: Column<T, any>
@@ -27,9 +21,9 @@ export default {
 
 <template>
   <div v-if="column.getCanSort()" :class="cn('flex items-center space-x-2', $attrs.class ?? '')">
-    <DropdownMenu>
-      <DropdownMenuTrigger as-child>
-        <Button
+    <UiDropdownMenu>
+      <UiDropdownMenuTrigger as-child>
+        <UiButton
           variant="ghost"
           size="sm"
           class="-ml-3 h-8 data-[state=open]:bg-accent"
@@ -38,24 +32,24 @@ export default {
           <ArrowDown v-if="column.getIsSorted() === 'desc'" class="w-4 h-4 ml-2" />
           <ArrowUp v-else-if=" column.getIsSorted() === 'asc'" class="w-4 h-4 ml-2" />
           <ChevronsUpDown v-else class="w-4 h-4 ml-2" />
-        </Button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="start">
-        <DropdownMenuItem @click="column.toggleSorting(false)">
+        </UiButton>
+      </UiDropdownMenuTrigger>
+      <UiDropdownMenuContent align="start">
+        <UiDropdownMenuItem @click="column.toggleSorting(false)">
           <ArrowUp class="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
           Asc
-        </DropdownMenuItem>
-        <DropdownMenuItem @click="column.toggleSorting(true)">
+        </UiDropdownMenuItem>
+        <UiDropdownMenuItem @click="column.toggleSorting(true)">
           <ArrowDown class="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
           Desc
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem @click="column.toggleVisibility(false)">
+        </UiDropdownMenuItem>
+        <UiDropdownMenuSeparator />
+        <UiDropdownMenuItem @click="column.toggleVisibility(false)">
           <EyeOff class="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
           Hide
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+        </UiDropdownMenuItem>
+      </UiDropdownMenuContent>
+    </UiDropdownMenu>
   </div>
 
   <div v-else :class="$attrs.class">

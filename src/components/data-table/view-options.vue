@@ -1,16 +1,7 @@
 <script setup lang="ts" generic="T">
 import type { Table } from '@tanstack/vue-table'
-import { Button } from '@/components/ui/button'
-import {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuContent,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+
 import { Settings2 } from 'lucide-vue-next'
-import { computed } from 'vue'
 
 interface DataTableViewOptionsProps {
   table: Table<T>
@@ -26,22 +17,22 @@ const columns = computed(() => props.table.getAllColumns()
 </script>
 
 <template>
-  <DropdownMenu>
-    <DropdownMenuTrigger as-child>
-      <Button
+  <UiDropdownMenu>
+    <UiDropdownMenuTrigger as-child>
+      <UiButton
         variant="outline"
         size="sm"
         class="hidden h-8 ml-auto lg:flex"
       >
         <Settings2 class="w-4 h-4 mr-2" />
         View
-      </Button>
-    </DropdownMenuTrigger>
-    <DropdownMenuContent align="end" class="w-[150px]">
-      <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
-      <DropdownMenuSeparator />
+      </UiButton>
+    </UiDropdownMenuTrigger>
+    <UiDropdownMenuContent align="end" class="w-[150px]">
+      <UiDropdownMenuLabel>Toggle columns</UiDropdownMenuLabel>
+      <UiDropdownMenuSeparator />
 
-      <DropdownMenuCheckboxItem
+      <UiDropdownMenuCheckboxItem
         v-for="column in columns"
         :key="column.id"
         class="capitalize"
@@ -49,7 +40,7 @@ const columns = computed(() => props.table.getAllColumns()
         @update:model-value="(value:boolean) => column.toggleVisibility(!!value)"
       >
         {{ column.id }}
-      </DropdownMenuCheckboxItem>
-    </DropdownMenuContent>
-  </DropdownMenu>
+      </UiDropdownMenuCheckboxItem>
+    </UiDropdownMenuContent>
+  </UiDropdownMenu>
 </template>

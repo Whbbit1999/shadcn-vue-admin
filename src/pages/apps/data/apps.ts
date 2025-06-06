@@ -1,5 +1,6 @@
-import type { IApp } from '../type'
 import { DiscordIcon, DockerIcon, FigmaIcon, GitHubIcon, GitLabIcon, GmailIcon, MediumIcon, NotionIcon, SlackIcon, StripeIcon, TelegramIcon, TrelloIcon, WhatsAppIcon, ZoomIcon } from 'vue3-simple-icons'
+
+import type { IApp } from '../type'
 
 const apps: IApp[] = [
   {

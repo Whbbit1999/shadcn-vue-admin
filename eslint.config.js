@@ -1,6 +1,5 @@
 import antfu from '@antfu/eslint-config'
 import pluginQuery from '@tanstack/eslint-plugin-query'
-import eslintPluginTailwindcss from 'eslint-plugin-tailwindcss'
 
 export default antfu({
   ignores: [
@@ -8,7 +7,12 @@ export default antfu({
     '**/dist/**',
     '**/build/**',
     '**/lib/**',
+    '**/components/ui/**',
   ],
-  ...eslintPluginTailwindcss.configs['flat/recommended'],
+  rules: {
+    'perfectionist/sort-imports': ['error', {
+      tsconfigRootDir: '.',
+    }],
+  },
   ...pluginQuery.configs['flat/recommended'],
 })

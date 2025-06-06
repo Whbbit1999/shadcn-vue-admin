@@ -1,9 +1,11 @@
-import type { Style } from '@/lib/registry/styles'
-import type { Theme } from '@/lib/registry/themes'
-import { styles } from '@/lib/registry/styles'
-import { themes } from '@/lib/registry/themes'
 import { useColorMode, useStorage } from '@vueuse/core'
 import { computed } from 'vue'
+
+import type { Style } from '@/lib/registry/styles'
+import type { Theme } from '@/lib/registry/themes'
+
+import { styles } from '@/lib/registry/styles'
+import { themes } from '@/lib/registry/themes'
 
 interface Config {
   theme?: Theme['name']
@@ -39,9 +41,7 @@ export function useConfigStore() {
 
   const themePrimary = computed(() => {
     const t = themes.find(t => t.name === theme.value)
-    return `hsl(${
-      t?.cssVars[isDark ? 'dark' : 'light'].primary
-    })`
+    return `hsl(${t?.cssVars?.[isDark ? 'dark' : 'light']?.primary})`
   })
 
   return {

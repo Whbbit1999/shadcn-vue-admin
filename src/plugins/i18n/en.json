@@ -1,0 +1,104 @@
+{
+  "premium": {
+    "premium": "premium",
+    "UpgradeNow": "Upgrade Now"
+  },
+  "marketing": {
+    "hero": {
+      "learnPeople": "More than 1K+ people joined",
+      "getMore": "Get more",
+      "title": "Do you dare to use 365 days to witness a complete transformation?",
+      "subtitle": "The hourglass of time is bursting with thunder. When the quantitative change breaks through the critical point, every morning and evening you work hard will turn into a sea of stars!"
+    },
+    "features": {
+      "title": "Features",
+      "feature1": {
+        "title": "Use modern technology",
+        "description": "More modern component library, free to customize each component"
+      },
+      "feature2": {
+        "title": "Easy to deploy",
+        "description": "One-click deployment to your server, no complicated configuration required"
+      },
+      "feature3": {
+        "title": "Open source code",
+        "description": "Every line of code is open source, you can modify and extend it freely"
+      },
+      "feature4": {
+        "title": "Community support",
+        "description": "You can find help in the community and share your experience"
+      }
+    },
+    "evaluation": {
+      "title": "Evaluation",
+      "subtitle": "These evaluations are simulated data, not actual data"
+    },
+    "pricingPlans": {
+      "title": "Pricing Plans",
+      "subtitle": "Choose the plan that suits you",
+      "buy": "Get it now",
+      "hobby": {
+        "title": "Hobby",
+        "description": "Suitable for beginners",
+        "price": "399",
+        "discount": "599",
+        "unit": "$",
+        "billing": {
+          "cycle": "",
+          "period": ""
+        },
+        "features": {
+          "feature1": "Use part of the website code",
+          "feature2": "Get the latest technology updates",
+          "feature3": "More than 100 components",
+          "feature4": "More than 100 pages"
+        }
+      },
+      "starter": {
+        "title": "Starter",
+        "description": "Suitable for beginners",
+        "price": "599",
+        "discount": "899",
+        "unit": "$",
+        "billing": {
+          "cycle": "",
+          "period": ""
+        },
+        "features": {
+          "feature1": "Use the entire site's code",
+          "feature2": "Read the excellent online documentation",
+          "feature3": "Get the latest technical updates",
+          "feature4": "Over 200 components",
+          "feature5": "Over 200 pages"
+        }
+      },
+      "business": {
+        "title": "Business",
+        "description": "Suitable for beginners",
+        "price": "199",
+        "discount": "399",
+        "unit": "$",
+        "billing": {
+          "cycle": "",
+          "period": ""
+        },
+        "features": {
+          "feature1": "Use the entire site's code",
+          "feature2": "Read the excellent online documentation",
+          "feature3": "Get the latest technical updates",
+          "feature4": "Over 200 components",
+          "feature5": "Over 200 pages",
+          "feature6": "Private assistant support"
+        }
+      }
+    },
+    "setup": {
+      "title": "Setup",
+      "subtitle": "Just 3 minutes to start using"
+    }
+  },
+  "login": "Login",
+  "register": "Register",
+  "language": "English",
+  "changeLanguage": "Change Language"
+}

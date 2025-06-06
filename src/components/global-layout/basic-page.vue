@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { LayoutHeaderProps } from './types'
+
 import BasicHeader from './basic-header.vue'
 
 defineProps<LayoutHeaderProps>()

@@ -5,17 +5,7 @@ import type {
   SortingState,
   VisibilityState,
 } from '@tanstack/vue-table'
-import type { Billing } from './data/schema'
-import DataTablePagination from '@/components/data-table/table-pagination.vue'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
-import { valueUpdater } from '@/lib/utils'
+
 import {
   FlexRender,
   getCoreRowModel,
@@ -27,6 +17,20 @@ import {
   useVueTable,
 } from '@tanstack/vue-table'
 import { ref } from 'vue'
+
+import DataTablePagination from '@/components/data-table/table-pagination.vue'
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from '@/components/ui/table'
+import { valueUpdater } from '@/lib/utils'
+
+import type { Billing } from './data/schema'
+
 import DataTableToolbar from './data-table-toolbar.vue'
 
 interface DataTableProps {

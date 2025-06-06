@@ -1,9 +1,10 @@
 <script lang="ts" setup>
-import type { Color } from './utils/data'
-import { Button } from '@/components/ui/button'
-import { Label } from '@/components/ui/label'
-import { RADII, useConfigStore } from '@/stores/config'
 import { Check } from 'lucide-vue-next'
+
+import { RADII, useConfigStore } from '@/stores/config'
+
+import type { Color } from './utils/data'
+
 import { colors } from './utils/colors'
 
 defineProps<{
@@ -24,9 +25,11 @@ const { theme, radius, setRadius, setTheme } = useConfigStore()
       </p>
     </div>
     <div class="space-y-1.5 pt-6">
-      <Label for="color" class="text-xs"> Color </Label>
+      <UiLabel for="color" class="text-xs">
+        Color
+      </UiLabel>
       <div class="grid grid-cols-3 gap-2 py-1.5">
-        <Button
+        <UiButton
           v-for="(color, index) in allColors"
           :key="index"
           variant="outline"
@@ -50,13 +53,15 @@ const { theme, radius, setRadius, setTheme } = useConfigStore()
           <span class="ml-2 text-xs capitalize">
             {{ color }}
           </span>
-        </Button>
+        </UiButton>
       </div>
     </div>
     <div class="space-y-1.5 pt-6">
-      <Label for="radius" class="text-xs"> Radius </Label>
+      <UiLabel for="radius" class="text-xs">
+        Radius
+      </UiLabel>
       <div class="grid grid-cols-5 gap-2 py-1.5">
-        <Button
+        <UiButton
           v-for="(r, index) in RADII"
           :key="index"
           variant="outline"
@@ -71,7 +76,7 @@ const { theme, radius, setRadius, setTheme } = useConfigStore()
           <span class="text-xs">
             {{ r }}
           </span>
-        </Button>
+        </UiButton>
       </div>
     </div>
   </div>

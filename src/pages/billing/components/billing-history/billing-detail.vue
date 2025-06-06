@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { Billing } from './data/schema'
+
 import TransactionCard from '../transaction-card/index.vue'
 
 defineProps<{

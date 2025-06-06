@@ -1,6 +1,7 @@
 <script lang="ts" setup>
-import { cn } from '@/lib/utils'
 import { templateRef } from '@vueuse/core'
+
+import { cn } from '@/lib/utils'
 
 interface FlickeringGridProps {
   squareSize?: number

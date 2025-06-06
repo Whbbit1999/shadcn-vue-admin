@@ -46,7 +46,7 @@ import ToForgotPasswordLink from './to-forgot-password-link.vue'
 
       <UiSeparator label="Or continue with" />
 
-      <div class="flex items-center justify-between gap-4">
+      <div class="flex flex-col items-center justify-between gap-4">
         <GitHubButton />
         <GoogleButton />
       </div>

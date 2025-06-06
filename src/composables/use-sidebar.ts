@@ -1,4 +1,3 @@
-import type { NavGroup } from '@/components/app-sidebar/types'
 import {
   BadgeHelp,
   Boxes,
@@ -11,6 +10,8 @@ import {
   SquareUserRound,
   Users,
 } from 'lucide-vue-next'
+
+import type { NavGroup } from '@/components/app-sidebar/types'
 
 export function useSidebar() {
   const navData = ref<NavGroup[]>()

@@ -1,6 +1,8 @@
 import type { ColumnDef } from '@tanstack/vue-table'
-import Checkbox from '@/components/ui/checkbox/Checkbox.vue'
+
 import { h } from 'vue'
+
+import Checkbox from '@/components/ui/checkbox/Checkbox.vue'
 
 export const SelectColumn: ColumnDef<any> = {
   id: 'select',
