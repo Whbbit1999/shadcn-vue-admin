@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 import { Download } from 'lucide-vue-next'
-
-import { toast } from '@/components/ui/toast/use-toast'
+import { toast } from 'vue-sonner'
 
 const isOpen = ref(false)
 const file = ref()
@@ -22,8 +21,7 @@ function onSubmit() {
     return
   }
 
-  toast({
-    title: 'You submitted the following values:',
+  toast('You submitted the following values:', {
     description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(file.value, null, 2))),
   })
   isOpen.value = false

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Loading from '@/components/loading.vue'
-import Toaster from '@/components/ui/toast/Toaster.vue'
+import { Toaster } from '@/components/ui/sonner'
 </script>
 
 <template>

@@ -2,6 +2,7 @@
 import { toTypedSchema } from '@vee-validate/zod'
 import { X } from 'lucide-vue-next'
 import { FieldArray, useForm } from 'vee-validate'
+import { toast } from 'vue-sonner'
 
 import { Button } from '@/components/ui/button'
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
@@ -16,7 +17,6 @@ import {
 } from '@/components/ui/select'
 import { Separator } from '@/components/ui/separator'
 import { Textarea } from '@/components/ui/textarea'
-import { toast } from '@/components/ui/toast'
 import { cn } from '@/lib/utils'
 
 import { profileValidator } from '../validators/profile.validator'
@@ -37,8 +37,7 @@ const { handleSubmit, resetForm } = useForm({
 })
 
 const onSubmit = handleSubmit((values) => {
-  toast({
-    title: 'You submitted the following values:',
+  toast('You submitted the following values:', {
     description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(values, null, 2))),
   })
 })

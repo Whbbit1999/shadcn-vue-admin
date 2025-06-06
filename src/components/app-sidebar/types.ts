@@ -8,8 +8,8 @@ interface BaseNavItem {
   icon?: NavIcon
 }
 
-export type NavItem =
-  | BaseNavItem & {
+export type NavItem
+  = | BaseNavItem & {
     items: (BaseNavItem & { url?: string })[]
     url?: never
     isActive?: boolean

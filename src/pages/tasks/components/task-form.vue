@@ -1,10 +1,10 @@
 <script lang="ts" setup>
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
+import { toast } from 'vue-sonner'
 import * as z from 'zod'
 
 import { FormField } from '@/components/ui/form'
-import { toast } from '@/components/ui/toast/use-toast'
 
 import type { Task } from '../data/schema'
 
@@ -26,8 +26,7 @@ const { isFieldDirty, handleSubmit } = useForm({
   validationSchema: formSchema,
 })
 const onSubmit = handleSubmit((values) => {
-  toast({
-    title: 'You submitted the following values:',
+  toast('You submitted the following values:', {
     description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(values, null, 2))),
   })
   emits('close')

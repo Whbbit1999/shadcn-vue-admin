@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { toast } from '@/components/ui/toast'
+import { toast } from 'vue-sonner'
 
 import type { IMessage } from './types'
 
@@ -16,8 +16,7 @@ function handleSubmit(content: string) {
   })
 }
 function handleTypeChange(type: string) {
-  toast({
-    title: 'type',
+  toast('type', {
     description: h(
       'pre',
       { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' },

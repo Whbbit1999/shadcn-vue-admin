@@ -1,8 +1,8 @@
 <script lang="ts" setup>
+import { toast } from 'vue-sonner'
 import { z } from 'zod'
 
 import AutoForm from '@/components/ui/auto-form/AutoForm.vue'
-import { toast } from '@/components/ui/toast'
 
 import type { User } from '../data/schema'
 
@@ -30,8 +30,7 @@ function onSubmit(values: Record<string, any>) {
   if (user) {
     submitUser.id = user.id
   }
-  toast({
-    title: 'You submitted the following values:',
+  toast('You submitted the following values:', {
     description: h(
       'pre',
       { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' },

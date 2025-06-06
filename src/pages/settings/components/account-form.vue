@@ -3,6 +3,7 @@ import { CalendarDate, DateFormatter, getLocalTimeZone, today } from '@internati
 import { toTypedSchema } from '@vee-validate/zod'
 import { CalendarDays, Check, ChevronsUpDown } from 'lucide-vue-next'
 import { toDate } from 'reka-ui/date'
+import { toast } from 'vue-sonner'
 
 import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
@@ -22,7 +23,6 @@ import {
   PopoverTrigger,
 } from '@/components/ui/popover'
 import { Separator } from '@/components/ui/separator'
-import { toast } from '@/components/ui/toast'
 import { cn } from '@/lib/utils'
 
 import { accountValidator } from '../validators/account.validator'
@@ -52,8 +52,7 @@ const accountFormSchema = toTypedSchema(accountValidator)
 // https://github.com/logaretm/vee-validate/issues/3521
 // https://github.com/logaretm/vee-validate/discussions/3571
 async function onSubmit(values: any) {
-  toast({
-    title: 'You submitted the following values:',
+  toast('You submitted the following values:', {
     description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(values, null, 2))),
   })
 }

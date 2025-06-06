@@ -1,7 +1,6 @@
 import { h } from 'vue'
+import { toast } from 'vue-sonner'
 import { z } from 'zod'
-
-import { toast } from '@/components/ui/toast'
 
 /**
  * Load .env file and validate it against the schema
@@ -25,9 +24,7 @@ const { data: env, error } = EnvSchema.safeParse(import.meta.env)
 if (error) {
   console.error('❌ Invalid env')
   console.error(error.flatten().fieldErrors)
-  toast({
-    title: `Env error: you should check your .env file`,
-    variant: 'destructive',
+  toast.error(`Env error: you should check your .env file`, {
     description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(error, null, 2))),
   })
 }

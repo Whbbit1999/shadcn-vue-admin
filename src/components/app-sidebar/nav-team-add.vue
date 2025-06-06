@@ -1,9 +1,9 @@
 <script lang="ts" setup>
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
+import { toast } from 'vue-sonner'
 
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
-import { toast } from '@/components/ui/toast'
 
 import { teamAddValidator } from './validators/team.validator'
 
@@ -17,8 +17,8 @@ const { handleSubmit } = useForm({
 })
 
 const onSubmit = handleSubmit((values) => {
-  toast({
-    title: 'You submitted the following values:',
+  toast('You submitted the following values:', {
+    position: 'top-center',
     description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(values, null, 2))),
   })
 

@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { toast } from 'vue-sonner'
+
 import Page from '@/components/global-layout/basic-page.vue'
 import { Button } from '@/components/ui/button'
 
@@ -21,7 +23,13 @@ const activeTab = ref(tabs.value[0].value)
     sticky
   >
     <template #actions>
-      <Button>Download</Button>
+      <Button
+        @click="() => toast('hello', {
+          position: 'top-center',
+        })"
+      >
+        Download
+      </Button>
     </template>
 
     <UiTabs :default-value="activeTab" class="w-full">
