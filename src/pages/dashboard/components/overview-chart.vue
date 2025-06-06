@@ -1,27 +1,47 @@
 <script lang="ts" setup>
-import { BarChart } from '@/components/ui/chart-bar'
+import { useColorMode } from '@vueuse/core'
+import { BarChart, LegendPosition } from 'vue-chrts'
 
-const data = [
-  { name: 'Jan', total: Math.floor(Math.random() * 2000) + 500, predicted: Math.floor(Math.random() * 2000) + 500 },
-  { name: 'Feb', total: Math.floor(Math.random() * 2000) + 500, predicted: Math.floor(Math.random() * 2000) + 500 },
-  { name: 'Mar', total: Math.floor(Math.random() * 2000) + 500, predicted: Math.floor(Math.random() * 2000) + 500 },
-  { name: 'Apr', total: Math.floor(Math.random() * 2000) + 500, predicted: Math.floor(Math.random() * 2000) + 500 },
-  { name: 'May', total: Math.floor(Math.random() * 2000) + 500, predicted: Math.floor(Math.random() * 2000) + 500 },
-  { name: 'Jun', total: Math.floor(Math.random() * 2000) + 500, predicted: Math.floor(Math.random() * 2000) + 500 },
-  { name: 'Jul', total: Math.floor(Math.random() * 2000) + 500, predicted: Math.floor(Math.random() * 2000) + 500 },
+const mode = useColorMode()
+const isDark = computed(() => mode.value === 'dark')
+
+interface RevenueDataItem {
+  month: string
+  desktop: number
+  mobile: number
+}
+
+const RevenueData: RevenueDataItem[] = [
+  { month: 'January', desktop: 186, mobile: 80 },
+  { month: 'February', desktop: 305, mobile: 200 },
+  { month: 'March', desktop: 237, mobile: 120 },
+  { month: 'April', desktop: 73, mobile: 190 },
+  { month: 'May', desktop: 209, mobile: 130 },
+  { month: 'June', desktop: 214, mobile: 140 },
 ]
+
+const RevenueCategoriesMultple = {
+  desktop: { name: 'Desktop' },
+  mobile: { name: 'Mobile' },
+}
+
+const xFormatter = (i: number): string => `${RevenueData[i]?.month}`
+const yFormatter = (i: number) => i
 </script>
 
 <template>
   <BarChart
-    :data="data"
-    index="name"
-    :categories="['total', 'predicted']"
-    :y-formatter="(tick) => {
-      return typeof tick === 'number'
-        ? `$ ${new Intl.NumberFormat('us').format(tick).toString()}`
-        : ''
-    }"
-    :rounded-corners="4"
+    :data="RevenueData"
+    :height="275"
+    :categories="RevenueCategoriesMultple"
+    :y-axis="['desktop', 'mobile']"
+    :group-padding="0"
+    :bar-padding="0.2"
+    :x-num-ticks="6"
+    :radius="4"
+    :x-formatter="xFormatter"
+    :y-formatter="yFormatter"
+    :legend-position="LegendPosition.Top"
+    :y-grid-line="!isDark"
   />
 </template>

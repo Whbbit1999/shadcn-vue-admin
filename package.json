@@ -55,6 +55,7 @@
     "vaul-vue": "^0.4.1",
     "vee-validate": "^4.15.0",
     "vue": "^3.5.16",
+    "vue-chrts": "^0.1.9",
     "vue-i18n": "^11.1.5",
     "vue-router": "^4.5.1",
     "vue-sonner": "^2.0.0",

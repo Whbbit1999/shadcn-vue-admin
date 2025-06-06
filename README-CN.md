@@ -47,6 +47,10 @@ Linting:
   - [ESLint](https://eslint.org/)
   - [antfu/eslint-config](https://github.com/antfu/eslint-config)
 
+Charts:
+  - [vue-chrts](https://github.com/dennisadriaans/vue-chrts)
+> 如果您使用 tailwindcss v4，shadcn-vue charts 已被标记为 'Legacy'。我们现在使用这个库来替代它。
+
 ## 本地运行
 克隆项目至本地
 ```bash
