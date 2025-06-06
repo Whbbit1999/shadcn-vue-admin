@@ -1,6 +1,61 @@
 # Changelog
 
 
+## v0.3.0
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.2.5...v0.3.0)
+
+### 🚀 Enhancements
+
+- Marketing page ([e28f1a3](https://github.com/Whbbit1999/shadcn-vue-admin/commit/e28f1a3))
+- **app-sidebar:** Add nav-team-add dialog ([236d9e7](https://github.com/Whbbit1999/shadcn-vue-admin/commit/236d9e7))
+- Add use tanstack-query example ([4ffe845](https://github.com/Whbbit1999/shadcn-vue-admin/commit/4ffe845))
+- Add unplugin-vue-router package ([a89a24c](https://github.com/Whbbit1999/shadcn-vue-admin/commit/a89a24c))
+- Add auth-guard, if the current page router metadata has "auth: true", jump to the login page ([c30249d](https://github.com/Whbbit1999/shadcn-vue-admin/commit/c30249d))
+
+### 🩹 Fixes
+
+- **ai-talk:** Add robot avatar png file ([bfbdecc](https://github.com/Whbbit1999/shadcn-vue-admin/commit/bfbdecc))
+- Route mismatch redirects to page not found ([166c224](https://github.com/Whbbit1999/shadcn-vue-admin/commit/166c224))
+- Unplugin-vue-router dts file name error ([7e14a9a](https://github.com/Whbbit1999/shadcn-vue-admin/commit/7e14a9a))
+- Remove middleware auth-guard. router guard remove to router/guard/ ([5e9d072](https://github.com/Whbbit1999/shadcn-vue-admin/commit/5e9d072))
+
+### 💅 Refactors
+
+- **ai-talk:** Type change ([1d32e74](https://github.com/Whbbit1999/shadcn-vue-admin/commit/1d32e74))
+- **settings:** Settings validator ([df6e35d](https://github.com/Whbbit1999/shadcn-vue-admin/commit/df6e35d))
+- Use vue-chrts instead of shadcn-vue charts ([bd70114](https://github.com/Whbbit1999/shadcn-vue-admin/commit/bd70114))
+
+### 📖 Documentation
+
+- Add change style tips ([95aef3c](https://github.com/Whbbit1999/shadcn-vue-admin/commit/95aef3c))
+
+### 📦 Build
+
+- Remove debugger and console.log when building ([0ee80fb](https://github.com/Whbbit1999/shadcn-vue-admin/commit/0ee80fb))
+- Package update and eslint add sort-imports rule ([7bdd7e7](https://github.com/Whbbit1999/shadcn-vue-admin/commit/7bdd7e7))
+
+### 🏡 Chore
+
+- **release:** V0.2.5 ([a232c8e](https://github.com/Whbbit1999/shadcn-vue-admin/commit/a232c8e))
+- Updated to tailwindv4 ([9b1782e](https://github.com/Whbbit1999/shadcn-vue-admin/commit/9b1782e))
+- Update shadcn-vue component ([af50c0d](https://github.com/Whbbit1999/shadcn-vue-admin/commit/af50c0d))
+- The type of shadcn-vue component used in the page has changed ([260eeaf](https://github.com/Whbbit1999/shadcn-vue-admin/commit/260eeaf))
+- Update packages ([1b3888d](https://github.com/Whbbit1999/shadcn-vue-admin/commit/1b3888d))
+- Packages update ([edafff1](https://github.com/Whbbit1999/shadcn-vue-admin/commit/edafff1))
+- Packages update ([acdd1f3](https://github.com/Whbbit1999/shadcn-vue-admin/commit/acdd1f3))
+- Package update ([a6436ac](https://github.com/Whbbit1999/shadcn-vue-admin/commit/a6436ac))
+
+### 🎨 Styles
+
+- **ai-talk:** Talk-item self block style change ([aeeb06f](https://github.com/Whbbit1999/shadcn-vue-admin/commit/aeeb06f))
+- **app-sidebar:** Sidebar footer user block dropdown float right ([6bb76b0](https://github.com/Whbbit1999/shadcn-vue-admin/commit/6bb76b0))
+- **command-menu:** Use shadcn-vue css variant name ([fa09d89](https://github.com/Whbbit1999/shadcn-vue-admin/commit/fa09d89))
+
+### ❤️ Contributors
+
+- Whbbit1999 <luckyboy_dong@sina.com>
+
 ## v0.2.5
 
 [compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.2.4...v0.2.5)
