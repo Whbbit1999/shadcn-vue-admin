@@ -5,7 +5,6 @@ import { fileURLToPath, URL } from 'node:url'
 import { visualizer } from 'rollup-plugin-visualizer'
 import AutoImport from 'unplugin-auto-import/vite'
 import Component from 'unplugin-vue-components/vite'
-import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig } from 'vite'
 import Pages from 'vite-plugin-pages'
 import vueDevTools from 'vite-plugin-vue-devtools'
@@ -15,10 +14,6 @@ const RouteGenerateExclude = ['**/components/**', '**/layouts/**', '**/data/**',
 
 export default defineConfig({
   plugins: [
-    VueRouter({
-      exclude: RouteGenerateExclude,
-      dts: 'src/types/typed-router.d.ts', // 类型提示文件
-    }),
     vue(),
     vueJsx(),
     vueDevTools(),

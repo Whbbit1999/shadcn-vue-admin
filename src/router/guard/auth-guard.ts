@@ -10,8 +10,8 @@ export function authGuard(router: Router) {
   const { isLogin } = storeToRefs(authStore)
 
   router.beforeEach((to, _from) => {
-    if (to.meta.auth && !unref(isLogin) && to.name !== '/auth/sign-in') {
-      return { name: '/auth/sign-in' }
+    if (to.meta.auth && !unref(isLogin) && to.name !== 'auth-sign-in') {
+      return { name: 'auth-sign-in' }
     }
   })
 }
