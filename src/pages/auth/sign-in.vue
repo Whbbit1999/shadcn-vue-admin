@@ -11,11 +11,3 @@ import LoginForm from './components/login-form.vue'
     </main>
   </div>
 </template>
-
-<style scoped>
-</style>
-
-<route lang="yaml">
-  meta:
-    layout: blank
-</route>

@@ -4,7 +4,7 @@ import { useRouter } from 'vue-router'
 import Loading from '@/components/loading.vue'
 
 const router = useRouter()
-router.push({ name: 'dashboard' })
+router.push({ name: '/dashboard/' })
 </script>
 
 <template>
@@ -12,8 +12,3 @@ router.push({ name: 'dashboard' })
     <Loading />
   </div>
 </template>
-
-<route lang="yaml">
-  meta:
-    layout: blank
-</route>

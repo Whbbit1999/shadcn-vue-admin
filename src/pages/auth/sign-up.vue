@@ -88,8 +88,3 @@ import TermsOfServiceButton from './components/terms-of-service-button.vue'
     </main>
   </div>
 </template>
-
-<route lang="yaml">
-  meta:
-    layout: blank
-</route>

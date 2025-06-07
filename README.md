@@ -12,8 +12,6 @@ Admin Dashboard UI crafted with Shadcn-vue, Vue3 and Vite. Built with responsive
 
 This is not a starter project (template) though. More components will be added later.
 
-> In migration-tailwind-v4 branch Almost all functions have been migrated to tailwindcss v4.
-
 ## Features
 - [x] Light/Dark Mode
 - [x] Global Search Command
@@ -40,7 +38,8 @@ Styling:
 Unplugins:
   - [Auto Import](https://github.com/antfu/unplugin-auto-import)
   - [Components](https://github.com/antfu/unplugin-vue-components)
-  - [vite-plugin-pages](https://github.com/hannoeru/vite-plugin-pages)
+  - [vite-plugin-pages](https://github.com/hannoeru/vite-plugin-pages) [Deprecation]
+  - [unplugin-vue-router](https://github.com/posva/unplugin-vue-router)
   - [Vite Plugin Vue Layouts](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
   - [Vite Plugin Vue Devtools](https://github.com/webfansplz/vite-plugin-vue-devtools)
 
@@ -81,7 +80,31 @@ Created by [Whbbit](https://github.com/Whbbit1999), Design by [shadcn-admin](htt
 
 ## Tips
 
+### Theme Customization
 If you need to change the website style, you can use the preset styles provided by [tweakcn](https://tweakcn.com/editor/theme). You only need to copy the css variables provided by tweakcn to `index.css` and change the `:root` `:dark` and `@theme inline` parts.
+
+### No `index.vue` in nested directories and don't want to use the default layout
+For example, I don't want the pages in the `pages/errors/` and `pages/auth/` folders to use the default layout. I need to create a file in `pages/` with the same name as the directory, `src/pages/errors.vue` `src/pages/auth.vue`, with the following file contents.
+```vue
+<template>
+  <router-view />
+</template>
+
+<route lang="yml">
+  meta:
+    layout: false # This is the layout you want. I use false here to indicate that it does not need layout components.
+</route>
+```
+
+> This will result in an extra route being generated. In this example, if you follow the above steps, redundant `/error/` and `/auth/` routes will be generated, and these two pages will be blank pages.
+> If you don't need them and there is no `index.vue` in the directory, you can create an `index.vue` file in the directory and redirect it to any page.
+> I redirect it to `/errors/404` here, you can handle it according to your situation. The content of the `index.vue` file is as follows:
+```vue
+<script lang="ts" setup>
+const router = useRouter()
+router.replace({ name: '/errors/404' })
+</script>
+```
 
 ## License
 [MIT](https://github.com/Whbbit1999/shadcn-vue-admin/blob/main/LICENSE)

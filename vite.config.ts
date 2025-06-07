@@ -5,8 +5,9 @@ import { fileURLToPath, URL } from 'node:url'
 import { visualizer } from 'rollup-plugin-visualizer'
 import AutoImport from 'unplugin-auto-import/vite'
 import Component from 'unplugin-vue-components/vite'
+import { VueRouterAutoImports } from 'unplugin-vue-router'
+import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig } from 'vite'
-import Pages from 'vite-plugin-pages'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import Layouts from 'vite-plugin-vue-layouts'
 
@@ -14,15 +15,15 @@ const RouteGenerateExclude = ['**/components/**', '**/layouts/**', '**/data/**',
 
 export default defineConfig({
   plugins: [
+    VueRouter({
+      exclude: RouteGenerateExclude,
+      dts: 'src/types/typed-router.d.ts', // 类型提示文件
+    }),
     vue(),
     vueJsx(),
     vueDevTools(),
     tailwindcss(),
     visualizer({ gzipSize: true, brotliSize: true }),
-    Pages({
-      routeStyle: 'nuxt',
-      exclude: RouteGenerateExclude,
-    }),
     Layouts({
       defaultLayout: 'default',
     }),
@@ -34,7 +35,7 @@ export default defineConfig({
       ],
       imports: [
         'vue',
-        'vue-router',
+        VueRouterAutoImports,
       ], // 自动加载 vue,vue-router api
       dirs: [
         'src/composables/**/*.ts',
