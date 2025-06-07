@@ -7,7 +7,6 @@ import AutoImport from 'unplugin-auto-import/vite'
 import Component from 'unplugin-vue-components/vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import { defineConfig } from 'vite'
-import Pages from 'vite-plugin-pages'
 import vueDevTools from 'vite-plugin-vue-devtools'
 import Layouts from 'vite-plugin-vue-layouts'
 
@@ -24,10 +23,6 @@ export default defineConfig({
     vueDevTools(),
     tailwindcss(),
     visualizer({ gzipSize: true, brotliSize: true }),
-    Pages({
-      routeStyle: 'nuxt',
-      exclude: RouteGenerateExclude,
-    }),
     Layouts({
       defaultLayout: 'default',
     }),
