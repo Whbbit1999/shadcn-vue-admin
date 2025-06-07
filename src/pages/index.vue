@@ -12,8 +12,3 @@ router.push({ name: '/dashboard/' })
     <Loading />
   </div>
 </template>
-
-<route lang="yaml">
-  meta:
-    layout: blank
-</route>

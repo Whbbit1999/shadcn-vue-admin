@@ -9,6 +9,12 @@ export default antfu({
     '**/lib/**',
     '**/components/ui/**',
   ],
+  settings: {
+    'import/core-modules': ['vue-router/auto-routes'],
+  },
+  globals: {
+    definePage: 'readonly',
+  },
   rules: {
     'perfectionist/sort-imports': ['error', {
       tsconfigRootDir: '.',

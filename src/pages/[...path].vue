@@ -17,5 +17,5 @@ import Error from '@/components/custom-error.vue'
 
 <route lang="yaml">
   meta:
-    layout: blank
+    layout: false
 </route>
