@@ -12,7 +12,7 @@ const defaultOpen = useCookies(['sidebar:state'])
 <template>
   <UiSidebarProvider :default-open="defaultOpen.get('sidebar:state')">
     <AppSidebar />
-    <UiSidebarInset>
+    <UiSidebarInset class="w-full max-w-full peer-data-[state=collapsed]:w-[calc(100%-var(--sidebar-width-icon)-1rem)] peer-data-[state=expanded]:w-[calc(100%-var(--sidebar-width))]">
       <header
         class="flex h-16 shrink-0 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12"
       >
@@ -25,7 +25,7 @@ const defaultOpen = useCookies(['sidebar:state'])
         </div>
       </header>
       <div
-        class="flex flex-col flex-1 gap-4 p-4 pt-0"
+        class="gap-4 p-4 grow"
       >
         <router-view />
       </div>
