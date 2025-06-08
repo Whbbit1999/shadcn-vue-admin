@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import AppSidebar from '@/components/app-sidebar/index.vue'
 import CommandMenuPanel from '@/components/command-menu-panel/index.vue'
-// import ThemePopover from '@/components/custom-theming/theme-popover.vue'
+import ThemePopover from '@/components/custom-theme/theme-popover.vue'
 import ToggleTheme from '@/components/toggle-theme.vue'
 </script>
 
@@ -17,7 +17,7 @@ import ToggleTheme from '@/components/toggle-theme.vue'
           <CommandMenuPanel />
           <div class="min-w-0 grow" />
           <ToggleTheme />
-          <!-- <ThemePopover /> -->
+          <ThemePopover />
         </div>
       </header>
       <div
