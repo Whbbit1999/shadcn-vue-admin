@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v0.3.3
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.3.2...v0.3.3)
+
+### 🚀 Enhancements
+
+- New custom-theme component ([6dfcd56](https://github.com/Whbbit1999/shadcn-vue-admin/commit/6dfcd56))
+- When the sidebar is collapsed, click the menu to display the secondary menu using dropdown and save the sidebar collapsed state ([#11](https://github.com/Whbbit1999/shadcn-vue-admin/pull/11))
+
+### 🏡 Chore
+
+- **release:** V0.3.2 ([f42338c](https://github.com/Whbbit1999/shadcn-vue-admin/commit/f42338c))
+
+### ❤️ Contributors
+
+- Whbbit1999 ([@Whbbit1999](https://github.com/Whbbit1999))
+
 ## v0.3.2
 
 [compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.3.1...v0.3.2)
