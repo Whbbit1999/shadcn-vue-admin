@@ -18,7 +18,7 @@ import tasks from './data/tasks.json'
       <TaskImport />
       <TaskCreate />
     </template>
-    <div class="w-[calc(100svw-2rem)] md:w-full overflow-x-auto">
+    <div class="overflow-x-auto">
       <DataTable :data="tasks" :columns="columns" />
     </div>
   </Page>

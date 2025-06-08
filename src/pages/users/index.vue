@@ -18,7 +18,7 @@ import { users } from './data/users'
       <UserInvite />
       <UserCreate />
     </template>
-    <div class="w-[calc(100svw-2rem)] md:w-full overflow-x-auto">
+    <div class="overflow-x-auto">
       <DataTable :data="users" :columns="columns" />
     </div>
   </Page>
