@@ -1,14 +1,19 @@
 import {
   BadgeHelp,
+  BellDot,
   Boxes,
   Bug,
   CreditCard,
   LayoutDashboard,
   ListTodo,
+  Palette,
+  PictureInPicture2,
   Podcast,
   Settings,
   SquareUserRound,
+  User,
   Users,
+  Wrench,
 } from 'lucide-vue-next'
 
 import type { NavGroup } from '@/components/app-sidebar/types'
@@ -81,11 +86,11 @@ export function useSidebar() {
           title: 'Settings',
           icon: Settings,
           items: [
-            { title: 'Profile', url: '/settings/' },
-            { title: 'Account', url: '/settings/account' },
-            { title: 'Appearance', url: '/settings/appearance' },
-            { title: 'Notifications', url: '/settings/notifications' },
-            { title: 'Display', url: '/settings/display' },
+            { title: 'Profile', url: '/settings/', icon: User },
+            { title: 'Account', url: '/settings/account', icon: Wrench },
+            { title: 'Appearance', url: '/settings/appearance', icon: Palette },
+            { title: 'Notifications', url: '/settings/notifications', icon: BellDot },
+            { title: 'Display', url: '/settings/display', icon: PictureInPicture2 },
           ],
         },
         {

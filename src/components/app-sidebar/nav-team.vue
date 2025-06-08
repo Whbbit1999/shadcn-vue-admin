@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 import {
-  ChevronDown,
   ChevronRight,
 } from 'lucide-vue-next'
+
+import { useSidebar } from '@/components/ui/sidebar'
 
 import type { NavGroup, NavItem } from './types'
 
@@ -11,6 +12,8 @@ const { navMain } = defineProps<{
 }>()
 
 const route = useRoute()
+
+const { state, isMobile } = useSidebar()
 
 function isCollapsed(menu: NavItem): boolean {
   const pathname = route.path
@@ -46,29 +49,31 @@ function isActive(menu: NavItem): boolean {
             </router-link>
           </UiSidebarMenuButton>
         </UiSidebarMenuItem>
+
         <UiSidebarMenuItem v-else>
-          <UiCollapsible as-child :default-open="isCollapsed(menu)">
-            <UiCollapsibleTrigger as-child>
-              <UiSidebarMenuButton
-                :tooltip="menu.title"
-              >
-                <component :is="menu.icon" />
-                <span>{{ menu.title }}</span>
-                <ChevronRight
-                  v-if="!isCollapsed(menu)"
-                  class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"
-                />
-                <ChevronDown
-                  v-else
-                  class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"
-                />
-              </UiSidebarMenuButton>
-            </UiCollapsibleTrigger>
+          <!-- sidebar expanded -->
+          <UiCollapsible
+            v-if="state !== 'collapsed' || isMobile"
+            as-child :default-open="isCollapsed(menu)"
+            class="group/collapsible"
+          >
+            <UiSidebarMenuItem>
+              <UiCollapsibleTrigger as-child>
+                <UiSidebarMenuButton :tooltip="menu.title">
+                  <component :is="menu.icon" v-if="menu.icon" />
+                  <span>{{ menu.title }}</span>
+                  <ChevronRight
+                    class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"
+                  />
+                </UiSidebarMenuButton>
+              </UiCollapsibleTrigger>
+            </UiSidebarMenuItem>
             <UiCollapsibleContent>
               <UiSidebarMenuSub>
                 <UiSidebarMenuSubItem v-for="subItem in menu.items" :key="subItem.title">
                   <UiSidebarMenuSubButton as-child :is-active="isActive(subItem as NavItem)">
                     <router-link :to="subItem?.url || '/'">
+                      <component :is="subItem.icon" v-if="subItem.icon" />
                       <span>{{ subItem.title }}</span>
                     </router-link>
                   </UiSidebarMenuSubButton>
@@ -76,6 +81,25 @@ function isActive(menu: NavItem): boolean {
               </UiSidebarMenuSub>
             </UiCollapsibleContent>
           </UiCollapsible>
+
+          <!-- sidebar collapsed -->
+          <UiDropdownMenu v-else>
+            <UiDropdownMenuTrigger as-child>
+              <UiButton variant="ghost" size="icon">
+                <component :is="menu.icon" />
+              </UiButton>
+            </UiDropdownMenuTrigger>
+            <UiDropdownMenuContent align="start" side="right">
+              <UiDropdownMenuLabel>{{ menu.title }}</UiDropdownMenuLabel>
+              <UiDropdownMenuSeparator />
+              <UiDropdownMenuItem v-for="subItem in menu.items" :key="subItem.title" as-child>
+                <router-link :to="subItem?.url || '/'">
+                  <component :is="subItem.icon" v-if="subItem.icon" />
+                  <span>{{ subItem.title }}</span>
+                </router-link>
+              </UiDropdownMenuItem>
+            </UiDropdownMenuContent>
+          </UiDropdownMenu>
         </UiSidebarMenuItem>
       </template>
     </UiSidebarMenu>
