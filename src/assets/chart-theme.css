@@ -1,0 +1,46 @@
+/* theme yellow */
+.theme-yellow {
+  --vis-color0: oklch(0.828 0.189 84.429) !important;
+  --vis-color1: oklch(0.769 0.188 70.08) !important;
+}
+
+.theme-yellow.dark {
+  --vis-color0: oklch(0.828 0.189 84.429) !important;
+  --vis-color1: oklch(0.769 0.188 70.08) !important;
+}
+
+/* theme red */
+.theme-red {}
+
+.theme-red.dark {}
+
+/* theme rose */
+.theme-rose {}
+
+.theme-rose.dark {}
+
+
+/* theme orange */
+.theme-orange {}
+
+.theme-orange.dark {}
+
+/* theme green */
+.theme-green {}
+
+.theme-green.dark {}
+
+/* theme blue */
+.theme-blue {}
+
+.theme-blue.dark {}
+
+/* theme yellow */
+.theme-yellow {}
+
+.theme-yellow.dark {}
+
+/* theme violet */
+.theme-violet {}
+
+.theme-violet.dark {}
