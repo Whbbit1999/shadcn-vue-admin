@@ -1,12 +1,16 @@
 <script setup lang="ts">
+import { useCookies } from '@vueuse/integrations/useCookies'
+
 import AppSidebar from '@/components/app-sidebar/index.vue'
 import CommandMenuPanel from '@/components/command-menu-panel/index.vue'
 import ThemePopover from '@/components/custom-theme/theme-popover.vue'
 import ToggleTheme from '@/components/toggle-theme.vue'
+
+const defaultOpen = useCookies(['sidebar:state'])
 </script>
 
 <template>
-  <UiSidebarProvider>
+  <UiSidebarProvider :default-open="defaultOpen.get('sidebar:state')">
     <AppSidebar />
     <UiSidebarInset>
       <header
