@@ -1,6 +1,6 @@
 import type { Router } from 'vue-router'
 
-import { startProgress, stopProgress } from '@/utils/nprogress'
+import nprogress from 'nprogress'
 
 import { authGuard } from './auth-guard'
 
@@ -10,11 +10,11 @@ import { authGuard } from './auth-guard'
  */
 function setupCommonGuard(router: Router) {
   router.beforeEach(() => {
-    startProgress()
+    nprogress.start()
     return true
   })
   router.afterEach(() => {
-    stopProgress()
+    nprogress.done()
     return true
   })
 }
