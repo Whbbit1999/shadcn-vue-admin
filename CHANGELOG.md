@@ -1,6 +1,24 @@
 # Changelog
 
 
+## v0.3.4
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.3.3...v0.3.4)
+
+### 🩹 Fixes
+
+- Does not overflow the default layout width on desktop screens ([#12](https://github.com/Whbbit1999/shadcn-vue-admin/pull/12))
+
+### 🏡 Chore
+
+- **release:** V0.3.3 ([0552b7e](https://github.com/Whbbit1999/shadcn-vue-admin/commit/0552b7e))
+- Packages update ([dabfc66](https://github.com/Whbbit1999/shadcn-vue-admin/commit/dabfc66))
+- Razor-plan ([#13](https://github.com/Whbbit1999/shadcn-vue-admin/pull/13))
+
+### ❤️ Contributors
+
+- Whbbit1999 ([@Whbbit1999](https://github.com/Whbbit1999))
+
 ## v0.3.3
 
 [compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.3.2...v0.3.3)
