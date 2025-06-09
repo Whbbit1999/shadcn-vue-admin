@@ -66,6 +66,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^4.14.1",
     "@faker-js/faker": "^9.8.0",
+    "@iconify-json/simple-icons": "^1.2.38",
     "@iconify/vue": "^5.0.0",
     "@tanstack/eslint-plugin-query": "^5.78.0",
     "@tanstack/vue-query-devtools": "^5.80.6",
@@ -87,8 +88,7 @@
     "vite": "^6.3.5",
     "vite-plugin-vue-devtools": "^7.7.6",
     "vite-plugin-vue-layouts": "^0.11.0",
-    "vue-tsc": "^2.2.10",
-    "vue3-simple-icons": "^15.0.0"
+    "vue-tsc": "^2.2.10"
   },
   "simple-git-hooks": {
     "pre-commit": "pnpm lint-staged"
