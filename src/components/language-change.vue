@@ -5,7 +5,7 @@ import { Icon } from '@iconify/vue'
 <template>
   <UiDropdownMenu>
     <UiDropdownMenuTrigger as-child>
-      <UiButton variant="outline">
+      <UiButton variant="outline" size="icon">
         <Icon icon="mdi:translate" />
         {{ $t('language') }}
       </UiButton>
