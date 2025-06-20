@@ -94,12 +94,12 @@ async function onSubmit(values: any) {
                   !value && 'text-muted-foreground',
                 )"
               >
-                <CalendarDays class="size-4 mr-2 opacity-50" />
+                <CalendarDays class="size-4 opacity-50" />
                 <span>{{ value ? df.format(toDate(dateValue, getLocalTimeZone())) : "Pick a date" }}</span>
               </Button>
             </FormControl>
           </PopoverTrigger>
-          <PopoverContent class="p-0">
+          <PopoverContent>
             <Calendar
               v-model:placeholder="placeholder"
               v-model="dateValue"

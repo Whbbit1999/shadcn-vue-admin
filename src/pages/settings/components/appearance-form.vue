@@ -1,14 +1,12 @@
 <script setup lang="ts">
 import { toTypedSchema } from '@vee-validate/zod'
-import { ChevronDown } from 'lucide-vue-next'
 import { useForm } from 'vee-validate'
 import { toast } from 'vue-sonner'
 
-import { Button, buttonVariants } from '@/components/ui/button'
+import { Button } from '@/components/ui/button'
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Separator } from '@/components/ui/separator'
-import { cn } from '@/lib/utils'
 
 import { appearanceValidator } from '../validators/appearance.validator'
 
@@ -38,33 +36,31 @@ const onSubmit = handleSubmit((values) => {
       Customize the appearance of the app. Automatically switch between day and night themes.
     </p>
   </div>
-  <Separator />
+  <Separator class="my-4" />
   <form class="space-y-8" @submit="onSubmit">
-    <FormField v-slot="{ field }" name="font">
+    <FormField v-slot="{ componentField }" name="font">
       <FormItem>
         <FormLabel>Font</FormLabel>
-        <div class="relative w-[200px]">
-          <FormControl>
-            <select
-              :class="cn(
-                buttonVariants({ variant: 'outline' }),
-                'w-[200px] appearance-none font-normal',
-              )"
-              v-bind="field"
-            >
-              <option value="inter">
+        <UiSelect v-bind="componentField">
+          <UiFormControl>
+            <UiSelectTrigger>
+              <UiSelectValue placeholder="Select a font" />
+            </UiSelectTrigger>
+          </UiFormControl>
+          <UiSelectContent>
+            <UiSelectGroup>
+              <UiSelectItem value="inter">
                 Inter
-              </option>
-              <option value="manrope">
+              </UiSelectItem>
+              <UiSelectItem value="manrope">
                 Manrope
-              </option>
-              <option value="system">
+              </UiSelectItem>
+              <UiSelectItem value="system">
                 System
-              </option>
-            </select>
-          </FormControl>
-          <ChevronDown class="pointer-events-none absolute right-3 top-2.5 h-4 w-4 opacity-50" />
-        </div>
+              </UiSelectItem>
+            </UiSelectGroup>
+          </UiSelectContent>
+        </UiSelect>
         <FormDescription>
           Set the font you want to use in the dashboard.
         </FormDescription>
@@ -85,7 +81,7 @@ const onSubmit = handleSubmit((values) => {
           v-bind="componentField"
         >
           <FormItem>
-            <FormLabel class="[&:has([data-state=checked])>div]:border-primary">
+            <FormLabel class="[&:has([data-state=checked])>div]:border-primary flex flex-col">
               <FormControl>
                 <RadioGroupItem value="light" class="sr-only" />
               </FormControl>
@@ -111,7 +107,7 @@ const onSubmit = handleSubmit((values) => {
             </FormLabel>
           </FormItem>
           <FormItem>
-            <FormLabel class="[&:has([data-state=checked])>div]:border-primary">
+            <FormLabel class="[&:has([data-state=checked])>div]:border-primary flex flex-col">
               <FormControl>
                 <RadioGroupItem value="dark" class="sr-only" />
               </FormControl>

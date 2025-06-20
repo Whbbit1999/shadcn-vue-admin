@@ -50,7 +50,7 @@ const onSubmit = handleSubmit((values) => {
             class="flex flex-col space-y-1"
             v-bind="componentField"
           >
-            <FormItem class="flex items-center space-x-3 space-y-0">
+            <FormItem class="flex items-center  space-y-0">
               <FormControl>
                 <RadioGroupItem value="all" />
               </FormControl>
@@ -58,7 +58,7 @@ const onSubmit = handleSubmit((values) => {
                 All new messages
               </FormLabel>
             </FormItem>
-            <FormItem class="flex items-center space-x-3 space-y-0">
+            <FormItem class="flex items-center  space-y-0">
               <FormControl>
                 <RadioGroupItem value="mentions" />
               </FormControl>
@@ -66,7 +66,7 @@ const onSubmit = handleSubmit((values) => {
                 Direct messages and mentions
               </FormLabel>
             </FormItem>
-            <FormItem class="flex items-center space-x-3 space-y-0">
+            <FormItem class="flex items-center  space-y-0">
               <FormControl>
                 <RadioGroupItem value="none" />
               </FormControl>
