@@ -71,7 +71,7 @@ const currentState = computed(() => {
         color="#60A5FA"
       />
       <div class="step grid grid-cols-[50px_1fr]">
-        <component :is="currentState?.icon" :style="{ color: currentState?.color }" class="w-8 h-8" />
+        <component :is="currentState?.icon" :style="{ color: currentState?.color }" class="size-8" />
         <div>
           <h2 class="text-xl">
             {{ currentState?.label }}

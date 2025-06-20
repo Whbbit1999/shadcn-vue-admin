@@ -18,7 +18,7 @@ watch(type, () => {
 <template>
   <UiToggleGroup v-model="type" type="single" variant="outline">
     <UiToggleGroupItem v-for="modelType in types" :key="modelType.type" class="px-4" :value="modelType.type" :aria-label="modelType.type">
-      <component :is="modelType.icon" class="w-4 h-4 mr-1" />
+      <component :is="modelType.icon" class="size-4 mr-1" />
       {{ modelType.type }}
     </UiToggleGroupItem>
   </UiToggleGroup>

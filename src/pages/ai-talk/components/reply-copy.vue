@@ -16,7 +16,7 @@ interface Props {
     <UiTooltip>
       <UiTooltipTrigger as-child>
         <UiButton variant="ghost" class="p-1" @click="copy(content)">
-          <Clipboard v-if="!copied" class="w-4 h-4" />
+          <Clipboard v-if="!copied" class="size-4" />
           <ClipboardCheck v-else />
         </UiButton>
       </UiTooltipTrigger>

@@ -122,11 +122,11 @@ const onSubmit = handleSubmit((values) => {
                     <div class="h-2 w-[100px] rounded-lg bg-slate-400" />
                   </div>
                   <div class="flex items-center p-2 space-x-2 rounded-md shadow-xs bg-slate-800">
-                    <div class="w-4 h-4 rounded-full bg-slate-400" />
+                    <div class="size-4 rounded-full bg-slate-400" />
                     <div class="h-2 w-[100px] rounded-lg bg-slate-400" />
                   </div>
                   <div class="flex items-center p-2 space-x-2 rounded-md shadow-xs bg-slate-800">
-                    <div class="w-4 h-4 rounded-full bg-slate-400" />
+                    <div class="size-4 rounded-full bg-slate-400" />
                     <div class="h-2 w-[100px] rounded-lg bg-slate-400" />
                   </div>
                 </div>

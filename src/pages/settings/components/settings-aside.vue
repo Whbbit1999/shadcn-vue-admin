@@ -23,16 +23,16 @@ const currentLink = computed(() => links.find(link => link.path === currentPath.
       class="items-center hidden px-2 py-1 rounded-md lg:flex hover:bg-primary/5"
       :class="link.path === currentPath ? activeClass : ''"
     >
-      <component :is="link.icon" class="w-4 h-4 mr-1" />
+      <component :is="link.icon" class="size-4 mr-1" />
       <span>{{ link.label }}</span>
     </router-link>
 
     <UiDropdownMenu class="lg:hidden">
       <UiDropdownMenuTrigger>
         <div class="flex items-center w-48 px-2 py-1 border rounded-md lg:hidden hover:bg-primary/5 border-primary/4">
-          <component :is="currentLink?.icon" class="w-4 h-4 mr-1" />
+          <component :is="currentLink?.icon" class="size-4 mr-1" />
           <span>{{ currentLink?.label }}</span>
-          <ChevronsUpDown class="w-4 h-4 ml-auto" />
+          <ChevronsUpDown class="size-4 ml-auto" />
         </div>
       </UiDropdownMenuTrigger>
       <UiDropdownMenuContent class="w-48" align="start">
@@ -40,7 +40,7 @@ const currentLink = computed(() => links.find(link => link.path === currentPath.
           v-for="link in links" :key="link.path"
           @click="$router.push(link.path)"
         >
-          <component :is="link.icon" class="w-4 h-4 mr-1" />
+          <component :is="link.icon" class="size-4 mr-1" />
           {{ link.label }}
         </UiDropdownMenuItem>
       </UiDropdownMenuContent>

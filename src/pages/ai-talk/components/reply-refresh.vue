@@ -7,7 +7,7 @@ import { RefreshCcw } from 'lucide-vue-next'
     <UiTooltip>
       <UiTooltipTrigger as-child>
         <UiButton variant="ghost" class="p-1">
-          <RefreshCcw class="w-4 h-4" />
+          <RefreshCcw class="size-4" />
         </UiButton>
       </UiTooltipTrigger>
       <UiTooltipContent>

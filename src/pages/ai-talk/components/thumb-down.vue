@@ -7,7 +7,7 @@ import { ThumbsDown } from 'lucide-vue-next'
     <UiTooltip>
       <UiTooltipTrigger as-child>
         <UiButton variant="ghost" class="p-1">
-          <ThumbsDown class="w-4 h-4" />
+          <ThumbsDown class="size-4" />
         </UiButton>
       </UiTooltipTrigger>
       <UiTooltipContent>

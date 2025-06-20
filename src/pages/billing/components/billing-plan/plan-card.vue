@@ -46,7 +46,7 @@ defineProps<Props>()
         v-for="(feature, index) in features" :key="feature + index"
         class="flex items-center gap-3 mb-2 text-muted-foreground"
       >
-        <BadgeCheck class="w-5 h-5 text-primary" />
+        <BadgeCheck class="size-5 text-primary" />
         {{ feature }}
       </div>
     </CardContent>

@@ -24,7 +24,7 @@ const columns = computed(() => props.table.getAllColumns()
         size="sm"
         class="hidden h-8 ml-auto lg:flex"
       >
-        <Settings2 class="w-4 h-4 mr-2" />
+        <Settings2 class="size-4 mr-2" />
         View
       </UiButton>
     </UiDropdownMenuTrigger>

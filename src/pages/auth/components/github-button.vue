@@ -4,7 +4,7 @@ import { Icon } from '@iconify/vue'
 
 <template>
   <UiButton variant="outline" class="w-full">
-    <Icon icon="simple-icons:github" class="w-5 h-5 mr-2" />
+    <Icon icon="simple-icons:github" class="size-5 mr-2" />
     GitHub
   </UiButton>
 </template>

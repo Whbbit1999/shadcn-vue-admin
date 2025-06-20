@@ -35,7 +35,7 @@ const firstKey = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘' 
       @click="handleOpenChange"
     >
       <div class="flex items-center gap-2">
-        <Search class="w-4 h-4" />
+        <Search class="size-4" />
         <span class="text-xs font-semibold text-muted-foreground">Search Menu</span>
       </div>
       <kbd

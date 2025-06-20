@@ -29,23 +29,23 @@ export default {
           class="-ml-3 h-8 data-[state=open]:bg-accent"
         >
           <span>{{ title }}</span>
-          <ArrowDown v-if="column.getIsSorted() === 'desc'" class="w-4 h-4 ml-2" />
-          <ArrowUp v-else-if=" column.getIsSorted() === 'asc'" class="w-4 h-4 ml-2" />
-          <ChevronsUpDown v-else class="w-4 h-4 ml-2" />
+          <ArrowDown v-if="column.getIsSorted() === 'desc'" class="size-4 ml-2" />
+          <ArrowUp v-else-if=" column.getIsSorted() === 'asc'" class="size-4 ml-2" />
+          <ChevronsUpDown v-else class="size-4 ml-2" />
         </UiButton>
       </UiDropdownMenuTrigger>
       <UiDropdownMenuContent align="start">
         <UiDropdownMenuItem @click="column.toggleSorting(false)">
-          <ArrowUp class="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+          <ArrowUp class="mr-2 size-4 text-muted-foreground/70" />
           Asc
         </UiDropdownMenuItem>
         <UiDropdownMenuItem @click="column.toggleSorting(true)">
-          <ArrowDown class="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+          <ArrowDown class="mr-2 size-4 text-muted-foreground/70" />
           Desc
         </UiDropdownMenuItem>
         <UiDropdownMenuSeparator />
         <UiDropdownMenuItem @click="column.toggleVisibility(false)">
-          <EyeOff class="mr-2 h-3.5 w-3.5 text-muted-foreground/70" />
+          <EyeOff class="mr-2 size-4 text-muted-foreground/70" />
           Hide
         </UiDropdownMenuItem>
       </UiDropdownMenuContent>

@@ -35,7 +35,7 @@ function handleSelect(command: TCommand) {
           variant="ghost"
           class="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
         >
-          <Ellipsis class="w-4 h-4" />
+          <Ellipsis class="size-4" />
           <span class="sr-only">Open menu</span>
         </UiButton>
       </UiDropdownMenuTrigger>

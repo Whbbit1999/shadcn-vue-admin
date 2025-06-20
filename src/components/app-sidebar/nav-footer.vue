@@ -30,7 +30,7 @@ const { isMobile } = useSidebar()
             size="lg"
             class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
           >
-            <UiAvatar class="w-8 h-8 rounded-lg">
+            <UiAvatar class="size-8 rounded-lg">
               <UiAvatarImage :src="user.avatar" :alt="user.name" />
               <UiAvatarFallback class="rounded-lg">
                 CN
@@ -51,7 +51,7 @@ const { isMobile } = useSidebar()
         >
           <UiDropdownMenuLabel class="p-0 font-normal">
             <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-              <UiAvatar class="w-8 h-8 rounded-lg">
+              <UiAvatar class="size-8 rounded-lg">
                 <UiAvatarImage :src="user.avatar" :alt="user.name" />
                 <UiAvatarFallback class="rounded-lg">
                   CN

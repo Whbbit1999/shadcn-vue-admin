@@ -94,7 +94,7 @@ async function onSubmit(values: any) {
                   !value && 'text-muted-foreground',
                 )"
               >
-                <CalendarDays class="w-4 h-4 mr-2 opacity-50" />
+                <CalendarDays class="size-4 mr-2 opacity-50" />
                 <span>{{ value ? df.format(toDate(dateValue, getLocalTimeZone())) : "Pick a date" }}</span>
               </Button>
             </FormControl>
@@ -145,7 +145,7 @@ async function onSubmit(values: any) {
                   (language) => language.value === value,
                 )?.label : 'Select language...' }}
 
-                <ChevronsUpDown class="w-4 h-4 ml-2 opacity-50 shrink-0" />
+                <ChevronsUpDown class="size-4 ml-2 opacity-50 shrink-0" />
               </Button>
             </FormControl>
           </PopoverTrigger>

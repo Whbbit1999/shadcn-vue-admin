@@ -48,7 +48,7 @@ const isOpen = ref(false)
           variant="ghost"
           class="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
         >
-          <Ellipsis class="w-4 h-4" />
+          <Ellipsis class="size-4" />
           <span class="sr-only">Open menu</span>
         </UiButton>
       </UiDropdownMenuTrigger>
@@ -56,7 +56,7 @@ const isOpen = ref(false)
         <UiDialogTrigger as-child>
           <UiDropdownMenuItem @select.stop="handleSelect('edit')">
             <span>Edit</span>
-            <UiDropdownMenuShortcut> <FilePenLine class="w-4 h-4" /> </UiDropdownMenuShortcut>
+            <UiDropdownMenuShortcut> <FilePenLine class="size-4" /> </UiDropdownMenuShortcut>
           </UiDropdownMenuItem>
         </UiDialogTrigger>
 
@@ -85,7 +85,7 @@ const isOpen = ref(false)
         <UiDialogTrigger as-child>
           <UiDropdownMenuItem @select.stop="handleSelect('delete')">
             <span>Delete</span>
-            <UiDropdownMenuShortcut> <Trash2 class="w-4 h-4" /> </UiDropdownMenuShortcut>
+            <UiDropdownMenuShortcut> <Trash2 class="size-4" /> </UiDropdownMenuShortcut>
           </UiDropdownMenuItem>
         </UiDialogTrigger>
       </UiDropdownMenuContent>

@@ -51,7 +51,7 @@ const isFiltered = computed(() => props.table.getState().columnFilters.length > 
         @click="table.resetColumnFilters()"
       >
         Reset
-        <X class="w-4 h-4 ml-2" />
+        <X class="size-4 ml-2" />
       </Button>
     </div>
     <DataTableViewOptions :table="table" />

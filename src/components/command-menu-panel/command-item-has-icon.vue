@@ -11,8 +11,8 @@ const { icon } = defineProps<{
 
 <template>
   <div class="flex items-center gap-2">
-    <component :is="icon" v-if="icon" class="w-4 h-4" />
-    <Milestone v-else class="w-4 h-4" />
+    <component :is="icon" v-if="icon" class="size-4" />
+    <Milestone v-else class="size-4" />
     {{ name }}
   </div>
 </template>

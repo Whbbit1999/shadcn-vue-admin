@@ -58,7 +58,7 @@ const onSubmit = handleSubmit((values) => {
                 <UiSelectGroup>
                   <UiSelectItem v-for="status in statuses" :key="status.value" :value="status.value">
                     <div class="flex items-center gap-2">
-                      <component :is="status.icon" class="w-4 h-4 shrink-0" />
+                      <component :is="status.icon" class="size-4 shrink-0" />
                       {{ status.label }}
                     </div>
                   </UiSelectItem>
