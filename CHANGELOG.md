@@ -1,6 +1,29 @@
 # Changelog
 
 
+## v0.4.0
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.3.4...v0.4.0)
+
+### 🏡 Chore
+
+- **release:** V0.3.4 ([6a3b12d](https://github.com/Whbbit1999/shadcn-vue-admin/commit/6a3b12d))
+- Update packages ([9bb3353](https://github.com/Whbbit1999/shadcn-vue-admin/commit/9bb3353))
+- Update packages ([7ef29d6](https://github.com/Whbbit1999/shadcn-vue-admin/commit/7ef29d6))
+
+### 🎨 Styles
+
+- Language-change button and toggle-theme button use size=button ([3e46f30](https://github.com/Whbbit1999/shadcn-vue-admin/commit/3e46f30))
+- Replace w-* h-* with the new size-* utility ([6a33e42](https://github.com/Whbbit1999/shadcn-vue-admin/commit/6a33e42))
+- Settings module page style adjustment ([98b687e](https://github.com/Whbbit1999/shadcn-vue-admin/commit/98b687e))
+- Auth-title icon change ([f383221](https://github.com/Whbbit1999/shadcn-vue-admin/commit/f383221))
+- Billing/transaction-catd remove backgroun image ([e55e5c1](https://github.com/Whbbit1999/shadcn-vue-admin/commit/e55e5c1))
+
+### ❤️ Contributors
+
+- Unknown <whbbit@qq.com>
+- Whbbit1999 <luckyboy_dong@sina.com>
+
 ## v0.3.4
 
 [compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.3.3...v0.3.4)
