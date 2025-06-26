@@ -26,7 +26,7 @@ const RevenueCategoriesMultple = {
 }
 
 const xFormatter = (i: number): string => `${RevenueData[i]?.month}`
-const yFormatter = (i: number) => i
+const yFormatter = (i: number): string => `${i}`
 </script>
 
 <template>
