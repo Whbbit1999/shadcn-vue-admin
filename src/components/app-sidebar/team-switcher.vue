@@ -4,11 +4,15 @@ import {
   Plus,
 } from 'lucide-vue-next'
 
+import { useSidebar } from '@/components/ui/sidebar'
+
 import type { Team } from './types'
 
 const { teams } = defineProps<{
   teams: Team[]
 }>()
+
+const { isMobile, open } = useSidebar()
 
 const activeTeam = ref<Team>(teams[0])
 function setActiveTeam(team: Team) {
@@ -54,7 +58,7 @@ function handleSelect(command: TComponent) {
           <UiDropdownMenuContent
             class="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
             align="start"
-            side="bottom"
+            :side="(isMobile || open) ? 'bottom' : 'right'"
             :side-offset="4"
           >
             <UiDropdownMenuLabel class="text-xs text-muted-foreground">

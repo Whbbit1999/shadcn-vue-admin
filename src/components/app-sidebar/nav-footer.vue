@@ -18,7 +18,7 @@ const { user } = defineProps<
 >()
 
 const { logout } = useAuth()
-const { isMobile } = useSidebar()
+const { isMobile, open } = useSidebar()
 </script>
 
 <template>
@@ -45,8 +45,8 @@ const { isMobile } = useSidebar()
         </UiDropdownMenuTrigger>
         <UiDropdownMenuContent
           class="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-          :side="isMobile ? 'bottom' : 'right'"
-          align="end"
+          :side="(isMobile || open) ? 'bottom' : 'right'"
+          align="start"
           :side-offset="4"
         >
           <UiDropdownMenuLabel class="p-0 font-normal">
