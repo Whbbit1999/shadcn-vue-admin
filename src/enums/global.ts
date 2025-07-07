@@ -1,4 +1,6 @@
-export enum RouterPath {
-  HOME = '/workspace',
-  LOGIN = '/auth/sign-in',
+import type { RouteLocationRaw } from 'vue-router'
+
+export const RouterPath: Record<string, RouteLocationRaw> = {
+  HOME: '/dashboard',
+  LOGIN: '/auth/sign-in',
 }
