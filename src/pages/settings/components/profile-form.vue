@@ -107,7 +107,7 @@ const onSubmit = handleSubmit((values) => {
 
     <div>
       <FieldArray v-slot="{ fields, push, remove }" name="urls">
-        <div v-for="(field, index) in fields" :key="`urls-${field.key}`">
+        <div v-for="(field, index) in fields" :key="`urls-${field.key}`" class="mb-2">
           <FormField v-slot="{ componentField }" :name="`urls[${index}].value`">
             <FormItem>
               <FormLabel :class="cn(index !== 0 && 'sr-only')">
