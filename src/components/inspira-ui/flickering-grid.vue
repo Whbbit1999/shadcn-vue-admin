@@ -48,11 +48,11 @@ function setupCanvas(
   width: number,
   height: number,
 ): {
-    cols: number
-    rows: number
-    squares: Float32Array
-    dpr: number
-  } {
+  cols: number
+  rows: number
+  squares: Float32Array
+  dpr: number
+} {
   const dpr = window.devicePixelRatio || 1
   canvas.width = width * dpr
   canvas.height = height * dpr
