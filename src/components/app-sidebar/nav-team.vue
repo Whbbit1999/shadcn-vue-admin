@@ -85,9 +85,10 @@ function isActive(menu: NavItem): boolean {
           <!-- sidebar collapsed -->
           <UiDropdownMenu v-else>
             <UiDropdownMenuTrigger as-child>
-              <UiButton variant="ghost" size="icon">
-                <component :is="menu.icon" />
-              </UiButton>
+              <UiSidebarMenuButton :tooltip="menu.title">
+                <component :is="menu.icon" v-if="menu.icon" />
+                <span>{{ menu.title }}</span>
+              </UiSidebarMenuButton>
             </UiDropdownMenuTrigger>
             <UiDropdownMenuContent align="start" side="right">
               <UiDropdownMenuLabel>{{ menu.title }}</UiDropdownMenuLabel>
