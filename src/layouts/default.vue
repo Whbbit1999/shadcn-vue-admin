@@ -25,7 +25,7 @@ const defaultOpen = useCookies(['sidebar:state'])
         </div>
       </header>
       <div
-        class="gap-4 p-4 grow"
+        class="container mx-auto p-4 grow"
       >
         <router-view />
       </div>
