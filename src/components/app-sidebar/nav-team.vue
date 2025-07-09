@@ -42,7 +42,7 @@ function isActive(menu: NavItem): boolean {
     <UiSidebarMenu>
       <template v-for="menu in group.items" :key="menu.title">
         <UiSidebarMenuItem v-if="!menu.items">
-          <UiSidebarMenuButton as-child :is-active="isActive(menu)">
+          <UiSidebarMenuButton as-child :is-active="isActive(menu)" :tooltip="menu.title">
             <router-link :to="menu.url">
               <component :is="menu.icon" />
               <span>{{ menu.title }}</span>
