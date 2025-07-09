@@ -1,6 +1,32 @@
 # Changelog
 
 
+## v0.4.1
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.4.0...v0.4.1)
+
+### 🩹 Fixes
+
+- Auth-title component ([ff170c7](https://github.com/Whbbit1999/shadcn-vue-admin/commit/ff170c7))
+- Add tooltip to sidebar menu button ([febc221](https://github.com/Whbbit1999/shadcn-vue-admin/commit/febc221))
+- Replace button with sidebar menu button for dropdown trigger ([1c4d6fd](https://github.com/Whbbit1999/shadcn-vue-admin/commit/1c4d6fd))
+
+### 🏡 Chore
+
+- **release:** V0.4.0 ([a9c5355](https://github.com/Whbbit1999/shadcn-vue-admin/commit/a9c5355))
+- Packages update and lint ([a45d17a](https://github.com/Whbbit1999/shadcn-vue-admin/commit/a45d17a))
+
+### 🎨 Styles
+
+- Sidebar popup style change ([4a20c31](https://github.com/Whbbit1999/shadcn-vue-admin/commit/4a20c31))
+- Settings/components/profile-form CSS style fine-tuning ([9030b3b](https://github.com/Whbbit1999/shadcn-vue-admin/commit/9030b3b))
+
+### ❤️ Contributors
+
+- Whbbit1999 <luckyboy_dong@sina.com>
+- Onur Köse <kose.onur@gmail.com>
+- Unknown <whbbit@qq.com>
+
 ## v0.4.0
 
 [compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.3.4...v0.4.0)
