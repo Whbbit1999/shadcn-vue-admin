@@ -42,7 +42,7 @@ function isActive(menu: NavItem): boolean {
     <UiSidebarMenu>
       <template v-for="menu in group.items" :key="menu.title">
         <UiSidebarMenuItem v-if="!menu.items">
-          <UiSidebarMenuButton as-child :is-active="isActive(menu)">
+          <UiSidebarMenuButton as-child :is-active="isActive(menu)" :tooltip="menu.title">
             <router-link :to="menu.url">
               <component :is="menu.icon" />
               <span>{{ menu.title }}</span>
@@ -85,9 +85,10 @@ function isActive(menu: NavItem): boolean {
           <!-- sidebar collapsed -->
           <UiDropdownMenu v-else>
             <UiDropdownMenuTrigger as-child>
-              <UiButton variant="ghost" size="icon">
-                <component :is="menu.icon" />
-              </UiButton>
+              <UiSidebarMenuButton :tooltip="menu.title">
+                <component :is="menu.icon" v-if="menu.icon" />
+                <span>{{ menu.title }}</span>
+              </UiSidebarMenuButton>
             </UiDropdownMenuTrigger>
             <UiDropdownMenuContent align="start" side="right">
               <UiDropdownMenuLabel>{{ menu.title }}</UiDropdownMenuLabel>
