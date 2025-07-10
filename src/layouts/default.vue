@@ -14,7 +14,7 @@ const defaultOpen = useCookies(['sidebar:state'])
     <AppSidebar />
     <UiSidebarInset class="w-full max-w-full peer-data-[state=collapsed]:w-[calc(100%-var(--sidebar-width-icon)-1rem)] peer-data-[state=expanded]:w-[calc(100%-var(--sidebar-width))]">
       <header
-        class="flex items-center gap-3 sm:gap-4 h-16 p-4 shrink-0 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12"
+        class="flex items-center gap-3 sm:gap-4 h-16 p-4 shrink-0 transition-[width,height] ease-linear"
       >
         <UiSidebarTrigger class="-ml-1" />
         <UiSeparator orientation="vertical" class="h-6" />
@@ -25,7 +25,7 @@ const defaultOpen = useCookies(['sidebar:state'])
         </div>
       </header>
       <div
-        class="gap-4 p-4 grow"
+        class="container mx-auto p-4 grow"
       >
         <router-view />
       </div>
