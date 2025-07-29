@@ -1,6 +1,5 @@
 <script setup lang="ts" generic="T">
 import type {
-  ColumnDef,
   Table as VueTable,
 } from '@tanstack/vue-table'
 
@@ -19,18 +18,15 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-interface DataTableProps {
-  loading?: boolean
-  columns: ColumnDef<T, any>[]
-  data: T[]
+import type { DataTableProps } from './types'
+
+defineProps<DataTableProps<T> & {
   table: VueTable<T>
-}
-defineProps<DataTableProps>()
+}>()
 </script>
 
 <template>
   <div class="space-y-4">
-    <DataTableToolbar :table="table" class="w-full overflow-x-auto" />
     <slot name="toolbar" />
 
     <div class="border rounded-md">
@@ -68,6 +64,6 @@ defineProps<DataTableProps>()
       <DataTableLoading v-if="loading" />
     </div>
 
-    <DataTablePagination :table="table" />
+    <DataTablePagination v-if="!loading" :table="table" />
   </div>
 </template>
