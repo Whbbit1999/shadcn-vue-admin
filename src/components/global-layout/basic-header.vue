@@ -9,7 +9,7 @@ defineProps<LayoutHeaderProps>()
 <template>
   <header
     :class="cn(
-      'flex flex-col md:flex-row gap-2 p-2 justify-between shadow-xs',
+      'flex flex-col md:flex-row gap-2 justify-between py-2',
       sticky ? 'sticky top-0 z-40 bg-background' : '',
     )"
   >
