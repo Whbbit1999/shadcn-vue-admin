@@ -89,11 +89,11 @@ const filterFunction = (list: DataTableFacetedFilter['options'], term: string) =
                 :class="cn(
                   'mr-2 flex h-4 w-4 items-center justify-center rounded-sm border border-primary',
                   selectedValues.has(option.value)
-                    ? 'bg-primary text-primary-foreground'
+                    ? 'bg-primary'
                     : 'opacity-50 [&_svg]:invisible',
                 )"
               >
-                <Check :class="cn('h-4 w-4')" />
+                <Check :class="cn('h-4 w-4', selectedValues.has(option.value) ? 'text-primary-foreground' : '')" />
               </div>
               <component :is="option.icon" v-if="option.icon" class="size-4 mr-2 text-muted-foreground" />
               <span>{{ option.label }}</span>

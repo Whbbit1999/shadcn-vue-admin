@@ -29,7 +29,7 @@ function resetColumnVisible() {
         class="hidden h-8 ml-auto lg:flex"
       >
         <Settings2 class="size-4 mr-2" />
-        View
+        Columns View
       </UiButton>
     </UiDropdownMenuTrigger>
     <UiDropdownMenuContent align="end" class="w-[150px]">

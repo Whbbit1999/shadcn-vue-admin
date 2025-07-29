@@ -32,9 +32,9 @@ const isFiltered = computed(() => props.table.getState().columnFilters.length > 
         @input="table.getColumn('username')?.setFilterValue($event.target.value)"
       />
       <DataTableFacetedFilter
-        v-if="table.getColumn('role')"
-        :column="table.getColumn('role')"
-        title="Role"
+        v-if="table.getColumn('status')"
+        :column="table.getColumn('status')"
+        title="Status"
         :options="callTypes"
       />
       <DataTableFacetedFilter
