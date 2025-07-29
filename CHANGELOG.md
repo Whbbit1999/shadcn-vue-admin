@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v0.5.0
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.4.1...v0.5.0)
+
+### 🚀 Enhancements
+
+- **view-options.vue:** Add table toggle columns status reset action ([#20](https://github.com/Whbbit1999/shadcn-vue-admin/pull/20))
+- **data-table:** Now we can use this component to quickly generate a… ([#21](https://github.com/Whbbit1999/shadcn-vue-admin/pull/21))
+
+### 🏡 Chore
+
+- **release:** V0.4.1 ([83c9078](https://github.com/Whbbit1999/shadcn-vue-admin/commit/83c9078))
+
+### 🎨 Styles
+
+- Remove basic-header component shadow-sm and padding-x style ([13c6ecf](https://github.com/Whbbit1999/shadcn-vue-admin/commit/13c6ecf))
+
+### ❤️ Contributors
+
+- Whbbit1999 ([@Whbbit1999](https://github.com/Whbbit1999))
+
 ## v0.4.1
 
 [compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.4.0...v0.4.1)
