@@ -2,6 +2,7 @@ import type { Component } from 'vue'
 
 import { MoveHorizontal, UnfoldHorizontal } from 'lucide-vue-next'
 import { defineStore } from 'pinia'
+import { h } from 'vue'
 
 export const THEMES = ['zinc', 'red', 'rose', 'orange', 'green', 'blue', 'yellow', 'violet'] as const
 export type Theme = typeof THEMES[number]
