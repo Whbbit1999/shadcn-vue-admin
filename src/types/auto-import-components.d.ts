@@ -18,6 +18,7 @@ declare module 'vue' {
     CommandMenuPanelCommandItemHasIcon: typeof import('./../components/command-menu-panel/command-item-has-icon.vue')['default']
     CommandMenuPanelCommandToPage: typeof import('./../components/command-menu-panel/command-to-page.vue')['default']
     CustomError: typeof import('./../components/custom-error.vue')['default']
+    CustomThemeContentLayout: typeof import('./../components/custom-theme/content-layout.vue')['default']
     CustomThemeCustomColor: typeof import('./../components/custom-theme/custom-color.vue')['default']
     CustomThemeCustomRadius: typeof import('./../components/custom-theme/custom-radius.vue')['default']
     CustomThemeThemePopover: typeof import('./../components/custom-theme/theme-popover.vue')['default']

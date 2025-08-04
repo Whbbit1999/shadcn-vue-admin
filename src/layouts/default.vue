@@ -1,12 +1,17 @@
 <script setup lang="ts">
 import { useCookies } from '@vueuse/integrations/useCookies'
+import { storeToRefs } from 'pinia'
 
 import AppSidebar from '@/components/app-sidebar/index.vue'
 import CommandMenuPanel from '@/components/command-menu-panel/index.vue'
 import ThemePopover from '@/components/custom-theme/theme-popover.vue'
 import ToggleTheme from '@/components/toggle-theme.vue'
+import { cn } from '@/lib/utils'
+import { useThemeStore } from '@/stores/theme'
 
 const defaultOpen = useCookies(['sidebar:state'])
+const themeStore = useThemeStore()
+const { contentLayout } = storeToRefs(themeStore)
 </script>
 
 <template>
@@ -25,7 +30,10 @@ const defaultOpen = useCookies(['sidebar:state'])
         </div>
       </header>
       <div
-        class="container mx-auto p-4 grow"
+        :class="cn(
+          'p-4 grow',
+          contentLayout === 'centered' ? 'container mx-auto ' : '',
+        )"
       >
         <router-view />
       </div>

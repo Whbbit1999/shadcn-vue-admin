@@ -1,4 +1,8 @@
+import type { Component } from 'vue'
+
+import { MoveHorizontal, UnfoldHorizontal } from 'lucide-vue-next'
 import { defineStore } from 'pinia'
+import { h } from 'vue'
 
 export const THEMES = ['zinc', 'red', 'rose', 'orange', 'green', 'blue', 'yellow', 'violet'] as const
 export type Theme = typeof THEMES[number]
@@ -17,6 +21,12 @@ export const themes: { theme: Theme, primaryColor: string }[] = [
 export const RADIUS = [0, 0.25, 0.5, 0.75, 1]
 export type Radius = typeof RADIUS[number]
 
+export type ContentLayout = 'full' | 'centered'
+export const contentLayouts: { label: string, value: ContentLayout, icon: Component }[] = [
+  { label: 'Full', value: 'full', icon: h(UnfoldHorizontal) },
+  { label: 'Centered', value: 'centered', icon: h(MoveHorizontal) },
+]
+
 export const useThemeStore = defineStore('system-config', () => {
   const radius = ref(0.5)
   function setRadius(newRadius: Radius) {
@@ -26,12 +36,20 @@ export const useThemeStore = defineStore('system-config', () => {
   function setTheme(newTheme: Theme) {
     theme.value = newTheme
   }
+
+  const contentLayout = ref<ContentLayout>('centered')
+  function setContentLayout(newContentLayout: ContentLayout) {
+    contentLayout.value = newContentLayout
+  }
   return {
     radius,
     setRadius,
 
     theme,
     setTheme,
+
+    contentLayout,
+    setContentLayout,
   }
 }, {
   persist: true,
