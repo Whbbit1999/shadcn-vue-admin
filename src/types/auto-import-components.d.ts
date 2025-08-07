@@ -54,6 +54,7 @@ declare module 'vue' {
     SignInButton: typeof import('./../components/sign-in-button.vue')['default']
     SignUpButton: typeof import('./../components/sign-up-button.vue')['default']
     SortSelect: typeof import('./../components/sort-select/index.vue')['default']
+    SvaUiCopy: typeof import('./../components/sva-ui/copy/Copy.vue')['default']
     SvaUiStatusBadge: typeof import('./../components/sva-ui/status-badge/StatusBadge.vue')['default']
     SvaUiStatusBadgeStatus: typeof import('./../components/sva-ui/status-badge/Status.vue')['default']
     ToggleTheme: typeof import('./../components/toggle-theme.vue')['default']
