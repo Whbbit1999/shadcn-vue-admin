@@ -31,7 +31,7 @@ const firstKey = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘' 
 <template>
   <div>
     <div
-      class="text-sm flex items-center justify-between text-muted-foreground border border-border bg-muted/5 px-4 py-2 rounded min-w-[220px] cursor-pointer"
+      class="text-sm items-center justify-between text-muted-foreground border border-border bg-muted/5 px-4 py-2 rounded md:min-w-[220px] cursor-pointer hidden md:flex"
       @click="handleOpenChange"
     >
       <div class="flex items-center gap-2">
@@ -44,6 +44,9 @@ const firstKey = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘' 
         <span class="text-xs">{{ firstKey }}</span>K
       </kbd>
     </div>
+    <UiButton variant="outline" size="icon" class="md:hidden" @click="handleOpenChange">
+      <Search />
+    </UiButton>
 
     <UiCommandDialog v-model:open="open">
       <UiCommandInput placeholder="Type a command or search..." />
