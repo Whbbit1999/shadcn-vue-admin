@@ -1,6 +1,27 @@
 # Changelog
 
 
+## v0.5.1
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.5.0...v0.5.1)
+
+### 🚀 Enhancements
+
+- Toggle content layout block #22 ([#23](https://github.com/Whbbit1999/shadcn-vue-admin/pull/23), [#22](https://github.com/Whbbit1999/shadcn-vue-admin/issues/22))
+- **command-menu-panel:** Use button in mobile ([47cb816](https://github.com/Whbbit1999/shadcn-vue-admin/commit/47cb816))
+
+### 🏡 Chore
+
+- **release:** V0.5.0 ([32d2939](https://github.com/Whbbit1999/shadcn-vue-admin/commit/32d2939))
+
+### 🎨 Styles
+
+- Add a border to the sidebar after it is selected ([#24](https://github.com/Whbbit1999/shadcn-vue-admin/pull/24))
+
+### ❤️ Contributors
+
+- Whbbit1999 ([@Whbbit1999](https://github.com/Whbbit1999))
+
 ## v0.5.0
 
 [compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.4.1...v0.5.0)
