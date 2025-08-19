@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.6.1
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.6.0...v0.6.1)
+
+### 🏡 Chore
+
+- Release v0.6.0 ([9122d34](https://github.com/Whbbit1999/shadcn-vue-admin/commit/9122d34))
+
+### ❤️ Contributors
+
+- Whbbit1999 <luckyboy_dong@sina.com>
+
 ## v0.5.1
 
 [compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.5.0...v0.5.1)
