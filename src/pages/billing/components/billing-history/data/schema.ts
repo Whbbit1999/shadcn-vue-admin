@@ -4,7 +4,7 @@ import { z } from 'zod'
 // IRL, you will have a schema for your data models.
 export const billingSchema = z.object({
   id: z.number(),
-  date: z.string().date(),
+  date: z.iso.date(),
   amount: z.number(),
   plan: z.enum(['Free', 'Small Business', 'Enterprise']),
   status: z.enum([

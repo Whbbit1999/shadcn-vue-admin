@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { createReusableTemplate, useMediaQuery } from '@vueuse/core'
-import { MailPlus, Send } from 'lucide-vue-next'
-import { toast } from 'vue-sonner'
-import { z } from 'zod'
+import { MailPlus } from 'lucide-vue-next'
 
-import AutoForm from '@/components/ui/auto-form/AutoForm.vue'
 import Button from '@/components/ui/button/Button.vue'
 import {
   Dialog,
@@ -24,71 +21,24 @@ import {
   DrawerTitle,
   DrawerTrigger,
 } from '@/components/ui/drawer'
-import { cn } from '@/lib/utils'
+
+import UserInviteForm from './user-invite-form.vue'
 
 const [UseTemplate, GridForm] = createReusableTemplate()
 const isDesktop = useMediaQuery('(min-width: 768px)')
 const isOpen = ref(false)
-
-const schema = z.object({
-  email: z.string().email(),
-  role: z.enum(['superadmin', 'admin', 'cashier', 'manager']),
-  description: z.string().optional(),
-})
-
-function onSubmit(values: Record<string, any>) {
-  toast('You submitted the following values:', {
-    description: h(
-      'pre',
-      { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' },
-      h('code', { class: 'text-white' }, JSON.stringify(values, null, 2)),
-    ),
-  })
-}
 </script>
 
 <template>
   <UseTemplate>
-    <AutoForm
-      v-auto-animate
-      class="w-full space-y-6"
-      :schema="schema"
-      :field-config="{
-        email: {
-          label: 'Email address',
-          inputProps: {
-            type: 'email',
-          },
-        },
-        role: {
-          label: 'Role',
-          component: 'select',
-        },
-        description: {
-          label: 'Description(Optional)',
-          component: 'textarea',
-        },
-      }"
-      @submit="onSubmit"
-    >
-      <div
-        :class="cn(
-          'flex items-center ',
-        )"
-      >
-        <Button type="submit" class="w-full">
-          Invite
-          <Send />
-        </Button>
-      </div>
-    </AutoForm>
+    <UserInviteForm />
   </UseTemplate>
 
   <Dialog v-if="isDesktop" v-model:open="isOpen">
     <DialogTrigger>
       <Button variant="outline">
-        Invite User
         <MailPlus />
+        Invite User
       </Button>
     </DialogTrigger>
     <DialogContent>
@@ -114,7 +64,7 @@ function onSubmit(values: Record<string, any>) {
         <MailPlus />
       </Button>
     </DrawerTrigger>
-    <DrawerContent>
+    <DrawerContent class="px-4">
       <DrawerHeader class="text-left">
         <DrawerTitle>
           <div class="flex items-center gap-2">

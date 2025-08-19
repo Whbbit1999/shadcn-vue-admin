@@ -3,7 +3,7 @@ import { z } from 'zod'
 export const notificationsValidator = z.object({
   type: z
     .enum(['all', 'mentions', 'none'], {
-      required_error: 'You need to select a notification type.',
+      error: 'You need to select a notification type.',
     }),
   mobile: z
     .boolean()

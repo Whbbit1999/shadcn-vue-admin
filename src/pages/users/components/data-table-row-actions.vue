@@ -55,7 +55,7 @@ function handleSelect(command: TCommand) {
       </UiDropdownMenuContent>
     </UiDropdownMenu>
 
-    <UiDialogContent>
+    <UiDialogContent class="max-h-[500px] overflow-y-auto">
       <component :is="showComponent" :user="user" @close="isOpen = false" />
     </UiDialogContent>
   </UiDialog>

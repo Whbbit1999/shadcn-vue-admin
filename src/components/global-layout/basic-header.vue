@@ -22,7 +22,7 @@ defineProps<LayoutHeaderProps>()
       </p>
     </main>
 
-    <aside class="flex items-center gap-2">
+    <aside class="flex items-center gap-2 flex-wrap">
       <slot name="actions" />
     </aside>
   </header>

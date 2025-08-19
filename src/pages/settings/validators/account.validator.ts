@@ -3,16 +3,16 @@ import { z } from 'zod'
 export const accountValidator = z.object({
   name: z
     .string({
-      required_error: 'Required.',
+      error: 'Required.',
     })
     .min(2, {
-      message: 'Name must be at least 2 characters.',
+      error: 'Name must be at least 2 characters.',
     })
     .max(30, {
-      message: 'Name must not be longer than 30 characters.',
+      error: 'Name must not be longer than 30 characters.',
     }),
   dob: z
-    .string()
+    .iso
     .datetime()
     .optional()
     .refine(date => date !== undefined, 'Please select a valid date.'),
