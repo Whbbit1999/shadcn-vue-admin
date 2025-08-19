@@ -10,12 +10,12 @@ const isOpen = ref(false)
   <UiDialog v-model:open="isOpen">
     <UiDialogTrigger as-child>
       <UiButton>
-        Create User
         <UserRoundPlus />
+        Create User
       </UiButton>
     </UiDialogTrigger>
 
-    <UiDialogContent>
+    <UiDialogContent class="max-h-[500px] overflow-y-auto">
       <UserResource @close="isOpen = false" />
     </UiDialogContent>
   </UiDialog>

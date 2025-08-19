@@ -2,7 +2,7 @@
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
 import { toast } from 'vue-sonner'
-import * as z from 'zod'
+import { z } from 'zod'
 
 import { FormField } from '@/components/ui/form'
 

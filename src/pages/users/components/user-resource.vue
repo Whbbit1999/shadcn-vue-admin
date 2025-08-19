@@ -14,17 +14,16 @@ const description = computed(() => user.value?.id ? `Edit user ${user.value.user
 </script>
 
 <template>
-  <div>
-    <UiDialogHeader>
-      <UiDialogTitle>
-        {{ title }}
-      </UiDialogTitle>
-      <UiDialogDescription>
-        {{ description }}
-      </UiDialogDescription>
-    </UiDialogHeader>
-    <UserForm class="mt-2" :user="user" @close="$emit('close')" />
-  </div>
+  <UiDialogHeader>
+    <UiDialogTitle>
+      {{ title }}
+    </UiDialogTitle>
+    <UiDialogDescription>
+      {{ description }}
+    </UiDialogDescription>
+  </UiDialogHeader>
+
+  <UserForm class="mt-2" :user="user" @close="$emit('close')" />
 </template>
 
 <style scoped>

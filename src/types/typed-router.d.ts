@@ -49,4 +49,148 @@ declare module 'vue-router/auto-routes' {
     '/tasks/': RouteRecordInfo<'/tasks/', '/tasks', Record<never, never>, Record<never, never>>,
     '/users/': RouteRecordInfo<'/users/', '/users', Record<never, never>, Record<never, never>>,
   }
+
+  /**
+   * Route file to route info map by unplugin-vue-router.
+   * Used by the volar plugin to automatically type useRoute()
+   *
+   * Each key is a file path relative to the project root with 2 properties:
+   * - routes: union of route names of the possible routes when in this page (passed to useRoute<...>())
+   * - views: names of nested views (can be passed to <RouterView name="...">)
+   *
+   * @internal
+   */
+  export interface _RouteFileInfoMap {
+    'src/pages/index.vue': {
+      routes: '/'
+      views: never
+    }
+    'src/pages/[...path].vue': {
+      routes: '/[...path]'
+      views: never
+    }
+    'src/pages/ai-talk/index.vue': {
+      routes: '/ai-talk/'
+      views: never
+    }
+    'src/pages/apps/index.vue': {
+      routes: '/apps/'
+      views: never
+    }
+    'src/pages/auth.vue': {
+      routes: '/auth' | '/auth/' | '/auth/forgot-password' | '/auth/otp' | '/auth/sign-in' | '/auth/sign-in-2' | '/auth/sign-up'
+      views: 'default'
+    }
+    'src/pages/auth/index.vue': {
+      routes: '/auth/'
+      views: never
+    }
+    'src/pages/auth/forgot-password.vue': {
+      routes: '/auth/forgot-password'
+      views: never
+    }
+    'src/pages/auth/otp.vue': {
+      routes: '/auth/otp'
+      views: never
+    }
+    'src/pages/auth/sign-in.vue': {
+      routes: '/auth/sign-in'
+      views: never
+    }
+    'src/pages/auth/sign-in-2.vue': {
+      routes: '/auth/sign-in-2'
+      views: never
+    }
+    'src/pages/auth/sign-up.vue': {
+      routes: '/auth/sign-up'
+      views: never
+    }
+    'src/pages/billing/index.vue': {
+      routes: '/billing/'
+      views: never
+    }
+    'src/pages/dashboard/index.vue': {
+      routes: '/dashboard/'
+      views: never
+    }
+    'src/pages/errors.vue': {
+      routes: '/errors' | '/errors/' | '/errors/401' | '/errors/403' | '/errors/404' | '/errors/500' | '/errors/503'
+      views: 'default'
+    }
+    'src/pages/errors/index.vue': {
+      routes: '/errors/'
+      views: never
+    }
+    'src/pages/errors/401.vue': {
+      routes: '/errors/401'
+      views: never
+    }
+    'src/pages/errors/403.vue': {
+      routes: '/errors/403'
+      views: never
+    }
+    'src/pages/errors/404.vue': {
+      routes: '/errors/404'
+      views: never
+    }
+    'src/pages/errors/500.vue': {
+      routes: '/errors/500'
+      views: never
+    }
+    'src/pages/errors/503.vue': {
+      routes: '/errors/503'
+      views: never
+    }
+    'src/pages/help-center.vue': {
+      routes: '/help-center'
+      views: never
+    }
+    'src/pages/marketing/index.vue': {
+      routes: '/marketing/'
+      views: never
+    }
+    'src/pages/marketing/hello.vue': {
+      routes: '/marketing/hello'
+      views: never
+    }
+    'src/pages/settings/index.vue': {
+      routes: '/settings/'
+      views: never
+    }
+    'src/pages/settings/account.vue': {
+      routes: '/settings/account'
+      views: never
+    }
+    'src/pages/settings/appearance.vue': {
+      routes: '/settings/appearance'
+      views: never
+    }
+    'src/pages/settings/display.vue': {
+      routes: '/settings/display'
+      views: never
+    }
+    'src/pages/settings/notifications.vue': {
+      routes: '/settings/notifications'
+      views: never
+    }
+    'src/pages/tasks/index.vue': {
+      routes: '/tasks/'
+      views: never
+    }
+    'src/pages/users/index.vue': {
+      routes: '/users/'
+      views: never
+    }
+  }
+
+  /**
+   * Get a union of possible route names in a certain route component file.
+   * Used by the volar plugin to automatically type useRoute()
+   *
+   * @internal
+   */
+  export type _RouteNamesForFilePath<FilePath extends string> =
+    _RouteFileInfoMap extends Record<FilePath, infer Info>
+      ? Info['routes']
+      : keyof RouteNamedMap
 }
