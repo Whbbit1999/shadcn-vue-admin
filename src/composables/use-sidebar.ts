@@ -3,6 +3,7 @@ import {
   BellDot,
   Boxes,
   Bug,
+  Component,
   CreditCard,
   LayoutDashboard,
   ListTodo,
@@ -92,6 +93,11 @@ export function useSidebar() {
             { title: 'Notifications', url: '/settings/notifications', icon: BellDot },
             { title: 'Display', url: '/settings/display', icon: PictureInPicture2 },
           ],
+        },
+        {
+          title: 'SVA Components',
+          url: '/sva-components',
+          icon: Component,
         },
         {
           title: 'Help Center',
