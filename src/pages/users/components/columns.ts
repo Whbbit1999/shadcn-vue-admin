@@ -4,6 +4,7 @@ import { h } from 'vue'
 
 import DataTableColumnHeader from '@/components/data-table/column-header.vue'
 import { SelectColumn } from '@/components/data-table/table-columns'
+import { Copy } from '@/components/sva-ui/copy'
 import Badge from '@/components/ui/badge/Badge.vue'
 
 import type { User } from '../data/schema'
@@ -25,7 +26,10 @@ export const columns: ColumnDef<User>[] = [
   {
     accessorKey: 'email',
     header: ({ column }) => h(DataTableColumnHeader<User>, { column, title: 'Email' }),
-    cell: ({ row }) => h('div', { }, row.getValue('email')),
+    cell: ({ row }) => h('div', { }, [
+      h('span', {}, row.getValue('email')),
+      h(Copy, { class: 'ml-2', size: 'sm', content: (row.getValue('email') || '') as string }),
+    ]),
     enableSorting: false,
     enableResizing: true,
   },
