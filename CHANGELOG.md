@@ -1,6 +1,28 @@
 # Changelog
 
 
+## v0.7.0
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.6.1...v0.7.0)
+
+### 🚀 Enhancements
+
+- StatusBadge component And Copy component #25,#26 ([#29](https://github.com/Whbbit1999/shadcn-vue-admin/pull/29), [#25](https://github.com/Whbbit1999/shadcn-vue-admin/issues/25), [#26](https://github.com/Whbbit1999/shadcn-vue-admin/issues/26))
+- Table bulk-actions #27 ([#36](https://github.com/Whbbit1999/shadcn-vue-admin/pull/36), [#27](https://github.com/Whbbit1999/shadcn-vue-admin/issues/27))
+
+### 🩹 Fixes
+
+- The pinia plugin persistedstate plugin is invalid ([#35](https://github.com/Whbbit1999/shadcn-vue-admin/pull/35))
+- Pinia register in router guard ([fb95179](https://github.com/Whbbit1999/shadcn-vue-admin/commit/fb95179))
+
+### 🏡 Chore
+
+- **release:** V0.6.1 ([f9bfce8](https://github.com/Whbbit1999/shadcn-vue-admin/commit/f9bfce8))
+
+### ❤️ Contributors
+
+- Whbbit1999 ([@Whbbit1999](https://github.com/Whbbit1999))
+
 ## v0.6.1
 
 [compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.6.0...v0.6.1)
