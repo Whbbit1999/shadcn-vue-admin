@@ -174,6 +174,10 @@ declare module 'vue-router/auto-routes' {
       routes: '/settings/notifications'
       views: never
     }
+    'src/pages/sva-components/index.vue': {
+      routes: '/sva-components/'
+      views: never
+    }
     'src/pages/tasks/index.vue': {
       routes: '/tasks/'
       views: never
