@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v0.7.1
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.7.0...v0.7.1)
+
+### 🚀 Enhancements
+
+- Add TwoLayout in global layouts, example in settings/components… ([#38](https://github.com/Whbbit1999/shadcn-vue-admin/pull/38))
+
+### ❤️ Contributors
+
+- Whbbit1999 ([@Whbbit1999](https://github.com/Whbbit1999))
+
 ## v0.7.0
 
 [compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.6.1...v0.7.0)
