@@ -1,7 +1,4 @@
-import type { Component } from 'vue'
-
 import { MoveHorizontal, UnfoldHorizontal } from 'lucide-vue-next'
-import { h } from 'vue'
 
 export const THEMES = ['zinc', 'red', 'rose', 'orange', 'green', 'blue', 'yellow', 'violet'] as const
 export type Theme = typeof THEMES[number]
@@ -18,7 +15,7 @@ export const THEME_PRIMARY_COLORS: { theme: Theme, primaryColor: string }[] = [
 ] as const
 
 export type Radius = typeof RADIUS[number]
-export const RADIUS = [0, 0.25, 0.5, 0.75, 1]
+export const RADIUS = [0, 0.25, 0.5, 0.75, 1] as const
 
 export type ContentLayout = 'full' | 'centered'
 export const CONTENT_LAYOUTS = [
