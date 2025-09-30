@@ -21,7 +21,7 @@ export type Radius = typeof RADIUS[number]
 export const RADIUS = [0, 0.25, 0.5, 0.75, 1]
 
 export type ContentLayout = 'full' | 'centered'
-export const CONTENT_LAYOUTS: { label: string, value: ContentLayout, icon: Component }[] = [
-  { label: 'Full', value: 'full', icon: h(UnfoldHorizontal) },
-  { label: 'Centered', value: 'centered', icon: h(MoveHorizontal) },
-]
+export const CONTENT_LAYOUTS = [
+  { label: 'Full', value: 'full', icon: UnfoldHorizontal },
+  { label: 'Centered', value: 'centered', icon: MoveHorizontal },
+] as const
