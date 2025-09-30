@@ -1,5 +1,5 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@import 'tailwindcss';
+@import 'tw-animate-css';
 
 @custom-variant dark (&:is(.dark *));
 
@@ -77,7 +77,6 @@
 
   --vis-color0: oklch(0.72 0.192 149.58) !important;
   --vis-color1: oklch(0.63 0.1963 157.86) !important;
-  
 }
 
 @theme inline {
