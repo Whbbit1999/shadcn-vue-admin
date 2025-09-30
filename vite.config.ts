@@ -17,7 +17,7 @@ export default defineConfig({
   plugins: [
     VueRouter({
       exclude: RouteGenerateExclude,
-      dts: 'src/types/typed-router.d.ts', // 类型提示文件
+      dts: 'src/types/typed-router.d.ts',
     }),
     vue(),
     vueJsx(),
@@ -36,22 +36,22 @@ export default defineConfig({
       imports: [
         'vue',
         VueRouterAutoImports,
-      ], // 自动加载 vue,vue-router api
+      ],
       dirs: [
         'src/composables/**/*.ts',
-        'src/enum/**/*.ts',
-        'src/store/**/*.ts',
-      ], // 自动加载配置里的文件
-      defaultExportByFilename: true, // 包含文件夹名称，避免命名冲突
-      dts: 'src/types/auto-import.d.ts', // 类型提示文件
+        'src/enums/**/*.ts',
+        'src/stores/**/*.ts',
+      ],
+      defaultExportByFilename: true,
+      dts: 'src/types/auto-import.d.ts',
     }),
     Component({
       dirs: [
         'src/components',
       ],
       collapseSamePrefixes: true,
-      directoryAsNamespace: true, // 包含文件夹名称，避免命名冲突
-      dts: 'src/types/auto-import-components.d.ts', // 类型提示文件
+      directoryAsNamespace: true,
+      dts: 'src/types/auto-import-components.d.ts',
     }),
   ],
   resolve: {

@@ -60,8 +60,6 @@ declare module 'vue' {
     SvaUiCopy: typeof import('./../components/sva-ui/copy/Copy.vue')['default']
     SvaUiStatusBadge: typeof import('./../components/sva-ui/status-badge/StatusBadge.vue')['default']
     SvaUiStatusBadgeStatus: typeof import('./../components/sva-ui/status-badge/Status.vue')['default']
-    SvaUiTwoColLayout: typeof import('./../components/sva-ui/two-col-layout/index.vue')['default']
-    SvaUiTwoColLayoutTwoCol: typeof import('./../components/sva-ui/two-col-layout/two-col.vue')['default']
     ToggleTheme: typeof import('./../components/toggle-theme.vue')['default']
     UiAccordion: typeof import('./../components/ui/accordion/Accordion.vue')['default']
     UiAccordionContent: typeof import('./../components/ui/accordion/AccordionContent.vue')['default']
