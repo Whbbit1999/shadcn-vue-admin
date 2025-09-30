@@ -6,7 +6,13 @@
 // biome-ignore lint: disable
 export {}
 declare global {
+  const CONTENT_LAYOUTS: typeof import('../constants/themes')['CONTENT_LAYOUTS']
   const EffectScope: typeof import('vue')['EffectScope']
+  const RADIUS: typeof import('../constants/themes')['RADIUS']
+  const RouterPath: typeof import('../constants/route-path')['RouterPath']
+  const THEMES: typeof import('../constants/themes')['THEMES']
+  const THEMES_COLOR: typeof import('../constants/themes')['THEMES_COLOR']
+  const THEME_PRIMARY_COLORS: typeof import('../constants/themes')['THEME_PRIMARY_COLORS']
   const computed: typeof import('vue')['computed']
   const createApp: typeof import('vue')['createApp']
   const customRef: typeof import('vue')['customRef']
@@ -58,6 +64,7 @@ declare global {
   const unref: typeof import('vue')['unref']
   const useAttrs: typeof import('vue')['useAttrs']
   const useAuth: typeof import('../composables/use-auth')['useAuth']
+  const useAuthStore: typeof import('../stores/auth')['useAuthStore']
   const useAxios: typeof import('../composables/use-axios')['useAxios']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
@@ -70,6 +77,7 @@ declare global {
   const useSlots: typeof import('vue')['useSlots']
   const useTemplateRef: typeof import('vue')['useTemplateRef']
   const useThemeConfig: typeof import('../composables/use-theme-config')['useThemeConfig']
+  const useThemeStore: typeof import('../stores/theme')['useThemeStore']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
   const watchPostEffect: typeof import('vue')['watchPostEffect']
@@ -80,4 +88,7 @@ declare global {
   // @ts-ignore
   export type { Component, Slot, Slots, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, ShallowRef, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
+  // @ts-ignore
+  export type { Theme, Radius, ContentLayout } from '../constants/themes'
+  import('../constants/themes')
 }

@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
 
-import { contentLayouts, useThemeStore } from '@/stores/theme'
+import { CONTENT_LAYOUTS } from '@/constants/themes'
+import { useThemeStore } from '@/stores/theme'
 
 const themeStore = useThemeStore()
 const { setContentLayout } = themeStore
@@ -15,7 +16,7 @@ const { contentLayout } = storeToRefs(themeStore)
     </UiLabel>
     <div class="grid grid-cols-2 gap-2 py-1.5">
       <UiButton
-        v-for="layout in contentLayouts" :key="layout.label"
+        v-for="layout in CONTENT_LAYOUTS" :key="layout.label"
         variant="outline"
         class="justify-center h-8 px-3"
         :class="contentLayout === layout.value ? 'border-foreground border-2' : ''"

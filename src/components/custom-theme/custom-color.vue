@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
 
-import { THEMES, themes, useThemeStore } from '@/stores/theme'
+import { THEME_PRIMARY_COLORS, THEMES } from '@/constants/themes'
+import { useThemeStore } from '@/stores/theme'
 
 const themeStore = useThemeStore()
 const { setTheme } = themeStore
@@ -20,7 +21,7 @@ watchEffect(() => {
     </UiLabel>
     <div class="grid grid-cols-2 gap-2 py-1.5">
       <UiButton
-        v-for="theme in themes" :key="theme.theme"
+        v-for="theme in THEME_PRIMARY_COLORS" :key="theme.theme"
         variant="outline"
         class="justify-center h-8 px-3"
         :class="t === theme.theme ? 'border-foreground border-2' : ''"

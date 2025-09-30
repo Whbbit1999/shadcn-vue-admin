@@ -3,7 +3,8 @@ import { storeToRefs } from 'pinia'
 
 import Loading from '@/components/loading.vue'
 import { Toaster } from '@/components/ui/sonner'
-import { THEMES, useThemeStore } from '@/stores/theme'
+import { THEMES } from '@/constants/themes'
+import { useThemeStore } from '@/stores/theme'
 
 const themeStore = useThemeStore()
 const { theme: t, radius } = storeToRefs(themeStore)

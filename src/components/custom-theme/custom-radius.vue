@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 import { storeToRefs } from 'pinia'
 
-import { RADIUS, useThemeStore } from '@/stores/theme'
+import { RADIUS } from '@/constants/themes'
+import { useThemeStore } from '@/stores/theme'
 
 const themeStore = useThemeStore()
 const { setRadius } = themeStore
