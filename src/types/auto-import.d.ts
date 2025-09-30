@@ -7,7 +7,11 @@
 export {}
 declare global {
   const EffectScope: typeof import('vue')['EffectScope']
+  const RADIUS: typeof import('../stores/theme')['RADIUS']
+  const RouterPath: typeof import('../enums/global')['RouterPath']
+  const THEMES: typeof import('../stores/theme')['THEMES']
   const computed: typeof import('vue')['computed']
+  const contentLayouts: typeof import('../stores/theme')['contentLayouts']
   const createApp: typeof import('vue')['createApp']
   const customRef: typeof import('vue')['customRef']
   const defineAsyncComponent: typeof import('vue')['defineAsyncComponent']
@@ -50,6 +54,7 @@ declare global {
   const shallowReactive: typeof import('vue')['shallowReactive']
   const shallowReadonly: typeof import('vue')['shallowReadonly']
   const shallowRef: typeof import('vue')['shallowRef']
+  const themes: typeof import('../stores/theme')['themes']
   const toRaw: typeof import('vue')['toRaw']
   const toRef: typeof import('vue')['toRef']
   const toRefs: typeof import('vue')['toRefs']
@@ -58,6 +63,7 @@ declare global {
   const unref: typeof import('vue')['unref']
   const useAttrs: typeof import('vue')['useAttrs']
   const useAuth: typeof import('../composables/use-auth')['useAuth']
+  const useAuthStore: typeof import('../stores/auth')['useAuthStore']
   const useAxios: typeof import('../composables/use-axios')['useAxios']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
@@ -70,6 +76,7 @@ declare global {
   const useSlots: typeof import('vue')['useSlots']
   const useTemplateRef: typeof import('vue')['useTemplateRef']
   const useThemeConfig: typeof import('../composables/use-theme-config')['useThemeConfig']
+  const useThemeStore: typeof import('../stores/theme')['useThemeStore']
   const watch: typeof import('vue')['watch']
   const watchEffect: typeof import('vue')['watchEffect']
   const watchPostEffect: typeof import('vue')['watchPostEffect']
@@ -80,4 +87,7 @@ declare global {
   // @ts-ignore
   export type { Component, Slot, Slots, ComponentPublicInstance, ComputedRef, DirectiveBinding, ExtractDefaultPropTypes, ExtractPropTypes, ExtractPublicPropTypes, InjectionKey, PropType, Ref, ShallowRef, MaybeRef, MaybeRefOrGetter, VNode, WritableComputedRef } from 'vue'
   import('vue')
+  // @ts-ignore
+  export type { Theme, Radius, ContentLayout } from '../stores/theme'
+  import('../stores/theme')
 }
