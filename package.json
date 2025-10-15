@@ -21,7 +21,7 @@
     "pnpm"
   ],
   "scripts": {
-    "postinstall": "npx simple-git-hooks",
+    "postinstall": "simple-git-hooks",
     "dev": "vite",
     "build": "vue-tsc -b && vite build",
     "preview": "vite preview",
