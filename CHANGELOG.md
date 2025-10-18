@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.7.2
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.7.1...v0.7.2)
+
+### ❤️ Contributors
+
+- Whbbit1999 ([@Whbbit1999](https://github.com/Whbbit1999))
 
 ## v0.7.1
 
