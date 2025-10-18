@@ -1,14 +1,14 @@
+import type { RouteRecordRaw } from 'vue-router'
+
 import { setupLayouts } from 'virtual:generated-layouts'
-import { createWebHistory } from 'vue-router'
-import { createRouter } from 'vue-router/auto'
+import { createRouter, createWebHistory } from 'vue-router'
 import { handleHotUpdate, routes } from 'vue-router/auto-routes'
 
 import { createRouterGuard } from './guard'
-import publicRoutes from './public-routes'
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [...setupLayouts(routes), ...publicRoutes],
+  routes: setupLayouts(routes as RouteRecordRaw[]),
 
   scrollBehavior() {
     return { left: 0, top: 0, behavior: 'smooth' }
