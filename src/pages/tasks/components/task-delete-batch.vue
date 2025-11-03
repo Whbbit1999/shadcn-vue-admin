@@ -19,7 +19,7 @@ const CONFIRM_WORD = 'DELETE'
 
 const confirmValue = ref('')
 
-const selectedRows = ref(table.getSelectedRowModel().rows)
+const selectedRows = computed(() => table.getSelectedRowModel().rows)
 const selectedCount = computed(() => selectedRows.value.length || 0)
 function handleConfirm() {
   if (confirmValue.value !== CONFIRM_WORD) {
