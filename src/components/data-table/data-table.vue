@@ -64,6 +64,6 @@ defineProps<DataTableProps<T> & {
       <DataTableLoading v-if="loading" />
     </div>
 
-    <DataTablePagination v-if="!loading" :table="table" />
+    <DataTablePagination v-if="!loading" :table="table" :server-pagination="serverPagination" />
   </div>
 </template>

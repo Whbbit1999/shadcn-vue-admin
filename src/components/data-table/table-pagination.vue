@@ -8,10 +8,98 @@ import {
   ChevronsRight,
 } from 'lucide-vue-next'
 
+import type { ServerPagination } from './types'
+
 interface DataTablePaginationProps {
   table: Table<T>
+  serverPagination?: ServerPagination
 }
-defineProps<DataTablePaginationProps>()
+const props = defineProps<DataTablePaginationProps>()
+
+const isServerPagination = computed(() => !!props.serverPagination)
+
+const currentPage = computed(() => {
+  if (isServerPagination.value && props.serverPagination) {
+    return props.serverPagination.page
+  }
+  return props.table.getState().pagination.pageIndex + 1
+})
+
+const currentPageSize = computed(() => {
+  if (isServerPagination.value && props.serverPagination) {
+    return props.serverPagination.pageSize
+  }
+  return props.table.getState().pagination.pageSize
+})
+
+const totalPages = computed(() => {
+  if (isServerPagination.value && props.serverPagination) {
+    return Math.ceil(props.serverPagination.total / props.serverPagination.pageSize)
+  }
+  return props.table.getPageCount()
+})
+
+const canPreviousPage = computed(() => {
+  if (isServerPagination.value) {
+    return currentPage.value > 1
+  }
+  return props.table.getCanPreviousPage()
+})
+
+const canNextPage = computed(() => {
+  if (isServerPagination.value) {
+    return currentPage.value < totalPages.value
+  }
+  return props.table.getCanNextPage()
+})
+
+function handlePageSizeChange(value: any) {
+  if (!value)
+    return
+  const newPageSize = Number(value)
+  if (isServerPagination.value && props.serverPagination?.onPageSizeChange) {
+    props.serverPagination.onPageSizeChange(newPageSize)
+  }
+  else {
+    props.table.setPageSize(newPageSize)
+  }
+}
+
+function goToFirstPage() {
+  if (isServerPagination.value && props.serverPagination?.onPageChange) {
+    props.serverPagination.onPageChange(1)
+  }
+  else {
+    props.table.setPageIndex(0)
+  }
+}
+
+function goToPreviousPage() {
+  if (isServerPagination.value && props.serverPagination?.onPageChange) {
+    props.serverPagination.onPageChange(currentPage.value - 1)
+  }
+  else {
+    props.table.previousPage()
+  }
+}
+
+function goToNextPage() {
+  if (isServerPagination.value && props.serverPagination?.onPageChange) {
+    props.serverPagination.onPageChange(currentPage.value + 1)
+  }
+  else {
+    props.table.nextPage()
+  }
+}
+
+function goToLastPage() {
+  if (isServerPagination.value && props.serverPagination?.onPageChange) {
+    props.serverPagination.onPageChange(totalPages.value)
+  }
+  else {
+    props.table.setPageIndex(props.table.getPageCount() - 1)
+  }
+}
 </script>
 
 <template>
@@ -23,11 +111,11 @@ defineProps<DataTablePaginationProps>()
           Rows per page
         </p>
         <UiSelect
-          :model-value="`${table.getState().pagination.pageSize}`"
-          @update:model-value="Number(table.setPageSize)"
+          :model-value="`${currentPageSize}`"
+          @update:model-value="handlePageSizeChange"
         >
           <UiSelectTrigger class="h-8 w-[70px]">
-            <UiSelectValue :placeholder="`${table.getState().pagination.pageSize}`" />
+            <UiSelectValue :placeholder="`${currentPageSize}`" />
           </UiSelectTrigger>
           <UiSelectContent side="top">
             <UiSelectItem v-for="pageSize in [10, 20, 30, 40, 50]" :key="pageSize" :value="`${pageSize}`">
@@ -37,15 +125,14 @@ defineProps<DataTablePaginationProps>()
         </UiSelect>
       </div>
       <div class="flex w-[100px] items-center justify-center text-sm font-medium">
-        Page {{ table.getState().pagination.pageIndex + 1 }} of
-        {{ table.getPageCount() }}
+        Page {{ currentPage }} of {{ totalPages }}
       </div>
       <div class="flex items-center space-x-2">
         <UiButton
           variant="outline"
           class="hidden size-8 p-0 lg:flex"
-          :disabled="!table.getCanPreviousPage()"
-          @click="table.setPageIndex(0)"
+          :disabled="!canPreviousPage"
+          @click="goToFirstPage"
         >
           <span class="sr-only">Go to first page</span>
           <ChevronsLeft class="size-4" />
@@ -53,8 +140,8 @@ defineProps<DataTablePaginationProps>()
         <UiButton
           variant="outline"
           class="size-8 p-0"
-          :disabled="!table.getCanPreviousPage()"
-          @click="table.previousPage()"
+          :disabled="!canPreviousPage"
+          @click="goToPreviousPage"
         >
           <span class="sr-only">Go to previous page</span>
           <ChevronLeftIcon class="size-4" />
@@ -62,8 +149,8 @@ defineProps<DataTablePaginationProps>()
         <UiButton
           variant="outline"
           class="size-8 p-0"
-          :disabled="!table.getCanNextPage()"
-          @click="table.nextPage()"
+          :disabled="!canNextPage"
+          @click="goToNextPage"
         >
           <span class="sr-only">Go to next page</span>
           <ChevronRightIcon class="size-4" />
@@ -71,8 +158,8 @@ defineProps<DataTablePaginationProps>()
         <UiButton
           variant="outline"
           class="hidden size-8 p-0 lg:flex"
-          :disabled="!table.getCanNextPage()"
-          @click="table.setPageIndex(table.getPageCount() - 1)"
+          :disabled="!canNextPage"
+          @click="goToLastPage"
         >
           <span class="sr-only">Go to last page</span>
           <ChevronsRight class="size-4" />
