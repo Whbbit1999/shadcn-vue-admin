@@ -41,7 +41,7 @@ const yFormatter = (i: number): string => `${i}`
     :radius="4"
     :x-formatter="xFormatter"
     :y-formatter="yFormatter"
-    :legend-position="LegendPosition.Top"
+    :legend-position="LegendPosition.TopLeft"
     :y-grid-line="!isDark"
   />
 </template>

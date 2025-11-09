@@ -1,11 +1,12 @@
 import type { App } from 'vue'
 
-import { setupAutoAnimate } from './auto-animate'
-import { setupDayjs } from './dayjs'
-import { setupI18n } from './i18n'
-import { setupNProgress } from './nprogress'
-import { setupPinia } from './pinia'
-import { setupTanstackVueQuery } from './tanstack-vue-query'
+import { setupAutoAnimate } from './auto-animate/setup'
+import { setupDayjs } from './dayjs/setup'
+import { setupI18n } from './i18n/setup'
+import { setupNProgress } from './nprogress/setup'
+import { setupPinia } from './pinia/setup'
+import { setupRouter } from './router/setup'
+import { setupTanstackVueQuery } from './tanstack-vue-query/setup'
 
 export function setupPlugins(app: App) {
   setupDayjs()
@@ -14,4 +15,5 @@ export function setupPlugins(app: App) {
   setupTanstackVueQuery(app)
   setupI18n(app)
   setupPinia(app)
+  setupRouter(app)
 }
