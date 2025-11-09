@@ -1,5 +1,22 @@
 # Changelog
 
+## v0.7.3
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.7.2...v0.7.3)
+
+### 🩹 Fixes
+
+- The issue with no dynamic updates when deleting multiple rows in a batch demo task or when selecting multiple rows. ([435b0aa](https://github.com/Whbbit1999/shadcn-vue-admin/commit/435b0aa))
+
+### 💅 Refactors
+
+- Update CHANGELOG.md ([b4eb09b](https://github.com/Whbbit1999/shadcn-vue-admin/commit/b4eb09b))
+- Reorganize plugin setup and improve imports ([b5cd1be](https://github.com/Whbbit1999/shadcn-vue-admin/commit/b5cd1be))
+
+### ❤️ Contributors
+
+- Whbbit1999 <luckyboy_dong@sina.com>
+
 ## v0.7.2
 
 [compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.7.1...v0.7.2)
