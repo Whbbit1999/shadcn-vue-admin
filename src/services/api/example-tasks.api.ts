@@ -1,46 +1,83 @@
 import type { AxiosError } from 'axios'
 
-import { useMutation, useQuery } from '@tanstack/vue-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 
 import { useAxios } from '@/composables/use-axios'
 
-interface ITask {}
-export function useGetTaskQuery() {
+import type { IResponse } from '../types/response.type'
+
+export interface ITask {
+  title: string
+  description: string
+  status: 'pending' | 'in-progress' | 'completed'
+}
+
+export function useGetTasksQuery() {
   const { axiosInstance } = useAxios()
-  return useQuery<ITask, AxiosError>({
-    queryKey: ['useGetTaskQuery'],
+
+  return useQuery<IResponse<ITask[]>, AxiosError>({
+    queryKey: ['useGetTasksQuery'],
     queryFn: async () => {
-      return await axiosInstance.get('/tasks')
+      const response = await axiosInstance.get('/tasks')
+      return response.data
     },
   })
 }
-// if you want use useGetTaskQuery
-// you can use it like this
-// const { data, error, isPending, isError } = useGetTaskQuery()
 
-interface ITaskCreate {
-  name: string
-  // description: string
+export function useGetTaskByIdQuery(id: number) {
+  const { axiosInstance } = useAxios()
+
+  return useQuery<IResponse<ITask>, AxiosError>({
+    queryKey: ['useGetTaskQuery', id],
+    queryFn: async () => {
+      const response = await axiosInstance.get(`/tasks/${id}`)
+      return response.data
+    },
+  })
 }
+
+export function useUpdateTaskMutation(id: number) {
+  const { axiosInstance } = useAxios()
+  const queryClient = useQueryClient()
+
+  return useMutation<IResponse<boolean>, AxiosError, Partial<ITask>>({
+    mutationKey: ['useUpdateTaskMutation', id],
+    mutationFn: async (data: Partial<ITask>) => {
+      return await axiosInstance.put(`/tasks/${id}`, data)
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['useGetTaskQuery', id] })
+      queryClient.invalidateQueries({ queryKey: ['useGetTasksQuery'] })
+    },
+  })
+}
+
 export function useCreateTaskMutation() {
   const { axiosInstance } = useAxios()
-  return useMutation({
+  const queryClient = useQueryClient()
+
+  return useMutation<IResponse<ITask>, AxiosError, ITask>({
     mutationKey: ['useCreateTaskMutation'],
-    mutationFn: async (data: ITaskCreate) => {
+    mutationFn: async (data: ITask) => {
       return await axiosInstance.post('/tasks', data)
     },
-    onSuccess: (task) => {
-      // eslint-disable-next-line no-console
-      console.log('task created', task)
-    },
-    onError: (error) => {
-      // eslint-disable-next-line no-console
-      console.log('error', error)
-      // you can use this error to show error message to user
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['useGetTasksQuery'] })
     },
   })
 }
-// if you want use useCreateTaskMutation
-// you can use it like this
-// const createTaskMutation = useCreateTaskMutation()
-// createTaskMutation.mutate({ name: 'task name' })
+
+export function useDeleteTaskMutation() {
+  const { axiosInstance } = useAxios()
+  const queryClient = useQueryClient()
+
+  return useMutation<IResponse<boolean>, AxiosError, number>({
+    mutationKey: ['useDeleteTaskMutation'],
+    mutationFn: async (id: number) => {
+      return await axiosInstance.delete(`/tasks/${id}`)
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['useGetTasksQuery'] })
+    },
+  })
+}
