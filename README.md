@@ -66,7 +66,7 @@ Charts:
 
 ## Run locally
 
-clone the project
+Clone the project
 
 ```bash
 git clone https://github.com/Whbbit1999/shadcn-vue-admin.git
