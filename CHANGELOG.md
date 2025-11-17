@@ -1,5 +1,28 @@
 # Changelog
 
+## v0.7.4
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.7.3...v0.7.4)
+
+### 🚀 Enhancements
+
+- Add server pagination support to data table components ([#46](https://github.com/Whbbit1999/shadcn-vue-admin/pull/46))
+- Implement task management API functions and response types ([#47](https://github.com/Whbbit1999/shadcn-vue-admin/pull/47))
+- Use shadcn-vue chart,remove vue-charts ([#49](https://github.com/Whbbit1999/shadcn-vue-admin/pull/49))
+
+### 🩹 Fixes
+
+- Typo  Update README.md ([#48](https://github.com/Whbbit1999/shadcn-vue-admin/pull/48))
+
+### 🏡 Chore
+
+- **release:** V0.7.3 ([1808df2](https://github.com/Whbbit1999/shadcn-vue-admin/commit/1808df2))
+
+### ❤️ Contributors
+
+- Whbbit1999 ([@Whbbit1999](https://github.com/Whbbit1999))
+- WuMingDao ([@WuMingDao](https://github.com/WuMingDao))
+
 ## v0.7.3
 
 [compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.7.2...v0.7.3)
