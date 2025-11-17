@@ -1,5 +1,4 @@
 <script setup lang="ts">
-// import { Area, AreaChart, CartesianGrid, XAxis, YAxis } from "recharts"
 import { VisArea, VisAxis, VisLine, VisXYContainer } from '@unovis/vue'
 
 import type { ChartConfig } from '@/components/ui/chart'
