@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from "vue"
-import { computed } from "vue"
+import { computed, onMounted, ref } from "vue"
 import { cn } from "@/lib/utils"
 import { useChart } from "."
 
@@ -16,7 +16,7 @@ const props = withDefaults(defineProps<{
 
 const { id, config } = useChart()
 
-const payload = computed(() => Object.entries(config.value).map(([key, _value]) => {
+const payload = computed(() => Object.entries(config.value).map(([key]) => {
   return {
     key: props.nameKey || key,
     itemConfig: config.value[key],

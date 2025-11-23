@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import type { WithClassAsProps } from './interface'
+import type { WithClassAsProps } from "./interface"
 import type { ButtonVariants } from '@/components/ui/button'
-import { ArrowRight } from 'lucide-vue-next'
+import { ArrowRight } from "lucide-vue-next"
+import { cn } from "@/lib/utils"
 import { Button } from '@/components/ui/button'
-import { cn } from '@/lib/utils'
-import { useCarousel } from './useCarousel'
+import { useCarousel } from "./useCarousel"
 
 const props = withDefaults(defineProps<{
-  variant?: ButtonVariants['variant']
-  size?: ButtonVariants['size']
+  variant?: ButtonVariants["variant"]
+  size?: ButtonVariants["size"]
 }
 & WithClassAsProps>(), {
-  variant: 'outline',
-  size: 'icon',
+  variant: "outline",
+  size: "icon",
 })
 
 const { orientation, canScrollNext, scrollNext } = useCarousel()

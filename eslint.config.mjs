@@ -11,6 +11,13 @@ export default antfu({
     markdown: 'prettier',
   },
 
+  ignorePatterns: [
+    '**/node_modules/**',
+    '**/dist/**',
+    '**/build/**',
+    '**/lib/**',
+    '**/components/ui/**',
+  ],
   ignores: [
     '**/node_modules/**',
     '**/dist/**',
