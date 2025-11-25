@@ -1,5 +1,29 @@
 # Changelog
 
+## v0.7.5
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.7.4...v0.7.5)
+
+### 🚀 Enhancements
+
+- Add InlineTip component and integrate into SVA Components page ([#51](https://github.com/Whbbit1999/shadcn-vue-admin/pull/51))
+
+### 💅 Refactors
+
+- Remove unused styles and improve component structure ([#52](https://github.com/Whbbit1999/shadcn-vue-admin/pull/52))
+
+### 📦 Build
+
+- Update shadcn-vue components ([#50](https://github.com/Whbbit1999/shadcn-vue-admin/pull/50))
+
+### 🏡 Chore
+
+- **release:** V0.7.4 ([1d7f3e2](https://github.com/Whbbit1999/shadcn-vue-admin/commit/1d7f3e2))
+
+### ❤️ Contributors
+
+- Whbbit1999 ([@Whbbit1999](https://github.com/Whbbit1999))
+
 ## v0.7.4
 
 [compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.7.3...v0.7.4)
