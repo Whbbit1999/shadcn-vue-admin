@@ -2,6 +2,7 @@
 import Page from '@/components/global-layout/basic-page.vue'
 
 import Copy from './components/copy.vue'
+import InlineTip from './components/inline-tip.vue'
 import StatusBadge from './components/status-badge.vue'
 </script>
 
@@ -15,6 +16,8 @@ import StatusBadge from './components/status-badge.vue'
       <StatusBadge />
 
       <Copy />
+
+      <InlineTip />
     </div>
   </Page>
 </template>
