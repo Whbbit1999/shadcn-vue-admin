@@ -12,9 +12,6 @@ import Error from '@/components/custom-error.vue'
   </div>
 </template>
 
-<style scoped>
-</style>
-
 <route lang="yaml">
   meta:
     layout: false

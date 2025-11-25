@@ -39,7 +39,3 @@ function handleRemove() {
     </UiDialogFooter>
   </div>
 </template>
-
-<style scoped>
-
-</style>

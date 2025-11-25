@@ -8,7 +8,3 @@ import { Icon } from '@iconify/vue'
     GitHub
   </UiButton>
 </template>
-
-<style scoped>
-
-</style>

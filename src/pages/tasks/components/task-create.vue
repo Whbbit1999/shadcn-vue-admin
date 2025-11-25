@@ -20,7 +20,3 @@ const isOpen = ref(false)
     </UiDialogContent>
   </UiDialog>
 </template>
-
-<style scoped>
-
-</style>

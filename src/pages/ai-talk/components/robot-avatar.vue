@@ -8,7 +8,3 @@
     <UiAvatarFallback>Robot</UiAvatarFallback>
   </UiAvatar>
 </template>
-
-<style scoped>
-
-</style>

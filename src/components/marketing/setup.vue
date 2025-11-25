@@ -21,7 +21,7 @@ import SignUpButton from '@/components/sign-up-button.vue'
     </div>
 
     <Ripple
-      class="bg-white/5 [mask-image:linear-gradient(to_bottom,white,transparent)]"
+      class="bg-white/5 mask-[linear-gradient(to_bottom,white,transparent)]"
       circle-class="border-[hsl(var(--primary))] bg-primary/25 blobed"
     />
   </div>

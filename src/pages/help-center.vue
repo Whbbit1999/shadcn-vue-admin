@@ -41,6 +41,3 @@ const socialMediaAccounts = ref<ISocialMediaAccount[]>([
     </ul>
   </Page>
 </template>
-
-<style scoped>
-</style>

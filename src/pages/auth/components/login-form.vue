@@ -60,7 +60,3 @@ import ToForgotPasswordLink from './to-forgot-password-link.vue'
     </UiCardContent>
   </UiCard>
 </template>
-
-<style scoped>
-
-</style>

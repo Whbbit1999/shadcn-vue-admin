@@ -23,7 +23,3 @@ watch(type, () => {
     </UiToggleGroupItem>
   </UiToggleGroup>
 </template>
-
-<style scoped>
-
-</style>

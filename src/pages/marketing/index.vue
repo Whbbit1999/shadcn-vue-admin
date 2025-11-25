@@ -34,10 +34,6 @@ import Setup from '@/components/marketing/setup.vue'
   </div>
 </template>
 
-<style scoped>
-
-</style>
-
 <route lang="yaml">
 meta:
   layout: marketing

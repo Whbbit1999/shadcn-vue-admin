@@ -21,7 +21,7 @@ withDefaults(
   <div
     :class="
       cn(
-        'group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] [gap:var(--gap)]',
+        'group flex overflow-hidden p-2 [--duration:40s] [--gap:1rem] gap-(--gap)',
         vertical ? 'flex-col' : 'flex-row',
         $props.class,
       )
@@ -32,9 +32,9 @@ withDefaults(
       :key="index"
       :class="
         cn(
-          'flex shrink-0 justify-around [gap:var(--gap)]',
+          'flex shrink-0 justify-around gap-(--gap)',
           vertical ? 'animate-marquee-vertical flex-col' : 'animate-marquee flex-row',
-          pauseOnHover ? 'group-hover:[animation-play-state:paused]' : '',
+          pauseOnHover ? 'group-hover:paused' : '',
         )
       "
       :style="{

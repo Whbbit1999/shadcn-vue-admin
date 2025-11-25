@@ -46,5 +46,3 @@ const links = [
     </div>
   </footer>
 </template>
-
-<style scoped></style>

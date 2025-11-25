@@ -26,7 +26,3 @@ const description = computed(() => task.value?.id ? `Edit task ${task.value.id}`
     <TaskForm class="mt-2" :task="task" @close="$emit('close')" />
   </div>
 </template>
-
-<style scoped>
-
-</style>

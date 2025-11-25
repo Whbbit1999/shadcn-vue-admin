@@ -119,14 +119,7 @@ import RecentSales from './recent-sales.vue'
   </div>
 
   <div class="grid grid-cols-1 gap-4 lg:grid-cols-7">
-    <UiCard class="col-span-1 lg:col-span-4">
-      <UiCardHeader>
-        <UiCardTitle>Overview</UiCardTitle>
-      </UiCardHeader>
-      <UiCardContent>
-        <OverviewChart />
-      </UiCardContent>
-    </UiCard>
+    <OverviewChart class="col-span-1 lg:col-span-4" />
     <UiCard class="col-span-1 lg:col-span-3">
       <UiCardHeader>
         <UiCardTitle>Recent Sales</UiCardTitle>

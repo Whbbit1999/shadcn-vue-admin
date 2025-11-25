@@ -24,6 +24,3 @@ const mode = useColorMode()
     </UiCommandItem>
   </UiCommandGroup>
 </template>
-
-<style scoped>
-</style>

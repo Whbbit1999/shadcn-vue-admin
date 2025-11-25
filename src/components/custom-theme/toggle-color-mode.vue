@@ -40,7 +40,3 @@ function setColorMode(colorMode: BasicColorSchema) {
     </div>
   </div>
 </template>
-
-<style scoped>
-
-</style>

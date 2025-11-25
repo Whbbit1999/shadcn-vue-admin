@@ -50,6 +50,3 @@ function commandItemClick(url: string) {
     </UiCommandItem>
   </UiCommandGroup>
 </template>
-
-<style scoped>
-</style>

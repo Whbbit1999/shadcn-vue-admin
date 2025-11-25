@@ -16,7 +16,3 @@ import { RefreshCcw } from 'lucide-vue-next'
     </UiTooltip>
   </UiTooltipProvider>
 </template>
-
-<style scoped>
-
-</style>

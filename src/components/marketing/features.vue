@@ -82,7 +82,3 @@ const gridItems = computed(() => [
     </ul>
   </div>
 </template>
-
-<style scoped>
-
-</style>

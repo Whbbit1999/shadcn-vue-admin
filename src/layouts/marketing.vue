@@ -16,7 +16,3 @@ import Header from '@/components/marketing-layout/the-header.vue'
     </div>
   </div>
 </template>
-
-<style scoped>
-
-</style>

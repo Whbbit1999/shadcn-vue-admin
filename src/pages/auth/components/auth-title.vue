@@ -13,6 +13,3 @@ const logo = computed(() => {
     <span>Shadcn Vue Admin</span>
   </h1>
 </template>
-
-<style scoped>
-</style>
