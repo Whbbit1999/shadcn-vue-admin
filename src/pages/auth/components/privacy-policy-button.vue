@@ -6,7 +6,3 @@
     Privacy Policy
   </UiButton>
 </template>
-
-<style scoped>
-
-</style>

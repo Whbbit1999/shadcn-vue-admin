@@ -24,6 +24,7 @@ const { contentLayout } = storeToRefs(themeStore)
         <UiSidebarTrigger class="-ml-1" />
         <UiSeparator orientation="vertical" class="h-6" />
         <CommandMenuPanel />
+        <div class="flex-1" />
         <div class="ml-auto flex items-center space-x-4">
           <ToggleTheme />
           <ThemePopover />

@@ -6,7 +6,3 @@
     Forgot password?
   </UiButton>
 </template>
-
-<style scoped>
-
-</style>

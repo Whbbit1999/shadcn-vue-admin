@@ -31,7 +31,3 @@ import ToggleColorMode from './toggle-color-mode.vue'
     </PopoverContent>
   </Popover>
 </template>
-
-<style scoped>
-
-</style>

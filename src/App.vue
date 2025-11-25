@@ -18,7 +18,6 @@ watchEffect(() => {
 
 <template>
   <Toaster />
-  <!-- <VueQueryDevtools /> -->
 
   <Suspense>
     <router-view v-slot="{ Component, route }">

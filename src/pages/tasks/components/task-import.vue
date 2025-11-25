@@ -61,7 +61,3 @@ function onSubmit() {
     </UiDialogContent>
   </UiDialog>
 </template>
-
-<style scoped>
-
-</style>

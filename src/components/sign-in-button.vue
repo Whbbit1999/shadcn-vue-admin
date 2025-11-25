@@ -7,7 +7,3 @@
     {{ $t('login') }}
   </UiButton>
 </template>
-
-<style scoped>
-
-</style>

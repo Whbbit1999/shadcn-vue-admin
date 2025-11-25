@@ -19,7 +19,3 @@ defineProps<Props>()
     />
   </div>
 </template>
-
-<style scoped>
-
-</style>

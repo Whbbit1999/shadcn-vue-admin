@@ -16,6 +16,3 @@ const { icon } = defineProps<{
     {{ name }}
   </div>
 </template>
-
-<style scoped>
-</style>

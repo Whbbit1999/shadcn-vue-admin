@@ -28,7 +28,3 @@ const { contentLayout } = storeToRefs(themeStore)
     </div>
   </div>
 </template>
-
-<style scoped>
-
-</style>

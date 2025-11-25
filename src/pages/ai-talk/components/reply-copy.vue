@@ -26,7 +26,3 @@ interface Props {
     </UiTooltip>
   </UiTooltipProvider>
 </template>
-
-<style scoped>
-
-</style>

@@ -31,6 +31,3 @@ defineProps<{ app: IApp }>()
     </UiCardContent>
   </UiCard>
 </template>
-
-<style scoped>
-</style>

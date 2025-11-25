@@ -89,6 +89,3 @@ const isOpen = ref(false)
     </DrawerContent>
   </Drawer>
 </template>
-
-<style scoped>
-</style>

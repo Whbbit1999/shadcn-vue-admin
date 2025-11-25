@@ -25,7 +25,3 @@ const description = computed(() => user.value?.id ? `Edit user ${user.value.user
 
   <UserForm class="mt-2" :user="user" @close="$emit('close')" />
 </template>
-
-<style scoped>
-
-</style>

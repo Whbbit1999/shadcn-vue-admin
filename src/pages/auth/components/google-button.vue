@@ -8,7 +8,3 @@ import { Icon } from '@iconify/vue'
     Google
   </UiButton>
 </template>
-
-<style scoped>
-
-</style>

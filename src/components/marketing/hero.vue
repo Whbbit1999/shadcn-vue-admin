@@ -79,5 +79,3 @@ const users: { avatar: string, name: string, id: number }[] = [
     </aside>
   </main>
 </template>
-
-<style scoped></style>

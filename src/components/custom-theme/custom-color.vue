@@ -31,7 +31,7 @@ watchEffect(() => {
           :style="{
             '--theme-primary': theme.primaryColor,
           }"
-          class="size-2 rounded-full bg-[var(--theme-primary)]"
+          class="size-2 rounded-full bg-(--theme-primary)"
         />
         <span class="text-xs">{{ theme.theme[0].toUpperCase() }}{{ theme.theme.slice(1) }}</span>
       </UiButton>

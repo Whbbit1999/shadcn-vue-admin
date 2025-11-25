@@ -6,7 +6,3 @@
     Terms of Service
   </UiButton>
 </template>
-
-<style scoped>
-
-</style>

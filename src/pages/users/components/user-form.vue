@@ -158,7 +158,3 @@ const onSubmit = handleSubmit((values) => {
     </Button>
   </form>
 </template>
-
-<style scoped>
-
-</style>

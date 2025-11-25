@@ -40,7 +40,3 @@ function handleTypeChange(type: string) {
     </div>
   </div>
 </template>
-
-<style scoped>
-
-</style>

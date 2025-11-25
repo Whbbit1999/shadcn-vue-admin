@@ -74,7 +74,3 @@ function handleConfirm() {
     </template>
   </ConfirmDialog>
 </template>
-
-<style scoped>
-
-</style>

@@ -36,7 +36,3 @@ function handleSubmit() {
     </main>
   </div>
 </template>
-
-<style scoped>
-
-</style>

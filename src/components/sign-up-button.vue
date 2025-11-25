@@ -7,7 +7,3 @@
     {{ $t('register') }}
   </UiButton>
 </template>
-
-<style scoped>
-
-</style>

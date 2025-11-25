@@ -1,24 +1,15 @@
 <script setup lang="ts" generic="T">
-import type {
-  Table as VueTable,
-} from '@tanstack/vue-table'
+import type { Table as VueTable } from '@tanstack/vue-table'
 
-import {
-  FlexRender,
-} from '@tanstack/vue-table'
+import { FlexRender } from '@tanstack/vue-table'
 
 import DataTableLoading from '@/components/data-table/table-loading.vue'
 import DataTablePagination from '@/components/data-table/table-pagination.vue'
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from '@/components/ui/table'
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 
 import type { DataTableProps } from './types'
+
+import NoResultFound from '../no-result-found.vue'
 
 defineProps<DataTableProps<T> & {
   table: VueTable<T>
@@ -56,7 +47,7 @@ defineProps<DataTableProps<T> & {
               :colspan="columns.length"
               class="h-24 text-center"
             >
-              No results.
+              <NoResultFound />
             </TableCell>
           </TableRow>
         </TableBody>

@@ -45,7 +45,3 @@ const type = computed(() => talk.role === 'user' ? 'self' : 'robot')
     </div>
   </div>
 </template>
-
-<style scoped>
-
-</style>

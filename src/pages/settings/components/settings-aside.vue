@@ -47,6 +47,3 @@ const currentLink = computed(() => links.find(link => link.path === currentPath.
     </UiDropdownMenu>
   </nav>
 </template>
-
-<style scoped>
-</style>
