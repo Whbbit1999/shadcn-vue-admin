@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { useMagicKeys } from '@vueuse/core'
-import { MenuIcon, Search } from 'lucide-vue-next'
+import { useEventListener } from '@vueuse/core'
+import { MenuIcon, SearchIcon } from 'lucide-vue-next'
 
 import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
 
@@ -9,17 +9,11 @@ import CommandToPage from './command-to-page.vue'
 
 const open = ref(false)
 
-const { Meta_K, Ctrl_K } = useMagicKeys({
-  passive: false,
-  onEventFired(e) {
-    if (e.key === 'k' && (e.metaKey || e.ctrlKey))
-      e.preventDefault()
-  },
-})
-
-watch([Meta_K, Ctrl_K], (v) => {
-  if (v[0] || v[1])
+useEventListener('keydown', (event: KeyboardEvent) => {
+  if (event.key === 'k' && (event.metaKey || event.ctrlKey)) {
+    event.preventDefault()
     handleOpenChange()
+  }
 })
 
 function handleOpenChange() {
@@ -36,14 +30,14 @@ const firstKey = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘' 
       @click="handleOpenChange"
     >
       <div class="flex items-center gap-2">
-        <Search class="size-4" />
+        <SearchIcon class="size-4" />
         <span class="text-xs font-semibold text-muted-foreground">Search Menu</span>
       </div>
       <UiKbd>{{ firstKey }} + k</UiKbd>
     </div>
 
     <UiButton variant="outline" size="icon" class="md:hidden" @click="handleOpenChange">
-      <Search />
+      <SearchIcon />
     </UiButton>
 
     <UiCommandDialog v-model:open="open">
