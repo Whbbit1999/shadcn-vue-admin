@@ -1,9 +1,13 @@
 <script lang="ts" setup>
+import { useAuth } from '@/composables/use-auth'
+
 import GitHubButton from './github-button.vue'
 import GoogleButton from './google-button.vue'
 import PrivacyPolicyButton from './privacy-policy-button.vue'
 import TermsOfServiceButton from './terms-of-service-button.vue'
 import ToForgotPasswordLink from './to-forgot-password-link.vue'
+
+const { login, loading } = useAuth()
 </script>
 
 <template>
@@ -40,8 +44,9 @@ import ToForgotPasswordLink from './to-forgot-password-link.vue'
         <UiInput id="password" type="password" required placeholder="*********" />
       </div>
 
-      <UiButton class="w-full">
-        Login
+      <UiButton class="w-full" @click="login">
+        <UiSpinner v-if="loading" class="mr-2" />
+        Mock Login
       </UiButton>
 
       <UiSeparator label="Or continue with" />
