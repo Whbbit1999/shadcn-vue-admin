@@ -27,11 +27,11 @@ export function useAuth() {
     loading.value = false
 
     const redirect = router.currentRoute.value.query.redirect as string
-    if (redirect) {
-      router.push(redirect)
+    if (!redirect || redirect.startsWith('//')) {
+      toHome()
     }
     else {
-      toHome()
+      router.push(redirect)
     }
   }
 
