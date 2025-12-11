@@ -8,6 +8,8 @@ import {
   ChevronsRight,
 } from 'lucide-vue-next'
 
+import { PAGE_SIZES } from '@/constants/pagination'
+
 import type { ServerPagination } from './types'
 
 interface DataTablePaginationProps {
@@ -118,7 +120,7 @@ function goToLastPage() {
             <UiSelectValue :placeholder="`${currentPageSize}`" />
           </UiSelectTrigger>
           <UiSelectContent side="top">
-            <UiSelectItem v-for="pageSize in [10, 20, 30, 40, 50]" :key="pageSize" :value="`${pageSize}`">
+            <UiSelectItem v-for="pageSize in PAGE_SIZES" :key="pageSize" :value="`${pageSize}`">
               {{ pageSize }}
             </UiSelectItem>
           </UiSelectContent>
