@@ -6,16 +6,17 @@ import AppSidebar from '@/components/app-sidebar/index.vue'
 import CommandMenuPanel from '@/components/command-menu-panel/index.vue'
 import ThemePopover from '@/components/custom-theme/theme-popover.vue'
 import ToggleTheme from '@/components/toggle-theme.vue'
+import { SIDEBAR_COOKIE_NAME } from '@/components/ui/sidebar/utils'
 import { cn } from '@/lib/utils'
 import { useThemeStore } from '@/stores/theme'
 
-const defaultOpen = useCookies(['sidebar:state'])
+const defaultOpen = useCookies([SIDEBAR_COOKIE_NAME])
 const themeStore = useThemeStore()
 const { contentLayout } = storeToRefs(themeStore)
 </script>
 
 <template>
-  <UiSidebarProvider :default-open="defaultOpen.get('sidebar:state')">
+  <UiSidebarProvider :default-open="defaultOpen.get(SIDEBAR_COOKIE_NAME)">
     <AppSidebar />
     <UiSidebarInset class="w-full max-w-full peer-data-[state=collapsed]:w-[calc(100%-var(--sidebar-width-icon)-1rem)] peer-data-[state=expanded]:w-[calc(100%-var(--sidebar-width))]">
       <header
