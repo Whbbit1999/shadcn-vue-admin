@@ -48,7 +48,15 @@ export function generateVueTable<T>(props: DataTableProps<T>) {
       get columnFilters() { return columnFilters.value },
       get columnVisibility() { return columnVisibility.value },
       get rowSelection() { return rowSelection.value },
-      get pagination() { return pagination.value },
+      get pagination() {
+        if (useServerPagination) {
+          return {
+            pageIndex: pageIndex.value,
+            pageSize: pageSize.value,
+          }
+        }
+        return pagination.value
+      },
     },
     enableRowSelection: true,
     onSortingChange: updaterOrValue => valueUpdater(updaterOrValue, sorting),
@@ -65,14 +73,7 @@ export function generateVueTable<T>(props: DataTableProps<T>) {
   }
 
   if (useServerPagination) {
-    tableConfig.state!.pagination = {
-      get pageIndex() { return pageIndex.value },
-      get pageSize() { return pageSize.value },
-    }
-    Object.defineProperty(tableConfig, 'pageCount', {
-      get: () => pageCount.value,
-      enumerable: true,
-    })
+    tableConfig.pageCount = pageCount.value
     tableConfig.manualPagination = true
   }
   else {
