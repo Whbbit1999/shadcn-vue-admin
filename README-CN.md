@@ -104,8 +104,8 @@ pnpm dev
 </template>
 
 <route lang="yml">
-  meta:
-    layout: false # 这里是你要的布局，我这里使用 false 表示它不用布局组件
+meta:
+  layout: false # 这里是你要的布局，我这里使用 false 表示它不用布局组件
 </route>
 ```
 

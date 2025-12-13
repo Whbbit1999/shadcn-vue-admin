@@ -110,8 +110,8 @@ For example, I don't want the pages in the `pages/errors/` and `pages/auth/` fol
 </template>
 
 <route lang="yml">
-  meta:
-    layout: false # This is the layout you want. I use false here to indicate that it does not need layout components.
+meta:
+  layout: false # This is the layout you want. I use false here to indicate that it does not need layout components.
 </route>
 ```
 

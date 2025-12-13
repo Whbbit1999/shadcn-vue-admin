@@ -13,6 +13,6 @@ import Error from '@/components/custom-error.vue'
 </template>
 
 <route lang="yaml">
-  meta:
-    layout: blank
+meta:
+  layout: blank
 </route>

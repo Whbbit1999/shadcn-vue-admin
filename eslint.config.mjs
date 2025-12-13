@@ -11,18 +11,8 @@ export default antfu({
     markdown: 'prettier',
   },
 
-  ignorePatterns: [
-    '**/node_modules/**',
-    '**/dist/**',
-    '**/build/**',
-    '**/lib/**',
-    '**/components/ui/**',
-  ],
   ignores: [
-    '**/node_modules/**',
-    '**/dist/**',
     '**/build/**',
-    '**/lib/**',
     '**/components/ui/**',
   ],
   settings: {
@@ -31,9 +21,15 @@ export default antfu({
   globals: {
     definePage: 'readonly',
   },
+
   rules: {
     'perfectionist/sort-imports': ['error', {
       tsconfigRootDir: '.',
+    }],
+    'yaml/indent': ['error', 2],
+    'jsonc/indent': ['error', 2],
+    'vue/block-lang': ['warn', {
+      script: { lang: ['ts', 'tsx'] },
     }],
   },
   ...pluginQuery.configs['flat/recommended'],
