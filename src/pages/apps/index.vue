@@ -87,6 +87,6 @@ watch(appType, (newValue) => {
 </template>
 
 <route lang="yaml">
-  meta:
-    auth: true
+meta:
+  auth: true
 </route>
