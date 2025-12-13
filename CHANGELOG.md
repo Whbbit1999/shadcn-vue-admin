@@ -1,5 +1,32 @@
 # Changelog
 
+## v0.7.6
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.7.5...v0.7.6)
+
+### 🚀 Enhancements
+
+- Enhance authentication flow with redirect handling ([#54](https://github.com/Whbbit1999/shadcn-vue-admin/pull/54))
+- Add pagination constants and integrate into data table components ([#56](https://github.com/Whbbit1999/shadcn-vue-admin/pull/56))
+- Enhance talk footer with dropdown menu and improved input group layout ([b29a41a](https://github.com/Whbbit1999/shadcn-vue-admin/commit/b29a41a))
+
+### 🩹 Fixes
+
+- When the sidebar is collapsed, the user is redirected to another page, and the collapsed state is lost. #57 ([#58](https://github.com/Whbbit1999/shadcn-vue-admin/pull/58), [#57](https://github.com/Whbbit1999/shadcn-vue-admin/issues/57))
+- Update pagination handling for server-side pagination support ([d190ae0](https://github.com/Whbbit1999/shadcn-vue-admin/commit/d190ae0))
+
+### 💅 Refactors
+
+- Pressing command + k or ctrl + k brings up the command-menu-panel for faster and more intuitive operation. ([#53](https://github.com/Whbbit1999/shadcn-vue-admin/pull/53))
+
+### 🏡 Chore
+
+- **release:** V0.7.5 ([38fb489](https://github.com/Whbbit1999/shadcn-vue-admin/commit/38fb489))
+
+### ❤️ Contributors
+
+- Whbbit1999 ([@Whbbit1999](https://github.com/Whbbit1999))
+
 ## v0.7.5
 
 [compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.7.4...v0.7.5)
