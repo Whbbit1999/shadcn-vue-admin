@@ -50,5 +50,17 @@
   "i18n-ally.localesPaths": [
     "src/plugins/i18n"
   ],
-  "i18n-ally.keystyle": "flat"
+  "i18n-ally.keystyle": "flat",
+  "cSpell.words": [
+    "formkit",
+    "unovis",
+    "iconify",
+    "unplugin",
+    "tanstack",
+    "Whbbit1999",
+    "autoplay",
+    "reka",
+    "vaul",
+    "persistedstate"
+  ]
 }
