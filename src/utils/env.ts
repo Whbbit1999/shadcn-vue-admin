@@ -23,10 +23,19 @@ const { data: env, error } = EnvSchema.safeParse(import.meta.env)
 
 if (error) {
   console.error('❌ Invalid env')
-  console.error(error.flatten().fieldErrors)
-  toast.error(`Env error: you should check your .env file`, {
-    description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(error, null, 2))),
-  })
+  const flattenError = z.flattenError(error)
+  console.error(flattenError)
+
+  setTimeout(() => {
+    toast.error(`Env error: you should check your .env file`, {
+      description: h(
+        'pre',
+        { class: 'mt-2 rounded-md bg-slate-950 p-4 text-wrap' },
+        h('code', { class: 'text-white' }, JSON.stringify(flattenError, null, 2)),
+      ),
+      duration: 10000,
+    })
+  }, 1000)
 }
 
 export default env!

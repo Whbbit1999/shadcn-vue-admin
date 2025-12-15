@@ -31,7 +31,6 @@ export default defineConfig({
       include: [
         /\.[tj]sx?$/,
         /\.vue$/,
-        /\.md$/,
       ],
       imports: [
         'vue',
