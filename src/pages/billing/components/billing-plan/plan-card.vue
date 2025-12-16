@@ -58,7 +58,3 @@ defineProps<Props>()
     </CardFooter>
   </Card>
 </template>
-
-<style>
-
-</style>

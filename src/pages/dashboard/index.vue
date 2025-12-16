@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { toast } from 'vue-sonner'
 
-import Page from '@/components/global-layout/basic-page.vue'
+import { BasicPage } from '@/components/global-layout'
 import { Button } from '@/components/ui/button'
 
 import OverviewContent from './components/overview-content.vue'
@@ -17,7 +17,7 @@ const activeTab = ref(tabs.value[0].value)
 </script>
 
 <template>
-  <Page
+  <BasicPage
     title="workspace"
     description="workspace description"
     sticky
@@ -46,9 +46,5 @@ const activeTab = ref(tabs.value[0].value)
         <OverviewContent />
       </UiTabsContent>
     </UiTabs>
-  </Page>
+  </BasicPage>
 </template>
-
-<style>
-
-</style>

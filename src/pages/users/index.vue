@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Loader } from 'lucide-vue-next'
 
-import Page from '@/components/global-layout/basic-page.vue'
+import { BasicPage } from '@/components/global-layout'
 
 import { columns } from './components/columns'
 import DataTable from './components/data-table.vue'
@@ -20,7 +20,7 @@ function mockLoading() {
 </script>
 
 <template>
-  <Page
+  <BasicPage
     title="Users"
     description="Users description"
     sticky
@@ -35,5 +35,5 @@ function mockLoading() {
     <div class="overflow-x-auto">
       <DataTable :loading :data="users" :columns="columns" />
     </div>
-  </Page>
+  </BasicPage>
 </template>

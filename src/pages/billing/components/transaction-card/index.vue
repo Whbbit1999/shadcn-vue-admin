@@ -95,7 +95,3 @@ const currentState = computed(() => {
     </div>
   </div>
 </template>
-
-<style>
-
-</style>

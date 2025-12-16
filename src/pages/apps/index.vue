@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { TSort } from '@/components/sort-select/types'
 
-import Page from '@/components/global-layout/basic-page.vue'
+import { BasicPage } from '@/components/global-layout'
 import SortSelect from '@/components/sort-select/index.vue'
 
 import AppCard from './components/app-card.vue'
@@ -50,7 +50,7 @@ watch(appType, (newValue) => {
 </script>
 
 <template>
-  <Page
+  <BasicPage
     title="Apps"
     description="Apps description"
     sticky
@@ -83,7 +83,7 @@ watch(appType, (newValue) => {
         :app="app"
       />
     </main>
-  </Page>
+  </BasicPage>
 </template>
 
 <route lang="yaml">

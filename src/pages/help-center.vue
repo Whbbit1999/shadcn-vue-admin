@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Page from '@/components/global-layout/basic-page.vue'
+import { BasicPage } from '@/components/global-layout'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 
 interface ISocialMediaAccount {
@@ -16,7 +16,7 @@ const socialMediaAccounts = ref<ISocialMediaAccount[]>([
 </script>
 
 <template>
-  <Page
+  <BasicPage
     title="Help Center"
     description="Help Center description"
   >
@@ -39,5 +39,5 @@ const socialMediaAccounts = ref<ISocialMediaAccount[]>([
         </a>
       </li>
     </ul>
-  </Page>
+  </BasicPage>
 </template>

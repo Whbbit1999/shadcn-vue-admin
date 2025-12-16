@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import Page from '@/components/global-layout/basic-page.vue'
+import { BasicPage } from '@/components/global-layout'
 
 import Copy from './components/copy.vue'
 import InlineTip from './components/inline-tip.vue'
@@ -7,7 +7,7 @@ import StatusBadge from './components/status-badge.vue'
 </script>
 
 <template>
-  <Page
+  <BasicPage
     title="SVA Components"
     description="shadcn-vue-admin custom components"
     sticky
@@ -19,5 +19,5 @@ import StatusBadge from './components/status-badge.vue'
 
       <InlineTip />
     </div>
-  </Page>
+  </BasicPage>
 </template>

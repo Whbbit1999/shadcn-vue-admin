@@ -139,5 +139,3 @@ const plans = computed<Plan[]>(() => [
     </div>
   </div>
 </template>
-
-<style></style>
