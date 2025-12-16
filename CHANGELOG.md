@@ -1,5 +1,27 @@
 # Changelog
 
+## v0.7.7
+
+[compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.7.6...v0.7.7)
+
+### 🩹 Fixes
+
+- Unify routing metadata format and adjust YAML indentation ([#59](https://github.com/Whbbit1999/shadcn-vue-admin/pull/59))
+- Update VSCode extensions and settings for improved spell checking and add package manager version update ([86188e7](https://github.com/Whbbit1999/shadcn-vue-admin/commit/86188e7))
+- Update environment error handling and toast notification delay; remove markdown support from Vite config ([9071161](https://github.com/Whbbit1999/shadcn-vue-admin/commit/9071161))
+
+### 💅 Refactors
+
+- Refactor layout components and improve sidebar navigation ([#60](https://github.com/Whbbit1999/shadcn-vue-admin/pull/60))
+
+### 🏡 Chore
+
+- **release:** V0.7.6 ([e5a53ce](https://github.com/Whbbit1999/shadcn-vue-admin/commit/e5a53ce))
+
+### ❤️ Contributors
+
+- Whbbit1999 ([@Whbbit1999](https://github.com/Whbbit1999))
+
 ## v0.7.6
 
 [compare changes](https://github.com/Whbbit1999/shadcn-vue-admin/compare/v0.7.5...v0.7.6)
