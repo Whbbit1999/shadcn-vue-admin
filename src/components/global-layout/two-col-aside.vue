@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { ChevronsUpDownIcon } from 'lucide-vue-next'
 
-import type { TowColAsideNavItem } from './types'
+import type { TwoColAsideNavItem } from './types'
 
 const props = defineProps<{
-  nav: TowColAsideNavItem[]
+  nav: TwoColAsideNavItem[]
 }>()
 
 const route = useRoute()

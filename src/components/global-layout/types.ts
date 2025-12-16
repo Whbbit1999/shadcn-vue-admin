@@ -6,7 +6,7 @@ export interface LayoutHeaderProps {
   sticky?: boolean
 }
 
-export interface TowColAsideNavItem {
+export interface TwoColAsideNavItem {
   title: string
   url: string
   icon?: Component
