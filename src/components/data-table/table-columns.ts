@@ -29,9 +29,9 @@ export const RadioSelectColumn: ColumnDef<any> = {
     checked: row.getIsSelected(),
     onClick: (event: MouseEvent) => {
       event.stopPropagation()
-      // 取消所有行的选择
+      // cancel selection of all rows
       table.toggleAllRowsSelected(false)
-      // 选择当前行
+      // select the current row
       row.toggleSelected(true)
     },
   }),
