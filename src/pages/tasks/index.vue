@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Page from '@/components/global-layout/basic-page.vue'
+import { BasicPage } from '@/components/global-layout'
 
 import { columns } from './components/columns'
 import DataTable from './components/data-table.vue'
@@ -9,7 +9,7 @@ import tasks from './data/tasks.json'
 </script>
 
 <template>
-  <Page
+  <BasicPage
     title="Tasks"
     description="Tasks description"
     sticky
@@ -21,5 +21,5 @@ import tasks from './data/tasks.json'
     <div class="overflow-x-auto">
       <DataTable :data="tasks" :columns="columns" />
     </div>
-  </Page>
+  </BasicPage>
 </template>

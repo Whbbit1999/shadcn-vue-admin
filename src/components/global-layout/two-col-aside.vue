@@ -1,20 +1,23 @@
 <script setup lang="ts">
 import { ChevronsUpDownIcon } from 'lucide-vue-next'
 
-import { useSidebar } from '@/composables/use-sidebar'
+import type { TwoColAsideNavItem } from './types'
+
+const props = defineProps<{
+  nav: TwoColAsideNavItem[]
+}>()
 
 const route = useRoute()
 const currentPath = computed(() => route.path)
 const activeClass = 'text-primary font-semibold bg-primary/5'
 
-const { settingsNavItems } = useSidebar()
-const currentLink = computed(() => settingsNavItems.find(link => link.url === currentPath.value))
+const currentLink = computed(() => props.nav.find(link => link.url === currentPath.value))
 </script>
 
 <template>
   <nav class="flex flex-col gap-2">
     <router-link
-      v-for="link in settingsNavItems" :key="link.url"
+      v-for="link in props.nav" :key="link.url"
       :to="link.url"
       class="items-center hidden px-2 py-1 rounded-md lg:flex hover:bg-primary/5"
       :class="link.url === currentPath ? activeClass : ''"
@@ -33,7 +36,7 @@ const currentLink = computed(() => settingsNavItems.find(link => link.url === cu
       </UiDropdownMenuTrigger>
       <UiDropdownMenuContent class="w-48" align="start">
         <UiDropdownMenuItem
-          v-for="link in settingsNavItems" :key="link.url"
+          v-for="link in props.nav" :key="link.url"
           @click="$router.push(link.url)"
         >
           <component :is="link.icon" class="size-4 mr-1" />

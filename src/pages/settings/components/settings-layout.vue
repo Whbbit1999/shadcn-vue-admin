@@ -1,21 +1,20 @@
 <script setup lang="ts">
-import Page from '@/components/global-layout/basic-page.vue'
-import TwoColLayout from '@/components/global-layout/two-col.vue'
+import { BasicPage, TwoColAside, TwoColLayout } from '@/components/global-layout'
 
-import SettingsAside from './settings-aside.vue'
+const { settingsNavItems } = useSidebar()
 </script>
 
 <template>
-  <Page
+  <BasicPage
     title="Settings"
     description="Manage your store settings."
   >
     <TwoColLayout>
       <template #aside>
-        <SettingsAside />
+        <TwoColAside :nav="settingsNavItems" />
       </template>
 
       <slot />
     </TwoColLayout>
-  </Page>
+  </BasicPage>
 </template>

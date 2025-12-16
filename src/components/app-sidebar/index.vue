@@ -22,5 +22,3 @@ import TeamSwitcher from './team-switcher.vue'
     <UiSidebarRail />
   </UiSidebar>
 </template>
-
-<style></style>
