@@ -1,15 +1,19 @@
 <script setup lang="ts">
-defineOptions({
-  name: 'IndexPage',
-})
+import { useRouter } from 'vue-router'
+
+import Loading from '@/components/loading.vue'
+
+const router = useRouter()
+router.push({ name: '/dashboard/' })
 </script>
 
 <template>
-  <div />
+  <div class="flex items-center justify-center w-screen h-screen">
+    <Loading />
+  </div>
 </template>
 
 <route lang="yaml">
-redirect: /dashboard
 meta:
   layout: false
 </route>
