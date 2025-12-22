@@ -77,6 +77,7 @@ declare global {
   const useRouter: typeof import('vue-router').useRouter
   const useSidebar: typeof import('../composables/use-sidebar').useSidebar
   const useSlots: typeof import('vue').useSlots
+  const useSystemTheme: typeof import('../composables/use-system-theme').useSystemTheme
   const useTemplateRef: typeof import('vue').useTemplateRef
   const useThemeConfig: typeof import('../composables/use-theme-config')['useThemeConfig']
   const useThemeStore: typeof import('../stores/theme').useThemeStore

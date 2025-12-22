@@ -1,19 +1,9 @@
 <script setup lang="ts">
-import { storeToRefs } from 'pinia'
-
 import Loading from '@/components/loading.vue'
 import { Toaster } from '@/components/ui/sonner'
-import { THEMES } from '@/constants/themes'
-import { useThemeStore } from '@/stores/theme'
+import { useSystemTheme } from '@/composables/use-system-theme'
 
-const themeStore = useThemeStore()
-const { theme: t, radius } = storeToRefs(themeStore)
-
-watchEffect(() => {
-  document.documentElement.classList.remove(...THEMES.map(theme => `theme-${theme}`))
-  document.documentElement.classList.add(`theme-${t.value}`)
-  document.documentElement.style.setProperty('--radius', `${radius.value}rem`)
-})
+useSystemTheme()
 </script>
 
 <template>
