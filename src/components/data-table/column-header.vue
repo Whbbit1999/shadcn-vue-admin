@@ -2,6 +2,7 @@
 import type { Column } from '@tanstack/vue-table'
 
 import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon, ChevronsUpDownIcon, EyeOffIcon, PinIcon, PinOffIcon } from 'lucide-vue-next'
+import { computed } from 'vue'
 
 import { cn } from '@/lib/utils'
 
@@ -32,15 +33,15 @@ export default {
           class="-ml-3 h-8 data-[state=open]:bg-accent"
         >
           <template v-if="canPinned">
-            <PinIcon v-if="props.column.getIsPinned()" class="size-4 ml-2 text-primary" />
+            <PinIcon v-if="props.column.getIsPinned()" class="ml-2 size-4 text-primary" />
           </template>
 
           <span>{{ title }}</span>
 
           <template v-if="canSorted">
-            <ArrowDownIcon v-if="props.column.getIsSorted() === 'desc'" class="size-4 ml-2" />
-            <ArrowUpIcon v-else-if="props.column.getIsSorted() === 'asc'" class="size-4 ml-2" />
-            <ChevronsUpDownIcon v-else class="size-4 ml-2" />
+            <ArrowDownIcon v-if="props.column.getIsSorted() === 'desc'" class="ml-2 size-4" />
+            <ArrowUpIcon v-else-if="props.column.getIsSorted() === 'asc'" class="ml-2 size-4" />
+            <ChevronsUpDownIcon v-else class="ml-2 size-4" />
           </template>
         </UiButton>
       </UiDropdownMenuTrigger>
