@@ -56,9 +56,9 @@ export default {
             <ArrowDownIcon class="mr-2 size-4 text-muted-foreground/70" />
             Desc
           </UiDropdownMenuItem>
-          <UiDropdownMenuItem @click="props.column.toggleSorting(undefined)">
+          <UiDropdownMenuItem @click="props.column.clearSorting()">
             <ChevronsUpDownIcon class="mr-2 size-4 text-muted-foreground/70" />
-            Remove Sort
+            Clear Sorting
           </UiDropdownMenuItem>
           <UiDropdownMenuSeparator />
         </template>
