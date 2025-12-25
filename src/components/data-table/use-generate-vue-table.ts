@@ -1,4 +1,4 @@
-import type { ColumnFiltersState, PaginationState, SortingState, TableOptionsWithReactiveData, VisibilityState } from '@tanstack/vue-table'
+import type { ColumnFiltersState, ColumnPinningState, PaginationState, SortingState, TableOptionsWithReactiveData, VisibilityState } from '@tanstack/vue-table'
 
 import { getCoreRowModel, getFacetedRowModel, getFacetedUniqueValues, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useVueTable } from '@tanstack/vue-table'
 
@@ -11,6 +11,7 @@ export function generateVueTable<T>(props: DataTableProps<T>) {
   const sorting = ref<SortingState>([])
   const columnFilters = ref<ColumnFiltersState>([])
   const columnVisibility = ref<VisibilityState>({})
+  const columnPinning = ref<ColumnPinningState>({ left: [], right: [] })
   const rowSelection = ref({})
   const pagination = ref<PaginationState>({
     pageIndex: 0,
@@ -47,6 +48,7 @@ export function generateVueTable<T>(props: DataTableProps<T>) {
       get sorting() { return sorting.value },
       get columnFilters() { return columnFilters.value },
       get columnVisibility() { return columnVisibility.value },
+      get columnPinning() { return columnPinning.value },
       get rowSelection() { return rowSelection.value },
       get pagination() {
         if (useServerPagination) {
@@ -62,6 +64,7 @@ export function generateVueTable<T>(props: DataTableProps<T>) {
     onSortingChange: updaterOrValue => valueUpdater(updaterOrValue, sorting),
     onColumnFiltersChange: updaterOrValue => valueUpdater(updaterOrValue, columnFilters),
     onColumnVisibilityChange: updaterOrValue => valueUpdater(updaterOrValue, columnVisibility),
+    onColumnPinningChange: updaterOrValue => valueUpdater(updaterOrValue, columnPinning),
     onRowSelectionChange: updaterOrValue => valueUpdater(updaterOrValue, rowSelection),
     onPaginationChange: updaterOrValue => valueUpdater(updaterOrValue, pagination),
     getCoreRowModel: getCoreRowModel(),

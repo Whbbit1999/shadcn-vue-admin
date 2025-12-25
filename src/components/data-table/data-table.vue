@@ -1,5 +1,6 @@
 <script setup lang="ts" generic="T">
-import type { Table as VueTable } from '@tanstack/vue-table'
+import type { Column, Table as VueTable } from '@tanstack/vue-table'
+import type { CSSProperties } from 'vue'
 
 import { FlexRender } from '@tanstack/vue-table'
 
@@ -14,6 +15,17 @@ import NoResultFound from '../no-result-found.vue'
 defineProps<DataTableProps<T> & {
   table: VueTable<T>
 }>()
+
+function getCommonPinningStyles(column: Column<T>): CSSProperties {
+  const isPinned = column.getIsPinned()
+  return {
+    left: isPinned === 'left' ? `${column.getStart('left')}px` : undefined,
+    right: isPinned === 'right' ? `${column.getAfter('right')}px` : undefined,
+    position: isPinned ? 'sticky' : 'relative',
+    width: `${column.getSize()}px`,
+    zIndex: isPinned ? 1 : 0,
+  }
+}
 </script>
 
 <template>
@@ -24,7 +36,12 @@ defineProps<DataTableProps<T> & {
       <Table>
         <TableHeader>
           <TableRow v-for="headerGroup in table.getHeaderGroups()" :key="headerGroup.id">
-            <TableHead v-for="header in headerGroup.headers" :key="header.id">
+            <TableHead
+              v-for="header in headerGroup.headers"
+              :key="header.id"
+              :style="getCommonPinningStyles(header.column)"
+              :class="{ 'bg-background': header.column.getIsPinned() }"
+            >
               <FlexRender v-if="!header.isPlaceholder" :render="header.column.columnDef.header" :props="header.getContext()" />
             </TableHead>
           </TableRow>
@@ -36,7 +53,12 @@ defineProps<DataTableProps<T> & {
               :key="row.id"
               :data-state="row.getIsSelected() && 'selected'"
             >
-              <TableCell v-for="cell in row.getVisibleCells()" :key="cell.id">
+              <TableCell
+                v-for="cell in row.getVisibleCells()"
+                :key="cell.id"
+                :style="getCommonPinningStyles(cell.column)"
+                :class="{ 'bg-background': cell.column.getIsPinned() }"
+              >
                 <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
               </TableCell>
             </TableRow>
