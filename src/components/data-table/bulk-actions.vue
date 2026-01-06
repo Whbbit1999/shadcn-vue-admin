@@ -15,7 +15,6 @@ interface BulkActionsProps<T> {
 
 const { table, entityName } = defineProps<BulkActionsProps<T>>()
 
-const toolbarRef = useTemplateRef<HTMLDivElement>('toolbarRef')
 const selectedRows = computed(() => table.getSelectedRowModel().rows)
 const selectedCount = computed(() => selectedRows.value.length || 0)
 
@@ -26,7 +25,6 @@ function handleClearSelection() {
 
 <template>
   <div
-    ref="toolbarRef"
     :class="cn(
       'fixed bottom-6 left-1/2 z-50 -translate-x-1/2 rounded-xl',
       'transition-all delay-100 duration-300 ease-out hover:scale-105',

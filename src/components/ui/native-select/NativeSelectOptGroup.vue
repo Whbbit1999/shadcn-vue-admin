@@ -6,7 +6,7 @@
 </script>
 
 <template>
-  <optgroup data-slot="native-select-optgroup">
+  <optgroup>
     <slot />
   </optgroup>
 </template>
