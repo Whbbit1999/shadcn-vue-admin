@@ -9,7 +9,7 @@ jobs:
   release:
     uses: sxzz/workflows/.github/workflows/release.yml@v1
     with:
-      publish: true
+      publish: false
     permissions:
       contents: write
       id-token: write
