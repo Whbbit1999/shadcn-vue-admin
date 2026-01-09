@@ -71,7 +71,7 @@
     "@iconify-json/simple-icons": "^1.2.65",
     "@iconify/vue": "^5.0.0",
     "@tanstack/eslint-plugin-query": "^5.91.2",
-    "@tanstack/vue-query-devtools": "^5.91.0",
+    "@tanstack/vue-query-devtools": "^6.0.0",
     "@types/node": "^24.10.4",
     "@types/nprogress": "^0.2.3",
     "@vitejs/plugin-vue": "^6.0.3",
