@@ -25,3 +25,5 @@ export const profileValidator = z.object({
     )
     .optional(),
 })
+
+export type ProfileValidator = z.infer<typeof profileValidator>

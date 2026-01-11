@@ -24,3 +24,5 @@ export const notificationsValidator = z.object({
   security_emails: z
     .boolean(),
 })
+
+export type NotificationsValidator = z.infer<typeof notificationsValidator>

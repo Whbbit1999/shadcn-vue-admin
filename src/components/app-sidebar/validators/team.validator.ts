@@ -13,3 +13,5 @@ export const teamAddValidator = z.object({
     .string()
     .optional(),
 })
+
+export type TeamAddValidator = z.infer<typeof teamAddValidator>

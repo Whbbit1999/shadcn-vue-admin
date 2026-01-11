@@ -2,7 +2,6 @@
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
 import { toast } from 'vue-sonner'
-import { z } from 'zod'
 
 import { Button } from '@/components/ui/button'
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
@@ -10,8 +9,9 @@ import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
 import type { User } from '../data/schema'
+import type { UserValidator } from '../validators/user.validator'
 
-import { userRoleSchema, userStatusSchema } from '../data/schema'
+import { userValidator } from '../validators/user.validator'
 
 const { user } = defineProps<{
   user?: User
@@ -24,21 +24,20 @@ const emits = defineEmits<{
 const roles = ['superadmin', 'admin', 'cashier', 'manager'] as const
 const status = ['active', 'inactive', 'invited', 'suspended'] as const
 
-const formSchema = z.object({
-  id: z.string().optional(),
-  firstName: z.string().min(1).default(user?.firstName || ''),
-  lastName: z.string().min(1).default(user?.lastName || ''),
-  username: z.string().min(1).default(user?.username || ''),
-  email: z.email().min(1).default(user?.email || ''),
-  phoneNumber: z.string().min(1).default(user?.phoneNumber || ''),
-  status: userStatusSchema.default(user?.status || 'active'),
-  role: userRoleSchema.default(user?.role || 'cashier'),
+const initialValues = reactive<UserValidator>({
+  firstName: user?.firstName || '',
+  lastName: user?.lastName || '',
+  username: user?.username || '',
+  email: user?.email || '',
+  phoneNumber: user?.phoneNumber || '',
+  status: user?.status || 'active',
+  role: user?.role || 'cashier',
 })
 
-const userInviteFormSchema = toTypedSchema(formSchema)
+const userInviteFormSchema = toTypedSchema(userValidator)
 const { handleSubmit } = useForm({
   validationSchema: userInviteFormSchema,
-  initialValues: {},
+  initialValues,
 })
 
 const onSubmit = handleSubmit((values) => {

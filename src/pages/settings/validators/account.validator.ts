@@ -20,3 +20,5 @@ export const accountValidator = z.object({
     .string()
     .min(1, 'Please select a language.'),
 })
+
+export type AccountValidator = z.infer<typeof accountValidator>

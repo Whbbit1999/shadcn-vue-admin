@@ -10,3 +10,5 @@ export const appearanceValidator = z.object({
       error: 'Please select a font.',
     }),
 })
+
+export type AppearanceValidator = z.infer<typeof appearanceValidator>

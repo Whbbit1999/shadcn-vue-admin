@@ -7,3 +7,5 @@ export const displayValidator = z.object({
       error: 'You have to select at least one item.',
     }),
 })
+
+export type DisplayValidator = z.infer<typeof displayValidator>

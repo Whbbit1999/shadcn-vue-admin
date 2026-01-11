@@ -2,28 +2,32 @@
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
 import { toast } from 'vue-sonner'
-import { z } from 'zod'
 
 import { FormField } from '@/components/ui/form'
 
 import type { Task } from '../data/schema'
+import type { TaskValidator } from '../validators/task.validator'
 
 import { labels, priorities, statuses } from '../data/data'
+import { taskValidator } from '../validators/task.validator'
 
 const props = defineProps<{
   task: Task | null
 }>()
 const emits = defineEmits(['close'])
 
-const formSchema = toTypedSchema(z.object({
-  title: z.string().min(2).max(50).default(props.task?.title ?? ''),
-  status: z.string().default(props.task?.status ?? ''),
-  label: z.string().default(props.task?.label ?? ''),
-  priority: z.string().default(props.task?.priority ?? ''),
-}))
+const formSchema = toTypedSchema(taskValidator)
+
+const initialValues = reactive<TaskValidator>({
+  title: props.task ? props.task.title : '',
+  status: props.task ? props.task.status : 'backlog',
+  label: props.task ? props.task.label : 'feature',
+  priority: props.task ? props.task.priority : 'medium',
+})
 
 const { isFieldDirty, handleSubmit } = useForm({
   validationSchema: formSchema,
+  initialValues,
 })
 const onSubmit = handleSubmit((values) => {
   toast('You submitted the following values:', {

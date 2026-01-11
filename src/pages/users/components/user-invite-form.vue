@@ -3,7 +3,6 @@ import { toTypedSchema } from '@vee-validate/zod'
 import { Send } from 'lucide-vue-next'
 import { useForm } from 'vee-validate'
 import { toast } from 'vue-sonner'
-import { z } from 'zod'
 
 import Button from '@/components/ui/button/Button.vue'
 import { FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
@@ -11,18 +10,21 @@ import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 
-const schema = z.object({
-  email: z.email(),
-  role: z.enum(['superadmin', 'admin', 'cashier', 'manager']),
-  description: z.string().optional(),
-})
+import type { UserInviteValidator } from '../validators/user-invite.validator'
+
+import { userInviteValidator } from '../validators/user-invite.validator'
 
 const roles = ['superadmin', 'admin', 'cashier', 'manager'] as const
 
-const userInviteFormSchema = toTypedSchema(schema)
+const initialValues = reactive<UserInviteValidator>({
+  email: '',
+  role: 'cashier',
+  description: '',
+})
+const userInviteFormSchema = toTypedSchema(userInviteValidator)
 const { handleSubmit } = useForm({
   validationSchema: userInviteFormSchema,
-  initialValues: {},
+  initialValues,
 })
 
 const onSubmit = handleSubmit((values) => {
