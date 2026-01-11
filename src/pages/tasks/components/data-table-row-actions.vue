@@ -4,12 +4,12 @@ import type { Component } from 'vue'
 
 import { Ellipsis, FilePenLine, Trash2 } from 'lucide-vue-next'
 
+import { useModal } from '@/composables/use-modal'
+
 import type { Task } from '../data/schema'
 
 import { labels } from '../data/data'
 import { taskSchema } from '../data/schema'
-import TaskDelete from './task-delete.vue'
-import TaskResourceDialog from './task-resource-dialog.vue'
 
 const props = defineProps<DataTableRowActionsProps>()
 
@@ -26,22 +26,23 @@ type TCommand = 'edit' | 'create' | 'delete'
 function handleSelect(command: TCommand) {
   switch (command) {
     case 'edit':
-      showComponent.value = TaskResourceDialog
+      showComponent.value = defineAsyncComponent(() => import('./task-resource-dialog.vue'))
       break
     case 'create':
-      showComponent.value = TaskResourceDialog
+      showComponent.value = defineAsyncComponent(() => import('./task-resource-dialog.vue'))
       break
     case 'delete':
-      showComponent.value = TaskDelete
+      showComponent.value = defineAsyncComponent(() => import('./task-delete.vue'))
       break
   }
 }
 
 const isOpen = ref(false)
+const { Modal, contentClass } = useModal()
 </script>
 
 <template>
-  <UiDialog v-model:open="isOpen">
+  <component :is="Modal.Root" v-model:open="isOpen">
     <UiDropdownMenu>
       <UiDropdownMenuTrigger as-child>
         <UiButton
@@ -53,12 +54,12 @@ const isOpen = ref(false)
         </UiButton>
       </UiDropdownMenuTrigger>
       <UiDropdownMenuContent align="end" class="w-[160px]">
-        <UiDialogTrigger as-child>
+        <component :is="Modal.Trigger" as-child>
           <UiDropdownMenuItem @select.stop="handleSelect('edit')">
             <span>Edit</span>
             <UiDropdownMenuShortcut> <FilePenLine class="size-4" /> </UiDropdownMenuShortcut>
           </UiDropdownMenuItem>
-        </UiDialogTrigger>
+        </component>
 
         <UiDropdownMenuItem disabled>
           Make a copy
@@ -82,17 +83,17 @@ const isOpen = ref(false)
 
         <UiDropdownMenuSeparator />
 
-        <UiDialogTrigger as-child>
+        <component :is="Modal.Trigger" as-child>
           <UiDropdownMenuItem @select.stop="handleSelect('delete')">
             <span>Delete</span>
             <UiDropdownMenuShortcut> <Trash2 class="size-4" /> </UiDropdownMenuShortcut>
           </UiDropdownMenuItem>
-        </UiDialogTrigger>
+        </component>
       </UiDropdownMenuContent>
     </UiDropdownMenu>
 
-    <UiDialogContent>
+    <component :is="Modal.Content" :class="contentClass">
       <component :is="showComponent" :task="task" @close="isOpen = false" />
-    </UiDialogContent>
-  </UiDialog>
+    </component>
+  </component>
 </template>

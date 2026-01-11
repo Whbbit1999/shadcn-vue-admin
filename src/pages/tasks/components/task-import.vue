@@ -2,6 +2,8 @@
 import { Download } from 'lucide-vue-next'
 import { toast } from 'vue-sonner'
 
+import { useModal } from '@/composables/use-modal'
+
 const isOpen = ref(false)
 const file = ref()
 const error = ref()
@@ -26,38 +28,43 @@ function onSubmit() {
   })
   isOpen.value = false
 }
+
+const { Modal, contentClass } = useModal()
 </script>
 
 <template>
-  <UiDialog v-model:open="isOpen">
-    <UiDialogTrigger as-child>
+  <component :is="Modal.Root" v-model:open="isOpen">
+    <component :is="Modal.Trigger" as-child>
       <UiButton variant="outline">
         Import
         <Download />
       </UiButton>
-    </UiDialogTrigger>
+    </component>
 
-    <UiDialogContent>
-      <UiDialogHeader>
-        <UiDialogTitle>Import Tasks</UiDialogTitle>
-        <UiDialogDescription>
+    <component :is="Modal.Content" :class="contentClass">
+      <component :is="Modal.Header">
+        <component :is="Modal.Title">
+          Import Tasks
+        </component>
+        <component :is="Modal.Description">
           Import tasks quickly from a CSV file.
-        </UiDialogDescription>
-      </UiDialogHeader>
+        </component>
+      </component>
 
       <div class="grid w-full max-w-sm items-center gap-1.5">
         <UiLabel>File</UiLabel>
         <UiInput id="file" v-model="file" type="file" />
         <span v-if="error" class="text-destructive">{{ error }}</span>
       </div>
-      <UiDialogFooter>
+
+      <component :is="Modal.Footer">
         <UiButton variant="secondary" @click="isOpen = false">
           Cancel
         </UiButton>
         <UiButton @click="onSubmit">
           Import
         </UiButton>
-      </UiDialogFooter>
-    </UiDialogContent>
-  </UiDialog>
+      </component>
+    </component>
+  </component>
 </template>

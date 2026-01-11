@@ -4,6 +4,8 @@ import type { Component } from 'vue'
 
 import { Ellipsis } from 'lucide-vue-next'
 
+import { useModal } from '@/composables/use-modal'
+
 import type { User } from '../data/schema'
 
 interface DataTableRowActionsProps {
@@ -25,10 +27,11 @@ function handleSelect(command: TCommand) {
       break
   }
 }
+const { contentClass, Modal } = useModal()
 </script>
 
 <template>
-  <UiDialog v-model:open="isOpen">
+  <component :is="Modal.Root" v-model:open="isOpen">
     <UiDropdownMenu>
       <UiDropdownMenuTrigger as-child>
         <UiButton
@@ -40,23 +43,23 @@ function handleSelect(command: TCommand) {
         </UiButton>
       </UiDropdownMenuTrigger>
       <UiDropdownMenuContent align="end" class="w-[160px]">
-        <UiDialogTrigger as-child>
+        <component :is="Modal.Trigger" as-child>
           <UiDropdownMenuItem @click.stop="handleSelect('edit')">
             Edit
           </UiDropdownMenuItem>
-        </UiDialogTrigger>
+        </component>
 
-        <UiDialogTrigger as-child>
+        <component :is="Modal.Trigger" as-child>
           <UiDropdownMenuItem @click.stop="handleSelect('delete')">
             Delete
             <UiDropdownMenuShortcut>⌘⌫</UiDropdownMenuShortcut>
           </UiDropdownMenuItem>
-        </UiDialogTrigger>
+        </component>
       </UiDropdownMenuContent>
     </UiDropdownMenu>
 
-    <UiDialogContent class="max-h-[500px] overflow-y-auto">
+    <component :is="Modal.Content" :class="contentClass">
       <component :is="showComponent" :user="user" @close="isOpen = false" />
-    </UiDialogContent>
-  </UiDialog>
+    </component>
+  </component>
 </template>

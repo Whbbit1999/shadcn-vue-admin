@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useModal } from '@/composables/use-modal'
+
 import type { User } from '../data/schema'
 
 import UserForm from './user-form.vue'
@@ -11,17 +13,20 @@ defineEmits(['close'])
 const user = computed(() => props.user)
 const title = computed(() => user.value?.id ? `Edit User` : 'New User')
 const description = computed(() => user.value?.id ? `Edit user ${user.value.username}` : 'Create new user')
+const { Modal } = useModal()
 </script>
 
 <template>
-  <UiDialogHeader>
-    <UiDialogTitle>
-      {{ title }}
-    </UiDialogTitle>
-    <UiDialogDescription>
-      {{ description }}
-    </UiDialogDescription>
-  </UiDialogHeader>
+  <div>
+    <component :is="Modal.Header">
+      <component :is="Modal.Title">
+        {{ title }}
+      </component>
+      <component :is="Modal.Description">
+        {{ description }}
+      </component>
+    </component>
 
-  <UserForm class="mt-2" :user="user" @close="$emit('close')" />
+    <UserForm :user="user" @close="$emit('close')" />
+  </div>
 </template>

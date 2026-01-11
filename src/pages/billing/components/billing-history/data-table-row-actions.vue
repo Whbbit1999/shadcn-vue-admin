@@ -4,9 +4,10 @@ import type { Component } from 'vue'
 
 import { Ellipsis } from 'lucide-vue-next'
 
+import { useModal } from '@/composables/use-modal'
+
 import type { Billing } from './data/schema'
 
-import BillingDetail from './billing-detail.vue'
 import { billingSchema } from './data/schema'
 
 interface DataTableRowActionsProps {
@@ -18,13 +19,14 @@ const billing = computed(() => billingSchema.parse(props.row.original))
 const showComponent = shallowRef<Component | null>(null)
 function handleSelect(command: string) {
   if (command === 'detail') {
-    showComponent.value = BillingDetail
+    showComponent.value = defineAsyncComponent(() => import('./billing-detail.vue'))
   }
 }
+const { Modal, contentClass } = useModal()
 </script>
 
 <template>
-  <UiDialog>
+  <component :is="Modal.Root">
     <UiDropdownMenu :modal="false">
       <UiDropdownMenuTrigger as-child>
         <UiButton
@@ -37,16 +39,16 @@ function handleSelect(command: string) {
       </UiDropdownMenuTrigger>
       <UiDropdownMenuContent>
         <UiDropdownMenuGroup>
-          <UiDialogTrigger as-child>
+          <component :is="Modal.Trigger" as-child>
             <UiDropdownMenuItem @select.stop="handleSelect('detail')">
               <span>Detail</span>
             </UiDropdownMenuItem>
-          </UiDialogTrigger>
+          </component>
         </UiDropdownMenuGroup>
       </UiDropdownMenuContent>
     </UiDropdownMenu>
-    <UiDialogContent>
+    <component :is="Modal.Content" :class="contentClass">
       <component :is="showComponent" :billing="billing" />
-    </UiDialogContent>
-  </UiDialog>
+    </component>
+  </component>
 </template>

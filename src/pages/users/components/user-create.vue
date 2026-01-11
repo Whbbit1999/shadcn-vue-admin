@@ -1,22 +1,27 @@
 <script lang="ts" setup>
 import { UserRoundPlus } from 'lucide-vue-next'
 
+import { useModal } from '@/composables/use-modal'
+
 import UserResource from './user-resource.vue'
 
 const isOpen = ref(false)
+const { Modal, contentClass } = useModal()
 </script>
 
 <template>
-  <UiDialog v-model:open="isOpen">
-    <UiDialogTrigger as-child>
+  <component :is="Modal.Root" v-model:open="isOpen">
+    <component :is="Modal.Trigger" as-child>
       <UiButton>
         <UserRoundPlus />
         Create User
       </UiButton>
-    </UiDialogTrigger>
+    </component>
 
-    <UiDialogContent class="max-h-[500px] overflow-y-auto">
+    <component
+      :is="Modal.Content" :class="contentClass"
+    >
       <UserResource @close="isOpen = false" />
-    </UiDialogContent>
-  </UiDialog>
+    </component>
+  </component>
 </template>

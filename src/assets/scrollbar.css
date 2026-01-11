@@ -3,11 +3,11 @@
 }
 
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 
 ::-webkit-scrollbar:horizontal {
-  height: 10px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {

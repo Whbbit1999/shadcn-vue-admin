@@ -46,7 +46,7 @@ const plans = [
 
 <template>
   <div class="p-2 rounded-md bg-secondary">
-    <div class="grid grid-cols-1 gap-2 md:grid-cols-2 lg:grid-cols-3">
+    <div class="grid grid-cols-1 gap-2 md:grid-cols-1 lg:grid-cols-3">
       <PlanCard
         v-for="(plan, index) in plans"
         :key="index"
