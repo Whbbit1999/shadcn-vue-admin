@@ -34,9 +34,9 @@ const initialValues = reactive<UserValidator>({
   role: user?.role || 'cashier',
 })
 
-const userInviteFormSchema = toTypedSchema(userValidator)
+const userFormSchema = toTypedSchema(userValidator)
 const { handleSubmit } = useForm({
-  validationSchema: userInviteFormSchema,
+  validationSchema: userFormSchema,
   initialValues,
 })
 
