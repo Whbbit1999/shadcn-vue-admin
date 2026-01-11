@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { toast } from 'vue-sonner'
 
+import { useModal } from '@/composables/use-modal'
+
 import type { Task } from '../data/schema'
 
 const props = defineProps<{
@@ -12,30 +14,32 @@ function handleRemove() {
     description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(props.task, null, 2))),
   })
 }
+const { Modal } = useModal()
 </script>
 
 <template>
   <div>
-    <UiDialogTitle>
-      <UiDialogTitle>
+    <component :is="Modal.Header">
+      <component :is="Modal.Title">
         Delete this task: {{ task.id }} ?
-      </UiDialogTitle>
-      <UiDialogDescription class="mt-2 font-medium">
+      </component>
+      <component :is="Modal.Description">
         You are about to delete a task with the ID {{ task.id }}.This action cannot be undone.
-      </UiDialogDescription>
-    </UiDialogTitle>
-    <UiDialogFooter>
-      <UiDialogClose as-child>
+      </component>
+    </component>
+
+    <component :is="Modal.Footer">
+      <component :is="Modal.Close" as-child>
         <UiButton variant="outline">
           Cancel
         </UiButton>
-      </UiDialogClose>
+      </component>
 
-      <UiDialogClose as-child>
+      <component :is="Modal.Close" as-child>
         <UiButton variant="destructive" @click="handleRemove">
           Delete
         </UiButton>
-      </UiDialogClose>
-    </UiDialogFooter>
+      </component>
+    </component>
   </div>
 </template>

@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { toast } from 'vue-sonner'
 
+import { useModal } from '@/composables/use-modal'
+
 import type { User } from '../data/schema'
 
 const { user } = defineProps<{
@@ -18,29 +20,34 @@ function handleRemove() {
 
   emits('remove')
 }
+
+const { Modal } = useModal()
 </script>
 
 <template>
   <div>
-    <UiDialogTitle>
-      Delete this user: {{ user.username }} ?
-    </UiDialogTitle>
-    <UiDialogDescription class="mt-2 font-medium">
-      You are about to delete a user with the ID {{ user.id }}.This action cannot be undone.
-    </UiDialogDescription>
+    <component :is="Modal.Header">
+      <component :is="Modal.Title">
+        Delete this user: {{ user.username }} ?
+      </component>
 
-    <UiDialogFooter>
-      <UiDialogClose as-child>
+      <component :is="Modal.Description">
+        You are about to delete a user with the ID {{ user.id }}.This action cannot be undone.
+      </component>
+    </component>
+
+    <component :is="Modal.Footer">
+      <component :is="Modal.Close" as-child>
         <UiButton variant="outline">
           Cancel
         </UiButton>
-      </UiDialogClose>
+      </component>
 
-      <UiDialogClose as-child>
+      <component :is="Modal.Close" as-child>
         <UiButton variant="destructive" @click="handleRemove">
           Delete
         </UiButton>
-      </UiDialogClose>
-    </UiDialogFooter>
+      </component>
+    </component>
   </div>
 </template>

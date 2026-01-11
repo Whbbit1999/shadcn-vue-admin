@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import { useModal } from '@/composables/use-modal'
+
 import type { Task } from '../data/schema'
 
 import TaskForm from './task-form.vue'
@@ -11,18 +13,19 @@ defineEmits(['close'])
 const task = computed(() => props.task)
 const title = computed(() => task.value?.id ? `Edit Task` : 'New Task')
 const description = computed(() => task.value?.id ? `Edit task ${task.value.id}` : 'Create new task')
+const { Modal } = useModal()
 </script>
 
 <template>
   <div>
-    <UiDialogHeader>
-      <UiDialogTitle>
+    <component :is="Modal.Header">
+      <component :is="Modal.Title">
         {{ title }}
-      </UiDialogTitle>
-      <UiDialogDescription>
+      </component>
+      <component :is="Modal.Description">
         {{ description }}
-      </UiDialogDescription>
-    </UiDialogHeader>
+      </component>
+    </component>
     <TaskForm class="mt-2" :task="task" @close="$emit('close')" />
   </div>
 </template>
