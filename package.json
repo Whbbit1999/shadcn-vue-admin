@@ -27,7 +27,7 @@
     "preview": "vite preview",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "release": "npx changelogen@latest --release"
+    "release": "npx bumpp"
   },
   "dependencies": {
     "@formkit/auto-animate": "^0.9.0",
