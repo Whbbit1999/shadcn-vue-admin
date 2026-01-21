@@ -2,11 +2,12 @@
 
 ## Commands
 
-pnpm dev # Start dev server
-pnpm build # Typecheck + build (CI-like sanity check)
-pnpm lint:fix # Auto-fix linting issues
+- `pnpm dev` # Start dev server
+- `pnpm build` # Typecheck + build (CI-like sanity check)
+- `pnpm lint:fix` # Auto-fix linting issues
 
 Run `pnpm lint:fix` after code changes.
+
 If the project has tests configured (e.g. a `test` script), run them as well.
 
 ## Strong Constraints (Required)
