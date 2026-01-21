@@ -24,7 +24,7 @@ export default antfu({
 
   rules: {
     'perfectionist/sort-imports': ['error', {
-      tsconfigRootDir: '.',
+      tsconfig: { rootDir: '.' },
     }],
     'yaml/indent': ['error', 2],
     'jsonc/indent': ['error', 2],
