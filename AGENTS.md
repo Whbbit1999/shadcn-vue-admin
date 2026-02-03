@@ -31,5 +31,5 @@ If the project has tests configured (e.g. a `test` script), run them as well.
 
 ## Further Reading
 
-- `.skills/SYSTEM_KNOWLEDGE_MAP.md`
-- `.skills/testing-strategy.md`
+- `.agents/skills/shadcn-vue-admin/references/SYSTEM_KNOWLEDGE_MAP.md`
+- `.agents/skills/shadcn-vue-admin/references/testing-strategy.md`
