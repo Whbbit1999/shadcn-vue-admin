@@ -96,7 +96,9 @@ jobs:
             -r
 
       - name: Refresh CDN cache (optional)
-        if: secrets.CDN_DOMAIN != ''
+        if: env.CDN_DOMAIN != ''
+        env:
+          CDN_DOMAIN: ${{ secrets.CDN_DOMAIN }}
         run: |
           # Refresh CDN cache for the entire domain
           aliyun cdn RefreshObjectCaches \
