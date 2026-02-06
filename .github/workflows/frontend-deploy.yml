@@ -96,7 +96,7 @@ jobs:
             -r
 
       - name: Refresh CDN cache (optional)
-        if: ${{ secrets.CDN_DOMAIN != '' }}
+        if: secrets.CDN_DOMAIN != ''
         run: |
           # Refresh CDN cache for the entire domain
           aliyun cdn RefreshObjectCaches \
@@ -109,9 +109,16 @@ jobs:
           echo "✅ Frontend deployment successful!"
           echo "📦 Build output: dist/"
           echo "☁️  OSS Bucket: ${{ secrets.OSS_BUCKET_NAME }}"
-          echo "🌐 CDN Domain: ${{ secrets.CDN_DOMAIN || 'Not configured' }}"
-          echo ""
-          echo "Next steps:"
-          echo "1. Access your application at: https://${{ secrets.CDN_DOMAIN || secrets.OSS_BUCKET_NAME }}"
+          if [ -n "${{ secrets.CDN_DOMAIN }}" ]; then
+            echo "🌐 CDN Domain: ${{ secrets.CDN_DOMAIN }}"
+            echo ""
+            echo "Next steps:"
+            echo "1. Access your application at: https://${{ secrets.CDN_DOMAIN }}"
+          else
+            echo "🌐 CDN Domain: Not configured"
+            echo ""
+            echo "Next steps:"
+            echo "1. Access your application via OSS endpoint"
+          fi
           echo "2. Verify the frontend can connect to the backend API"
           echo "3. Test the login functionality"
