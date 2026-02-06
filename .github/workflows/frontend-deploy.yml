@@ -109,14 +109,13 @@ jobs:
           # Sync build directory to OSS bucket using ossutil 2.0
           # --delete: Delete files in OSS that don't exist locally
           # --force: Force overwrite without confirmation
-          # --checksum: Compare using CRC64 for data integrity
-          # --update: Only sync files that are newer or different
+          # --update: Only sync files that are newer at source (compares modification time)
+          # Note: --update, --size-only, --checksum, --ignore-existing are mutually exclusive
           ossutil sync \
             dist/ \
             oss://${{ secrets.OSS_BUCKET_NAME }}/ \
             --delete \
             --force \
-            --checksum \
             --update
 
           echo "✅ Files synced to OSS bucket: ${{ secrets.OSS_BUCKET_NAME }}"
