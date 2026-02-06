@@ -194,6 +194,20 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/raas/': RouteRecordInfo<
+      '/raas/',
+      '/raas',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/raas/dashboard/': RouteRecordInfo<
+      '/raas/dashboard/',
+      '/raas/dashboard',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/settings/': RouteRecordInfo<
       '/settings/',
       '/settings',
@@ -410,6 +424,18 @@ declare module 'vue-router/auto-routes' {
     'src/pages/marketing/hello.vue': {
       routes:
         | '/marketing/hello'
+      views:
+        | never
+    }
+    'src/pages/raas/index.vue': {
+      routes:
+        | '/raas/'
+      views:
+        | never
+    }
+    'src/pages/raas/dashboard/index.vue': {
+      routes:
+        | '/raas/dashboard/'
       views:
         | never
     }

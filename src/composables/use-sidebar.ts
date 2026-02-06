@@ -1,4 +1,4 @@
-import { BadgeHelp, BellDot, Boxes, Bug, Component, CreditCard, LayoutDashboard, ListTodo, Palette, PictureInPicture2, Podcast, Settings, SquareUserRound, User, Users, Wrench } from 'lucide-vue-next'
+import { BadgeHelp, BarChart3, BellDot, Boxes, Bug, Component, CreditCard, LayoutDashboard, ListTodo, Palette, PictureInPicture2, Podcast, Settings, SquareUserRound, User, Users, Wrench } from 'lucide-vue-next'
 
 import type { NavGroup } from '@/components/app-sidebar/types'
 
@@ -16,6 +16,7 @@ export function useSidebar() {
       title: 'General',
       items: [
         { title: 'Dashboard', url: '/dashboard', icon: LayoutDashboard },
+        { title: 'Raas Dashboard', url: '/raas/dashboard', icon: BarChart3 },
         { title: 'Tasks', url: '/tasks', icon: ListTodo },
         { title: 'Apps', url: '/apps', icon: Boxes },
         { title: 'Users', url: '/users', icon: Users },
