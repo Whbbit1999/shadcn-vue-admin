@@ -6,6 +6,8 @@ on:
       - main
     paths:
       - .github/workflows/frontend-deploy.yml
+  workflow_dispatch:
+    branches: [main, test]
 
 env:
   NODE_VERSION: '20'
