@@ -69,8 +69,8 @@ jobs:
             --profile default \
             --mode AK \
             --region ${{ secrets.ALIYUN_REGION }} \
-            --access-key-id ${{ secrets.ALIYUN_ACCESS_KEY_ID }} \
-            --access-key-secret ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+            --access-key-id ${{ secrets.ACR_ACCESS_KEY_ID }} \
+            --access-key-secret ${{ secrets.ACR_ACCESS_KEY_SECRET }}
 
       - name: Upload to OSS
         run: |
@@ -83,8 +83,8 @@ jobs:
           # Configure ossutil
           ossutil config \
             -e ${{ secrets.OSS_ENDPOINT }} \
-            -i ${{ secrets.ALIYUN_ACCESS_KEY_ID }} \
-            -k ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+            -i ${{ secrets.ACR_ACCESS_KEY_ID }} \
+            -k ${{ secrets.ACR_ACCESS_KEY_SECRET }}
 
           # Sync build directory to OSS bucket
           # --delete: Delete files in OSS that don't exist locally
