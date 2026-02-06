@@ -72,30 +72,54 @@ jobs:
             --access-key-id ${{ secrets.ACR_ACCESS_KEY_ID }} \
             --access-key-secret ${{ secrets.ACR_ACCESS_KEY_SECRET }}
 
-      - name: Upload to OSS
+      - name: Install ossutil 2.0
         run: |
-          # Install ossutil
-          wget https://gosspublic.alicdn.com/ossutil/1.7.18/ossutil-v1.7.18-linux-amd64.zip
-          unzip ossutil-v1.7.18-linux-amd64.zip
-          sudo mv ossutil-v1.7.18-linux-amd64/ossutil /usr/local/bin/
-          ossutil --version
+          # Download ossutil 2.0 for Linux x86_64
+          curl -o ossutil-2.2.0-linux-amd64.zip https://gosspublic.alicdn.com/ossutil/v2/2.2.0/ossutil-2.2.0-linux-amd64.zip
 
-          # Configure ossutil
-          ossutil config \
-            -e ${{ secrets.OSS_ENDPOINT }} \
-            -i ${{ secrets.ACR_ACCESS_KEY_ID }} \
-            -k ${{ secrets.ACR_ACCESS_KEY_SECRET }}
+          # Verify SHA256 checksum
+          echo "9e02837d806cfe976ae6c1fc22557d8e0a394ca6d298b45fb9f48a360d3a67f4  ossutil-2.2.0-linux-amd64.zip" | sha256sum -c
 
-          # Sync build directory to OSS bucket
+          # Extract and install
+          unzip -q ossutil-2.2.0-linux-amd64.zip
+          cd ossutil-2.2.0-linux-amd64
+          chmod 755 ossutil
+          sudo mv ossutil /usr/local/bin/
+
+          # Verify installation
+          ossutil version
+
+      - name: Configure ossutil 2.0
+        env:
+          OSS_ACCESS_KEY_ID: ${{ secrets.ACR_ACCESS_KEY_ID }}
+          OSS_ACCESS_KEY_SECRET: ${{ secrets.ACR_ACCESS_KEY_SECRET }}
+          OSS_REGION: ${{ secrets.ALIYUN_REGION }}
+          OSS_ENDPOINT: ${{ secrets.OSS_ENDPOINT }}
+        run: |
+          # ossutil 2.0 will automatically use OSS_* environment variables
+          # Verify configuration
+          ossutil ls oss://${{ secrets.OSS_BUCKET_NAME }} --limited-num 1
+
+      - name: Sync to OSS
+        env:
+          OSS_ACCESS_KEY_ID: ${{ secrets.ACR_ACCESS_KEY_ID }}
+          OSS_ACCESS_KEY_SECRET: ${{ secrets.ACR_ACCESS_KEY_SECRET }}
+          OSS_REGION: ${{ secrets.ALIYUN_REGION }}
+        run: |
+          # Sync build directory to OSS bucket using ossutil 2.0
           # --delete: Delete files in OSS that don't exist locally
           # --force: Force overwrite without confirmation
-          # -r: Recursive upload
+          # --checksum: Compare using CRC64 for data integrity
+          # --update: Only sync files that are newer or different
           ossutil sync \
             dist/ \
             oss://${{ secrets.OSS_BUCKET_NAME }}/ \
             --delete \
             --force \
-            -r
+            --checksum \
+            --update
+
+          echo "✅ Files synced to OSS bucket: ${{ secrets.OSS_BUCKET_NAME }}"
 
       - name: Refresh CDN cache (optional)
         if: env.CDN_DOMAIN != ''
