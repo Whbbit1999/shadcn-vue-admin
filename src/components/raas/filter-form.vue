@@ -67,8 +67,8 @@ function handleReset() {
 
 <template>
   <div class="space-y-4">
-    <!-- Row 1: Primary search filters -->
-    <div class="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+    <!-- Row 1: Text input filters -->
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <div class="space-y-1.5">
         <div class="text-xs font-medium text-muted-foreground">
           Amazon Profile
@@ -99,6 +99,10 @@ function handleReset() {
           class="h-9"
         />
       </div>
+    </div>
+
+    <!-- Row 2: Dropdown filters -->
+    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
       <div class="space-y-1.5">
         <div class="text-xs font-medium text-muted-foreground">
           Raas Plan
@@ -158,7 +162,7 @@ function handleReset() {
       </div>
     </div>
 
-    <!-- Row 2: Action buttons -->
+    <!-- Row 3: Action buttons -->
     <div class="flex items-center gap-2">
       <Button size="sm" @click="handleSearch">
         搜索

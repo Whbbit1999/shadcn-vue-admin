@@ -1,0 +1,117 @@
+name: Frontend Deploy to Alibaba Cloud OSS
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/frontend-deploy.yml
+
+env:
+  NODE_VERSION: '20'
+  PNPM_VERSION: '9'
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: ${{ env.PNPM_VERSION }}
+
+      - name: Get pnpm store directory
+        id: pnpm-cache
+        shell: bash
+        run: |
+          echo "STORE_PATH=$(pnpm store path)" >> $GITHUB_OUTPUT
+
+      - name: Setup pnpm cache
+        uses: actions/cache@v4
+        with:
+          path: ${{ steps.pnpm-cache.outputs.STORE_PATH }}
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
+      - name: Install dependencies
+        run: |
+          pnpm install --frozen-lockfile
+
+      - name: Build frontend
+        run: |
+          pnpm run build
+        env:
+          # Production environment variables are loaded from .env.production
+          NODE_ENV: production
+
+      - name: Setup Alibaba Cloud CLI
+        run: |
+          wget https://aliyuncli.alicdn.com/aliyun-cli-linux-latest-amd64.tgz
+          tar -xzf aliyun-cli-linux-latest-amd64.tgz
+          sudo mv aliyun /usr/local/bin/
+          aliyun version
+
+      - name: Configure Alibaba Cloud credentials
+        run: |
+          aliyun configure set \
+            --profile default \
+            --mode AK \
+            --region ${{ secrets.ALIYUN_REGION }} \
+            --access-key-id ${{ secrets.ALIYUN_ACCESS_KEY_ID }} \
+            --access-key-secret ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+
+      - name: Upload to OSS
+        run: |
+          # Install ossutil
+          wget https://gosspublic.alicdn.com/ossutil/1.7.18/ossutil-v1.7.18-linux-amd64.zip
+          unzip ossutil-v1.7.18-linux-amd64.zip
+          sudo mv ossutil-v1.7.18-linux-amd64/ossutil /usr/local/bin/
+          ossutil --version
+
+          # Configure ossutil
+          ossutil config \
+            -e ${{ secrets.OSS_ENDPOINT }} \
+            -i ${{ secrets.ALIYUN_ACCESS_KEY_ID }} \
+            -k ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+
+          # Sync build directory to OSS bucket
+          # --delete: Delete files in OSS that don't exist locally
+          # --force: Force overwrite without confirmation
+          # -r: Recursive upload
+          ossutil sync \
+            dist/ \
+            oss://${{ secrets.OSS_BUCKET_NAME }}/ \
+            --delete \
+            --force \
+            -r
+
+      - name: Refresh CDN cache (optional)
+        if: ${{ secrets.CDN_DOMAIN != '' }}
+        run: |
+          # Refresh CDN cache for the entire domain
+          aliyun cdn RefreshObjectCaches \
+            --ObjectPath "https://${{ secrets.CDN_DOMAIN }}/" \
+            --ObjectType Directory
+
+      - name: Deployment summary
+        if: success()
+        run: |
+          echo "✅ Frontend deployment successful!"
+          echo "📦 Build output: dist/"
+          echo "☁️  OSS Bucket: ${{ secrets.OSS_BUCKET_NAME }}"
+          echo "🌐 CDN Domain: ${{ secrets.CDN_DOMAIN || 'Not configured' }}"
+          echo ""
+          echo "Next steps:"
+          echo "1. Access your application at: https://${{ secrets.CDN_DOMAIN || secrets.OSS_BUCKET_NAME }}"
+          echo "2. Verify the frontend can connect to the backend API"
+          echo "3. Test the login functionality"

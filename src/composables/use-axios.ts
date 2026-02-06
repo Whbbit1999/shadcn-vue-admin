@@ -2,6 +2,7 @@ import type { AxiosError } from 'axios'
 
 import axios from 'axios'
 
+import { useAuthStore } from '@/stores/auth'
 import env from '@/utils/env'
 
 export function useAxios() {
@@ -11,6 +12,10 @@ export function useAxios() {
   })
 
   axiosInstance.interceptors.request.use((config) => {
+    const authStore = useAuthStore()
+    if (authStore.token) {
+      config.headers.Authorization = `Bearer ${authStore.token}`
+    }
     return config
   }, (error) => {
     return Promise.reject(error)
@@ -19,8 +24,11 @@ export function useAxios() {
   axiosInstance.interceptors.response.use((response) => {
     return response
   }, (error: AxiosError) => {
-    // if status is not 2xx, throw error
-    // you can handle error here
+    if (error.response?.status === 401) {
+      const authStore = useAuthStore()
+      authStore.clearAuth()
+      window.location.href = '/auth/sign-in'
+    }
     return Promise.reject(error)
   })
 

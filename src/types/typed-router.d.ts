@@ -37,31 +37,13 @@ declare module 'vue-router/auto-routes' {
       { path: ParamValue<false> },
       | never
     >,
-    '/ai-talk/': RouteRecordInfo<
-      '/ai-talk/',
-      '/ai-talk',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/apps/': RouteRecordInfo<
-      '/apps/',
-      '/apps',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/auth': RouteRecordInfo<
       '/auth',
       '/auth',
       Record<never, never>,
       Record<never, never>,
       | '/auth/'
-      | '/auth/forgot-password'
-      | '/auth/otp'
       | '/auth/sign-in'
-      | '/auth/sign-in-2'
-      | '/auth/sign-up'
     >,
     '/auth/': RouteRecordInfo<
       '/auth/',
@@ -70,51 +52,9 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/auth/forgot-password': RouteRecordInfo<
-      '/auth/forgot-password',
-      '/auth/forgot-password',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/auth/otp': RouteRecordInfo<
-      '/auth/otp',
-      '/auth/otp',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/auth/sign-in': RouteRecordInfo<
       '/auth/sign-in',
       '/auth/sign-in',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/auth/sign-in-2': RouteRecordInfo<
-      '/auth/sign-in-2',
-      '/auth/sign-in-2',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/auth/sign-up': RouteRecordInfo<
-      '/auth/sign-up',
-      '/auth/sign-up',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/billing/': RouteRecordInfo<
-      '/billing/',
-      '/billing',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/dashboard/': RouteRecordInfo<
-      '/dashboard/',
-      '/dashboard',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -173,27 +113,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/help-center': RouteRecordInfo<
-      '/help-center',
-      '/help-center',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/marketing/': RouteRecordInfo<
-      '/marketing/',
-      '/marketing',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/marketing/hello': RouteRecordInfo<
-      '/marketing/hello',
-      '/marketing/hello',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/raas/': RouteRecordInfo<
       '/raas/',
       '/raas',
@@ -243,27 +162,6 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/sva-components/': RouteRecordInfo<
-      '/sva-components/',
-      '/sva-components',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/tasks/': RouteRecordInfo<
-      '/tasks/',
-      '/tasks',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/users/': RouteRecordInfo<
-      '/users/',
-      '/users',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
   }
 
   /**
@@ -289,27 +187,11 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'src/pages/ai-talk/index.vue': {
-      routes:
-        | '/ai-talk/'
-      views:
-        | never
-    }
-    'src/pages/apps/index.vue': {
-      routes:
-        | '/apps/'
-      views:
-        | never
-    }
     'src/pages/auth.vue': {
       routes:
         | '/auth'
         | '/auth/'
-        | '/auth/forgot-password'
-        | '/auth/otp'
         | '/auth/sign-in'
-        | '/auth/sign-in-2'
-        | '/auth/sign-up'
       views:
         | 'default'
     }
@@ -319,45 +201,9 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'src/pages/auth/forgot-password.vue': {
-      routes:
-        | '/auth/forgot-password'
-      views:
-        | never
-    }
-    'src/pages/auth/otp.vue': {
-      routes:
-        | '/auth/otp'
-      views:
-        | never
-    }
     'src/pages/auth/sign-in.vue': {
       routes:
         | '/auth/sign-in'
-      views:
-        | never
-    }
-    'src/pages/auth/sign-in-2.vue': {
-      routes:
-        | '/auth/sign-in-2'
-      views:
-        | never
-    }
-    'src/pages/auth/sign-up.vue': {
-      routes:
-        | '/auth/sign-up'
-      views:
-        | never
-    }
-    'src/pages/billing/index.vue': {
-      routes:
-        | '/billing/'
-      views:
-        | never
-    }
-    'src/pages/dashboard/index.vue': {
-      routes:
-        | '/dashboard/'
       views:
         | never
     }
@@ -409,24 +255,6 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
-    'src/pages/help-center.vue': {
-      routes:
-        | '/help-center'
-      views:
-        | never
-    }
-    'src/pages/marketing/index.vue': {
-      routes:
-        | '/marketing/'
-      views:
-        | never
-    }
-    'src/pages/marketing/hello.vue': {
-      routes:
-        | '/marketing/hello'
-      views:
-        | never
-    }
     'src/pages/raas/index.vue': {
       routes:
         | '/raas/'
@@ -466,24 +294,6 @@ declare module 'vue-router/auto-routes' {
     'src/pages/settings/notifications.vue': {
       routes:
         | '/settings/notifications'
-      views:
-        | never
-    }
-    'src/pages/sva-components/index.vue': {
-      routes:
-        | '/sva-components/'
-      views:
-        | never
-    }
-    'src/pages/tasks/index.vue': {
-      routes:
-        | '/tasks/'
-      views:
-        | never
-    }
-    'src/pages/users/index.vue': {
-      routes:
-        | '/users/'
       views:
         | never
     }

@@ -41,5 +41,5 @@ function handleFilterChange(newFilters: ProductFilter) {
 
 <route lang="yml">
 meta:
-  auth: false
+  auth: true
 </route>
