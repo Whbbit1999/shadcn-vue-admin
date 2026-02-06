@@ -32,4 +32,4 @@ stats.html
 .env.local
 .env.development
 .env.test
-.env.production
+# .env.production - Committed to Git for internal project (no sensitive data)

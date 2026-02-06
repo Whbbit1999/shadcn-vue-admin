@@ -49,6 +49,20 @@ jobs:
         run: |
           pnpm install --frozen-lockfile
 
+      - name: Verify environment configuration
+        run: |
+          echo "🔍 Checking .env.production file..."
+          if [ ! -f .env.production ]; then
+            echo "❌ Error: .env.production file not found!"
+            echo "Please ensure .env.production is committed to the repository."
+            exit 1
+          fi
+
+          echo "✅ .env.production exists"
+          echo ""
+          echo "📋 Environment variables (values hidden for security):"
+          grep -E "^VITE_" .env.production | sed 's/=.*/=***/' || true
+
       - name: Build frontend
         run: |
           pnpm run build
