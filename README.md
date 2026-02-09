@@ -46,7 +46,7 @@ Unplugins:
 - [Auto Import](https://github.com/antfu/unplugin-auto-import)
 - [Components](https://github.com/antfu/unplugin-vue-components)
 - [vite-plugin-pages](https://github.com/hannoeru/vite-plugin-pages) [Deprecation]
-- [unplugin-vue-router](https://github.com/posva/unplugin-vue-router)
+- [vue-router](https://github.com/vuejs/router) (v5+)
 - [Vite Plugin Vue Layouts](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
 - [Vite Plugin Vue Devtools](https://github.com/webfansplz/vite-plugin-vue-devtools)
 

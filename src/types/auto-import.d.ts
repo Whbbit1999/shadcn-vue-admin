@@ -20,6 +20,7 @@ declare global {
   const customRef: typeof import('vue').customRef
   const defineAsyncComponent: typeof import('vue').defineAsyncComponent
   const defineComponent: typeof import('vue').defineComponent
+  const definePage: typeof import('vue-router/experimental').definePage
   const effectScope: typeof import('vue').effectScope
   const getCurrentInstance: typeof import('vue').getCurrentInstance
   const getCurrentScope: typeof import('vue').getCurrentScope

@@ -5,7 +5,7 @@
 ## Project Overview
 
 - Stack: Vue 3 + Vite + TypeScript + TailwindCSS
-- Routing: `unplugin-vue-router` (based on `src/pages`) + `vite-plugin-vue-layouts`
+- Routing: `vue-router` (v5+ with automatic routes from `src/pages`) + `vite-plugin-vue-layouts`
 - State: Pinia (with persistedstate)
 - Data: Axios + @tanstack/vue-query
 - Forms: vee-validate + zod
@@ -21,7 +21,7 @@
 
 - `vite.config.ts`
   - Alias: `@` -> `src/`
-  - Route generation: `unplugin-vue-router` (types: `src/types/typed-router.d.ts`)
+  - Route generation: `vue-router/vite` (types: `src/types/route-map.d.ts`)
   - Layouts: `vite-plugin-vue-layouts` (default: `default`)
   - Auto-import: `src/composables` / `src/constants` / `src/stores` (types: `src/types/auto-import.d.ts`)
   - Components: `src/components` (types: `src/types/auto-import-components.d.ts`)
@@ -106,7 +106,7 @@ Plugin initialization entry: `src/plugins/index.ts`
 
 ## Common Pitfalls
 
-- Auto-generated types/routes: when pages change, TypeScript/IDE may need a restart to pick up updated generated types (e.g. `src/types/typed-router.d.ts`).
+- Auto-generated types/routes: when pages change, TypeScript/IDE may need a restart to pick up updated generated types (e.g. `src/types/route-map.d.ts`).
 - Auto-imported symbols: composables/constants/stores are auto-imported; name collisions can silently change which symbol you get.
 - Layout meta values: ensure `meta.layout` matches an actual layout filename (and understand what `layout: false` does in this project).
 - Env vars: Vite uses `import.meta.env`; do not bypass `src/utils/env.ts` validation.
