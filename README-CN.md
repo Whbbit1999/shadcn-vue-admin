@@ -26,11 +26,11 @@ ui:
 - [inspira-ui](https://inspira-ui.com/components/box-reveal)
 - [shadcn-vue](https://www.shadcn-vue.com)
 
-Build Tool:
+构建工具:
 
 - [Vite](https://cn.vitejs.dev/)
 
-State Management:
+状态管理:
 
 - [pinia](https://pinia.vuejs.org/api/pinia/)
 - [persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/guide/limitations.html)
@@ -48,19 +48,18 @@ Unplugins:
 - [Vite Plugin Vue Layouts](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
 - [Vite Plugin Vue Devtools](https://github.com/webfansplz/vite-plugin-vue-devtools)
 
-Icons:
+图标:
 
 - [Lucide](https://lucide.dev/)
 
-Linting:
+格式化工具:
 
 - [ESLint](https://eslint.org/)
 - [antfu/eslint-config](https://github.com/antfu/eslint-config)
 
-Charts:
+图表:
 
-- [vue-chrts](https://github.com/dennisadriaans/vue-chrts)
-  > 如果您使用 tailwindcss v4，shadcn-vue charts 已被标记为 'Legacy'。我们现在使用这个库来替代它。
+- [shadcn-vue Chart](https://www.shadcn-vue.com/docs/components/chart)
 
 ## 本地运行
 

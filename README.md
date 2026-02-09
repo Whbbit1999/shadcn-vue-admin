@@ -61,8 +61,7 @@ Linting:
 
 Charts:
 
-- [vue-chrts](https://github.com/dennisadriaans/vue-chrts)
-  > If you use tailwindcss v4, shadcn-vue charts is 'Legacy'. We now use this library instead.
+- [shadcn-vue Chart](https://www.shadcn-vue.com/docs/components/chart)
 
 ## Run locally
 
