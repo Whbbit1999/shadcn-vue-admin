@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { reactive } from 'vue'
+import { useI18n } from 'vue-i18n'
 
 import type { ProductFilter } from '@/services/types/raas.type'
 
@@ -17,13 +18,15 @@ const emit = defineEmits<{
   (e: 'filterChange', filters: ProductFilter): void
 }>()
 
+const { t } = useI18n()
+
 const filterForm = reactive<ProductFilter>({
   amazon_profile_name: undefined,
   category_name: undefined,
   hanna_org_name: undefined,
   raas_plan: undefined,
   status: undefined,
-  ad_window: '30d',
+  marketplace: undefined,
 })
 
 const raasPlanOptions = [
@@ -36,12 +39,6 @@ const statusOptions = [
   { label: 'ONGOING', value: 'ONGOING' },
   { label: 'SUCCESS', value: 'SUCCESS' },
   { label: 'CANCELLED', value: 'CANCELLED' },
-]
-
-const adWindowOptions = [
-  { label: '最近 7 天', value: '7d' },
-  { label: '最近 14 天', value: '14d' },
-  { label: '最近 30 天', value: '30d' },
 ]
 
 function handleSearch() {
@@ -60,56 +57,73 @@ function handleReset() {
   filterForm.raas_plan = undefined
   filterForm.category_name = undefined
   filterForm.status = undefined
-  filterForm.ad_window = '30d'
-  emit('filterChange', { ad_window: '30d' })
+  filterForm.marketplace = undefined
+  emit('filterChange', {})
 }
 </script>
 
 <template>
-  <div class="space-y-4">
-    <!-- Row 1: Text input filters -->
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="space-y-1.5">
+  <div class="space-y-3">
+    <!-- Filters grid -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+      <!-- Row 1 -->
+      <div class="space-y-1">
         <div class="text-xs font-medium text-muted-foreground">
           Amazon Profile
         </div>
         <Input
           v-model="filterForm.amazon_profile_name"
-          placeholder="请输入 Amazon Profile"
-          class="h-9"
+          :placeholder="t('raas.filter.amazonProfilePlaceholder')"
+          class="h-8"
         />
       </div>
-      <div class="space-y-1.5">
+
+      <div class="space-y-1">
         <div class="text-xs font-medium text-muted-foreground">
-          Hanna Org
+          Marketplace
         </div>
-        <Input
-          v-model="filterForm.hanna_org_name"
-          placeholder="请输入 Hanna Org"
-          class="h-9"
-        />
+        <Select v-model="filterForm.marketplace">
+          <SelectTrigger class="h-8">
+            <SelectValue :placeholder="t('raas.filter.marketplacePlaceholder')" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="US">
+              US
+            </SelectItem>
+          </SelectContent>
+        </Select>
       </div>
-      <div class="space-y-1.5">
+
+      <div class="space-y-1">
         <div class="text-xs font-medium text-muted-foreground">
           Category
         </div>
         <Input
           v-model="filterForm.category_name"
-          placeholder="请输入 Category"
-          class="h-9"
+          :placeholder="t('raas.filter.categoryPlaceholder')"
+          class="h-8"
         />
       </div>
-    </div>
 
-    <!-- Row 2: Dropdown filters -->
-    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-      <div class="space-y-1.5">
+      <!-- Row 2 -->
+      <div class="space-y-1">
+        <div class="text-xs font-medium text-muted-foreground">
+          Hanna Org
+        </div>
+        <Input
+          v-model="filterForm.hanna_org_name"
+          :placeholder="t('raas.filter.hannaOrgPlaceholder')"
+          class="h-8"
+        />
+      </div>
+
+      <div class="space-y-1">
         <div class="text-xs font-medium text-muted-foreground">
           Raas Plan
         </div>
         <Select v-model="filterForm.raas_plan">
-          <SelectTrigger class="h-9">
-            <SelectValue placeholder="请选择 Raas Plan" />
+          <SelectTrigger class="h-8">
+            <SelectValue :placeholder="t('raas.filter.raasPlanPlaceholder')" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem
@@ -122,13 +136,14 @@ function handleReset() {
           </SelectContent>
         </Select>
       </div>
-      <div class="space-y-1.5">
+
+      <div class="space-y-1">
         <div class="text-xs font-medium text-muted-foreground">
-          状态
+          {{ t('raas.filter.statusLabel') }}
         </div>
         <Select v-model="filterForm.status">
-          <SelectTrigger class="h-9">
-            <SelectValue placeholder="请选择状态" />
+          <SelectTrigger class="h-8">
+            <SelectValue :placeholder="t('raas.filter.statusPlaceholder')" />
           </SelectTrigger>
           <SelectContent>
             <SelectItem
@@ -141,34 +156,15 @@ function handleReset() {
           </SelectContent>
         </Select>
       </div>
-      <div class="space-y-1.5">
-        <div class="text-xs font-medium text-muted-foreground">
-          广告数据窗口
-        </div>
-        <Select v-model="filterForm.ad_window">
-          <SelectTrigger class="h-9">
-            <SelectValue placeholder="选择时间窗口" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem
-              v-for="option in adWindowOptions"
-              :key="option.value"
-              :value="option.value"
-            >
-              {{ option.label }}
-            </SelectItem>
-          </SelectContent>
-        </Select>
-      </div>
     </div>
 
-    <!-- Row 3: Action buttons -->
-    <div class="flex items-center gap-2">
+    <!-- Action buttons -->
+    <div class="flex items-center gap-2 pt-1">
       <Button size="sm" @click="handleSearch">
-        搜索
+        {{ t('raas.filter.search') }}
       </Button>
       <Button size="sm" variant="outline" @click="handleReset">
-        重置
+        {{ t('raas.filter.reset') }}
       </Button>
     </div>
   </div>

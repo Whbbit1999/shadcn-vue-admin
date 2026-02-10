@@ -8,6 +8,7 @@ export interface Product {
   end_date: string
   baseline_sales_rank?: number | null
   status?: string
+  marketplace?: string
 }
 
 export interface ProductCreate {
@@ -20,6 +21,7 @@ export interface ProductCreate {
   end_date: string
   baseline_sales_rank?: number | null
   status?: string
+  marketplace?: string
 }
 
 export interface ProductUpdate {
@@ -32,6 +34,7 @@ export interface ProductUpdate {
   end_date: string
   baseline_sales_rank?: number | null
   status?: string
+  marketplace?: string
 }
 
 export interface ProductCompositeKey {
@@ -41,6 +44,7 @@ export interface ProductCompositeKey {
   category_name: string
   raas_plan: string
   start_date: string
+  marketplace?: string
 }
 
 export type AdWindow = '7d' | '14d' | '30d'
@@ -51,6 +55,7 @@ export interface ProductFilter {
   raas_plan?: string
   category_name?: string
   status?: string
+  marketplace?: string
   ad_window?: AdWindow
   start_date_from?: string
   start_date_to?: string
