@@ -140,9 +140,7 @@ jobs:
           CDN_DOMAIN: ${{ secrets.CDN_DOMAIN }}
         run: |
           # Refresh CDN cache for the entire domain
-          aliyun cdn RefreshObjectCaches \
-            --ObjectPath "https://${{ secrets.CDN_DOMAIN }}/" \
-            --ObjectType Directory
+          aliyun esa PurgeCaches --region cn-hangzhou --Content '{"CacheKeys":[{}],"Directories":["https://raas.hannalink.com/"]}' --SiteId 1119720405404128 --Type hostname
 
       - name: Deployment summary
         if: success()
