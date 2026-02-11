@@ -32,11 +32,26 @@ export function useAuth() {
       authStore.setAuth(access_token, name)
 
       const redirect = router.currentRoute.value.query.redirect as string
-      if (!redirect || redirect.startsWith('//')) {
-        toHome()
+      // 更安全的重定向检查，防止开放重定向漏洞
+      if (redirect && !redirect.startsWith('//') && redirect.startsWith('/')) {
+        // 验证重定向路径是否为有效的内部路径
+        try {
+          // 尝试解析重定向路径，防止恶意URL
+          const parsedRedirect = new URL(redirect, window.location.origin)
+          if (parsedRedirect.origin === window.location.origin) {
+            router.push(redirect)
+          }
+          else {
+            toHome()
+          }
+        }
+        catch {
+          // 如果重定向路径无效，则导航到主页
+          toHome()
+        }
       }
       else {
-        router.push(redirect)
+        toHome()
       }
     }
     catch (e: any) {

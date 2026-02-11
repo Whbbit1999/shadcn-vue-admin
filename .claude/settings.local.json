@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm lint)",
+      "Bash(pnpm lint:fix)",
+      "Bash(npx vue-tsc --noEmit)",
+      "Bash(npx vue-tsc:*)",
+      "Bash(powershell -Command:*)",
+      "Bash(python -c:*)"
+    ]
+  }
+}

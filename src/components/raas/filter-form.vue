@@ -44,7 +44,7 @@ const statusOptions = [
 function handleSearch() {
   const filters: ProductFilter = {}
   Object.entries(filterForm).forEach(([key, value]) => {
-    if (value !== undefined && value !== '') {
+    if (value !== undefined && value !== null && value !== '') {
       filters[key as keyof ProductFilter] = value as any
     }
   })

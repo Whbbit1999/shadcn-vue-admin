@@ -14,6 +14,7 @@ export default antfu({
   ignores: [
     '**/build/**',
     '**/components/ui/**',
+    'CLAUDE.md',
   ],
   settings: {
     'import/core-modules': ['vue-router/auto-routes'],

@@ -36,6 +36,11 @@ function handleAdWindowChange(value: any) {
   if (value && (value === '7d' || value === '14d' || value === '30d')) {
     filters.value = { ...filters.value, ad_window: value as '7d' | '14d' | '30d' }
   }
+  else {
+    // Remove ad_window from filters if value is invalid
+    const { ad_window, ...rest } = filters.value
+    filters.value = rest
+  }
 }
 
 // 获取当前广告窗口值

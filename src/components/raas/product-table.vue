@@ -8,6 +8,7 @@ import type {
   ProductCompositeKey,
   ProductCreate,
   ProductFilter,
+  ProductListParams,
   ProgressItem,
 } from '@/services/types/raas.type'
 
@@ -47,12 +48,48 @@ const {
   useUpdateProgressTracking,
 } = useRaasApi()
 
-// Queries
-const { data: productsData, isLoading: loading, refetch: fetchData } = useGetProducts({
-  page: 1,
-  page_size: 20,
-  ...props.filters,
+// Pagination
+const pagination = ref({
+  current: 1,
+  pageSize: 20,
+  total: 0,
 })
+
+// Reactive query params based on filters and pagination
+// Exclude ad_window from triggering table reloads as it only affects ad metrics calculation
+const queryParams = computed<ProductListParams>(() => {
+  // Ensure we're properly handling all filter values
+  const params: ProductListParams = {
+    page: pagination.value.current,
+    page_size: pagination.value.pageSize,
+  }
+
+  // Only add filter properties that have actual values
+  Object.keys(props.filters).forEach((key) => {
+    const typedKey = key as keyof ProductFilter
+    const value = props.filters[typedKey]
+
+    // Skip ad_window as it should not trigger table reloads
+    if (typedKey !== 'ad_window' && value !== undefined && value !== null && value !== '') {
+      (params as any)[typedKey] = value
+    }
+  })
+
+  return params
+})
+
+// Queries - API will automatically react to queryParams changes
+const { data: productsData, isLoading: loading } = useGetProducts(queryParams)
+
+// Update total when data changes
+watch(
+  () => productsData.value?.total,
+  (newTotal) => {
+    if (newTotal !== undefined) {
+      pagination.value.total = newTotal
+    }
+  },
+)
 
 // Mutations
 const { mutate: createProduct } = useCreateProduct()
@@ -62,11 +99,6 @@ const { mutate: fetchBsr } = useFetchBsr()
 const { mutate: updateProgressTracking } = useUpdateProgressTracking()
 
 const tableData = computed(() => productsData.value?.items || [])
-const pagination = ref({
-  current: 1,
-  pageSize: 20,
-  total: computed(() => productsData.value?.total || 0),
-})
 
 const progressMap = ref<Record<string, ProgressItem>>({})
 const selectedRowKeys = ref<Set<string>>(new Set())
@@ -276,18 +308,7 @@ async function handleConfirmTracking() {
   )
 }
 
-// ---- Watch for filter changes ----
-watch(
-  () => props.filters,
-  () => {
-    pagination.value.current = 1
-    // 重新执行查询
-    fetchData()
-  },
-  { deep: true },
-)
-
-// ---- ASIN helpers ----
+// ---- Pagination ----
 function parseAsinText(text: string): string[] {
   return text.split(',').map(s => s.trim()).filter(Boolean)
 }
@@ -455,11 +476,11 @@ async function handleModalOk() {
 // ---- Pagination ----
 function handlePageChange(nextPage: number) {
   pagination.value.current = nextPage
-  fetchData()
+  // Query will automatically refetch due to reactive queryParams
 }
 
 const totalPages = computed(() => {
-  return Math.max(1, Math.ceil(pagination.value.total.value / pagination.value.pageSize))
+  return Math.max(1, Math.ceil(pagination.value.total / pagination.value.pageSize))
 })
 </script>
 
@@ -766,131 +787,134 @@ const totalPages = computed(() => {
 
     <!-- Add/Edit Dialog -->
     <Dialog :open="modalOpen" @update:open="modalOpen = $event">
-      <DialogContent>
+      <DialogContent class="max-w-3xl w-full mx-4 h-[80vh] flex flex-col">
         <DialogHeader>
           <DialogTitle>{{ modalTitle }}</DialogTitle>
         </DialogHeader>
-        <div class="grid gap-4 py-2">
-          <div class="space-y-2">
-            <div class="text-sm text-muted-foreground">
-              {{ t('raas.modal.amazonProfile') }}
+        <div class="overflow-y-auto flex-1 py-4">
+          <div class="grid gap-4 px-2">
+            <div class="space-y-2">
+              <div class="text-sm text-muted-foreground">
+                {{ t('raas.modal.amazonProfile') }}
+              </div>
+              <Input v-model="formData.amazon_profile_name" :disabled="isEditing" :placeholder="t('raas.modal.amazonProfilePlaceholder')" class="w-full max-w-[calc(100%-2rem)]" />
             </div>
-            <Input v-model="formData.amazon_profile_name" :disabled="isEditing" :placeholder="t('raas.modal.amazonProfilePlaceholder')" />
-          </div>
-          <div class="space-y-2">
-            <div class="text-sm text-muted-foreground">
-              {{ t('raas.modal.marketplace') }}
+            <div class="space-y-2">
+              <div class="text-sm text-muted-foreground">
+                {{ t('raas.modal.marketplace') }}
+              </div>
+              <Select v-model="formData.marketplace" :disabled="isEditing">
+                <SelectTrigger class="w-full max-w-[calc(100%-2rem)]">
+                  <SelectValue :placeholder="t('raas.modal.marketplacePlaceholder')" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="US">
+                    US
+                  </SelectItem>
+                </SelectContent>
+              </Select>
             </div>
-            <Select v-model="formData.marketplace" :disabled="isEditing">
-              <SelectTrigger>
-                <SelectValue :placeholder="t('raas.modal.marketplacePlaceholder')" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="US">
-                  US
-                </SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div class="space-y-2">
-            <div class="text-sm text-muted-foreground">
-              {{ t('raas.modal.hannaOrg') }}
+            <div class="space-y-2">
+              <div class="text-sm text-muted-foreground">
+                {{ t('raas.modal.hannaOrg') }}
+              </div>
+              <Input v-model="formData.hanna_org_name" :disabled="isEditing" :placeholder="t('raas.modal.hannaOrgPlaceholder')" class="w-full max-w-[calc(100%-2rem)]" />
             </div>
-            <Input v-model="formData.hanna_org_name" :disabled="isEditing" :placeholder="t('raas.modal.hannaOrgPlaceholder')" />
-          </div>
-          <div class="space-y-2">
-            <div class="text-sm text-muted-foreground">
-              {{ t('raas.modal.asinList') }}
+            <div class="space-y-2">
+              <div class="text-sm text-muted-foreground">
+                {{ t('raas.modal.asinList') }}
+              </div>
+              <Textarea v-model="formData._asin_text" :disabled="isEditing" :placeholder="t('raas.modal.asinListPlaceholder')" class="w-full max-w-[calc(100%-2rem)]" />
             </div>
-            <Textarea v-model="formData._asin_text" :disabled="isEditing" :placeholder="t('raas.modal.asinListPlaceholder')" />
-          </div>
-          <div class="space-y-2">
-            <div class="text-sm text-muted-foreground">
-              {{ t('raas.modal.category') }}
+            <div class="space-y-2">
+              <div class="text-sm text-muted-foreground">
+                {{ t('raas.modal.category') }}
+              </div>
+              <Input v-model="formData.category_name" :disabled="isEditing" :placeholder="t('raas.modal.categoryPlaceholder')" class="w-full max-w-[calc(100%-2rem)]" />
             </div>
-            <Input v-model="formData.category_name" :disabled="isEditing" :placeholder="t('raas.modal.categoryPlaceholder')" />
-          </div>
-          <div class="space-y-2">
-            <div class="text-sm text-muted-foreground">
-              {{ t('raas.modal.baselineRank') }}
-            </div>
-            <div class="flex items-center gap-2">
-              <Input
-                :model-value="formData.baseline_sales_rank ?? undefined"
-                type="number"
-                :disabled="bsrPending"
-                :placeholder="t('raas.modal.baselineRankPlaceholder')"
-                @update:model-value="(v: any) => formData.baseline_sales_rank = v === '' || v == null ? null : Number(v)"
-              />
-              <Button
-                variant="outline"
-                type="button"
-                :disabled="bsrLoading || bsrPending || !formData._asin_text || !formData.category_name"
-                @click="handleFetchBsr"
-              >
-                {{ bsrLoading ? t('raas.modal.fetching') : (bsrPending ? t('raas.modal.fetchingBackground') : t('raas.modal.fetchRank')) }}
-              </Button>
-            </div>
-          </div>
-          <div class="space-y-2">
-            <div class="text-sm text-muted-foreground">
-              {{ t('raas.modal.raasPlan') }}
-            </div>
-            <Select v-model="formData.raas_plan" :disabled="isEditing">
-              <SelectTrigger>
-                <SelectValue :placeholder="t('raas.modal.raasPlanPlaceholder')" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem
-                  v-for="option in raasPlanOptions"
-                  :key="option.value"
-                  :value="option.value"
+            <div class="space-y-2">
+              <div class="text-sm text-muted-foreground">
+                {{ t('raas.modal.baselineRank') }}
+              </div>
+              <div class="flex items-center gap-2">
+                <Input
+                  :model-value="formData.baseline_sales_rank ?? undefined"
+                  type="number"
+                  :disabled="bsrPending"
+                  :placeholder="t('raas.modal.baselineRankPlaceholder')"
+                  class="w-full max-w-[calc(100%-2rem)]"
+                  @update:model-value="(v: any) => formData.baseline_sales_rank = v === '' || v == null ? null : Number(v)"
+                />
+                <Button
+                  variant="outline"
+                  type="button"
+                  :disabled="bsrLoading || bsrPending || !formData._asin_text || !formData.category_name"
+                  @click="handleFetchBsr"
                 >
-                  {{ option.label }}
-                </SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div v-if="isEditing" class="space-y-2">
-            <div class="text-sm text-muted-foreground">
-              {{ t('raas.modal.status') }}
+                  {{ bsrLoading ? t('raas.modal.fetching') : (bsrPending ? t('raas.modal.fetchingBackground') : t('raas.modal.fetchRank')) }}
+                </Button>
+              </div>
             </div>
-            <Select v-model="formData.status">
-              <SelectTrigger>
-                <SelectValue :placeholder="t('raas.modal.statusPlaceholder')" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem
-                  v-for="option in statusOptions"
-                  :key="option.value"
-                  :value="option.value"
-                >
-                  {{ option.label }}
-                </SelectItem>
-              </SelectContent>
-            </Select>
-          </div>
-          <div class="space-y-2">
-            <div class="text-sm text-muted-foreground">
-              {{ t('raas.modal.startDate') }}
+            <div class="space-y-2">
+              <div class="text-sm text-muted-foreground">
+                {{ t('raas.modal.raasPlan') }}
+              </div>
+              <Select v-model="formData.raas_plan" :disabled="isEditing">
+                <SelectTrigger class="w-full max-w-[calc(100%-2rem)]">
+                  <SelectValue :placeholder="t('raas.modal.raasPlanPlaceholder')" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem
+                    v-for="option in raasPlanOptions"
+                    :key="option.value"
+                    :value="option.value"
+                  >
+                    {{ option.label }}
+                  </SelectItem>
+                </SelectContent>
+              </Select>
             </div>
-            <Input v-model="formData.start_date" :disabled="isEditing" placeholder="YYYY-MM-DD" />
-          </div>
-          <div class="space-y-2">
-            <div class="text-sm text-muted-foreground">
-              {{ t('raas.modal.endDate') }}
+            <div v-if="isEditing" class="space-y-2">
+              <div class="text-sm text-muted-foreground">
+                {{ t('raas.modal.status') }}
+              </div>
+              <Select v-model="formData.status">
+                <SelectTrigger class="w-full max-w-[calc(100%-2rem)]">
+                  <SelectValue :placeholder="t('raas.modal.statusPlaceholder')" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem
+                    v-for="option in statusOptions"
+                    :key="option.value"
+                    :value="option.value"
+                  >
+                    {{ option.label }}
+                  </SelectItem>
+                </SelectContent>
+              </Select>
             </div>
-            <Input v-model="formData.end_date" placeholder="YYYY-MM-DD" />
+            <div class="space-y-2">
+              <div class="text-sm text-muted-foreground">
+                {{ t('raas.modal.startDate') }}
+              </div>
+              <Input v-model="formData.start_date" :disabled="isEditing" placeholder="YYYY-MM-DD" class="w-full max-w-[calc(100%-2rem)]" />
+            </div>
+            <div class="space-y-2">
+              <div class="text-sm text-muted-foreground">
+                {{ t('raas.modal.endDate') }}
+              </div>
+              <Input v-model="formData.end_date" placeholder="YYYY-MM-DD" class="w-full max-w-[calc(100%-2rem)]" />
+            </div>
           </div>
+          <DialogFooter class="pt-4">
+            <Button variant="secondary" @click="modalOpen = false">
+              {{ t('raas.modal.cancel') }}
+            </Button>
+            <Button @click="handleModalOk">
+              {{ t('raas.modal.confirm') }}
+            </Button>
+          </DialogFooter>
         </div>
-        <DialogFooter>
-          <Button variant="secondary" @click="modalOpen = false">
-            {{ t('raas.modal.cancel') }}
-          </Button>
-          <Button @click="handleModalOk">
-            {{ t('raas.modal.confirm') }}
-          </Button>
-        </DialogFooter>
       </DialogContent>
     </Dialog>
   </div>

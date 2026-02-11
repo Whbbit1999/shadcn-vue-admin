@@ -1,4 +1,7 @@
+import type { MaybeRefOrGetter } from '@vueuse/core'
+
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
+import { toValue } from 'vue'
 
 import { useAxios } from '@/composables/use-axios'
 
@@ -20,15 +23,17 @@ export function useRaasApi() {
   const queryClient = useQueryClient()
 
   // Queries
-  const useGetProducts = (params: ProductListParams = {}) => {
-    return useQuery({
-      queryKey: ['products', params],
+  const useGetProducts = (params: MaybeRefOrGetter<ProductListParams>) => {
+    const query = useQuery({
+      queryKey: () => ['products', toValue(params)],
       queryFn: async () => {
-        const response = await axiosInstance.get('/products', { params })
+        const response = await axiosInstance.get('/products', { params: toValue(params) })
         return response.data
       },
       staleTime: 1000 * 60 * 5, // 5 minutes
     })
+
+    return query
   }
 
   const useGetProgressTracking = (asinList: string[], adWindow: string = '30') => {
