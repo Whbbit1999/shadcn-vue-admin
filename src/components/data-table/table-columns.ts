@@ -6,8 +6,16 @@ import Checkbox from '@/components/ui/checkbox/Checkbox.vue'
 
 import RadioCell from './radio-cell.vue'
 
+const FIXED_WIDTH_COLUMN = {
+  size: 32,
+  minSize: 32,
+  maxSize: 32,
+  enableResizing: false,
+} as const
+
 export const SelectColumn: ColumnDef<any> = {
   id: 'select',
+  ...FIXED_WIDTH_COLUMN,
   header: ({ table }) => h(Checkbox, {
     'modelValue': table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && 'indeterminate'),
     'onUpdate:modelValue': value => table.toggleAllPageRowsSelected(!!value),
@@ -24,6 +32,7 @@ export const SelectColumn: ColumnDef<any> = {
 
 export const RadioSelectColumn: ColumnDef<any> = {
   id: 'radio-select',
+  ...FIXED_WIDTH_COLUMN,
   header: () => null,
   cell: ({ row, table }) => h(RadioCell, {
     checked: row.getIsSelected(),
