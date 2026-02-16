@@ -95,6 +95,10 @@ Created by [Whbbit](https://github.com/Whbbit1999), Design by [shadcn-admin](htt
 
 ## Tips
 
+## Maintenance
+
+- Dependencies are updated every Tuesday.
+
 ### Theme Customization
 
 If you need to change the website style, you can use the preset styles provided by [tweakcn](https://tweakcn.com/editor/theme). You only need to copy the css variables provided by tweakcn to `index.css` and change the `:root` `:dark` and `@theme inline` parts.

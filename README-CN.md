@@ -89,6 +89,10 @@ pnpm dev
 
 ## Tips
 
+## 维护
+
+- 依赖每周二更新。
+
 ### 主题定制
 
 如果您需要更改网站样式，可以使用[tweakcn](https://tweakcn.com/editor/theme)网站提供的预设样式。你只需要将 tweakcn 提供的 css 样式 复制到 `index.css` 中，改动 `:root` `:dark` 和 `@theme inline` 部分即可。
