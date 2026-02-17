@@ -23,7 +23,7 @@ function handleRemove() {
         Delete this task: {{ task.id }} ?
       </ModalTitle>
       <ModalDescription>
-        You are about to delete a task with the ID {{ task.id }}.This action cannot be undone.
+        You are about to delete a task with the ID {{ task.id }}. This action cannot be undone.
       </ModalDescription>
     </ModalHeader>
 

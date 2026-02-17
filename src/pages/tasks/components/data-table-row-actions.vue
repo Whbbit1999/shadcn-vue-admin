@@ -32,9 +32,14 @@ const componentLoader: Record<TCommand, () => Promise<{ default: Component }>> =
 }
 
 async function handleSelect(command: TCommand) {
-  const { default: component } = await componentLoader[command]()
-  showComponent.value = component
-  isOpen.value = true
+  try {
+    const { default: component } = await componentLoader[command]()
+    showComponent.value = component
+    isOpen.value = true
+  }
+  catch (e) {
+    console.error(`Failed to load component for "${command}"`, e)
+  }
 }
 </script>
 

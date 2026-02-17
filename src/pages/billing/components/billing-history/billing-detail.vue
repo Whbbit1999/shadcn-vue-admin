@@ -17,6 +17,8 @@ defineProps<{
     <ModalHeader>
       <VisuallyHidden as-child>
         <ModalTitle />
+      </VisuallyHidden>
+      <VisuallyHidden as-child>
         <ModalDescription :aria-describedby="undefined" />
       </VisuallyHidden>
     </ModalHeader>

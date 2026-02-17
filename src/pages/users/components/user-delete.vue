@@ -30,7 +30,7 @@ function handleRemove() {
       </ModalTitle>
 
       <ModalDescription>
-        You are about to delete a user with the ID {{ user.id }}.This action cannot be undone.
+        You are about to delete a user with the ID {{ user.id }}. This action cannot be undone.
       </ModalDescription>
     </ModalHeader>
 
