@@ -1,9 +1,9 @@
-import { useMediaQuery } from '@vueuse/core'
+import { createSharedComposable, useMediaQuery } from '@vueuse/core'
 
 import { Dialog, DialogClose, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import { Drawer, DrawerClose, DrawerContent, DrawerDescription, DrawerFooter, DrawerHeader, DrawerTitle, DrawerTrigger } from '@/components/ui/drawer'
 
-export function useModal() {
+const useSharedModal = createSharedComposable(() => {
   const isDesktop = useMediaQuery('(min-width: 768px)')
 
   const Modal = computed(() => ({
@@ -17,13 +17,15 @@ export function useModal() {
     Close: isDesktop.value ? DialogClose : DrawerClose,
   }))
 
-  const contentClass = computed(() => {
-    return isDesktop.value ? null : 'px-2 pb-8 *:px-4'
-  })
+  const contentClass = computed(() => (isDesktop.value ? '' : 'px-2 pb-8 *:px-4'))
 
   return {
-    contentClass,
     isDesktop,
     Modal,
+    contentClass,
   }
+})
+
+export function useModal() {
+  return useSharedModal()
 }

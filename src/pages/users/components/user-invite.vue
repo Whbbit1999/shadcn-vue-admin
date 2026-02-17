@@ -1,48 +1,46 @@
 <script setup lang="ts">
 import { MailPlus } from 'lucide-vue-next'
 
+import { Modal, ModalClose, ModalContent, ModalDescription, ModalFooter, ModalHeader, ModalTitle, ModalTrigger, useModal } from '@/components/prop-ui/modal'
 import { Button } from '@/components/ui/button'
-import { useModal } from '@/composables/use-modal'
 
 import UserInviteForm from './user-invite-form.vue'
 
+const { isDesktop } = useModal()
 const isOpen = ref(false)
-const { isDesktop, Modal, contentClass } = useModal()
 </script>
 
 <template>
-  <component :is="Modal.Root" v-model:open="isOpen">
-    <component :is="Modal.Trigger" as-child>
+  <Modal v-model:open="isOpen">
+    <ModalTrigger as-child>
       <Button variant="outline">
         <MailPlus />
         Invite User
       </Button>
-    </component>
+    </ModalTrigger>
 
-    <component
-      :is="Modal.Content" :class="contentClass"
-    >
-      <component :is="Modal.Header">
-        <component :is="Modal.Title">
+    <ModalContent>
+      <ModalHeader>
+        <ModalTitle as-child>
           <div class="flex items-center gap-2">
             <MailPlus />
             <span>Invite User</span>
           </div>
-        </component>
-        <component :is="Modal.Description">
+        </ModalTitle>
+        <ModalDescription>
           Invite new user to join your team by sending them an email invitation. Assign a role to define their access level.
-        </component>
-      </component>
+        </ModalDescription>
+      </ModalHeader>
 
       <UserInviteForm />
 
-      <component :is="Modal.Footer" v-if="!isDesktop" class="pt-2">
-        <component :is="Modal.Close" as-child>
+      <ModalFooter v-if="!isDesktop" class="pt-2">
+        <ModalClose as-child>
           <Button variant="outline">
             Cancel
           </Button>
-        </component>
-      </component>
-    </component>
-  </component>
+        </ModalClose>
+      </ModalFooter>
+    </ModalContent>
+  </Modal>
 </template>

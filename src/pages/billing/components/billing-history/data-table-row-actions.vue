@@ -4,7 +4,7 @@ import type { Component } from 'vue'
 
 import { Ellipsis } from 'lucide-vue-next'
 
-import { useModal } from '@/composables/use-modal'
+import { Modal, ModalContent } from '@/components/prop-ui/modal'
 
 import type { Billing } from './data/schema'
 
@@ -17,16 +17,28 @@ const props = defineProps<DataTableRowActionsProps>()
 
 const billing = computed(() => billingSchema.parse(props.row.original))
 const showComponent = shallowRef<Component | null>(null)
-function handleSelect(command: string) {
-  if (command === 'detail') {
-    showComponent.value = defineAsyncComponent(() => import('./billing-detail.vue'))
+const isOpen = ref(false)
+
+type TCommand = 'detail'
+
+const componentLoader: Record<TCommand, () => Promise<{ default: Component }>> = {
+  detail: () => import('./billing-detail.vue'),
+}
+
+async function handleSelect(command: TCommand) {
+  try {
+    const { default: component } = await componentLoader[command]()
+    showComponent.value = component
+    isOpen.value = true
+  }
+  catch (e) {
+    console.error(`Failed to load component for "${command}"`, e)
   }
 }
-const { Modal, contentClass } = useModal()
 </script>
 
 <template>
-  <component :is="Modal.Root">
+  <Modal v-model:open="isOpen">
     <UiDropdownMenu :modal="false">
       <UiDropdownMenuTrigger as-child>
         <UiButton
@@ -39,16 +51,14 @@ const { Modal, contentClass } = useModal()
       </UiDropdownMenuTrigger>
       <UiDropdownMenuContent>
         <UiDropdownMenuGroup>
-          <component :is="Modal.Trigger" as-child>
-            <UiDropdownMenuItem @select.stop="handleSelect('detail')">
-              <span>Detail</span>
-            </UiDropdownMenuItem>
-          </component>
+          <UiDropdownMenuItem @select.stop="handleSelect('detail')">
+            <span>Detail</span>
+          </UiDropdownMenuItem>
         </UiDropdownMenuGroup>
       </UiDropdownMenuContent>
     </UiDropdownMenu>
-    <component :is="Modal.Content" :class="contentClass">
+    <ModalContent>
       <component :is="showComponent" :billing="billing" />
-    </component>
-  </component>
+    </ModalContent>
+  </Modal>
 </template>

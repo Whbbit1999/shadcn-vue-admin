@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useModal } from '@/composables/use-modal'
+import { ModalDescription, ModalHeader, ModalTitle } from '@/components/prop-ui/modal'
 
 import type { Task } from '../data/schema'
 
@@ -13,19 +13,18 @@ defineEmits(['close'])
 const task = computed(() => props.task)
 const title = computed(() => task.value?.id ? `Edit Task` : 'New Task')
 const description = computed(() => task.value?.id ? `Edit task ${task.value.id}` : 'Create new task')
-const { Modal } = useModal()
 </script>
 
 <template>
   <div>
-    <component :is="Modal.Header">
-      <component :is="Modal.Title">
+    <ModalHeader>
+      <ModalTitle>
         {{ title }}
-      </component>
-      <component :is="Modal.Description">
+      </ModalTitle>
+      <ModalDescription>
         {{ description }}
-      </component>
-    </component>
+      </ModalDescription>
+    </ModalHeader>
     <TaskForm class="mt-2" :task="task" @close="$emit('close')" />
   </div>
 </template>
