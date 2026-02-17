@@ -4,7 +4,7 @@ import type { Component } from 'vue'
 
 import { Ellipsis } from 'lucide-vue-next'
 
-import { useModal } from '@/composables/use-modal'
+import { Modal, ModalContent } from '@/components/prop-ui/modal'
 
 import type { User } from '../data/schema'
 
@@ -17,21 +17,21 @@ const isOpen = ref(false)
 
 const showComponent = shallowRef<Component | null>(null)
 type TCommand = 'edit' | 'delete'
-function handleSelect(command: TCommand) {
-  switch (command) {
-    case 'edit':
-      showComponent.value = defineAsyncComponent(() => import('./user-resource.vue'))
-      break
-    case 'delete':
-      showComponent.value = defineAsyncComponent(() => import('./user-delete.vue'))
-      break
-  }
+
+const componentLoader: Record<TCommand, () => Promise<{ default: Component }>> = {
+  edit: () => import('./user-resource.vue'),
+  delete: () => import('./user-delete.vue'),
 }
-const { contentClass, Modal } = useModal()
+
+async function handleSelect(command: TCommand) {
+  const { default: component } = await componentLoader[command]()
+  showComponent.value = component
+  isOpen.value = true
+}
 </script>
 
 <template>
-  <component :is="Modal.Root" v-model:open="isOpen">
+  <Modal v-model:open="isOpen">
     <UiDropdownMenu>
       <UiDropdownMenuTrigger as-child>
         <UiButton
@@ -43,23 +43,19 @@ const { contentClass, Modal } = useModal()
         </UiButton>
       </UiDropdownMenuTrigger>
       <UiDropdownMenuContent align="end" class="w-[160px]">
-        <component :is="Modal.Trigger" as-child>
-          <UiDropdownMenuItem @click.stop="handleSelect('edit')">
-            Edit
-          </UiDropdownMenuItem>
-        </component>
+        <UiDropdownMenuItem @click.stop="handleSelect('edit')">
+          Edit
+        </UiDropdownMenuItem>
 
-        <component :is="Modal.Trigger" as-child>
-          <UiDropdownMenuItem @click.stop="handleSelect('delete')">
-            Delete
-            <UiDropdownMenuShortcut>⌘⌫</UiDropdownMenuShortcut>
-          </UiDropdownMenuItem>
-        </component>
+        <UiDropdownMenuItem @click.stop="handleSelect('delete')">
+          Delete
+          <UiDropdownMenuShortcut>⌘⌫</UiDropdownMenuShortcut>
+        </UiDropdownMenuItem>
       </UiDropdownMenuContent>
     </UiDropdownMenu>
 
-    <component :is="Modal.Content" :class="contentClass">
+    <ModalContent>
       <component :is="showComponent" :user="user" @close="isOpen = false" />
-    </component>
-  </component>
+    </ModalContent>
+  </Modal>
 </template>

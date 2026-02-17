@@ -4,7 +4,7 @@ import type { Component } from 'vue'
 
 import { Ellipsis, FilePenLine, Trash2 } from 'lucide-vue-next'
 
-import { useModal } from '@/composables/use-modal'
+import { Modal, ModalContent } from '@/components/prop-ui/modal'
 
 import type { Task } from '../data/schema'
 
@@ -21,28 +21,25 @@ const task = computed(() => taskSchema.parse(props.row.original))
 const taskLabel = ref(task.value.label)
 
 const showComponent = shallowRef<Component | null>(null)
+const isOpen = ref(false)
 
 type TCommand = 'edit' | 'create' | 'delete'
-function handleSelect(command: TCommand) {
-  switch (command) {
-    case 'edit':
-      showComponent.value = defineAsyncComponent(() => import('./task-resource-dialog.vue'))
-      break
-    case 'create':
-      showComponent.value = defineAsyncComponent(() => import('./task-resource-dialog.vue'))
-      break
-    case 'delete':
-      showComponent.value = defineAsyncComponent(() => import('./task-delete.vue'))
-      break
-  }
+
+const componentLoader: Record<TCommand, () => Promise<{ default: Component }>> = {
+  edit: () => import('./task-resource-dialog.vue'),
+  create: () => import('./task-resource-dialog.vue'),
+  delete: () => import('./task-delete.vue'),
 }
 
-const isOpen = ref(false)
-const { Modal, contentClass } = useModal()
+async function handleSelect(command: TCommand) {
+  const { default: component } = await componentLoader[command]()
+  showComponent.value = component
+  isOpen.value = true
+}
 </script>
 
 <template>
-  <component :is="Modal.Root" v-model:open="isOpen">
+  <Modal v-model:open="isOpen">
     <UiDropdownMenu>
       <UiDropdownMenuTrigger as-child>
         <UiButton
@@ -54,12 +51,10 @@ const { Modal, contentClass } = useModal()
         </UiButton>
       </UiDropdownMenuTrigger>
       <UiDropdownMenuContent align="end" class="w-[160px]">
-        <component :is="Modal.Trigger" as-child>
-          <UiDropdownMenuItem @select.stop="handleSelect('edit')">
-            <span>Edit</span>
-            <UiDropdownMenuShortcut> <FilePenLine class="size-4" /> </UiDropdownMenuShortcut>
-          </UiDropdownMenuItem>
-        </component>
+        <UiDropdownMenuItem @select.stop="handleSelect('edit')">
+          <span>Edit</span>
+          <UiDropdownMenuShortcut> <FilePenLine class="size-4" /> </UiDropdownMenuShortcut>
+        </UiDropdownMenuItem>
 
         <UiDropdownMenuItem disabled>
           Make a copy
@@ -83,17 +78,15 @@ const { Modal, contentClass } = useModal()
 
         <UiDropdownMenuSeparator />
 
-        <component :is="Modal.Trigger" as-child>
-          <UiDropdownMenuItem @select.stop="handleSelect('delete')">
-            <span>Delete</span>
-            <UiDropdownMenuShortcut> <Trash2 class="size-4" /> </UiDropdownMenuShortcut>
-          </UiDropdownMenuItem>
-        </component>
+        <UiDropdownMenuItem @select.stop="handleSelect('delete')">
+          <span>Delete</span>
+          <UiDropdownMenuShortcut> <Trash2 class="size-4" /> </UiDropdownMenuShortcut>
+        </UiDropdownMenuItem>
       </UiDropdownMenuContent>
     </UiDropdownMenu>
 
-    <component :is="Modal.Content" :class="contentClass">
+    <ModalContent>
       <component :is="showComponent" :task="task" @close="isOpen = false" />
-    </component>
-  </component>
+    </ModalContent>
+  </Modal>
 </template>
