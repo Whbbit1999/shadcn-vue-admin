@@ -16,12 +16,12 @@ export function useAuth() {
   }
 
   function toHome() {
-    router.push({ path: '/workspace' })
+    router.push({ path: '/dashboard' })
   }
 
   async function login() {
     loading.value = true
-    await new Promise(resolve => setTimeout(resolve, 1000))
+    await new Promise(resolve => setTimeout(resolve, 10))
     // mock login
     isLogin.value = true
     loading.value = false
