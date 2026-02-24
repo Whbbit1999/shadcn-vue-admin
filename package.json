@@ -20,6 +20,10 @@
     "pinia",
     "pnpm"
   ],
+  "engines": {
+    "node": ">=22.15",
+    "pnpm": ">=10"
+  },
   "scripts": {
     "postinstall": "simple-git-hooks",
     "dev": "vite",
