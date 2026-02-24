@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import type { HTMLAttributes } from 'vue'
 
-import { templateRef } from '@vueuse/core'
 import { animate } from 'motion-v'
 
 import { cn } from '@/lib/utils'
@@ -31,7 +30,7 @@ const props = withDefaults(defineProps<Props>(), {
   disabled: true,
 })
 
-const containerRef = templateRef('containerRef')
+const containerRef = useTemplateRef('containerRef')
 const lastPosition = ref({
   x: 0,
   y: 0,
