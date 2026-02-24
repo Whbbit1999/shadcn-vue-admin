@@ -87,7 +87,7 @@ export default {
     </UiDropdownMenu>
   </div>
 
-  <div v-else :class="$attrs.class">
+  <div v-else :class="$attrs?.class ?? ''">
     {{ title }}
   </div>
 </template>
