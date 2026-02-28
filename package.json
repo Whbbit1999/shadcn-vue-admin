@@ -7,6 +7,11 @@
   "description": "Admin Dashboard UI crafted with Shadcn-vue, Vue3 and Vite. Built with responsiveness and accessibility in mind.",
   "author": "Whbbit1999",
   "license": "MIT",
+  "homepage": "https://shadcn-vue-admin.netlify.app/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Whbbit1999/shadcn-vue-admin"
+  },
   "keywords": [
     "vue",
     "vue-router",
