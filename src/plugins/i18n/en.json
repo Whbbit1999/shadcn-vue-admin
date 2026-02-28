@@ -98,8 +98,18 @@
     }
   },
   "login": "Login",
+  "loginSubject": "Email",
+  "loginPwd": "Password",
   "logout": "Log out",
   "register": "Register",
   "language": "English",
+  "forgotPasswordPage": {
+    "continue": "continue",
+    "forgotPassword": "Forgot password?"
+  },
+  "homePage": {
+    "searchKeyWords": "Search Menu",
+    "download": "Download"
+  },
   "changeLanguage": "Change Language"
 }

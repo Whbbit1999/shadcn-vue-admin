@@ -30,14 +30,14 @@ const { login, loading } = useAuth()
     <UiCardContent class="grid gap-4">
       <div class="grid gap-2">
         <UiLabel for="email">
-          Email
+          {{ $t('loginSubject') }}
         </UiLabel>
         <UiInput id="email" type="email" placeholder="m@example.com" required />
       </div>
       <div class="grid gap-2">
         <div class="flex items-center justify-between">
           <UiLabel for="password">
-            Password
+            {{ $t('loginPwd') }}
           </UiLabel>
           <ToForgotPasswordLink />
         </div>
@@ -46,7 +46,7 @@ const { login, loading } = useAuth()
 
       <UiButton class="w-full" @click="login">
         <UiSpinner v-if="loading" class="mr-2" />
-        Mock Login
+        {{ $t('login') }}
       </UiButton>
 
       <UiSeparator label="Or continue with" />

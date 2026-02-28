@@ -18,14 +18,14 @@ import AuthTitle from './components/auth-title.vue'
         <UiCardContent class="grid gap-4">
           <div class="grid gap-2">
             <UiLabel for="email">
-              Email
+              {{ $t('loginSubject') }}
             </UiLabel>
             <UiInput id="email" type="email" placeholder="m@example.com" required />
           </div>
         </UiCardContent>
         <UiCardFooter class="flex flex-col gap-2">
           <UiButton class="w-full">
-            Continue
+            {{ $t('forgotPasswordPage.continue') }}
           </UiButton>
 
           <div>

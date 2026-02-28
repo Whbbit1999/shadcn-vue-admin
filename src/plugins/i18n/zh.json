@@ -98,8 +98,18 @@
     }
   },
   "login": "登录",
-  "logout": "退出登录",
+  "loginSubject": "邮箱",
+  "loginPwd": "密码",
+  "logout": "退出",
   "register": "注册",
   "language": "中文",
+  "forgotPasswordPage": {
+    "continue": "下一步",
+    "forgotPassword": "忘记密码?"
+  },
+  "homePage": {
+    "searchKeyWords": "搜索菜单",
+    "download": "下载"
+  },
   "changeLanguage": "语言切换"
 }
