@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { AcceptableValue } from 'reka-ui'
+
 import { Icon } from '@iconify/vue'
 import { useStorage } from '@vueuse/core'
 import { useI18n } from 'vue-i18n'
@@ -6,9 +8,11 @@ import { useI18n } from 'vue-i18n'
 const { locale } = useI18n()
 const storedLocale = useStorage('app-locale', 'en')
 
-function handleLocaleChange(val: string) {
-  locale.value = val
-  storedLocale.value = val
+function handleLocaleChange(val: AcceptableValue) {
+  if (typeof val === 'string') {
+    locale.value = val
+    storedLocale.value = val
+  }
 }
 </script>
 
