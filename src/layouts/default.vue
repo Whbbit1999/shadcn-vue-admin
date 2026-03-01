@@ -5,6 +5,7 @@ import { storeToRefs } from 'pinia'
 import AppSidebar from '@/components/app-sidebar/index.vue'
 import CommandMenuPanel from '@/components/command-menu-panel/index.vue'
 import ThemePopover from '@/components/custom-theme/theme-popover.vue'
+import LanguageChange from '@/components/language-change.vue'
 import ToggleTheme from '@/components/toggle-theme.vue'
 import { SIDEBAR_COOKIE_NAME } from '@/components/ui/sidebar/utils'
 import { cn } from '@/lib/utils'
@@ -27,6 +28,7 @@ const { contentLayout } = storeToRefs(themeStore)
         <CommandMenuPanel />
         <div class="flex-1" />
         <div class="ml-auto flex items-center space-x-4">
+          <LanguageChange />
           <ToggleTheme />
           <ThemePopover />
         </div>

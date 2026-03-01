@@ -24,11 +24,12 @@ const activeTab = ref(tabs.value[0].value)
   >
     <template #actions>
       <Button
+        class="min-w-22"
         @click="() => toast('hello', {
           position: 'top-center',
         })"
       >
-        Download
+        {{ $t('homePage.download') }}
       </Button>
     </template>
 
