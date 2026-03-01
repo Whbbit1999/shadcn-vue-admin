@@ -30,14 +30,14 @@ const { login, loading } = useAuth()
     <UiCardContent class="grid gap-4">
       <div class="grid gap-2">
         <UiLabel for="email">
-          {{ $t('loginSubject') }}
+          {{ $t('email') }}
         </UiLabel>
         <UiInput id="email" type="email" placeholder="m@example.com" required />
       </div>
       <div class="grid gap-2">
         <div class="flex items-center justify-between">
           <UiLabel for="password">
-            {{ $t('loginPwd') }}
+            {{ $t('password') }}
           </UiLabel>
           <ToForgotPasswordLink />
         </div>

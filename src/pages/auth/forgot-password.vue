@@ -18,7 +18,7 @@ import AuthTitle from './components/auth-title.vue'
         <UiCardContent class="grid gap-4">
           <div class="grid gap-2">
             <UiLabel for="email">
-              {{ $t('loginSubject') }}
+              {{ $t('email') }}
             </UiLabel>
             <UiInput id="email" type="email" placeholder="m@example.com" required />
           </div>

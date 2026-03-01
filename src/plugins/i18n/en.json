@@ -98,18 +98,18 @@
     }
   },
   "login": "Login",
-  "loginSubject": "Email",
-  "loginPwd": "Password",
+  "email": "Email",
+  "password": "Password",
+  "download": "Download",
   "logout": "Log out",
+  "forgotPassword": "Forgot password?",
   "register": "Register",
   "language": "English",
   "forgotPasswordPage": {
-    "continue": "continue",
-    "forgotPassword": "Forgot password?"
+    "continue": "continue"
   },
   "homePage": {
-    "searchKeyWords": "Search Menu",
-    "download": "Download"
+    "searchKeyWords": "Search Menu"
   },
   "changeLanguage": "Change Language"
 }
