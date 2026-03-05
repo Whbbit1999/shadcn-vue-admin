@@ -1,111 +1,116 @@
 # Shadcn Vue Admin
 
 [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Whbbit1999/shadcn-vue-admin/blob/main/LICENSE)
+[![Vue 3.5+](https://img.shields.io/badge/Vue-3.5.28-brightgreen.svg)](https://vuejs.org/)
+[![Vite 7.3+](https://img.shields.io/badge/Vite-7.3.1-yellow.svg)](https://vitejs.dev/)
+[![pnpm 10.29+](https://img.shields.io/badge/pnpm-10.29.3-orange.svg)](https://pnpm.io/)
+[![TypeScript 5.9+](https://img.shields.io/badge/TypeScript-5.9.3-blue.svg)](https://www.typescriptlang.org/)
 
-[中文](./README-CN.md)
+[简体中文](./README-CN.md) | English
 
+A production-grade admin dashboard UI built with **Shadcn-vue**, **Vue 3.5+** and **Vite 7+**, focusing on responsiveness, accessibility and developer experience.
 Forked from [shadcn-admin](https://github.com/satnaing/shadcn-admin)
-
-Admin Dashboard UI crafted with Shadcn-vue, Vue3 and Vite. Built with responsiveness and accessibility in mind.
 
 ![cover](public/shadcn-vue-admin.png)
 
-This is not a starter project (template) though. More components will be added later.
+> ⚠️ Version Note: Current stable version `0.11.0` | This is not a starter template. New components and features will be continuously added to the project.
 
-## Features
+## ✨ Key Features
 
-- [x] Light/Dark Mode
-- [x] Global Search Command
-- [x] shadcn-ui sidebar
-- [x] 8+ pages
-- [x] some custom components
-- [x] auto generate routes
+- ✅ Light/Dark mode toggle with Pinia persistent state
+- ✅ Global search command palette
+- ✅ Accessible shadcn-ui sidebar navigation
+- ✅ 8+ pre-built functional pages
+- ✅ Custom component library with shadcn-vue extensions
+- ✅ Auto-generated routing system (based on file structure)
+- ✅ Internationalization support (vue-i18n v11.2.8)
+- ✅ Form validation with VeeValidate + Zod
+- ✅ Data visualization with TanStack Table/Query & Unovis
+- ✅ Animation support (AutoAnimate, Motion-V, TW Animate CSS)
 
-## Tech Stack
+## 🛠️ Tech Stack & Version Constraints
 
-ui:
+| Category             | Tools & Libraries (Exact/Pinned Versions)                                                                                                                        |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Core Framework       | [Vue 3.5.28](https://vuejs.org/), [TypeScript ~5.9.3](https://www.typescriptlang.org/)                                                                           |
+| UI Components        | [shadcn-vue](https://www.shadcn-vue.com), [reka-ui 2.8.0](https://www.reka-ui.com/), [lucide-vue-next 0.553.0](https://lucide.dev/)                              |
+| Build Tool           | [Vite 7.3.1](https://vitejs.dev/), [@vitejs/plugin-vue 6.0.4](https://github.com/vitejs/vite-plugin-vue)                                                         |
+| State Management     | [Pinia 3.0.4](https://pinia.vuejs.org/), [pinia-plugin-persistedstate 4.7.1](https://prazdevs.github.io/pinia-plugin-persistedstate/)                            |
+| Routing              | [vue-router 5.0.2](https://router.vuejs.org/), [vite-plugin-vue-layouts 0.11.0](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)                        |
+| Styling              | [Tailwind CSS 4.1.18](https://tailwindcss.com/), [tailwindcss-animate 1.0.7](https://github.com/jamiebuilds/tailwindcss-animate)                                 |
+| Data Handling        | [TanStack Vue Query 5.92.9](https://tanstack.com/query/latest), [TanStack Vue Table 8.21.3](https://tanstack.com/table/latest)                                   |
+| Form Validation      | [VeeValidate 4.15.1](https://vee-validate.logaretm.com/), [Zod 4.3.6](https://zod.dev/)                                                                          |
+| Animation            | [@formkit/auto-animate 0.9.0](https://auto-animate.formkit.com/), [motion-v 1.7.4](https://motion-v.vercel.app/)                                                 |
+| Internationalization | [vue-i18n 11.2.8](https://vue-i18n.intlify.dev/)                                                                                                                 |
+| HTTP Client          | [axios 1.13.5](https://axios-http.com/)                                                                                                                          |
+| Linting & Formatting | [ESLint 9.39.2](https://eslint.org/), [@antfu/eslint-config 7.4.3](https://github.com/antfu/eslint-config)                                                       |
+| Dev Tools            | [vite-plugin-vue-devtools 8.0.6](https://github.com/webfansplz/vite-plugin-vue-devtools)                                                                         |
+| Auto Import          | [unplugin-auto-import 20.3.0](https://github.com/antfu/unplugin-auto-import), [unplugin-vue-components 30.0.0](https://github.com/antfu/unplugin-vue-components) |
 
-- [inspira-ui](https://inspira-ui.com/components/box-reveal)
-- [shadcn-vue](https://www.shadcn-vue.com)
+## 🚀 Quick Start
 
-Build Tool:
+### Prerequisites (Strict Version Requirements)
 
-- [Vite](https://cn.vitejs.dev/)
+- Node.js ≥ 18.x (LTS recommended)
+- **pnpm 10.29.3** (Project-specified package manager)
+- TypeScript ≥ 5.9.0
 
-State Management:
+### Installation
 
-- [pinia](https://pinia.vuejs.org/api/pinia/)
-- [persistedstate](https://prazdevs.github.io/pinia-plugin-persistedstate/guide/limitations.html)
+1.  Clone the repository
 
-Styling:
+    ```bash
+    git clone https://github.com/Whbbit1999/shadcn-vue-admin.git
+    ```
 
-- [Tailwind CSS](https://tailwindcss.com/)
+2.  Navigate to project directory
 
-Unplugins:
+    ```bash
+    cd shadcn-vue-admin
+    ```
 
-- [Auto Import](https://github.com/antfu/unplugin-auto-import)
-- [Components](https://github.com/antfu/unplugin-vue-components)
-- [vite-plugin-pages](https://github.com/hannoeru/vite-plugin-pages) [Deprecation]
-- [vue-router](https://github.com/vuejs/router) (v5+)
-- [Vite Plugin Vue Layouts](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)
-- [Vite Plugin Vue Devtools](https://github.com/webfansplz/vite-plugin-vue-devtools)
+3.  Install dependencies
 
-Icons:
+    ```bash
+    pnpm install
+    ```
 
-- [Lucide](https://lucide.dev/)
+4.  Start development server
+    ```bash
+    pnpm dev
+    ```
 
-Linting:
-
-- [ESLint](https://eslint.org/)
-- [antfu/eslint-config](https://github.com/antfu/eslint-config)
-
-Charts:
-
-- [shadcn-vue Chart](https://www.shadcn-vue.com/docs/components/chart)
-
-## Run locally
-
-Clone the project
-
-```bash
-git clone https://github.com/Whbbit1999/shadcn-vue-admin.git
-```
-
-Go to the project directory
-
-```bash
-cd shadcn-vue-admin
-```
-
-Install dependencies
-
-```bash
-pnpm install
-```
-
-Start the development server
+### Available Scripts
 
 ```bash
-pnpm dev
+pnpm dev             # Start development server
+pnpm build           # Build for production (vue-tsc + vite build)
+pnpm preview         # Preview production build
+pnpm lint            # ESLint check
+pnpm lint:fix        # Auto fix lint issues
+pnpm release         # Bump version with bumpp
 ```
 
-## Author
+## 📖 Advanced Guides
 
-Created by [Whbbit](https://github.com/Whbbit1999), Design by [shadcn-admin](https://github.com/satnaing/shadcn-admin)
+### Dependency Maintenance
 
-## Tips
-
-## Maintenance
-
-- Dependencies are updated every Tuesday.
+- All project dependencies are updated every Tuesday to ensure security and compatibility.
+- Version constraints are strictly managed (pinned versions for critical dependencies).
+- Git hooks (pre-commit) are enabled via `simple-git-hooks` + `lint-staged` for code quality.
 
 ### Theme Customization
 
 If you need to change the website style, you can use the preset styles provided by [tweakcn](https://tweakcn.com/editor/theme). You only need to copy the css variables provided by tweakcn to `index.css` and change the `:root` `:dark` and `@theme inline` parts.
 
-### No `index.vue` in nested directories and don't want to use the default layout
+### Layout Customization (No `index.vue` in nested directories)
 
-For example, I don't want the pages in the `pages/errors/` and `pages/auth/` folders to use the default layout. I need to create a file in `pages/` with the same name as the directory, `src/pages/errors.vue` `src/pages/auth.vue`, with the following file contents.
+For pages in `pages/errors/` and `pages/auth/` that you don’t want to use the default layout:
+
+Create a same-name file in `pages/`:
+`src/pages/errors.vue`
+`src/pages/auth.vue`
 
 ```vue
 <template>
@@ -114,13 +119,12 @@ For example, I don't want the pages in the `pages/errors/` and `pages/auth/` fol
 
 <route lang="yml">
 meta:
-  layout: false # This is the layout you want. I use false here to indicate that it does not need layout components.
+  layout: false
 </route>
 ```
 
-> This will result in an extra route being generated. In this example, if you follow the above steps, redundant `/error/` and `/auth/` routes will be generated, and these two pages will be blank pages.
-> If you don't need them and there is no `index.vue` in the directory, you can create an `index.vue` file in the directory and redirect it to any page.
-> I redirect it to `/errors/404` here, you can handle it according to your situation. The content of the `index.vue` file is as follows:
+This will generate extra empty routes like `/errors/` and `/auth/`.
+To fix it, create `index.vue` inside the directory and add redirect:
 
 ```vue
 <script lang="ts" setup>
@@ -129,6 +133,11 @@ router.replace({ name: '/errors/404' })
 </script>
 ```
 
-## License
+## 📄 License
 
-[MIT](https://github.com/Whbbit1999/shadcn-vue-admin/blob/main/LICENSE)
+This project is licensed under the **MIT License** - see the [LICENSE](https://github.com/Whbbit1999/shadcn-vue-admin/blob/main/LICENSE) file for details.
+
+## 🤝 Credits
+
+- **Developer**: [Whbbit1999](https://github.com/Whbbit1999)
+- **Original Design**: [shadcn-admin](https://github.com/satnaing/shadcn-admin)
