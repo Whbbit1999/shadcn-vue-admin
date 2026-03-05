@@ -3,6 +3,6 @@
 
 <template>
   <UiButton variant="link" class="text-muted-foreground" @click="$router.push('/auth/forgot-password')">
-    Forgot password?
+    {{ $t('forgotPassword') }}
   </UiButton>
 </template>

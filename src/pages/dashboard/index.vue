@@ -28,7 +28,7 @@ const activeTab = ref(tabs.value[0].value)
           position: 'top-center',
         })"
       >
-        Download
+        {{ $t('download') }}
       </Button>
     </template>
 

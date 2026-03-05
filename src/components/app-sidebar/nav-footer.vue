@@ -99,7 +99,7 @@ const { isMobile, open } = useSidebar()
           <UiDropdownMenuSeparator />
           <UiDropdownMenuItem @click="logout">
             <LogOut />
-            Log out
+            {{ $t('logout') }}
           </UiDropdownMenuItem>
         </UiDropdownMenuContent>
       </UiDropdownMenu>
