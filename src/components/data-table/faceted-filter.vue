@@ -70,8 +70,7 @@ const filterFunction = (list: DataTableFacetedFilter['options'], term: string) =
               v-for="option in options"
               :key="option.value"
               :value="option"
-              @select="(e) => {
-                console.log(e.detail.value)
+              @select="(_e) => {
                 const isSelected = selectedValues.has(option.value)
                 if (isSelected) {
                   selectedValues.delete(option.value)
