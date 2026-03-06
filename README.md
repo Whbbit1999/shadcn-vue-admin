@@ -2,10 +2,10 @@
 
 [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Whbbit1999/shadcn-vue-admin/blob/main/LICENSE)
-[![Vue 3.5+](https://img.shields.io/badge/Vue-3.5.28-brightgreen.svg)](https://vuejs.org/)
-[![Vite 7.3+](https://img.shields.io/badge/Vite-7.3.1-yellow.svg)](https://vitejs.dev/)
-[![pnpm 10.29+](https://img.shields.io/badge/pnpm-10.29.3-orange.svg)](https://pnpm.io/)
-[![TypeScript 5.9+](https://img.shields.io/badge/TypeScript-5.9.3-blue.svg)](https://www.typescriptlang.org/)
+[![Vue 3.5+](https://img.shields.io/badge/Vue-3.5+-brightgreen.svg)](https://vuejs.org/)
+[![Vite 7+](https://img.shields.io/badge/Vite-7+-yellow.svg)](https://vitejs.dev/)
+[![pnpm 10+](https://img.shields.io/badge/pnpm-10+-orange.svg)](https://pnpm.io/)
+[![TypeScript 5.9+](https://img.shields.io/badge/TypeScript-5.9+-blue.svg)](https://www.typescriptlang.org/)
 
 [简体中文](./README-CN.md) | English
 
@@ -24,36 +24,36 @@ Forked from [shadcn-admin](https://github.com/satnaing/shadcn-admin)
 - ✅ 8+ pre-built functional pages
 - ✅ Custom component library with shadcn-vue extensions
 - ✅ Auto-generated routing system (based on file structure)
-- ✅ Internationalization support (vue-i18n v11.2.8)
+- ✅ Internationalization support (vue-i18n v11+)
 - ✅ Form validation with VeeValidate + Zod
 - ✅ Data visualization with TanStack Table/Query & Unovis
 - ✅ Animation support (AutoAnimate, Motion-V, TW Animate CSS)
 
 ## 🛠️ Tech Stack & Version Constraints
 
-| Category             | Tools & Libraries (Exact/Pinned Versions)                                                                                                                        |
-| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Core Framework       | [Vue 3.5.28](https://vuejs.org/), [TypeScript ~5.9.3](https://www.typescriptlang.org/)                                                                           |
-| UI Components        | [shadcn-vue](https://www.shadcn-vue.com), [reka-ui 2.8.0](https://www.reka-ui.com/), [lucide-vue-next 0.553.0](https://lucide.dev/)                              |
-| Build Tool           | [Vite 7.3.1](https://vitejs.dev/), [@vitejs/plugin-vue 6.0.4](https://github.com/vitejs/vite-plugin-vue)                                                         |
-| State Management     | [Pinia 3.0.4](https://pinia.vuejs.org/), [pinia-plugin-persistedstate 4.7.1](https://prazdevs.github.io/pinia-plugin-persistedstate/)                            |
-| Routing              | [vue-router 5.0.2](https://router.vuejs.org/), [vite-plugin-vue-layouts 0.11.0](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)                        |
-| Styling              | [Tailwind CSS 4.1.18](https://tailwindcss.com/), [tailwindcss-animate 1.0.7](https://github.com/jamiebuilds/tailwindcss-animate)                                 |
-| Data Handling        | [TanStack Vue Query 5.92.9](https://tanstack.com/query/latest), [TanStack Vue Table 8.21.3](https://tanstack.com/table/latest)                                   |
-| Form Validation      | [VeeValidate 4.15.1](https://vee-validate.logaretm.com/), [Zod 4.3.6](https://zod.dev/)                                                                          |
-| Animation            | [@formkit/auto-animate 0.9.0](https://auto-animate.formkit.com/), [motion-v 1.7.4](https://motion-v.vercel.app/)                                                 |
-| Internationalization | [vue-i18n 11.2.8](https://vue-i18n.intlify.dev/)                                                                                                                 |
-| HTTP Client          | [axios 1.13.5](https://axios-http.com/)                                                                                                                          |
-| Linting & Formatting | [ESLint 9.39.2](https://eslint.org/), [@antfu/eslint-config 7.4.3](https://github.com/antfu/eslint-config)                                                       |
-| Dev Tools            | [vite-plugin-vue-devtools 8.0.6](https://github.com/webfansplz/vite-plugin-vue-devtools)                                                                         |
-| Auto Import          | [unplugin-auto-import 20.3.0](https://github.com/antfu/unplugin-auto-import), [unplugin-vue-components 30.0.0](https://github.com/antfu/unplugin-vue-components) |
+| Category             | Tools & Libraries (Major Versions)                                                                                                                         |
+| -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Core Framework       | [Vue 3.5+](https://vuejs.org/), [TypeScript 5.9+](https://www.typescriptlang.org/)                                                                         |
+| UI Components        | [shadcn-vue](https://www.shadcn-vue.com), [reka-ui 2+](https://www.reka-ui.com/), [lucide-vue-next 0+](https://lucide.dev/)                                |
+| Build Tool           | [Vite 7+](https://vitejs.dev/), [@vitejs/plugin-vue 6+](https://github.com/vitejs/vite-plugin-vue)                                                         |
+| State Management     | [Pinia 3+](https://pinia.vuejs.org/), [pinia-plugin-persistedstate 4+](https://prazdevs.github.io/pinia-plugin-persistedstate/)                            |
+| Routing              | [vue-router 5+](https://router.vuejs.org/), [vite-plugin-vue-layouts 0.11+](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)                      |
+| Styling              | [Tailwind CSS 4+](https://tailwindcss.com/), [tailwindcss-animate 1+](https://github.com/jamiebuilds/tailwindcss-animate)                                  |
+| Data Handling        | [TanStack Vue Query 5+](https://tanstack.com/query/latest), [TanStack Vue Table 8+](https://tanstack.com/table/latest)                                     |
+| Form Validation      | [VeeValidate 4+](https://vee-validate.logaretm.com/), [Zod 4+](https://zod.dev/)                                                                           |
+| Animation            | [@formkit/auto-animate 0.9+](https://auto-animate.formkit.com/), [motion-v 1+](https://motion-v.vercel.app/)                                               |
+| Internationalization | [vue-i18n 11+](https://vue-i18n.intlify.dev/)                                                                                                              |
+| HTTP Client          | [axios 1+](https://axios-http.com/)                                                                                                                        |
+| Linting & Formatting | [ESLint 9+](https://eslint.org/), [@antfu/eslint-config 7+](https://github.com/antfu/eslint-config)                                                        |
+| Dev Tools            | [vite-plugin-vue-devtools 8+](https://github.com/webfansplz/vite-plugin-vue-devtools)                                                                      |
+| Auto Import          | [unplugin-auto-import 20+](https://github.com/antfu/unplugin-auto-import), [unplugin-vue-components 30+](https://github.com/antfu/unplugin-vue-components) |
 
 ## 🚀 Quick Start
 
 ### Prerequisites (Strict Version Requirements)
 
 - Node.js ≥ 18.x (LTS recommended)
-- **pnpm 10.29.3** (Project-specified package manager)
+- **pnpm 10+** (Project-specified package manager)
 - TypeScript ≥ 5.9.0
 
 ### Installation

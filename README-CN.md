@@ -2,10 +2,10 @@
 
 [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Whbbit1999/shadcn-vue-admin/blob/main/LICENSE)
-[![Vue 3.5+](https://img.shields.io/badge/Vue-3.5.28-brightgreen.svg)](https://vuejs.org/)
-[![Vite 7.3+](https://img.shields.io/badge/Vite-7.3.1-yellow.svg)](https://vitejs.dev/)
-[![pnpm 10.29+](https://img.shields.io/badge/pnpm-10.29.3-orange.svg)](https://pnpm.io/)
-[![TypeScript 5.9+](https://img.shields.io/badge/TypeScript-5.9.3-blue.svg)](https://www.typescriptlang.org/)
+[![Vue 3.5+](https://img.shields.io/badge/Vue-3.5+-brightgreen.svg)](https://vuejs.org/)
+[![Vite 7+](https://img.shields.io/badge/Vite-7+-yellow.svg)](https://vitejs.dev/)
+[![pnpm 10+](https://img.shields.io/badge/pnpm-10+-orange.svg)](https://pnpm.io/)
+[![TypeScript 5.9+](https://img.shields.io/badge/TypeScript-5.9+-blue.svg)](https://www.typescriptlang.org/)
 
 [English](./README.md) | 简体中文
 
@@ -24,36 +24,36 @@
 - ✅ 8+ 个预构建的功能页面
 - ✅ 基于 shadcn-vue 扩展的自定义组件库
 - ✅ 基于文件结构的自动路由生成系统
-- ✅ 国际化支持（vue-i18n v11.2.8）
+- ✅ 国际化支持（vue-i18n v11+）
 - ✅ VeeValidate + Zod 表单验证
 - ✅ TanStack Table/Query & Unovis 数据可视化
 - ✅ 流畅动画支持（AutoAnimate、Motion-V、TW Animate CSS）
 
 ## 🛠️ 技术栈与版本约束
 
-| 分类             | 工具与库（精确/锁定版本）                                                                                                                                        |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| 核心框架         | [Vue 3.5.28](https://vuejs.org/), [TypeScript ~5.9.3](https://www.typescriptlang.org/)                                                                           |
-| UI 组件          | [shadcn-vue](https://www.shadcn-vue.com), [reka-ui 2.8.0](https://www.reka-ui.com/), [lucide-vue-next 0.553.0](https://lucide.dev/)                              |
-| 构建工具         | [Vite 7.3.1](https://vitejs.dev/), [@vitejs/plugin-vue 6.0.4](https://github.com/vitejs/vite-plugin-vue)                                                         |
-| 状态管理         | [Pinia 3.0.4](https://pinia.vuejs.org/), [pinia-plugin-persistedstate 4.7.1](https://prazdevs.github.io/pinia-plugin-persistedstate/)                            |
-| 路由管理         | [vue-router 5.0.2](https://router.vuejs.org/), [vite-plugin-vue-layouts 0.11.0](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)                        |
-| 样式系统         | [Tailwind CSS 4.1.18](https://tailwindcss.com/), [tailwindcss-animate 1.0.7](https://github.com/jamiebuilds/tailwindcss-animate)                                 |
-| 数据处理         | [TanStack Vue Query 5.92.9](https://tanstack.com/query/latest), [TanStack Vue Table 8.21.3](https://tanstack.com/table/latest)                                   |
-| 表单验证         | [VeeValidate 4.15.1](https://vee-validate.logaretm.com/), [Zod 4.3.6](https://zod.dev/)                                                                          |
-| 动画效果         | [@formkit/auto-animate 0.9.0](https://auto-animate.formkit.com/), [motion-v 1.7.4](https://motion-v.vercel.app/)                                                 |
-| 国际化           | [vue-i18n 11.2.8](https://vue-i18n.intlify.dev/)                                                                                                                 |
-| HTTP 客户端      | [axios 1.13.5](https://axios-http.com/)                                                                                                                          |
-| 代码规范与格式化 | [ESLint 9.39.2](https://eslint.org/), [@antfu/eslint-config 7.4.3](https://github.com/antfu/eslint-config)                                                       |
-| 开发工具         | [vite-plugin-vue-devtools 8.0.6](https://github.com/webfansplz/vite-plugin-vue-devtools)                                                                         |
-| 自动导入         | [unplugin-auto-import 20.3.0](https://github.com/antfu/unplugin-auto-import), [unplugin-vue-components 30.0.0](https://github.com/antfu/unplugin-vue-components) |
+| 分类             | 工具与库（主版本号）                                                                                                                                       |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| 核心框架         | [Vue 3.5+](https://vuejs.org/), [TypeScript 5.9+](https://www.typescriptlang.org/)                                                                         |
+| UI 组件          | [shadcn-vue](https://www.shadcn-vue.com), [reka-ui 2+](https://www.reka-ui.com/), [lucide-vue-next 0+](https://lucide.dev/)                                |
+| 构建工具         | [Vite 7+](https://vitejs.dev/), [@vitejs/plugin-vue 6+](https://github.com/vitejs/vite-plugin-vue)                                                         |
+| 状态管理         | [Pinia 3+](https://pinia.vuejs.org/), [pinia-plugin-persistedstate 4+](https://prazdevs.github.io/pinia-plugin-persistedstate/)                            |
+| 路由管理         | [vue-router 5+](https://router.vuejs.org/), [vite-plugin-vue-layouts 0.11+](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)                      |
+| 样式系统         | [Tailwind CSS 4+](https://tailwindcss.com/), [tailwindcss-animate 1+](https://github.com/jamiebuilds/tailwindcss-animate)                                  |
+| 数据处理         | [TanStack Vue Query 5+](https://tanstack.com/query/latest), [TanStack Vue Table 8+](https://tanstack.com/table/latest)                                     |
+| 表单验证         | [VeeValidate 4+](https://vee-validate.logaretm.com/), [Zod 4+](https://zod.dev/)                                                                           |
+| 动画效果         | [@formkit/auto-animate 0.9+](https://auto-animate.formkit.com/), [motion-v 1+](https://motion-v.vercel.app/)                                               |
+| 国际化           | [vue-i18n 11+](https://vue-i18n.intlify.dev/)                                                                                                              |
+| HTTP 客户端      | [axios 1+](https://axios-http.com/)                                                                                                                        |
+| 代码规范与格式化 | [ESLint 9+](https://eslint.org/), [@antfu/eslint-config 7+](https://github.com/antfu/eslint-config)                                                        |
+| 开发工具         | [vite-plugin-vue-devtools 8+](https://github.com/webfansplz/vite-plugin-vue-devtools)                                                                      |
+| 自动导入         | [unplugin-auto-import 20+](https://github.com/antfu/unplugin-auto-import), [unplugin-vue-components 30+](https://github.com/antfu/unplugin-vue-components) |
 
 ## 🚀 快速开始
 
 ### 前置依赖（严格版本要求）
 
 - Node.js ≥ 18.x（推荐 LTS 版本）
-- **pnpm 10.29.3**（项目指定包管理器）
+- **pnpm 10+**（项目指定包管理器）
 - TypeScript ≥ 5.9.0
 
 ### 安装步骤
@@ -123,7 +123,7 @@ pnpm release         # 使用 bumpp 升级版本
 
 <route lang="yml">
 meta:
-  layout: false # 禁用默认布局，适用于所有子路由（兼容 vue-router 5.0.2）
+  layout: false # 禁用默认布局，适用于所有子路由
 </route>
 ```
 
@@ -139,7 +139,7 @@ meta:
 import { useRouter } from 'vue-router'
 
 const router = useRouter()
-// 示例：重定向至 404 页面（vue-router 5.0.2 语法）
+// 示例：重定向至 404 页面
 router.replace({ name: '/errors/404' })
 </script>
 ```
