@@ -3,7 +3,13 @@ import pluginQuery from '@tanstack/eslint-plugin-query'
 
 export default antfu({
   type: 'app',
-  vue: true,
+  vue: {
+    overrides: {
+      'vue/block-lang': ['warn', {
+        script: { lang: ['ts', 'tsx'] },
+      }],
+    },
+  },
   typescript: true,
   formatters: {
     css: true,
@@ -22,15 +28,12 @@ export default antfu({
     definePage: 'readonly',
   },
 
-  rules: {
-    'perfectionist/sort-imports': ['error', {
-      tsconfig: { rootDir: '.' },
-    }],
-    'yaml/indent': ['error', 2],
-    'jsonc/indent': ['error', 2],
-    'vue/block-lang': ['warn', {
-      script: { lang: ['ts', 'tsx'] },
-    }],
+  imports: {
+    overrides: {
+      'perfectionist/sort-imports': ['error', {
+        tsconfig: { rootDir: '.' },
+      }],
+    },
   },
   ...pluginQuery.configs['flat/recommended'],
 })
