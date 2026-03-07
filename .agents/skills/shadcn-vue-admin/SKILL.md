@@ -9,11 +9,11 @@ metadata:
   language: typescript
 ---
 
-# Purpose and scope
+## Purpose and scope
 
 Maintain this Vue 3 admin dashboard repository: pages and layouts, component integration, routing/auth, theming and i18n, data tables, and form validation.
 
-# Codebase map
+## Codebase map
 
 - App entry: `src/main.ts`, `src/App.vue`
 - Routing: `src/router/`
@@ -24,18 +24,18 @@ Maintain this Vue 3 admin dashboard repository: pages and layouts, component int
 - Utils and constants: `src/utils/`, `src/lib/`, `src/constants/`
 - Plugins: `src/plugins/`
 
-# References
+## References
 
 - System knowledge map: [references/SYSTEM_KNOWLEDGE_MAP.md](references/SYSTEM_KNOWLEDGE_MAP.md)
 - Testing strategy: [references/testing-strategy.md](references/testing-strategy.md)
 
-# Standard workflow
+## Standard workflow
 
 1. Read existing implementations in the target directory and reuse established patterns and styles.
 2. Prefer existing shadcn-vue components and shared utilities to avoid duplication.
 3. Only change public APIs when necessary; avoid large-scale formatting unrelated code.
 
-# Commands and checks
+## Commands and checks
 
 - Dev server: `pnpm dev`
 - Build (CI-like check): `pnpm build`
@@ -49,31 +49,31 @@ Requirements:
   - If test scripts exist (e.g. `pnpm test`/`pnpm test:unit`), add/update tests and run them.
   - If no test scripts exist, tests are optional but recommended; include “Testing Notes” in the change description.
 
-# Design and implementation conventions
+## Design and implementation conventions
 
 - Use Vue 3 Composition API with TypeScript.
 - Prefer vee-validate + zod for form validation.
 - Follow existing theming strategy in `src/assets/` and `src/stores/theme.ts`.
 - Follow the existing structure for i18n in `src/plugins/i18n/`.
 
-# Common task guides
+## Common task guides
 
-## Add a page
+### Add a page
 
 1. Create a page component under `src/pages/`.
 2. Register routing/menu via `src/router/` if needed.
 3. Use existing layouts and shared components for consistent spacing and typography.
 
-## Add a component
+### Add a component
 
 1. Reuse `src/components/ui/` and existing shadcn-vue components first.
 2. If it should be shared, place it under `src/components/` to avoid page-level duplication.
 
-## Update theme/styles
+### Update theme/styles
 
 1. Prefer Tailwind and theme files in `src/assets/`.
 2. Avoid heavy inline styles; keep components maintainable.
 
-# Output requirements
+### Output requirements
 
 After changes, provide a concise summary and list any commands run (if any).

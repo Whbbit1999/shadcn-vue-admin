@@ -14,7 +14,7 @@ Forked from [shadcn-admin](https://github.com/satnaing/shadcn-admin)
 
 ![cover](public/shadcn-vue-admin.png)
 
-> ⚠️ Version Note: Current stable version `0.11.0` | This is not a starter template. New components and features will be continuously added to the project.
+> ⚠️ Version Note: Current stable version `0.11.0` | This is a starter template. New components and features will be continuously added to the project.
 
 ## ✨ Key Features
 
@@ -52,7 +52,7 @@ Forked from [shadcn-admin](https://github.com/satnaing/shadcn-admin)
 
 ### Prerequisites (Strict Version Requirements)
 
-- Node.js ≥ 18.x (LTS recommended)
+- Node.js ≥ 20.x (LTS recommended)
 - **pnpm 10+** (Project-specified package manager)
 - TypeScript ≥ 5.9.0
 
