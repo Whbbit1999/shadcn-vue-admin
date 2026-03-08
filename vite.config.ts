@@ -1,3 +1,5 @@
+import type { PluginOption } from 'vite'
+
 import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from '@vitejs/plugin-vue-jsx'
@@ -23,7 +25,7 @@ export default defineConfig({
     vueJsx(),
     vueDevTools(),
     tailwindcss(),
-    visualizer({ gzipSize: true, brotliSize: true }),
+    visualizer({ gzipSize: true, brotliSize: true }) as PluginOption,
     Layouts({
       defaultLayout: 'default',
     }),
