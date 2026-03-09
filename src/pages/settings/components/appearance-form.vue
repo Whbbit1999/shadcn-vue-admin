@@ -1,29 +1,24 @@
 <script setup lang="ts">
-import { toTypedSchema } from '@vee-validate/zod'
-import { useForm } from 'vee-validate'
-import { toast } from 'vue-sonner'
-
 import { Button } from '@/components/ui/button'
 import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Separator } from '@/components/ui/separator'
+import { Spinner } from '@/components/ui/spinner'
 
 import { appearanceValidator } from '../validators/appearance.validator'
 
-const appearanceFormSchema = toTypedSchema(appearanceValidator)
+const KEY = 'appearance_config'
+const DESCRIPTION = 'Customize the appearance of the app. Automatically switch between day and night themes.'
+const DEFAULT_APPEARANCE_CONFIG_VALUE = {
+  theme: 'light',
+  font: 'inter',
+} as const
 
-const { handleSubmit } = useForm({
-  validationSchema: appearanceFormSchema,
-  initialValues: {
-    theme: 'light',
-    font: 'inter',
-  },
-})
-
-const onSubmit = handleSubmit((values) => {
-  toast('You submitted the following values:', {
-    description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(values, null, 2))),
-  })
+const { isGetting, isPending, onSubmit } = useSystemConfig({
+  key: KEY,
+  description: DESCRIPTION,
+  defaultValue: DEFAULT_APPEARANCE_CONFIG_VALUE,
+  schema: appearanceValidator,
 })
 </script>
 
@@ -37,7 +32,15 @@ const onSubmit = handleSubmit((values) => {
     </p>
   </div>
   <Separator class="my-4" />
-  <form class="space-y-8" @submit="onSubmit">
+
+  <div v-if="isGetting">
+    <Button variant="secondary" disabled size="sm">
+      <Spinner />
+      Please wait
+    </Button>
+  </div>
+
+  <form v-if="!isGetting" class="space-y-8" @submit="onSubmit">
     <FormField v-slot="{ componentField }" name="font">
       <FormItem>
         <FormLabel>Font</FormLabel>
@@ -137,7 +140,8 @@ const onSubmit = handleSubmit((values) => {
     </FormField>
 
     <div class="flex justify-start">
-      <Button type="submit">
+      <Button type="submit" :disabled="!isPending">
+        <Spinner v-if="!isPending" size="sm" />
         Update preferences
       </Button>
     </div>
