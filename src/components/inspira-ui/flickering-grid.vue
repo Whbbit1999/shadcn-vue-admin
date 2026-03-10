@@ -29,11 +29,12 @@ const context = ref<CanvasRenderingContext2D>()
 const isInView = ref(false)
 const canvasSize = ref({ width: 0, height: 0 })
 
+const hexColorRegex = /^#/
 const computedColor = computed(() => {
   if (!context.value)
     return 'rgba(255, 0, 0,'
 
-  const hex = color.value.replace(/^#/, '')
+  const hex = color.value.replace(hexColorRegex, '')
   const bigint = Number.parseInt(hex, 16)
   const r = (bigint >> 16) & 255
   const g = (bigint >> 8) & 255
