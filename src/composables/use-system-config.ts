@@ -51,7 +51,7 @@ export function useSystemConfig<S extends z.ZodObject<z.ZodRawShape>>({
       return
     }
 
-    const configValue: z.input<S> = systemConfigData.value?.data.value
+    const configValue: z.input<S> = systemConfigData.value?.data?.value
       ? JSON.parse(systemConfigData.value.data.value)
       : initialConfig
     localCacheConfig.value = configValue
