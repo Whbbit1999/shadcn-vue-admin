@@ -140,8 +140,8 @@ const { isGetting, isPending, onSubmit } = useSystemConfig({
     </FormField>
 
     <div class="flex justify-start">
-      <Button type="submit" :disabled="!isPending">
-        <Spinner v-if="!isPending" size="sm" />
+      <Button type="submit" :disabled="isPending">
+        <Spinner v-if="isPending" size="sm" />
         Update preferences
       </Button>
     </div>

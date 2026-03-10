@@ -31,7 +31,7 @@ export function useSystemConfig<S extends z.ZodObject<z.ZodRawShape>>({
   const { data: systemConfigData, isPending: isGetSystemConfigByKeyQueryPending } = useGetSystemConfigByKeyQuery(key)
   const { mutate: createSystemConfigMutate, isPending: isCreateSystemConfigPending } = useCreateSystemMutation()
   const { mutate: updateSystemConfigMutate, isPending: isUpdateSystemConfigPending } = useUpdateSystemConfigByKeyMutation(key)
-  const isPending = computed(() => isCreateSystemConfigPending || isUpdateSystemConfigPending)
+  const isPending = computed(() => isCreateSystemConfigPending.value || isUpdateSystemConfigPending.value)
 
   watch(systemConfigData, () => {
     if (!isGetSystemConfigByKeyQueryPending.value && !systemConfigData.value) {
@@ -40,6 +40,13 @@ export function useSystemConfig<S extends z.ZodObject<z.ZodRawShape>>({
         key,
         description,
         value: JSON.stringify(defaultValue),
+      }, {
+        onSuccess: () => {
+          localCacheConfig.value = initialConfig
+          toast('System config created with default value.', {
+            description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify({ key, description, value: defaultValue }, null, 2))),
+          })
+        },
       })
       return
     }
