@@ -97,7 +97,7 @@ pnpm release         # 使用 bumpp 升级版本
 
 ### 依赖维护
 
-- 所有项目依赖每周二更新，以确保安全性与兼容性。
+- 所有项目依赖每周二（UTC/GMT +8:00）更新，以确保安全性与兼容性。
 - 关键依赖版本严格锁定，避免兼容性问题。
 - 通过 `simple-git-hooks` + `lint-staged` 启用 Git 钩子（pre-commit），保障代码质量。
 

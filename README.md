@@ -97,7 +97,7 @@ pnpm release         # Bump version with bumpp
 
 ### Dependency Maintenance
 
-- All project dependencies are updated every Tuesday to ensure security and compatibility.
+- All project dependencies are updated every Tuesday （UTC/GMT +8:00） to ensure security and compatibility.
 - Version constraints are strictly managed (pinned versions for critical dependencies).
 - Git hooks (pre-commit) are enabled via `simple-git-hooks` + `lint-staged` for code quality.
 
