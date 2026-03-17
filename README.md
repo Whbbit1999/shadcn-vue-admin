@@ -3,18 +3,18 @@
 [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Whbbit1999/shadcn-vue-admin/blob/main/LICENSE)
 [![Vue 3.5+](https://img.shields.io/badge/Vue-3.5+-brightgreen.svg)](https://vuejs.org/)
-[![Vite 7+](https://img.shields.io/badge/Vite-7+-yellow.svg)](https://vitejs.dev/)
+[![Vite](https://img.shields.io/badge/Vite-8+-4f30e8.svg)](https://vitejs.dev/)
 [![pnpm 10+](https://img.shields.io/badge/pnpm-10+-orange.svg)](https://pnpm.io/)
 [![TypeScript 5.9+](https://img.shields.io/badge/TypeScript-5.9+-blue.svg)](https://www.typescriptlang.org/)
 
 [简体中文](./README-CN.md) | English
 
-A production-grade admin dashboard UI built with **Shadcn-vue**, **Vue 3.5+** and **Vite 7+**, focusing on responsiveness, accessibility and developer experience.
+A production-grade admin dashboard UI built with **Shadcn-vue**, **Vue 3.5+** and **Vite**, focusing on responsiveness, accessibility and developer experience.
 Forked from [shadcn-admin](https://github.com/satnaing/shadcn-admin)
 
 ![cover](public/shadcn-vue-admin.png)
 
-> ⚠️ Version Note: Current stable version `0.11.0` | This is a starter template. New components and features will be continuously added to the project.
+> ⚠️ Version Note: This is a starter template. New components and features will be continuously added to the project.
 
 ## ✨ Key Features
 
@@ -35,7 +35,7 @@ Forked from [shadcn-admin](https://github.com/satnaing/shadcn-admin)
 | -------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Core Framework       | [Vue 3.5+](https://vuejs.org/), [TypeScript 5.9+](https://www.typescriptlang.org/)                                                                         |
 | UI Components        | [shadcn-vue](https://www.shadcn-vue.com), [reka-ui 2+](https://www.reka-ui.com/), [lucide-vue-next 0+](https://lucide.dev/)                                |
-| Build Tool           | [Vite 7+](https://vitejs.dev/), [@vitejs/plugin-vue 6+](https://github.com/vitejs/vite-plugin-vue)                                                         |
+| Build Tool           | [Vite](https://vitejs.dev/), [@vitejs/plugin-vue 6+](https://github.com/vitejs/vite-plugin-vue)                                                            |
 | State Management     | [Pinia 3+](https://pinia.vuejs.org/), [pinia-plugin-persistedstate 4+](https://prazdevs.github.io/pinia-plugin-persistedstate/)                            |
 | Routing              | [vue-router 5+](https://router.vuejs.org/), [vite-plugin-vue-layouts 0.11+](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)                      |
 | Styling              | [Tailwind CSS 4+](https://tailwindcss.com/), [tailwindcss-animate 1+](https://github.com/jamiebuilds/tailwindcss-animate)                                  |
@@ -52,34 +52,35 @@ Forked from [shadcn-admin](https://github.com/satnaing/shadcn-admin)
 
 ### Prerequisites (Strict Version Requirements)
 
-- Node.js ≥ 20.x (LTS recommended)
+- Node.js ≥ 22.x (LTS recommended)
 - **pnpm 10+** (Project-specified package manager)
 - TypeScript ≥ 5.9.0
 
 ### Installation
 
-1.  Clone the repository
+1. Clone the repository
 
-    ```bash
-    git clone https://github.com/Whbbit1999/shadcn-vue-admin.git
-    ```
+   ```bash
+   git clone https://github.com/Whbbit1999/shadcn-vue-admin.git
+   ```
 
-2.  Navigate to project directory
+2. Navigate to project directory
 
-    ```bash
-    cd shadcn-vue-admin
-    ```
+   ```bash
+   cd shadcn-vue-admin
+   ```
 
-3.  Install dependencies
+3. Install dependencies
 
-    ```bash
-    pnpm install
-    ```
+   ```bash
+   pnpm install
+   ```
 
-4.  Start development server
-    ```bash
-    pnpm dev
-    ```
+4. Start development server
+
+   ```bash
+   pnpm dev
+   ```
 
 ### Available Scripts
 

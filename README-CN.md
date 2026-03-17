@@ -3,18 +3,18 @@
 [![code style](https://antfu.me/badge-code-style.svg)](https://github.com/antfu/eslint-config)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Whbbit1999/shadcn-vue-admin/blob/main/LICENSE)
 [![Vue 3.5+](https://img.shields.io/badge/Vue-3.5+-brightgreen.svg)](https://vuejs.org/)
-[![Vite 7+](https://img.shields.io/badge/Vite-7+-yellow.svg)](https://vitejs.dev/)
+[![Vite](https://img.shields.io/badge/Vite-8+-4f30e8.svg)](https://vitejs.dev/)
 [![pnpm 10+](https://img.shields.io/badge/pnpm-10+-orange.svg)](https://pnpm.io/)
 [![TypeScript 5.9+](https://img.shields.io/badge/TypeScript-5.9+-blue.svg)](https://www.typescriptlang.org/)
 
 [English](./README.md) | 简体中文
 
-基于 **Shadcn-vue**、**Vue 3.5+** 和 **Vite 7+** 构建的企业级管理仪表板 UI，专注于响应式设计、可访问性与开发者体验。
+基于 **Shadcn-vue**、**Vue 3.5+** 和 **Vite** 构建的企业级管理仪表板 UI，专注于响应式设计、可访问性与开发者体验。
 本项目 Fork 自 [shadcn-admin](https://github.com/satnaing/shadcn-admin)
 
 ![cover](public/shadcn-vue-admin.png)
 
-> ⚠️ 版本说明：当前稳定版本 `0.11.0` | 本项目为可直接使用的起始模板，后续将持续新增组件与功能。
+> ⚠️ 版本说明：本项目为可直接使用的起始模板，后续将持续新增组件与功能。
 
 ## ✨ 核心特性
 
@@ -35,7 +35,7 @@
 | ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | 核心框架         | [Vue 3.5+](https://vuejs.org/), [TypeScript 5.9+](https://www.typescriptlang.org/)                                                                         |
 | UI 组件          | [shadcn-vue](https://www.shadcn-vue.com), [reka-ui 2+](https://www.reka-ui.com/), [lucide-vue-next 0+](https://lucide.dev/)                                |
-| 构建工具         | [Vite 7+](https://vitejs.dev/), [@vitejs/plugin-vue 6+](https://github.com/vitejs/vite-plugin-vue)                                                         |
+| 构建工具         | [Vite](https://vitejs.dev/), [@vitejs/plugin-vue 6+](https://github.com/vitejs/vite-plugin-vue)                                                            |
 | 状态管理         | [Pinia 3+](https://pinia.vuejs.org/), [pinia-plugin-persistedstate 4+](https://prazdevs.github.io/pinia-plugin-persistedstate/)                            |
 | 路由管理         | [vue-router 5+](https://router.vuejs.org/), [vite-plugin-vue-layouts 0.11+](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)                      |
 | 样式系统         | [Tailwind CSS 4+](https://tailwindcss.com/), [tailwindcss-animate 1+](https://github.com/jamiebuilds/tailwindcss-animate)                                  |
@@ -52,7 +52,7 @@
 
 ### 前置依赖（严格版本要求）
 
-- Node.js ≥ 20.x（推荐 LTS 版本）
+- Node.js ≥ 22.x（推荐 LTS 版本）
 - **pnpm 10+**（项目指定包管理器）
 - TypeScript ≥ 5.9.0
 
@@ -77,6 +77,7 @@
    ```
 
 4. 启动开发服务器
+
    ```bash
    pnpm dev
    ```
