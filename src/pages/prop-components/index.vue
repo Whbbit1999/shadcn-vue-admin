@@ -48,6 +48,7 @@ const components = [
             <a
               :href="component.link"
               target="_blank"
+              rel="noopener noreferrer"
               class="flex items-center gap-2"
             >
               Docs
@@ -58,7 +59,7 @@ const components = [
       </Item>
 
       <Item variant="outline" size="sm" as-child>
-        <a href="https://kit.prop.show/en" target="_blank">
+        <a href="https://kit.prop.show/en" target="_blank" rel="noopener noreferrer">
           <ItemMedia>
             <BadgeCheckIcon class="size-5" />
           </ItemMedia>
