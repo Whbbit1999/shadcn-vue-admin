@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Status, StatusBadge } from '@/components/sva-ui/status-badge'
+import { Status, StatusBadge } from '@/components/prop-ui/status-badge'
 </script>
 
 <template>
@@ -12,7 +12,7 @@ import { Status, StatusBadge } from '@/components/sva-ui/status-badge'
       <code
         class="relative rounded bg-muted px-1 py-1 font-mono text-sm font-semibold"
       >
-        src/components/sva-ui/status-badge
+        src/components/prop-ui/status-badge
       </code>
     </blockquote>
 

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { InlineTip } from '@/components/sva-ui/inline-tip'
+import { InlineTip } from '@/components/prop-ui/inline-tip'
 </script>
 
 <template>
@@ -12,7 +12,7 @@ import { InlineTip } from '@/components/sva-ui/inline-tip'
       <code
         class="relative rounded bg-muted px-1 py-1 font-mono text-sm font-semibold"
       >
-        src/components/sva-ui/inline-tip
+        src/components/prop-ui/inline-tip
       </code>
     </blockquote>
 

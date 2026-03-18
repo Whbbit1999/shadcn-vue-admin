@@ -53,7 +53,7 @@ export function useSidebar() {
       title: 'Other',
       items: [
         { title: 'Settings', icon: Settings, items: settingsNavItems },
-        { title: 'SVA Components', url: '/sva-components', icon: Component },
+        { title: 'Prop Components', url: '/prop-components', icon: Component },
         { title: 'Help Center', url: '/help-center', icon: BadgeHelp,
         },
       ],
