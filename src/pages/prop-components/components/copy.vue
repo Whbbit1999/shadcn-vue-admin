@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Copy } from '@/components/sva-ui/copy'
+import { Copy } from '@/components/prop-ui/copy'
 
 const content = ref('copy something')
 </script>
@@ -14,7 +14,7 @@ const content = ref('copy something')
       <code
         class="relative rounded bg-muted px-1 py-1 font-mono text-sm font-semibold"
       >
-        src/components/sva-ui/copy
+        src/components/prop-ui/copy
       </code>
     </blockquote>
 

@@ -4,7 +4,7 @@ import { h } from 'vue'
 
 import DataTableColumnHeader from '@/components/data-table/column-header.vue'
 import { SelectColumn } from '@/components/data-table/table-columns'
-import { Copy } from '@/components/sva-ui/copy'
+import { Copy } from '@/components/prop-ui/copy'
 import Badge from '@/components/ui/badge/Badge.vue'
 
 import type { User } from '../data/schema'

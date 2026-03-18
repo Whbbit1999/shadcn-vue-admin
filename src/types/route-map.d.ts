@@ -197,6 +197,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/prop-components/': RouteRecordInfo<
+      '/prop-components/',
+      '/prop-components',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/settings/': RouteRecordInfo<
       '/settings/',
       '/settings',
@@ -228,13 +235,6 @@ declare module 'vue-router/auto-routes' {
     '/settings/notifications': RouteRecordInfo<
       '/settings/notifications',
       '/settings/notifications',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/sva-components/': RouteRecordInfo<
-      '/sva-components/',
-      '/sva-components',
       Record<never, never>,
       Record<never, never>,
       | never
@@ -416,6 +416,12 @@ declare module 'vue-router/auto-routes' {
       views:
         | never
     }
+    'src/pages/prop-components/index.vue': {
+      routes:
+        | '/prop-components/'
+      views:
+        | never
+    }
     'src/pages/settings/index.vue': {
       routes:
         | '/settings/'
@@ -443,12 +449,6 @@ declare module 'vue-router/auto-routes' {
     'src/pages/settings/notifications.vue': {
       routes:
         | '/settings/notifications'
-      views:
-        | never
-    }
-    'src/pages/sva-components/index.vue': {
-      routes:
-        | '/sva-components/'
       views:
         | never
     }
