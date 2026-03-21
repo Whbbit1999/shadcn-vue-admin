@@ -9,7 +9,8 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@
 
 import type { DataTableProps } from './types'
 
-import { DataTableLoading, DataTablePagination } from '.'
+import DataTableLoading from './table-loading.vue'
+import DataTablePagination from './table-pagination.vue'
 
 defineProps<DataTableProps<T> & {
   table: VueTable<T>
