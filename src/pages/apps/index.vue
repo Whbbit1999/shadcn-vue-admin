@@ -2,7 +2,7 @@
 import type { TSort } from '@/components/sort-select/types'
 
 import { BasicPage } from '@/components/global-layout'
-import SortSelect from '@/components/sort-select/index.vue'
+import { SortSelect } from '@/components/sort-select'
 
 import AppCard from './components/app-card.vue'
 import apps from './data/apps'

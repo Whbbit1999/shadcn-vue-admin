@@ -4,13 +4,13 @@ import type { CSSProperties } from 'vue'
 
 import { FlexRender } from '@tanstack/vue-table'
 
-import DataTableLoading from '@/components/data-table/table-loading.vue'
-import DataTablePagination from '@/components/data-table/table-pagination.vue'
+import NoResultFound from '@/components/no-result-found.vue'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 
 import type { DataTableProps } from './types'
 
-import NoResultFound from '../no-result-found.vue'
+import DataTableLoading from './table-loading.vue'
+import DataTablePagination from './table-pagination.vue'
 
 defineProps<DataTableProps<T> & {
   table: VueTable<T>
