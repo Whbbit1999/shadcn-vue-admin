@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import type { DataTableProps } from '@/components/data-table/types'
+import type { DataTableProps } from '@/components/data-table'
 
-import DataTable from '@/components/data-table/data-table.vue'
-import { generateVueTable } from '@/components/data-table/use-generate-vue-table'
+import { DataTable, useGenerateVueTable } from '@/components/data-table'
 
 import type { User } from '../data/schema'
 
@@ -10,7 +9,7 @@ import DataTableToolbar from './data-table-toolbar.vue'
 
 const props = defineProps<DataTableProps<User>>()
 
-const table = generateVueTable<User>(props)
+const table = useGenerateVueTable<User>(props)
 </script>
 
 <template>

@@ -1,12 +1,7 @@
 <script setup lang="ts" generic="T">
 import type { Table } from '@tanstack/vue-table'
 
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  ChevronsLeft,
-  ChevronsRight,
-} from 'lucide-vue-next'
+import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeft, ChevronsRight } from 'lucide-vue-next'
 
 import { PAGE_SIZES } from '@/constants/pagination'
 

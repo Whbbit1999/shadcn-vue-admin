@@ -2,7 +2,7 @@ import type { ColumnDef } from '@tanstack/vue-table'
 
 import { h } from 'vue'
 
-import Checkbox from '@/components/ui/checkbox/Checkbox.vue'
+import { Checkbox } from '@/components/ui/checkbox'
 
 import RadioCell from './radio-cell.vue'
 

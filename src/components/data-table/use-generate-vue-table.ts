@@ -7,7 +7,7 @@ import { valueUpdater } from '@/lib/utils'
 
 import type { DataTableProps } from './types'
 
-export function generateVueTable<T>(props: DataTableProps<T>) {
+export function useGenerateVueTable<T>(props: DataTableProps<T>) {
   const sorting = ref<SortingState>([])
   const columnFilters = ref<ColumnFiltersState>([])
   const columnVisibility = ref<VisibilityState>({})

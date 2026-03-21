@@ -1,6 +1,6 @@
 import type { ColumnDef } from '@tanstack/vue-table'
 
-import DataTableColumnHeader from '@/components/data-table/column-header.vue'
+import { DataTableColumnHeader } from '@/components/data-table'
 import { Badge } from '@/components/ui/badge'
 
 import type { Billing } from './data/schema'

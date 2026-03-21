@@ -2,8 +2,7 @@ import type { ColumnDef } from '@tanstack/vue-table'
 
 import { h } from 'vue'
 
-import DataTableColumnHeader from '@/components/data-table/column-header.vue'
-import { SelectColumn } from '@/components/data-table/table-columns'
+import { DataTableColumnHeader, SelectColumn } from '@/components/data-table'
 import { Copy } from '@/components/prop-ui/copy'
 import Badge from '@/components/ui/badge/Badge.vue'
 
