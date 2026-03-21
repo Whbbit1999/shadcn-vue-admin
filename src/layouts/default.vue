@@ -33,14 +33,15 @@ const { contentLayout } = storeToRefs(themeStore)
           <ThemePopover />
         </div>
       </header>
-      <div
+
+      <main
         :class="cn(
           'p-4 grow',
           contentLayout === 'centered' ? 'container mx-auto ' : '',
         )"
       >
         <router-view />
-      </div>
+      </main>
     </UiSidebarInset>
   </UiSidebarProvider>
 </template>
