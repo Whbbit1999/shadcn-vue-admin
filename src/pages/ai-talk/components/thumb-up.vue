@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ThumbsUp } from 'lucide-vue-next'
+import { ThumbsUpIcon } from '@lucide/vue'
 </script>
 
 <template>
@@ -7,7 +7,7 @@ import { ThumbsUp } from 'lucide-vue-next'
     <UiTooltip>
       <UiTooltipTrigger as-child>
         <UiButton variant="ghost" class="p-1">
-          <ThumbsUp class="size-4" />
+          <ThumbsUpIcon class="size-4" />
         </UiButton>
       </UiTooltipTrigger>
       <UiTooltipContent>

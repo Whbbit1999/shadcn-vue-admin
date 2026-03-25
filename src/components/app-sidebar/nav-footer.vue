@@ -1,13 +1,5 @@
 <script setup lang="ts">
-import {
-  BadgeCheck,
-  Bell,
-  ChevronsUpDown,
-  CreditCard,
-  LogOut,
-  Sparkles,
-  UserRoundCog,
-} from 'lucide-vue-next'
+import { BadgeCheckIcon, BellIcon, ChevronsUpDownIcon, CreditCardIcon, LogOutIcon, SparklesIcon, UserRoundCogIcon } from '@lucide/vue'
 
 import { useSidebar } from '@/components/ui/sidebar'
 
@@ -40,7 +32,7 @@ const { isMobile, open } = useSidebar()
               <span class="font-semibold truncate">{{ user.name }}</span>
               <span class="text-xs truncate">{{ user.email }}</span>
             </div>
-            <ChevronsUpDown class="ml-auto size-4" />
+            <ChevronsUpDownIcon class="ml-auto size-4" />
           </UiSidebarMenuButton>
         </UiDropdownMenuTrigger>
         <UiDropdownMenuContent
@@ -67,7 +59,7 @@ const { isMobile, open } = useSidebar()
           <UiDropdownMenuSeparator />
           <UiDropdownMenuGroup>
             <UiDropdownMenuItem @click="$router.push('/billing/')">
-              <Sparkles />
+              <SparklesIcon />
               Upgrade to Pro
             </UiDropdownMenuItem>
           </UiDropdownMenuGroup>
@@ -75,7 +67,7 @@ const { isMobile, open } = useSidebar()
           <UiDropdownMenuSeparator />
           <UiDropdownMenuGroup>
             <UiDropdownMenuItem @click="$router.push('/billing?type=billing')">
-              <CreditCard />
+              <CreditCardIcon />
               Billing
             </UiDropdownMenuItem>
           </UiDropdownMenuGroup>
@@ -83,22 +75,22 @@ const { isMobile, open } = useSidebar()
           <UiDropdownMenuSeparator />
           <UiDropdownMenuGroup>
             <UiDropdownMenuItem @click="$router.push('/settings/')">
-              <UserRoundCog />
+              <UserRoundCogIcon />
               Profile
             </UiDropdownMenuItem>
             <UiDropdownMenuItem @click="$router.push('/settings/account')">
-              <BadgeCheck />
+              <BadgeCheckIcon />
               Account
             </UiDropdownMenuItem>
             <UiDropdownMenuItem @click="$router.push('/settings/notifications')">
-              <Bell />
+              <BellIcon />
               Notifications
             </UiDropdownMenuItem>
           </UiDropdownMenuGroup>
 
           <UiDropdownMenuSeparator />
           <UiDropdownMenuItem @click="logout">
-            <LogOut />
+            <LogOutIcon />
             {{ $t('logout') }}
           </UiDropdownMenuItem>
         </UiDropdownMenuContent>

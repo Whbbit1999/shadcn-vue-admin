@@ -1,7 +1,7 @@
 <script lang='ts' setup generic="T">
 import type { Table as VueTable } from '@tanstack/vue-table'
 
-import { XIcon } from 'lucide-vue-next'
+import { XIcon } from '@lucide/vue'
 
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'

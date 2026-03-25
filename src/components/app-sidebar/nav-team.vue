@@ -1,7 +1,5 @@
 <script lang="ts" setup>
-import {
-  ChevronRight,
-} from 'lucide-vue-next'
+import { ChevronRightIcon } from '@lucide/vue'
 
 import { useSidebar } from '@/components/ui/sidebar'
 
@@ -62,7 +60,7 @@ function isActive(menu: NavItem): boolean {
                 <UiSidebarMenuButton :tooltip="menu.title">
                   <component :is="menu.icon" v-if="menu.icon" />
                   <span>{{ menu.title }}</span>
-                  <ChevronRight
+                  <ChevronRightIcon
                     class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"
                   />
                 </UiSidebarMenuButton>

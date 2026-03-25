@@ -1,6 +1,6 @@
 <script lang="ts" setup>
+import { ClipboardCheckIcon, ClipboardIcon } from '@lucide/vue'
 import { useClipboard } from '@vueuse/core'
-import { Clipboard, ClipboardCheck } from 'lucide-vue-next'
 
 defineProps<Props>()
 
@@ -15,9 +15,9 @@ interface Props {
   <UiTooltipProvider>
     <UiTooltip>
       <UiTooltipTrigger as-child>
-        <UiButton variant="ghost" class="p-1" @click="copy(content)">
-          <Clipboard v-if="!copied" class="size-4" />
-          <ClipboardCheck v-else />
+        <UiButton variant="ghost" size="icon" class="p-1" @click="copy(content)">
+          <ClipboardIcon v-if="!copied" />
+          <ClipboardCheckIcon v-else />
         </UiButton>
       </UiTooltipTrigger>
       <UiTooltipContent>

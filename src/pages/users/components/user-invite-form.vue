@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { SendIcon } from '@lucide/vue'
 import { toTypedSchema } from '@vee-validate/zod'
-import { Send } from 'lucide-vue-next'
 import { useForm } from 'vee-validate'
 import { toast } from 'vue-sonner'
 
@@ -88,7 +88,7 @@ const onSubmit = handleSubmit((values) => {
 
     <Button type="submit" class="w-full">
       Invite
-      <Send />
+      <SendIcon />
     </Button>
   </form>
 </template>

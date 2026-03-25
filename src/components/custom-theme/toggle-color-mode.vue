@@ -2,8 +2,8 @@
 import type { BasicColorSchema } from '@vueuse/core'
 import type { Component } from 'vue'
 
+import { MoonIcon, SunIcon, SunMoonIcon } from '@lucide/vue'
 import { useColorMode } from '@vueuse/core'
-import { Moon, Sun, SunMoon } from 'lucide-vue-next'
 
 const mode = useColorMode()
 
@@ -11,9 +11,9 @@ const colorModes: {
   colorMode: BasicColorSchema
   icon: Component
 }[] = [
-  { colorMode: 'light', icon: Sun },
-  { colorMode: 'dark', icon: Moon },
-  { colorMode: 'auto', icon: SunMoon },
+  { colorMode: 'light', icon: SunIcon },
+  { colorMode: 'dark', icon: MoonIcon },
+  { colorMode: 'auto', icon: SunMoonIcon },
 ]
 
 function setColorMode(colorMode: BasicColorSchema) {

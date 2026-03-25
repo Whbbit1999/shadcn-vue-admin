@@ -1,13 +1,13 @@
 <script lang="ts" setup>
-import { RadioTower, Sparkles } from 'lucide-vue-next'
+import { RadioTowerIcon, SparklesIcon } from '@lucide/vue'
 
 const emit = defineEmits(['update:type'])
 
 const type = ref('deep-think')
 
 const types = [
-  { type: 'deep-think', icon: Sparkles },
-  { type: 'online', icon: RadioTower },
+  { type: 'deep-think', icon: SparklesIcon },
+  { type: 'online', icon: RadioTowerIcon },
 ]
 
 watch(type, () => {

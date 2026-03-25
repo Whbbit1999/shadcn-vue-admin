@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Download } from 'lucide-vue-next'
+import { DownloadIcon } from '@lucide/vue'
 import { toast } from 'vue-sonner'
 
 import { Modal, ModalContent, ModalDescription, ModalFooter, ModalHeader, ModalTitle, ModalTrigger } from '@/components/prop-ui/modal'
@@ -35,7 +35,7 @@ function onSubmit() {
     <ModalTrigger as-child>
       <UiButton variant="outline">
         Import
-        <Download />
+        <DownloadIcon />
       </UiButton>
     </ModalTrigger>
 

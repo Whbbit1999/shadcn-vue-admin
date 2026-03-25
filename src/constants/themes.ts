@@ -1,4 +1,4 @@
-import { MoveHorizontal, UnfoldHorizontal } from 'lucide-vue-next'
+import { MoveHorizontalIcon, UnfoldHorizontalIcon } from '@lucide/vue'
 
 export const THEMES = ['zinc', 'red', 'rose', 'orange', 'green', 'blue', 'yellow', 'violet'] as const
 export type Theme = typeof THEMES[number]
@@ -19,6 +19,6 @@ export const RADIUS = [0, 0.25, 0.5, 0.75, 1] as const
 
 export type ContentLayout = 'full' | 'centered'
 export const CONTENT_LAYOUTS = [
-  { label: 'Full', value: 'full', icon: UnfoldHorizontal },
-  { label: 'Centered', value: 'centered', icon: MoveHorizontal },
+  { label: 'Full', value: 'full', icon: UnfoldHorizontalIcon },
+  { label: 'Centered', value: 'centered', icon: MoveHorizontalIcon },
 ] as const

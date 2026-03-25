@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { RefreshCcw } from 'lucide-vue-next'
+import { RefreshCcwIcon } from '@lucide/vue'
 </script>
 
 <template>
@@ -7,7 +7,7 @@ import { RefreshCcw } from 'lucide-vue-next'
     <UiTooltip>
       <UiTooltipTrigger as-child>
         <UiButton variant="ghost" class="p-1">
-          <RefreshCcw class="size-4" />
+          <RefreshCcwIcon class="size-4" />
         </UiButton>
       </UiTooltipTrigger>
       <UiTooltipContent>

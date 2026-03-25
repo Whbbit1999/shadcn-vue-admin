@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { CalendarDate, DateFormatter, getLocalTimeZone, today } from '@internationalized/date'
+import { CalendarDaysIcon, CheckIcon, ChevronsUpDownIcon } from '@lucide/vue'
 import { toTypedSchema } from '@vee-validate/zod'
-import { CalendarDays, Check, ChevronsUpDown } from 'lucide-vue-next'
 import { toDate } from 'reka-ui/date'
 import { toast } from 'vue-sonner'
 
@@ -83,7 +83,7 @@ async function onSubmit(values: any) {
                   !value && 'text-muted-foreground',
                 )"
               >
-                <CalendarDays class="size-4 opacity-50" />
+                <CalendarDaysIcon class="size-4 opacity-50" />
                 <span>{{ value ? df.format(toDate(dateValue, getLocalTimeZone())) : "Pick a date" }}</span>
               </Button>
             </FormControl>
@@ -134,7 +134,7 @@ async function onSubmit(values: any) {
                   (language) => language.value === value,
                 )?.label : 'Select language...' }}
 
-                <ChevronsUpDown class="size-4 ml-2 opacity-50 shrink-0" />
+                <ChevronsUpDownIcon class="size-4 ml-2 opacity-50 shrink-0" />
               </Button>
             </FormControl>
           </PopoverTrigger>
@@ -151,7 +151,7 @@ async function onSubmit(values: any) {
                       open = false
                     }"
                   >
-                    <Check
+                    <CheckIcon
                       :class="cn(
                         'mr-2 h-4 w-4',
                         value === language.value ? 'opacity-100' : 'opacity-0',

@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { MenuIcon, SearchIcon } from '@lucide/vue'
 import { useEventListener } from '@vueuse/core'
-import { MenuIcon, SearchIcon } from 'lucide-vue-next'
 
 import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
 

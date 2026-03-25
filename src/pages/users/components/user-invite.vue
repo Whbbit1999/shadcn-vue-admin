@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { MailPlus } from 'lucide-vue-next'
+import { MailPlusIcon } from '@lucide/vue'
 
 import { Modal, ModalClose, ModalContent, ModalDescription, ModalFooter, ModalHeader, ModalTitle, ModalTrigger, useModal } from '@/components/prop-ui/modal'
 import { Button } from '@/components/ui/button'
@@ -14,7 +14,7 @@ const isOpen = ref(false)
   <Modal v-model:open="isOpen">
     <ModalTrigger as-child>
       <Button variant="outline">
-        <MailPlus />
+        <MailPlusIcon />
         Invite User
       </Button>
     </ModalTrigger>
@@ -23,7 +23,7 @@ const isOpen = ref(false)
       <ModalHeader>
         <ModalTitle as-child>
           <div class="flex items-center gap-2">
-            <MailPlus />
+            <MailPlusIcon />
             <span>Invite User</span>
           </div>
         </ModalTitle>

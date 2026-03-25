@@ -41,6 +41,7 @@
   "dependencies": {
     "@formkit/auto-animate": "^0.9.0",
     "@internationalized/date": "^3.12.0",
+    "@lucide/vue": "^1.6.0",
     "@tailwindcss/vite": "^4.2.2",
     "@tanstack/vue-query": "^5.95.2",
     "@tanstack/vue-table": "^8.21.3",
@@ -55,7 +56,6 @@
     "dayjs": "^1.11.20",
     "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-vue": "^8.6.0",
-    "lucide-vue-next": "0.577.0",
     "motion-v": "2.0.1",
     "nprogress": "^0.2.0",
     "pinia": "^3.0.4",
