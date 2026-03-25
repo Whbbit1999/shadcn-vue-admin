@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T">
 import type { Table } from '@tanstack/vue-table'
 
-import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeft, ChevronsRight } from 'lucide-vue-next'
+import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon } from '@lucide/vue'
 
 import { PAGE_SIZES } from '@/constants/pagination'
 
@@ -132,7 +132,7 @@ function goToLastPage() {
           @click="goToFirstPage"
         >
           <span class="sr-only">Go to first page</span>
-          <ChevronsLeft class="size-4" />
+          <ChevronsLeftIcon class="size-4" />
         </UiButton>
         <UiButton
           variant="outline"
@@ -159,7 +159,7 @@ function goToLastPage() {
           @click="goToLastPage"
         >
           <span class="sr-only">Go to last page</span>
-          <ChevronsRight class="size-4" />
+          <ChevronsRightIcon class="size-4" />
         </UiButton>
       </div>
     </div>

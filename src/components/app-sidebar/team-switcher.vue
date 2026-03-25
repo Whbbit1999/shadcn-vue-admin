@@ -1,8 +1,5 @@
 <script lang="ts" setup>
-import {
-  ChevronsUpDown,
-  Plus,
-} from 'lucide-vue-next'
+import { ChevronsUpDownIcon, PlusIcon } from '@lucide/vue'
 
 import { useSidebar } from '@/components/ui/sidebar'
 
@@ -52,7 +49,7 @@ function handleSelect(command: TComponent) {
                 <span class="font-semibold truncate">{{ activeTeam.name }}</span>
                 <span class="text-xs truncate">{{ activeTeam.plan }}</span>
               </div>
-              <ChevronsUpDown class="ml-auto" />
+              <ChevronsUpDownIcon class="ml-auto" />
             </UiSidebarMenuButton>
           </UiDropdownMenuTrigger>
           <UiDropdownMenuContent
@@ -81,7 +78,7 @@ function handleSelect(command: TComponent) {
             <UiDialogTrigger as-child>
               <UiDropdownMenuItem class="gap-2 p-2" @click.stop="handleSelect('team-add')">
                 <div class="flex items-center justify-center border rounded-md size-6 bg-background">
-                  <Plus class="size-4" />
+                  <PlusIcon class="size-4" />
                 </div>
                 <div class="font-medium text-muted-foreground">
                   Add team

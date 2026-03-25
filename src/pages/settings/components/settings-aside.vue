@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ChevronsUpDownIcon } from 'lucide-vue-next'
+import { ChevronsUpDownIcon } from '@lucide/vue'
 
 import { useSidebar } from '@/composables/use-sidebar'
 

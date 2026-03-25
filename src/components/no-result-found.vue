@@ -1,5 +1,5 @@
 <script lang='ts' setup>
-import { FolderOpenIcon } from 'lucide-vue-next'
+import { FolderOpenIcon } from '@lucide/vue'
 
 import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
 </script>

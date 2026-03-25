@@ -2,7 +2,7 @@
 import type { Row } from '@tanstack/vue-table'
 import type { Component } from 'vue'
 
-import { Ellipsis } from 'lucide-vue-next'
+import { EllipsisIcon } from '@lucide/vue'
 
 import { Modal, ModalContent } from '@/components/prop-ui/modal'
 
@@ -43,7 +43,7 @@ async function handleSelect(command: TCommand) {
           variant="ghost"
           class="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
         >
-          <Ellipsis class="size-4" />
+          <EllipsisIcon class="size-4" />
           <span class="sr-only">Open menu</span>
         </UiButton>
       </UiDropdownMenuTrigger>

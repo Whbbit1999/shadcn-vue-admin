@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { MoonIcon, SunIcon, SunMoonIcon } from '@lucide/vue'
 import { useColorMode } from '@vueuse/core'
-import { Moon, Sun, SunMoon } from 'lucide-vue-next'
 
 import CommandItemHasIcon from './command-item-has-icon.vue'
 
@@ -14,13 +14,13 @@ const mode = useColorMode()
 <template>
   <UiCommandGroup heading="Theme">
     <UiCommandItem value="light" @click="mode = 'light', $emit('click')">
-      <CommandItemHasIcon name="Light" :icon="Sun" />
+      <CommandItemHasIcon name="Light" :icon="SunIcon" />
     </UiCommandItem>
     <UiCommandItem value="dark" @click="mode = 'dark', $emit('click')">
-      <CommandItemHasIcon name="Dark" :icon="Moon" />
+      <CommandItemHasIcon name="Dark" :icon="MoonIcon" />
     </UiCommandItem>
     <UiCommandItem value="system" @click="mode = 'auto', $emit('click')">
-      <CommandItemHasIcon name="System" :icon="SunMoon" />
+      <CommandItemHasIcon name="System" :icon="SunMoonIcon" />
     </UiCommandItem>
   </UiCommandGroup>
 </template>

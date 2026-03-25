@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Loader } from 'lucide-vue-next'
+import { LoaderIcon } from '@lucide/vue'
 
 import { BasicPage } from '@/components/global-layout'
 
@@ -29,7 +29,7 @@ function mockLoading() {
       <UserInvite />
       <UserCreate />
       <UiButton variant="outline" @click="mockLoading">
-        <Loader />Mock Loading
+        <LoaderIcon />Mock Loading
       </UiButton>
     </template>
     <div class="overflow-x-auto">

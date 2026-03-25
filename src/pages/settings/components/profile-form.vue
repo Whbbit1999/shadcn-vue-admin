@@ -1,6 +1,6 @@
 <script setup lang="ts">
+import { XIcon } from '@lucide/vue'
 import { toTypedSchema } from '@vee-validate/zod'
-import { X } from 'lucide-vue-next'
 import { FieldArray, useForm } from 'vee-validate'
 import { toast } from 'vue-sonner'
 
@@ -121,7 +121,7 @@ const onSubmit = handleSubmit((values) => {
                   <Input type="url" v-bind="componentField" />
                 </FormControl>
                 <button type="button" class="absolute py-2 pe-3 end-0 text-muted-foreground" @click="remove(index)">
-                  <X class="w-3" />
+                  <XIcon class="w-3" />
                 </button>
               </div>
               <FormMessage />

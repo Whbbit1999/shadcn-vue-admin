@@ -1,8 +1,4 @@
-import {
-  AudioWaveform,
-  Command,
-  GalleryVerticalEnd,
-} from 'lucide-vue-next'
+import { AudioWaveformIcon, CommandIcon, GalleryVerticalEndIcon } from '@lucide/vue'
 
 import { useSidebar } from '@/composables/use-sidebar'
 
@@ -17,17 +13,17 @@ const user: User = {
 const teams: Team[] = [
   {
     name: 'Acme Inc',
-    logo: GalleryVerticalEnd,
+    logo: GalleryVerticalEndIcon,
     plan: 'Enterprise',
   },
   {
     name: 'Acme Corp.',
-    logo: AudioWaveform,
+    logo: AudioWaveformIcon,
     plan: 'Startup',
   },
   {
     name: 'Evil Corp.',
-    logo: Command,
+    logo: CommandIcon,
     plan: 'Free',
   },
 ]

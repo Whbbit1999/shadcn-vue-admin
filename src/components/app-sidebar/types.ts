@@ -1,4 +1,4 @@
-import type { LucideProps } from 'lucide-vue-next'
+import type { LucideProps } from '@lucide/vue'
 import type { FunctionalComponent } from 'vue'
 
 type NavIcon = FunctionalComponent<LucideProps, Record<any, any>, any, Record<any, any>>

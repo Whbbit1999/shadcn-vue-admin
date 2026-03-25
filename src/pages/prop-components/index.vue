@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ArrowUpRightIcon, BadgeCheckIcon, ChevronRightIcon } from 'lucide-vue-next'
+import { ArrowUpRightIcon, BadgeCheckIcon, ChevronRightIcon } from '@lucide/vue'
 
 import { BasicPage } from '@/components/global-layout'
 import { Button } from '@/components/ui/button'

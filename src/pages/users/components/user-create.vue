@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { UserRoundPlus } from 'lucide-vue-next'
+import { UserRoundPlusIcon } from '@lucide/vue'
 
 import { Modal, ModalContent, ModalTrigger } from '@/components/prop-ui/modal'
 
@@ -12,7 +12,7 @@ const isOpen = ref(false)
   <Modal v-model:open="isOpen">
     <ModalTrigger as-child>
       <UiButton>
-        <UserRoundPlus />
+        <UserRoundPlusIcon />
         Create User
       </UiButton>
     </ModalTrigger>

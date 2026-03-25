@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 import type { HTMLAttributes } from 'vue'
 
+import { CopyCheckIcon, CopyIcon } from '@lucide/vue'
 import { useClipboard } from '@vueuse/core'
-import { Copy, CopyCheck } from 'lucide-vue-next'
 
 import type { ButtonVariants } from '@/components/ui/button'
 
@@ -57,8 +57,8 @@ const { copy, copied, isSupported } = useClipboard({ source })
             :class="cn(props.class)"
             @click="copy(source)"
           >
-            <Copy v-if="!copied" :class="cn(copyVariants({ iconSize }))" />
-            <CopyCheck v-else :class="cn(copyVariants({ iconSize }))" />
+            <CopyIcon v-if="!copied" :class="cn(copyVariants({ iconSize }))" />
+            <CopyCheckIcon v-else :class="cn(copyVariants({ iconSize }))" />
           </Button>
         </TooltipTrigger>
         <TooltipContent>

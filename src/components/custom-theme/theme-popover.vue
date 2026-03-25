@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Paintbrush } from 'lucide-vue-next'
+import { PaintbrushIcon } from '@lucide/vue'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -19,7 +19,7 @@ import ToggleColorMode from './toggle-color-mode.vue'
   <Popover>
     <PopoverTrigger>
       <Button variant="outline" size="icon">
-        <Paintbrush />
+        <PaintbrushIcon />
       </Button>
     </PopoverTrigger>
     <PopoverContent align="end">

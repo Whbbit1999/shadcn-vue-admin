@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { Table } from '@tanstack/vue-table'
 
-import { X } from 'lucide-vue-next'
+import { XIcon } from '@lucide/vue'
 import { computed } from 'vue'
 
 import { DataTableFacetedFilter, DataTableViewOptions } from '@/components/data-table'
@@ -50,7 +50,7 @@ const isFiltered = computed(() => props.table.getState().columnFilters.length > 
         @click="table.resetColumnFilters()"
       >
         Reset
-        <X class="size-4 ml-2" />
+        <XIcon class="size-4 ml-2" />
       </Button>
     </div>
     <DataTableViewOptions :table="table" />

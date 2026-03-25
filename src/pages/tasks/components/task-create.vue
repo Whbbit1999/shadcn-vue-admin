@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { Plus } from 'lucide-vue-next'
+import { PlusIcon } from '@lucide/vue'
 
 import { Modal, ModalContent, ModalTrigger } from '@/components/prop-ui/modal'
 
@@ -13,7 +13,7 @@ const isOpen = ref(false)
     <ModalTrigger as-child>
       <UiButton>
         Create
-        <Plus />
+        <PlusIcon />
       </UiButton>
     </ModalTrigger>
 

@@ -2,7 +2,7 @@
 import type { NumberFieldDecrementProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
 import { reactiveOmit } from "@vueuse/core"
-import { Minus } from "lucide-vue-next"
+import { Minus } from "@lucide/vue"
 import { NumberFieldDecrement, useForwardProps } from "reka-ui"
 import { cn } from "@/lib/utils"
 

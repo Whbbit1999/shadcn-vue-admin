@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T">
 import type { Column } from '@tanstack/vue-table'
 
-import { Check, CirclePlus } from 'lucide-vue-next'
+import { CheckIcon, CirclePlusIcon } from '@lucide/vue'
 
 import { cn } from '@/lib/utils'
 
@@ -24,7 +24,7 @@ const filterFunction = (list: DataTableFacetedFilter['options'], term: string) =
   <UiPopover>
     <UiPopoverTrigger as-child>
       <UiButton variant="outline" size="sm" class="h-8 border-dashed">
-        <CirclePlus class="size-4 mr-2" />
+        <CirclePlusIcon class="size-4 mr-2" />
         {{ title }}
         <template v-if="selectedValues.size > 0">
           <UiSeparator orientation="vertical" class="h-4 mx-2" />
@@ -92,7 +92,7 @@ const filterFunction = (list: DataTableFacetedFilter['options'], term: string) =
                     : 'opacity-50 [&_svg]:invisible',
                 )"
               >
-                <Check :class="cn('h-4 w-4', selectedValues.has(option.value) ? 'text-primary-foreground' : '')" />
+                <CheckIcon :class="cn('h-4 w-4', selectedValues.has(option.value) ? 'text-primary-foreground' : '')" />
               </div>
               <component :is="option.icon" v-if="option.icon" class="size-4 mr-2 text-muted-foreground" />
               <span>{{ option.label }}</span>

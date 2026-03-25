@@ -2,7 +2,7 @@
 import type { Row } from '@tanstack/vue-table'
 import type { Component } from 'vue'
 
-import { Ellipsis, FilePenLine, Trash2 } from 'lucide-vue-next'
+import { EllipsisIcon, FilePenLineIcon, Trash2Icon } from '@lucide/vue'
 
 import { Modal, ModalContent } from '@/components/prop-ui/modal'
 
@@ -51,14 +51,14 @@ async function handleSelect(command: TCommand) {
           variant="ghost"
           class="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
         >
-          <Ellipsis class="size-4" />
+          <EllipsisIcon class="size-4" />
           <span class="sr-only">Open menu</span>
         </UiButton>
       </UiDropdownMenuTrigger>
       <UiDropdownMenuContent align="end" class="w-[160px]">
         <UiDropdownMenuItem @select.stop="handleSelect('edit')">
           <span>Edit</span>
-          <UiDropdownMenuShortcut> <FilePenLine class="size-4" /> </UiDropdownMenuShortcut>
+          <UiDropdownMenuShortcut> <FilePenLineIcon class="size-4" /> </UiDropdownMenuShortcut>
         </UiDropdownMenuItem>
 
         <UiDropdownMenuItem disabled>
@@ -85,7 +85,7 @@ async function handleSelect(command: TCommand) {
 
         <UiDropdownMenuItem @select.stop="handleSelect('delete')">
           <span>Delete</span>
-          <UiDropdownMenuShortcut> <Trash2 class="size-4" /> </UiDropdownMenuShortcut>
+          <UiDropdownMenuShortcut> <Trash2Icon class="size-4" /> </UiDropdownMenuShortcut>
         </UiDropdownMenuItem>
       </UiDropdownMenuContent>
     </UiDropdownMenu>

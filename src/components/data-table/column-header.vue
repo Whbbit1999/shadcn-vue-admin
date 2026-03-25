@@ -1,7 +1,7 @@
 <script setup lang="ts" generic="T">
 import type { Column } from '@tanstack/vue-table'
 
-import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon, ChevronsUpDownIcon, EyeOffIcon, PinIcon, PinOffIcon } from 'lucide-vue-next'
+import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon, ChevronsUpDownIcon, EyeOffIcon, PinIcon, PinOffIcon } from '@lucide/vue'
 import { computed } from 'vue'
 
 import { cn } from '@/lib/utils'

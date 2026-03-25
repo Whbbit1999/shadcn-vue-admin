@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { ArrowUpIcon, Paperclip } from 'lucide-vue-next'
+import { ArrowUpIcon, PaperclipIcon } from '@lucide/vue'
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupText, InputGroupTextarea } from '@/components/ui/input-group'
@@ -31,7 +31,7 @@ function handleSubmit() {
         class="rounded-full"
         size="icon-xs"
       >
-        <Paperclip class="size-4" />
+        <PaperclipIcon class="size-4" />
         <span class="sr-only">Add File</span>
       </InputGroupButton>
 

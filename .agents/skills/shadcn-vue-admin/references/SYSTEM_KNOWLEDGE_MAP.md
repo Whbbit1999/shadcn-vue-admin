@@ -9,7 +9,7 @@
 - State: Pinia (with persistedstate)
 - Data: Axios + @tanstack/vue-query
 - Forms: vee-validate + zod
-- UI: shadcn-vue / reka-ui / lucide-vue-next / vue-sonner
+- UI: shadcn-vue / reka-ui / @lucide/vue / vue-sonner
 
 ## Startup Flow
 
