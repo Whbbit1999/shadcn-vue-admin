@@ -78,6 +78,8 @@ declare global {
   const useRoute: typeof import('vue-router').useRoute
   const useRouter: typeof import('vue-router').useRouter
   const useSidebar: typeof import('../composables/use-sidebar').useSidebar
+  const useSidebarConfigStore: typeof import('../stores/sidebar-config').useSidebarConfigStore
+  const useSidebarNavigation: typeof import('../composables/use-sidebar-navigation').useSidebarNavigation
   const useSlots: typeof import('vue').useSlots
   const useSystemConfig: typeof import('../composables/use-system-config').useSystemConfig
   const useSystemTheme: typeof import('../composables/use-system-theme').useSystemTheme
@@ -97,4 +99,7 @@ declare global {
   // @ts-ignore
   export type { Theme, Radius, ContentLayout } from '../constants/themes'
   import('../constants/themes')
+  // @ts-ignore
+  export type { NavigationMode } from '../stores/sidebar-config'
+  import('../stores/sidebar-config')
 }
