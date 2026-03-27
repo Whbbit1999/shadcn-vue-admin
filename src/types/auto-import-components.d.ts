@@ -13,9 +13,12 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AppSidebar: typeof import('./../components/app-sidebar/index.vue')['default']
+    AppSidebarMenuButton: typeof import('./../components/app-sidebar/menu-button.vue')['default']
     AppSidebarNavFooter: typeof import('./../components/app-sidebar/nav-footer.vue')['default']
     AppSidebarNavTeam: typeof import('./../components/app-sidebar/nav-team.vue')['default']
     AppSidebarNavTeamAdd: typeof import('./../components/app-sidebar/nav-team-add.vue')['default']
+    AppSidebarNavTeamCollapsible: typeof import('./../components/app-sidebar/nav-team-collapsible.vue')['default']
+    AppSidebarNavTeamVercel: typeof import('./../components/app-sidebar/nav-team-vercel.vue')['default']
     AppSidebarTeamSwitcher: typeof import('./../components/app-sidebar/team-switcher.vue')['default']
     CommandMenuPanel: typeof import('./../components/command-menu-panel/index.vue')['default']
     CommandMenuPanelCommandChangeTheme: typeof import('./../components/command-menu-panel/command-change-theme.vue')['default']
@@ -26,6 +29,7 @@ declare module 'vue' {
     CustomThemeContentLayout: typeof import('./../components/custom-theme/content-layout.vue')['default']
     CustomThemeCustomColor: typeof import('./../components/custom-theme/custom-color.vue')['default']
     CustomThemeCustomRadius: typeof import('./../components/custom-theme/custom-radius.vue')['default']
+    CustomThemeMenuStyle: typeof import('./../components/custom-theme/menu-style.vue')['default']
     CustomThemeThemePopover: typeof import('./../components/custom-theme/theme-popover.vue')['default']
     CustomThemeTitle: typeof import('./../components/custom-theme/custom-theme-title.vue')['default']
     CustomThemeToggleColorMode: typeof import('./../components/custom-theme/toggle-color-mode.vue')['default']
@@ -414,9 +418,12 @@ declare module 'vue' {
 // For TSX support
 declare global {
   const AppSidebar: typeof import('./../components/app-sidebar/index.vue')['default']
+  const AppSidebarMenuButton: typeof import('./../components/app-sidebar/menu-button.vue')['default']
   const AppSidebarNavFooter: typeof import('./../components/app-sidebar/nav-footer.vue')['default']
   const AppSidebarNavTeam: typeof import('./../components/app-sidebar/nav-team.vue')['default']
   const AppSidebarNavTeamAdd: typeof import('./../components/app-sidebar/nav-team-add.vue')['default']
+  const AppSidebarNavTeamCollapsible: typeof import('./../components/app-sidebar/nav-team-collapsible.vue')['default']
+  const AppSidebarNavTeamVercel: typeof import('./../components/app-sidebar/nav-team-vercel.vue')['default']
   const AppSidebarTeamSwitcher: typeof import('./../components/app-sidebar/team-switcher.vue')['default']
   const CommandMenuPanel: typeof import('./../components/command-menu-panel/index.vue')['default']
   const CommandMenuPanelCommandChangeTheme: typeof import('./../components/command-menu-panel/command-change-theme.vue')['default']
@@ -427,6 +434,7 @@ declare global {
   const CustomThemeContentLayout: typeof import('./../components/custom-theme/content-layout.vue')['default']
   const CustomThemeCustomColor: typeof import('./../components/custom-theme/custom-color.vue')['default']
   const CustomThemeCustomRadius: typeof import('./../components/custom-theme/custom-radius.vue')['default']
+  const CustomThemeMenuStyle: typeof import('./../components/custom-theme/menu-style.vue')['default']
   const CustomThemeThemePopover: typeof import('./../components/custom-theme/theme-popover.vue')['default']
   const CustomThemeTitle: typeof import('./../components/custom-theme/custom-theme-title.vue')['default']
   const CustomThemeToggleColorMode: typeof import('./../components/custom-theme/toggle-color-mode.vue')['default']

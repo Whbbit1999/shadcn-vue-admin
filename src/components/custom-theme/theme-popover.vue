@@ -12,6 +12,7 @@ import ContentLayout from './content-layout.vue'
 import CustomColor from './custom-color.vue'
 import CustomRadius from './custom-radius.vue'
 import CustomThemeTitle from './custom-theme-title.vue'
+import MenuStyle from './menu-style.vue'
 import ToggleColorMode from './toggle-color-mode.vue'
 </script>
 
@@ -28,6 +29,7 @@ import ToggleColorMode from './toggle-color-mode.vue'
       <CustomRadius />
       <ToggleColorMode />
       <ContentLayout />
+      <MenuStyle />
     </PopoverContent>
   </Popover>
 </template>
