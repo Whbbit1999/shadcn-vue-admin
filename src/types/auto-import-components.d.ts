@@ -13,6 +13,7 @@ export {}
 declare module 'vue' {
   export interface GlobalComponents {
     AppSidebar: typeof import('./../components/app-sidebar/index.vue')['default']
+    AppSidebarMenuButton: typeof import('./../components/app-sidebar/menu-button.vue')['default']
     AppSidebarNavFooter: typeof import('./../components/app-sidebar/nav-footer.vue')['default']
     AppSidebarNavTeam: typeof import('./../components/app-sidebar/nav-team.vue')['default']
     AppSidebarNavTeamAdd: typeof import('./../components/app-sidebar/nav-team-add.vue')['default']
@@ -417,6 +418,7 @@ declare module 'vue' {
 // For TSX support
 declare global {
   const AppSidebar: typeof import('./../components/app-sidebar/index.vue')['default']
+  const AppSidebarMenuButton: typeof import('./../components/app-sidebar/menu-button.vue')['default']
   const AppSidebarNavFooter: typeof import('./../components/app-sidebar/nav-footer.vue')['default']
   const AppSidebarNavTeam: typeof import('./../components/app-sidebar/nav-team.vue')['default']
   const AppSidebarNavTeamAdd: typeof import('./../components/app-sidebar/nav-team-add.vue')['default']

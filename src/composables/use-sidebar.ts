@@ -55,6 +55,7 @@ export function useSidebar() {
         { title: 'Settings', items: settingsNavItems, icon: SettingsIcon },
         { title: 'Prop Components', url: '/prop-components', icon: ComponentIcon },
         { title: 'Help Center', url: '/help-center', icon: BadgeHelpIcon },
+        { title: 'Outside Page(GitHub)', url: 'https://www.github.com/Whbbit1999/shadcn-vue-admin' },
       ],
     },
   ])

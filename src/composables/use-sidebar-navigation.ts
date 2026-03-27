@@ -141,7 +141,7 @@ export function useSidebarNavigation(navMain: Readonly<NavGroup[]>) {
       return currentPath === item.url
     }
     if (item.items) {
-      return item.items.some(subItem => subItem.url === currentPath)
+      return item.items.some(subItem => isMenuItemActive(subItem as NavItem))
     }
     return false
   }
@@ -157,15 +157,7 @@ export function useSidebarNavigation(navMain: Readonly<NavGroup[]>) {
    * Load navigation path from sessionStorage
    */
   function loadNavigationPath() {
-    if (savedNavigationPath.value) {
-      try {
-        navigationPath.value = savedNavigationPath.value
-      }
-      catch {
-        // Invalid JSON, ignore
-        navigationPath.value = []
-      }
-    }
+    navigationPath.value = savedNavigationPath.value ?? []
   }
 
   /**

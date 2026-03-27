@@ -1,9 +1,12 @@
 <script lang="ts" setup>
-import { ChevronRightIcon } from '@lucide/vue'
+import { ChevronRightIcon, ExternalLinkIcon } from '@lucide/vue'
 
 import { useSidebar } from '@/components/ui/sidebar'
+import { isExternalUrl } from '@/utils/is-external-url'
 
 import type { NavGroup, NavItem } from './types'
+
+import MenuButton from './menu-button.vue'
 
 const { navMain } = defineProps<{
   navMain: NavGroup[]
@@ -40,12 +43,12 @@ function isActive(menu: NavItem): boolean {
     <UiSidebarMenu>
       <template v-for="menu in group.items" :key="menu.title">
         <UiSidebarMenuItem v-if="!menu.items">
-          <UiSidebarMenuButton as-child :is-active="isActive(menu)" :tooltip="menu.title">
-            <router-link :to="menu.url">
-              <component :is="menu.icon" />
-              <span>{{ menu.title }}</span>
-            </router-link>
-          </UiSidebarMenuButton>
+          <MenuButton
+            :is-active="isActive(menu)"
+            :tooltip="menu.title"
+            :is-external-url="isExternalUrl(menu.url)"
+            :menu="menu as NavItem"
+          />
         </UiSidebarMenuItem>
 
         <UiSidebarMenuItem v-else>
@@ -70,7 +73,12 @@ function isActive(menu: NavItem): boolean {
               <UiSidebarMenuSub>
                 <UiSidebarMenuSubItem v-for="subItem in menu.items" :key="subItem.title">
                   <UiSidebarMenuSubButton as-child :is-active="isActive(subItem as NavItem)">
-                    <router-link :to="subItem?.url || '/'">
+                    <a v-if="isExternalUrl(subItem?.url)" :href="subItem?.url" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2">
+                      <component :is="subItem.icon" v-if="subItem.icon" />
+                      <span>{{ subItem.title }}</span>
+                      <ExternalLinkIcon class="w-4 h-4 ml-auto" />
+                    </a>
+                    <router-link v-else :to="subItem?.url || '/'">
                       <component :is="subItem.icon" v-if="subItem.icon" />
                       <span>{{ subItem.title }}</span>
                     </router-link>
@@ -92,10 +100,12 @@ function isActive(menu: NavItem): boolean {
               <UiDropdownMenuLabel>{{ menu.title }}</UiDropdownMenuLabel>
               <UiDropdownMenuSeparator />
               <UiDropdownMenuItem v-for="subItem in menu.items" :key="subItem.title" as-child>
-                <router-link :to="subItem?.url || '/'">
-                  <component :is="subItem.icon" v-if="subItem.icon" />
-                  <span>{{ subItem.title }}</span>
-                </router-link>
+                <MenuButton
+                  :is-active="isActive(subItem as NavItem)"
+                  :tooltip="subItem.title"
+                  :is-external-url="isExternalUrl(subItem?.url)"
+                  :menu="subItem as NavItem"
+                />
               </UiDropdownMenuItem>
             </UiDropdownMenuContent>
           </UiDropdownMenu>

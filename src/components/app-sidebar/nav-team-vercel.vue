@@ -2,8 +2,11 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@lucide/vue'
 
 import { useSidebarNavigation } from '@/composables/use-sidebar-navigation'
+import { isExternalUrl } from '@/utils/is-external-url'
 
 import type { NavGroup, NavItem } from './types'
+
+import MenuButton from './menu-button.vue'
 
 const { navMain } = defineProps<{
   navMain: NavGroup[]
@@ -36,16 +39,12 @@ function handleGoBack() {
           <template v-for="menu in group.items" :key="menu.title">
             <!-- Leaf item -->
             <UiSidebarMenuItem v-if="!menu.items">
-              <UiSidebarMenuButton
-                as-child
+              <MenuButton
                 :is-active="isMenuItemActive(menu)"
                 :tooltip="menu.title"
-              >
-                <router-link :to="(menu as any).url">
-                  <component :is="menu.icon" v-if="menu.icon" />
-                  <span>{{ menu.title }}</span>
-                </router-link>
-              </UiSidebarMenuButton>
+                :is-external-url="isExternalUrl(menu.url)"
+                :menu="menu as NavItem"
+              />
             </UiSidebarMenuItem>
 
             <!-- Parent item: click to enter next level -->
@@ -78,7 +77,7 @@ function handleGoBack() {
               tooltip=""
               @click="handleGoBack"
             >
-              <component :is="ChevronLeftIcon" />
+              <ChevronLeftIcon />
               <div class="text-center w-full text-sm font-medium">
                 {{ currentMenuTitle }}
               </div>
@@ -90,16 +89,12 @@ function handleGoBack() {
           <template v-for="item in currentMenuItems" :key="item.title">
             <!-- Leaf item -->
             <UiSidebarMenuItem v-if="!item.items">
-              <UiSidebarMenuButton
-                as-child
+              <MenuButton
                 :is-active="isMenuItemActive(item as NavItem)"
                 :tooltip="item.title"
-              >
-                <router-link :to="(item as any).url">
-                  <component :is="item.icon" v-if="item.icon" />
-                  <span>{{ item.title }}</span>
-                </router-link>
-              </UiSidebarMenuButton>
+                :is-external-url="isExternalUrl((item as any).url)"
+                :menu="item as NavItem"
+              />
             </UiSidebarMenuItem>
 
             <!-- Parent item: click to enter next level -->
@@ -118,6 +113,5 @@ function handleGoBack() {
         </UiSidebarMenu>
       </UiSidebarGroup>
     </div>
-    <!-- </Transition> -->
   </div>
 </template>
