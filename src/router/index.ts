@@ -2,7 +2,7 @@ import { setupLayouts } from 'virtual:generated-layouts'
 import { createRouter, createWebHistory } from 'vue-router'
 import { handleHotUpdate, routes } from 'vue-router/auto-routes'
 
-import { useRouterGuard } from './guard'
+import { setupRouterGuard } from './guard'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -13,7 +13,7 @@ const router = createRouter({
   },
 })
 
-useRouterGuard(router)
+setupRouterGuard(router)
 
 export default router
 

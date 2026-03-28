@@ -9,11 +9,9 @@ import nprogress from 'nprogress'
 export function setupCommonGuard(router: Router) {
   router.beforeEach(() => {
     nprogress.start()
-    return true
   })
 
   router.afterEach(() => {
     nprogress.done()
-    return true
   })
 }
