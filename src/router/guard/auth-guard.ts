@@ -1,11 +1,12 @@
 import type { Router } from 'vue-router'
 
 import { storeToRefs } from 'pinia'
+import { unref } from 'vue'
 
 import pinia from '@/plugins/pinia/setup'
 import { useAuthStore } from '@/stores/auth'
 
-export function authGuard(router: Router) {
+export function setupAuthGuard(router: Router) {
   router.beforeEach((to, _from) => {
     const authStore = useAuthStore(pinia)
     const { isLogin } = storeToRefs(authStore)
