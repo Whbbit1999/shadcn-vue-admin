@@ -10,15 +10,17 @@ export function setupAuthGuard(router: Router) {
     const authStore = useAuthStore(pinia)
     const { isLogin } = storeToRefs(authStore)
 
-    const isAuthPage = ['/auth/sign-in', '/auth/sign-up'].includes(to.path)
+    const authPaths = ['/auth/sign-in', '/auth/sign-up']
+    const isAuthPage = authPaths.includes(to.path)
+    const isFromAuthPage = authPaths.includes(from.path)
 
-    // If logged in, redirect from auth pages to the previous page (if valid), otherwise redirect to home
+    // If logged in, redirect from auth pages to the previous non-auth page (if valid), otherwise redirect to home
     if (isLogin.value && isAuthPage) {
-      // Check if from route is valid (has path and is different from target)
-      if (from.path && from.path !== to.path) {
+      // Check if from route is valid (has path, is different from target, and is not an auth page)
+      if (from.path && from.path !== to.path && !isFromAuthPage) {
         return from
       }
-      // Fallback: redirect to home on first visit or invalid source
+      // Fallback: redirect to home on first visit or invalid/unsafe source (including other auth pages)
       return { path: '/' }
     }
 
