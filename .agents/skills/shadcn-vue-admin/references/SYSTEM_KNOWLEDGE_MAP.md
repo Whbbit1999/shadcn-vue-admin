@@ -7,7 +7,7 @@
 - Stack: Vue 3 + Vite + TypeScript + TailwindCSS
 - Routing: `vue-router` (v5+ with automatic routes from `src/pages`) + `vite-plugin-vue-layouts`
 - State: Pinia (with persistedstate)
-- Data: Axios + @tanstack/vue-query
+- Data: ofetch + @tanstack/vue-query
 - Forms: vee-validate + zod
 - UI: shadcn-vue / reka-ui / @lucide/vue / vue-sonner
 
@@ -50,7 +50,7 @@ meta:
 
 ## Data Fetching / API
 
-- Axios: `src/composables/use-axios.ts`
+- ofetch: `src/composables/use-fetch.ts`
 - Vue Query plugin: `src/plugins/tanstack-vue-query/setup.ts`
 - API modules: `src/services/api/*.api.ts`
 - Shared response types: `src/services/types/response.type.ts`
@@ -100,7 +100,7 @@ Plugin initialization entry: `src/plugins/index.ts`
 - Add/modify a layout: edit `src/layouts/*.vue`, then set `meta.layout` in the page.
 - Add a plugin: create `src/plugins/<plugin>/setup.ts`, then register it in `src/plugins/index.ts`.
 - Add an API module: create `src/services/api/*.api.ts`; put shared request/response types in `src/services/types/*` or `src/services/api/types/*`.
-- Add data fetching: use Axios (`src/composables/use-axios.ts`) + Vue Query (setup: `src/plugins/tanstack-vue-query/setup.ts`).
+- Add data fetching: use ofetch (`src/composables/use-fetch.ts`) + Vue Query (setup: `src/plugins/tanstack-vue-query/setup.ts`).
 - Add a form: define a zod validator in `src/pages/**/validators/*.validator.ts`, then use it from `src/pages/**/components/*-form.vue`.
 - Add a store: create `src/stores/*.ts` (Pinia; persistedstate is enabled).
 

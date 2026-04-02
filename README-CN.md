@@ -43,7 +43,7 @@
 | 表单验证         | [VeeValidate 4+](https://vee-validate.logaretm.com/), [Zod 4+](https://zod.dev/)                                                                           |
 | 动画效果         | [@formkit/auto-animate 0.9+](https://auto-animate.formkit.com/), [motion-v 1+](https://motion-v.vercel.app/)                                               |
 | 国际化           | [vue-i18n 11+](https://vue-i18n.intlify.dev/)                                                                                                              |
-| HTTP 客户端      | [axios 1+](https://axios-http.com/)                                                                                                                        |
+| HTTP 客户端      | [ofetch](https://github.com/unjs/ofetch)                                                                                                                   |
 | 代码规范与格式化 | [ESLint 9+](https://eslint.org/), [@antfu/eslint-config 7+](https://github.com/antfu/eslint-config)                                                        |
 | 开发工具         | [vite-plugin-vue-devtools 8+](https://github.com/webfansplz/vite-plugin-vue-devtools)                                                                      |
 | 自动导入         | [unplugin-auto-import 20+](https://github.com/antfu/unplugin-auto-import), [unplugin-vue-components 30+](https://github.com/antfu/unplugin-vue-components) |
