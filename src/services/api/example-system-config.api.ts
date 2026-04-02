@@ -1,8 +1,5 @@
-import type { AxiosError } from 'axios'
-
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 
-// import { useAxios } from '@/composables/use-axios'
 import type { IResponse } from '../types/response.type'
 
 interface ISystemConfig {
@@ -30,8 +27,7 @@ function generateReturnData(data: ISystemConfig, success: boolean = true): IResp
 }
 
 export function useGetSystemConfigByKeyQuery(key: string) {
-  // const { axiosInstance } = useAxios()
-  return useQuery<IResponse<ISystemConfig>, AxiosError>({
+  return useQuery<IResponse<ISystemConfig>, Error>({
     queryKey: ['useGetSystemConfigByKeyQuery', key],
     queryFn: async () => {
       const response = await new Promise<ISystemConfig | undefined>((resolve, reject) => {
@@ -51,10 +47,9 @@ export function useGetSystemConfigByKeyQuery(key: string) {
 }
 
 export function useUpdateSystemConfigByKeyMutation(key: string) {
-  // const { axiosInstance } = useAxios()
   const queryClient = useQueryClient()
 
-  return useMutation<IResponse<ISystemConfig>, AxiosError, ISystemConfig>({
+  return useMutation<IResponse<ISystemConfig>, Error, ISystemConfig>({
     mutationKey: ['useUpdateSystemConfigByKeyMutation', key],
     mutationFn: async (data: ISystemConfig) => {
       return await new Promise<IResponse<ISystemConfig>>((resolve) => {
@@ -71,10 +66,9 @@ export function useUpdateSystemConfigByKeyMutation(key: string) {
 }
 
 export function useCreateSystemMutation() {
-  // const { axiosInstance } = useAxios()
   const queryClient = useQueryClient()
 
-  return useMutation<IResponse<ISystemConfig>, AxiosError, ISystemConfig>({
+  return useMutation<IResponse<ISystemConfig>, Error, ISystemConfig>({
     mutationKey: ['useCreateTaskMutation'],
     mutationFn: async (data: ISystemConfig) => {
       return new Promise<IResponse<ISystemConfig>>((resolve) => {

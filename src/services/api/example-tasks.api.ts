@@ -1,8 +1,6 @@
-import type { AxiosError } from 'axios'
-
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 
-import { useAxios } from '@/composables/use-axios'
+import { useApiFetch } from '@/composables/use-fetch'
 
 import type { IResponse } from '../types/response.type'
 
@@ -13,38 +11,37 @@ export interface ITask {
 }
 
 export function useGetTasksQuery() {
-  const { axiosInstance } = useAxios()
+  const { apiFetch } = useApiFetch()
 
-  return useQuery<IResponse<ITask[]>, AxiosError>({
+  return useQuery<IResponse<ITask[]>, Error>({
     queryKey: ['useGetTasksQuery'],
-    queryFn: async () => {
-      const response = await axiosInstance.get('/tasks')
-      return response.data
-    },
+    queryFn: async () => await apiFetch<IResponse<ITask[]>>('/tasks', {
+      method: 'get',
+    }),
   })
 }
 
 export function useGetTaskByIdQuery(id: number) {
-  const { axiosInstance } = useAxios()
+  const { apiFetch } = useApiFetch()
 
-  return useQuery<IResponse<ITask>, AxiosError>({
+  return useQuery<IResponse<ITask>, Error>({
     queryKey: ['useGetTaskQuery', id],
-    queryFn: async () => {
-      const response = await axiosInstance.get(`/tasks/${id}`)
-      return response.data
-    },
+    queryFn: async () => await apiFetch<IResponse<ITask>>(`/tasks/${id}`, {
+      method: 'get',
+    }),
   })
 }
 
 export function useUpdateTaskMutation(id: number) {
-  const { axiosInstance } = useAxios()
+  const { apiFetch } = useApiFetch()
   const queryClient = useQueryClient()
 
-  return useMutation<IResponse<boolean>, AxiosError, Partial<ITask>>({
+  return useMutation<IResponse<boolean>, Error, Partial<ITask>>({
     mutationKey: ['useUpdateTaskMutation', id],
-    mutationFn: async (data: Partial<ITask>) => {
-      return await axiosInstance.put(`/tasks/${id}`, data)
-    },
+    mutationFn: async (data: Partial<ITask>) => await apiFetch<IResponse<boolean>>(`/tasks/${id}`, {
+      method: 'put',
+      body: data,
+    }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['useGetTaskQuery', id] })
       queryClient.invalidateQueries({ queryKey: ['useGetTasksQuery'] })
@@ -53,14 +50,15 @@ export function useUpdateTaskMutation(id: number) {
 }
 
 export function useCreateTaskMutation() {
-  const { axiosInstance } = useAxios()
+  const { apiFetch } = useApiFetch()
   const queryClient = useQueryClient()
 
-  return useMutation<IResponse<ITask>, AxiosError, ITask>({
+  return useMutation<IResponse<ITask>, Error, ITask>({
     mutationKey: ['useCreateTaskMutation'],
-    mutationFn: async (data: ITask) => {
-      return await axiosInstance.post('/tasks', data)
-    },
+    mutationFn: async (data: ITask) => await apiFetch<IResponse<ITask>>('/tasks', {
+      method: 'post',
+      body: data,
+    }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['useGetTasksQuery'] })
     },
@@ -68,14 +66,14 @@ export function useCreateTaskMutation() {
 }
 
 export function useDeleteTaskMutation() {
-  const { axiosInstance } = useAxios()
+  const { apiFetch } = useApiFetch()
   const queryClient = useQueryClient()
 
-  return useMutation<IResponse<boolean>, AxiosError, number>({
+  return useMutation<IResponse<boolean>, Error, number>({
     mutationKey: ['useDeleteTaskMutation'],
-    mutationFn: async (id: number) => {
-      return await axiosInstance.delete(`/tasks/${id}`)
-    },
+    mutationFn: async (id: number) => await apiFetch<IResponse<boolean>>(`/tasks/${id}`, {
+      method: 'delete',
+    }),
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['useGetTasksQuery'] })
     },
