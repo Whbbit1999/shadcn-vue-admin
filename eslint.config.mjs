@@ -3,6 +3,7 @@ import pluginQuery from '@tanstack/eslint-plugin-query'
 
 export default antfu({
   type: 'app',
+  pnpm: true,
   vue: {
     overrides: {
       'vue/block-lang': ['warn', {
