@@ -29,25 +29,22 @@ function handleLocaleChange(val: AcceptableValue) {
 <template>
   <UiDropdownMenu>
     <UiDropdownMenuTrigger as-child>
-      <UiButton variant="outline">
-        <Icon icon="mdi:translate" class="mr-2" />
-        {{ $t('language') }}
+      <UiButton variant="outline" size="icon">
+        <Icon icon="mdi:translate" />
       </UiButton>
     </UiDropdownMenuTrigger>
     <UiDropdownMenuContent>
-      <UiDropdownMenuLabel>{{ $t('changeLanguage') }}</UiDropdownMenuLabel>
-      <UiDropdownMenuSeparator />
       <UiDropdownMenuRadioGroup
         v-model="locale"
         @update:model-value="handleLocaleChange"
       >
         <UiDropdownMenuRadioItem value="en">
           <Icon icon="flag:us-4x3" />
-          <span class="ml-2">English</span>
+          <span>English</span>
         </UiDropdownMenuRadioItem>
         <UiDropdownMenuRadioItem value="zh">
           <Icon icon="flag:cn-4x3" />
-          <span class="ml-2">中文</span>
+          <span>中文</span>
         </UiDropdownMenuRadioItem>
       </UiDropdownMenuRadioGroup>
     </UiDropdownMenuContent>
