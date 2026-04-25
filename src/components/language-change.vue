@@ -29,8 +29,14 @@ function handleLocaleChange(val: AcceptableValue) {
 <template>
   <UiDropdownMenu>
     <UiDropdownMenuTrigger as-child>
-      <UiButton variant="outline" size="icon">
+      <UiButton
+        variant="outline"
+        size="icon"
+        aria-label="Change language"
+        title="Change language"
+      >
         <Icon icon="mdi:translate" />
+        <span class="sr-only">Change language</span>
       </UiButton>
     </UiDropdownMenuTrigger>
     <UiDropdownMenuContent>
