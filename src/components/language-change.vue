@@ -39,7 +39,7 @@ function handleLocaleChange(val: AcceptableValue) {
         <span class="sr-only">Change language</span>
       </UiButton>
     </UiDropdownMenuTrigger>
-    <UiDropdownMenuContent>
+    <UiDropdownMenuContent align="end">
       <UiDropdownMenuRadioGroup
         v-model="locale"
         @update:model-value="handleLocaleChange"
