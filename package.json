@@ -89,7 +89,7 @@
     "autoprefixer": "^10.5.0",
     "eslint": "^10.3.0",
     "eslint-plugin-format": "^2.0.1",
-    "lint-staged": "^16.4.0",
+    "nano-staged": "^1.0.2",
     "rollup-plugin-visualizer": "^7.0.1",
     "simple-git-hooks": "^2.13.1",
     "tailwindcss": "^4.2.4",
@@ -103,10 +103,10 @@
     "vue-tsc": "^3.2.7"
   },
   "simple-git-hooks": {
-    "pre-commit": "pnpm lint-staged",
+    "pre-commit": "./node_modules/.bin/nano-staged",
     "pre-push": "pnpm build"
   },
-  "lint-staged": {
+  "nano-staged": {
     "*": "eslint --fix"
   }
 }
