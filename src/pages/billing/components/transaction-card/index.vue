@@ -60,12 +60,12 @@ const currentState = computed(() => {
           {{ updatedAt }}
         </div>
       </div>
-      <div class="w-[1px] bg-stone-200" />
+      <div class="w-px bg-stone-200" />
     </div>
 
     <main class="main relative border-t p-6 flex flex-col gap-8 bg-center">
       <FlickeringGrid
-        class="absolute top-0 left-0 w-full h-full [mask-image:radial-gradient(450px_circle_at_center,white,transparent)]"
+        class="absolute top-0 left-0 w-full h-full mask-[radial-gradient(450px_circle_at_center,white,transparent)]"
         :square-size="4"
         :grid-gap="2"
         color="#60A5FA"

@@ -183,7 +183,7 @@ function handleMove(e?: MouseEvent | PointerEvent | { x: number, y: number }) {
         cn(
           'glow',
           'rounded-[inherit]',
-          `after:content-[''] after:rounded-[inherit] after:absolute after:inset-[calc(-1*var(--glowingeffect-border-width))]`,
+          `after:content-[''] after:rounded-[inherit] after:absolute after:-inset-(--glowingeffect-border-width)`,
           'after:[border:var(--glowingeffect-border-width)_solid_transparent]',
           'after:[background:var(--gradient)] after:bg-fixed',
           'after:opacity-(--active) after:transition-opacity after:duration-300',
