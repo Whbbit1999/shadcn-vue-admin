@@ -52,16 +52,17 @@
   ],
   "i18n-ally.keystyle": "flat",
   "cSpell.words": [
-    "formkit",
-    "unovis",
-    "iconify",
-    "unplugin",
-    "tanstack",
-    "Whbbit1999",
     "autoplay",
-    "reka",
-    "vaul",
+    "formkit",
+    "iconify",
+    "lucide",
     "persistedstate",
-    "sonner"
+    "reka",
+    "sonner",
+    "tanstack",
+    "unovis",
+    "unplugin",
+    "vaul",
+    "Whbbit1999"
   ]
 }
