@@ -3,8 +3,8 @@ import { useSidebar } from '@/composables/use-sidebar'
 import type { SidebarData, Team, User } from '../types'
 
 const user: User = {
-  name: 'RAAS Admin',
-  email: 'admin@raas.com',
+  name: 'Apollo Admin',
+  email: 'admin@apollo.com',
   avatar: '/avatars/shadcn.jpg',
 }
 
