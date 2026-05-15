@@ -15,7 +15,7 @@ const mode = useColorMode()
       <UiAvatar>
         <UiAvatarImage :src="`${mode === 'dark' ? '/logo.svg' : '/logo-black.svg'}`" alt="Logo" />
       </UiAvatar>
-      <span class="text-base font-bold">Shadcn Vue Admin</span>
+      <span class="text-base font-bold">Apollo Admin</span>
     </router-link>
 
     <div class="flex-1" />

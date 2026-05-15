@@ -13,7 +13,7 @@ const links = [
   {
     name: 'github',
     icon: 'simple-icons:github',
-    url: 'https://www.github.com/whbbit1999/shadcn-vue-admin',
+    url: 'https://github.com/apollosuite/apollo-raas-admin-fe',
   },
   {
     name: 'bilibili',
@@ -29,7 +29,7 @@ const links = [
       <UiAvatarImage :src="`${mode === 'dark' ? '/logo.svg' : '/logo-black.svg'}`" alt="Logo" />
     </UiAvatar>
 
-    <div>© 2025 Whbbit1999</div>
+    <div>© 2026 Apollo Admin</div>
 
     <div class="flex items-center gap-2">
       <UiButton

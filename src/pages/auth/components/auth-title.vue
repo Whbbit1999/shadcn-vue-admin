@@ -10,6 +10,6 @@ const logo = computed(() => {
 <template>
   <h1 class="flex items-center gap-2 text-xl font-bold">
     <img :src="logo">
-    <span>RAAS Admin</span>
+    <span>Apollo Admin</span>
   </h1>
 </template>

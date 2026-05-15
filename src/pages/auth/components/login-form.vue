@@ -14,7 +14,7 @@ function handleLogin() {
   <UiCard class="w-full max-w-sm">
     <UiCardHeader>
       <UiCardTitle class="text-2xl">
-        RAAS Admin Login
+        Apollo Admin Login
       </UiCardTitle>
       <UiCardDescription>
         Enter your credentials to access the dashboard.

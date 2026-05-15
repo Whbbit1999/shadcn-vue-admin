@@ -9,10 +9,10 @@ import NavTeam from './nav-team.vue'
     <UiSidebarHeader>
       <div class="flex items-center gap-2 px-2 py-4">
         <div class="flex items-center justify-center rounded-lg aspect-square size-8 bg-sidebar-primary text-sidebar-primary-foreground">
-          <span class="text-lg font-bold">R</span>
+          <span class="text-lg font-bold">A</span>
         </div>
         <div class="grid flex-1 text-sm leading-tight text-left">
-          <span class="font-semibold truncate">RAAS Admin</span>
+          <span class="font-semibold truncate">Apollo Admin</span>
           <span class="text-xs truncate">Dashboard</span>
         </div>
       </div>
