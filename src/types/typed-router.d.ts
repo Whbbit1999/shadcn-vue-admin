@@ -113,6 +113,49 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/marketing/': RouteRecordInfo<
+      '/marketing/',
+      '/marketing',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/marketing/wecom-chat-history': RouteRecordInfo<
+      '/marketing/wecom-chat-history',
+      '/marketing/wecom-chat-history',
+      Record<never, never>,
+      Record<never, never>,
+      | '/marketing/wecom-chat-history/group/[roomid]'
+      | '/marketing/wecom-chat-history/private/[thread_id]'
+    >,
+    '/marketing/wecom-chat-history/group/[roomid]': RouteRecordInfo<
+      '/marketing/wecom-chat-history/group/[roomid]',
+      '/marketing/wecom-chat-history/group/:roomid',
+      { roomid: ParamValue<true> },
+      { roomid: ParamValue<false> },
+      | never
+    >,
+    '/marketing/wecom-chat-history/private/[thread_id]': RouteRecordInfo<
+      '/marketing/wecom-chat-history/private/[thread_id]',
+      '/marketing/wecom-chat-history/private/:thread_id',
+      { thread_id: ParamValue<true> },
+      { thread_id: ParamValue<false> },
+      | never
+    >,
+    '/marketing/wecom-customers': RouteRecordInfo<
+      '/marketing/wecom-customers',
+      '/marketing/wecom-customers',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
+    '/marketing/wecom-leads': RouteRecordInfo<
+      '/marketing/wecom-leads',
+      '/marketing/wecom-leads',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/raas/': RouteRecordInfo<
       '/raas/',
       '/raas',
@@ -252,6 +295,44 @@ declare module 'vue-router/auto-routes' {
     'src/pages/errors/503.vue': {
       routes:
         | '/errors/503'
+      views:
+        | never
+    }
+    'src/pages/marketing/index.vue': {
+      routes:
+        | '/marketing/'
+      views:
+        | never
+    }
+    'src/pages/marketing/wecom-chat-history.vue': {
+      routes:
+        | '/marketing/wecom-chat-history'
+        | '/marketing/wecom-chat-history/group/[roomid]'
+        | '/marketing/wecom-chat-history/private/[thread_id]'
+      views:
+        | 'default'
+    }
+    'src/pages/marketing/wecom-chat-history/group/[roomid].vue': {
+      routes:
+        | '/marketing/wecom-chat-history/group/[roomid]'
+      views:
+        | never
+    }
+    'src/pages/marketing/wecom-chat-history/private/[thread_id].vue': {
+      routes:
+        | '/marketing/wecom-chat-history/private/[thread_id]'
+      views:
+        | never
+    }
+    'src/pages/marketing/wecom-customers.vue': {
+      routes:
+        | '/marketing/wecom-customers'
+      views:
+        | never
+    }
+    'src/pages/marketing/wecom-leads.vue': {
+      routes:
+        | '/marketing/wecom-leads'
       views:
         | never
     }
