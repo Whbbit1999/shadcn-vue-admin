@@ -24,6 +24,22 @@ export interface WeComCustomerListResponse {
   total_pages: number
 }
 
+export interface WeComCustomerAnalyticsRow {
+  userid: string
+  added_date: string
+  new_customer_count: number
+  cumulative_customer_count: number
+}
+
+export interface WeComCustomerAnalyticsResponse {
+  items: WeComCustomerAnalyticsRow[]
+}
+
+export interface WeComCustomerAnalyticsParams {
+  userid?: string
+  added_date?: string
+}
+
 export interface WeComCustomerListParams {
   page?: number
   page_size?: number
@@ -138,4 +154,124 @@ export interface WeComChatMessageListResponse {
   thread: WeComChatThread
   items: WeComChatMessage[]
   total: number
+  page: number
+  page_size: number
+  total_pages: number
+}
+
+export interface WeComChatMessageListParams {
+  page?: number
+  page_size?: number
+}
+
+export interface WeComLead {
+  thread_type: WeComChatThreadType
+  thread_id: string
+  contact_name: string
+  external_userid?: string | null
+  salesperson_userids: string[]
+  date_added?: string | null
+  chat_type_label: string
+  apollo_message_count: number
+  customer_reply_count: number
+  last_messaged?: string | null
+  status: string
+  prompt_id?: string | null
+  tag_values?: Record<string, unknown> | null
+  playbook_alignment?: unknown
+  playbook_alignment_summary: string
+  objections_raised?: unknown
+  objections_summary: string
+  violations?: unknown
+  violations_summary: string
+  quality_score?: number | null
+  error_message?: string | null
+  analyzed_at?: string | null
+  tag_updated_at?: string | null
+  conversation_path: string
+}
+
+export interface WeComLeadListParams {
+  page?: number
+  page_size?: number
+  search?: string
+  chat_type?: string
+  salesperson?: string
+  status?: string
+  last_message_from?: string
+  last_message_to?: string
+  min_quality_score?: number
+  max_quality_score?: number
+  sort_by?: 'score' | 'apollo_messages' | 'replies' | 'last_messaged'
+  sort_dir?: 'asc' | 'desc'
+}
+
+export interface WeComLeadListResponse {
+  items: WeComLead[]
+  total: number
+  page: number
+  page_size: number
+  total_pages: number
+}
+
+export interface WeComLeadPromptRule {
+  id: number
+  tag_name: string
+  tag_desc: string
+  output_schema_true: string
+  output_schema_false: string
+  output_notes: string
+}
+
+export interface WeComLeadPromptConfig {
+  id: string
+  system_prompt: string
+  user_prompt: string
+  playbook_text: string
+  tag_rules: WeComLeadPromptRule[]
+  tag_block: string
+  created_at?: string | null
+  updated_at?: string | null
+}
+
+export interface WeComLeadPromptUpdate {
+  system_prompt: string
+  user_prompt: string
+  playbook_text: string
+  tag_rules: WeComLeadPromptRule[]
+}
+
+export interface WeComLeadJobRun {
+  id: string
+  trigger_type: string
+  status: string
+  started_at: string
+  finished_at?: string | null
+  total_count: number
+  success_count: number
+  failed_count: number
+  skipped_count: number
+  error_message?: string | null
+}
+
+export interface WeComLeadLatestJobResponse {
+  latest_run?: WeComLeadJobRun | null
+  manual_allowed: boolean
+  cooldown_until?: string | null
+}
+
+export interface WeComLeadTaggingTarget {
+  thread_type: WeComChatThreadType
+  thread_id: string
+}
+
+export interface WeComLeadTriggerRequest {
+  selected_leads?: WeComLeadTaggingTarget[]
+}
+
+export interface WeComLeadTriggerResponse {
+  accepted: boolean
+  invocation_id?: string | null
+  cooldown_until?: string | null
+  message: string
 }

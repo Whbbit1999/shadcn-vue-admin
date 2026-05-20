@@ -2,7 +2,7 @@
 import type { DateValue } from 'reka-ui'
 
 import { getLocalTimeZone, parseDate, today } from '@internationalized/date'
-import { RefreshCw } from 'lucide-vue-next'
+import { RefreshCw, X } from 'lucide-vue-next'
 import { computed, ref, watch } from 'vue'
 
 import type { WeComChatThread, WeComChatThreadListParams } from '@/services/types/marketing.type'
@@ -255,11 +255,15 @@ function jumpGroupPage() {
                   <RefreshCw class="mr-2 size-4" :class="{ 'animate-spin': privateQuery.isFetching.value }" />
                   Refresh
                 </Button>
+                <Button variant="ghost" size="sm" @click="clearPrivateFilters">
+                  <X class="mr-2 size-4" />
+                  Clear
+                </Button>
               </div>
             </div>
           </CardHeader>
           <CardContent>
-            <div class="mb-4 grid gap-3 lg:grid-cols-[minmax(220px,1.4fr)_minmax(220px,1.2fr)_auto_auto_auto] lg:items-end">
+            <div class="mb-4 grid gap-3 lg:grid-cols-[minmax(220px,1.4fr)_minmax(220px,1.2fr)_auto_auto] lg:items-end">
               <div class="space-y-1.5">
                 <div class="text-xs font-medium text-muted-foreground">
                   Thread name
@@ -338,30 +342,27 @@ function jumpGroupPage() {
                   </PopoverContent>
                 </Popover>
               </div>
-              <Button variant="ghost" size="sm" class="h-10 justify-self-start" @click="clearPrivateFilters">
-                Clear
-              </Button>
             </div>
             <div class="overflow-x-auto rounded-md border">
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead class="min-w-[240px]">
+                    <TableHead class="min-w-[240px] text-center">
                       Thread
                     </TableHead>
-                    <TableHead class="min-w-[180px]">
+                    <TableHead class="min-w-[180px] text-center">
                       Apollo Staff
                     </TableHead>
-                    <TableHead class="min-w-[90px] text-right">
+                    <TableHead class="min-w-[90px] text-center">
                       Messages
                     </TableHead>
-                    <TableHead class="min-w-[120px]">
+                    <TableHead class="min-w-[120px] text-center">
                       Latest Type
                     </TableHead>
-                    <TableHead class="min-w-[280px]">
+                    <TableHead class="min-w-[280px] text-center">
                       Latest Preview
                     </TableHead>
-                    <TableHead class="min-w-[180px]">
+                    <TableHead class="min-w-[180px] text-center">
                       Latest Time
                     </TableHead>
                   </TableRow>
@@ -458,11 +459,15 @@ function jumpGroupPage() {
                   <RefreshCw class="mr-2 size-4" :class="{ 'animate-spin': groupQuery.isFetching.value }" />
                   Refresh
                 </Button>
+                <Button variant="ghost" size="sm" @click="clearGroupFilters">
+                  <X class="mr-2 size-4" />
+                  Clear
+                </Button>
               </div>
             </div>
           </CardHeader>
           <CardContent>
-            <div class="mb-4 grid gap-3 lg:grid-cols-[minmax(220px,1.4fr)_minmax(220px,1.2fr)_auto_auto_auto] lg:items-end">
+            <div class="mb-4 grid gap-3 lg:grid-cols-[minmax(220px,1.4fr)_minmax(220px,1.2fr)_auto_auto] lg:items-end">
               <div class="space-y-1.5">
                 <div class="text-xs font-medium text-muted-foreground">
                   Thread name
@@ -541,33 +546,30 @@ function jumpGroupPage() {
                   </PopoverContent>
                 </Popover>
               </div>
-              <Button variant="ghost" size="sm" class="h-10 justify-self-start" @click="clearGroupFilters">
-                Clear
-              </Button>
             </div>
             <div class="overflow-x-auto rounded-md border">
               <Table>
                 <TableHeader>
                   <TableRow>
-                    <TableHead class="min-w-[260px]">
+                    <TableHead class="min-w-[260px] text-center">
                       Group
                     </TableHead>
-                    <TableHead class="min-w-[140px]">
+                    <TableHead class="min-w-[140px] text-center">
                       Owner
                     </TableHead>
-                    <TableHead class="min-w-[100px] text-right">
+                    <TableHead class="min-w-[100px] text-center">
                       Members
                     </TableHead>
-                    <TableHead class="min-w-[100px] text-right">
+                    <TableHead class="min-w-[100px] text-center">
                       Messages
                     </TableHead>
-                    <TableHead class="min-w-[120px]">
+                    <TableHead class="min-w-[120px] text-center">
                       Latest Type
                     </TableHead>
-                    <TableHead class="min-w-[280px]">
+                    <TableHead class="min-w-[280px] text-center">
                       Latest Preview
                     </TableHead>
-                    <TableHead class="min-w-[180px]">
+                    <TableHead class="min-w-[180px] text-center">
                       Latest Time
                     </TableHead>
                   </TableRow>

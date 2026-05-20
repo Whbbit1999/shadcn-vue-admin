@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ArrowLeft } from 'lucide-vue-next'
-import { computed } from 'vue'
+import { computed, ref, watch } from 'vue'
+
+import type { WeComChatMessage } from '@/services/types/marketing.type'
 
 import { BasicPage } from '@/components/global-layout'
 import WeComChatMessageContent from '@/components/marketing/wecom-chat-message-content.vue'
@@ -12,8 +14,37 @@ const route = useRoute()
 const router = useRouter()
 const { useGetPrivateChatMessages } = useMarketingApi()
 
+const PAGE_SIZE = 100
 const threadId = computed(() => String((route.params as Record<string, string | undefined>).thread_id || ''))
-const { data, isLoading, isError } = useGetPrivateChatMessages(threadId)
+const page = ref(1)
+const loadedMessages = ref<WeComChatMessage[]>([])
+const messageParams = computed(() => ({ page: page.value, page_size: PAGE_SIZE }))
+const { data, isLoading, isFetching, isError } = useGetPrivateChatMessages(threadId, messageParams)
+const hasEarlierMessages = computed(() => !!data.value && page.value < data.value.total_pages)
+
+watch(threadId, () => {
+  page.value = 1
+  loadedMessages.value = []
+})
+
+watch(data, (value) => {
+  if (!value)
+    return
+  if (value.page === 1) {
+    loadedMessages.value = value.items
+    return
+  }
+  const existingIds = new Set(loadedMessages.value.map(message => message.msgid))
+  loadedMessages.value = [
+    ...value.items.filter(message => !existingIds.has(message.msgid)),
+    ...loadedMessages.value,
+  ]
+})
+
+function loadEarlierMessages() {
+  if (hasEarlierMessages.value && !isFetching.value)
+    page.value += 1
+}
 
 function formatMsgTime(value?: number | null) {
   if (!value)
@@ -41,7 +72,7 @@ function formatMsgTime(value?: number | null) {
           <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <CardTitle>{{ data?.thread.title || 'Private Chat' }}</CardTitle>
             <div class="text-sm text-muted-foreground">
-              {{ data?.total ?? 0 }} messages
+              {{ loadedMessages.length }} / {{ data?.total ?? 0 }} messages loaded
             </div>
           </div>
         </CardHeader>
@@ -53,8 +84,13 @@ function formatMsgTime(value?: number | null) {
             Failed to load messages.
           </div>
           <div v-else class="space-y-4">
+            <div v-if="hasEarlierMessages" class="flex justify-center">
+              <Button variant="outline" size="sm" :disabled="isFetching" @click="loadEarlierMessages">
+                {{ isFetching ? 'Loading earlier messages...' : 'Load earlier messages' }}
+              </Button>
+            </div>
             <div
-              v-for="message in data?.items ?? []"
+              v-for="message in loadedMessages"
               :key="message.msgid"
               class="flex"
               :class="message.direction === 'outbound' ? 'justify-end' : 'justify-start'"
@@ -74,7 +110,7 @@ function formatMsgTime(value?: number | null) {
                 </div>
               </div>
             </div>
-            <div v-if="(data?.items ?? []).length === 0" class="h-40 content-center text-center text-muted-foreground">
+            <div v-if="loadedMessages.length === 0" class="h-40 content-center text-center text-muted-foreground">
               No messages found.
             </div>
           </div>

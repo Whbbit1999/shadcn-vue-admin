@@ -5,7 +5,11 @@ import { getLocalTimeZone, parseDate, today } from '@internationalized/date'
 import { Eye, RefreshCw, Search, X } from 'lucide-vue-next'
 import { computed, ref, watch } from 'vue'
 
-import type { WeComCustomer, WeComCustomerListParams } from '@/services/types/marketing.type'
+import type {
+  WeComCustomer,
+  WeComCustomerAnalyticsParams,
+  WeComCustomerListParams,
+} from '@/services/types/marketing.type'
 
 import { BasicPage } from '@/components/global-layout'
 import { Badge } from '@/components/ui/badge'
@@ -41,6 +45,12 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from '@/components/ui/tabs'
+import {
   Tooltip,
   TooltipContent,
   TooltipProvider,
@@ -48,7 +58,7 @@ import {
 } from '@/components/ui/tooltip'
 import { useMarketingApi } from '@/services/api/marketing.api'
 
-const { useGetWeComCustomers, useGetWeComCustomerDetail } = useMarketingApi()
+const { useGetWeComCustomers, useGetWeComCustomerDetail, useGetWeComCustomerAnalytics } = useMarketingApi()
 
 const followerStaffOptions = [
   '19357117081',
@@ -73,6 +83,11 @@ const filters = ref({
   updated_date: '',
 })
 
+const analyticsFilters = ref({
+  userid: 'all',
+  added_date: '',
+})
+
 const pagination = ref({
   page: 1,
   pageSize: 20,
@@ -82,6 +97,7 @@ const selectedExternalUserid = ref<string>()
 const detailOpen = ref(false)
 const followCreatedCalendarOpen = ref(false)
 const updatedCalendarOpen = ref(false)
+const analyticsAddedCalendarOpen = ref(false)
 const calendarPlaceholder = today(getLocalTimeZone())
 
 const datePattern = /^\d{4}-\d{2}-\d{2}$/
@@ -118,6 +134,13 @@ const updatedCalendarValue = computed<DateValue | undefined>({
   },
 })
 
+const analyticsAddedCalendarValue = computed<DateValue | undefined>({
+  get: () => calendarDate(analyticsFilters.value.added_date),
+  set: (value) => {
+    analyticsFilters.value.added_date = value?.toString() ?? ''
+  },
+})
+
 const queryParams = computed<WeComCustomerListParams>(() => ({
   page: pagination.value.page,
   page_size: pagination.value.pageSize,
@@ -133,10 +156,17 @@ const queryParams = computed<WeComCustomerListParams>(() => ({
   updated_to: dateParam(filters.value.updated_date),
 }))
 
+const analyticsParams = computed<WeComCustomerAnalyticsParams>(() => ({
+  userid: analyticsFilters.value.userid === 'all' ? undefined : analyticsFilters.value.userid,
+  added_date: dateParam(analyticsFilters.value.added_date),
+}))
+
 const { data, isLoading, isFetching, isError, refetch } = useGetWeComCustomers(queryParams)
 const { data: detailData, isLoading: detailLoading } = useGetWeComCustomerDetail(selectedExternalUserid)
+const analyticsQuery = useGetWeComCustomerAnalytics(analyticsParams)
 
 const customers = computed(() => data.value?.items ?? [])
+const analyticsRows = computed(() => analyticsQuery.data.value?.items ?? [])
 const total = computed(() => data.value?.total ?? 0)
 const totalPages = computed(() => data.value?.total_pages ?? 1)
 
@@ -154,6 +184,13 @@ function clearFilters() {
     tag: '',
     follow_created_date: '',
     updated_date: '',
+  }
+}
+
+function clearAnalyticsFilters() {
+  analyticsFilters.value = {
+    userid: 'all',
+    added_date: '',
   }
 }
 
@@ -209,361 +246,499 @@ function relationTags(tags: unknown) {
 
 <template>
   <BasicPage title="WeCom Customers" description="External customer ownership and tag summaries" sticky>
-    <div class="space-y-4">
-      <Card>
-        <CardHeader class="pb-3">
-          <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
-            <CardTitle>Filters</CardTitle>
-            <div class="flex items-center gap-2">
-              <Button variant="outline" size="sm" :disabled="isFetching" @click="refetch()">
-                <RefreshCw class="mr-2 size-4" :class="{ 'animate-spin': isFetching }" />
-                Refresh
-              </Button>
-              <Button variant="ghost" size="sm" @click="clearFilters">
-                <X class="mr-2 size-4" />
-                Clear
-              </Button>
-            </div>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <div class="grid gap-3 md:grid-cols-2 xl:grid-cols-6">
-            <div class="space-y-1.5 xl:col-span-2">
-              <div class="text-xs font-medium text-muted-foreground">
-                Keyword
-              </div>
-              <div class="relative">
-                <Search class="text-muted-foreground absolute left-2.5 top-2.5 size-4" />
-                <Input v-model="filters.search" class="pl-8" placeholder="Name, company, userid" />
-              </div>
-            </div>
+    <Tabs default-value="list" class="space-y-4">
+      <TabsList>
+        <TabsTrigger value="list">
+          Customer List
+        </TabsTrigger>
+        <TabsTrigger value="analytics">
+          Analytics
+        </TabsTrigger>
+      </TabsList>
 
-            <div class="space-y-1.5 xl:col-span-2">
-              <div class="text-xs font-medium text-muted-foreground">
-                Apollo follower staff
+      <TabsContent value="list" class="space-y-4">
+        <Card>
+          <CardHeader class="pb-3">
+            <div class="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+              <CardTitle>Filters</CardTitle>
+              <div class="flex items-center gap-2">
+                <Button variant="outline" size="sm" :disabled="isFetching" @click="refetch()">
+                  <RefreshCw class="mr-2 size-4" :class="{ 'animate-spin': isFetching }" />
+                  Refresh
+                </Button>
+                <Button variant="ghost" size="sm" @click="clearFilters">
+                  <X class="mr-2 size-4" />
+                  Clear
+                </Button>
               </div>
-              <Select v-model="filters.owner_userid">
-                <SelectTrigger class="w-full">
-                  <SelectValue placeholder="All follower staffs" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">
-                    All follower staffs
-                  </SelectItem>
-                  <SelectItem v-for="userid in followerStaffOptions" :key="userid" :value="userid">
-                    {{ userid }}
-                  </SelectItem>
-                </SelectContent>
-              </Select>
             </div>
-
-            <div class="space-y-1.5">
-              <div class="text-xs font-medium text-muted-foreground">
-                Company
+          </CardHeader>
+          <CardContent>
+            <div class="grid gap-3 md:grid-cols-2 xl:grid-cols-6">
+              <div class="space-y-1.5 xl:col-span-2">
+                <div class="text-xs font-medium text-muted-foreground">
+                  Keyword
+                </div>
+                <div class="relative">
+                  <Search class="text-muted-foreground absolute left-2.5 top-2.5 size-4" />
+                  <Input v-model="filters.search" class="pl-8" placeholder="Name, company, userid" />
+                </div>
               </div>
-              <Input v-model="filters.corp_name" placeholder="Company name" />
-            </div>
 
-            <div class="space-y-1.5">
-              <div class="text-xs font-medium text-muted-foreground">
-                Tag
+              <div class="space-y-1.5 xl:col-span-2">
+                <div class="text-xs font-medium text-muted-foreground">
+                  Apollo follower staff
+                </div>
+                <Select v-model="filters.owner_userid">
+                  <SelectTrigger class="w-full">
+                    <SelectValue placeholder="All follower staffs" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">
+                      All follower staffs
+                    </SelectItem>
+                    <SelectItem v-for="userid in followerStaffOptions" :key="userid" :value="userid">
+                      {{ userid }}
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
-              <Input v-model="filters.tag" placeholder="Tag name or id" />
-            </div>
 
-            <div class="space-y-1.5">
-              <div class="text-xs font-medium text-muted-foreground">
-                Gender
+              <div class="space-y-1.5">
+                <div class="text-xs font-medium text-muted-foreground">
+                  Company
+                </div>
+                <Input v-model="filters.corp_name" placeholder="Company name" />
               </div>
-              <Select v-model="filters.gender">
-                <SelectTrigger class="w-full">
-                  <SelectValue placeholder="All genders" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">
-                    All genders
-                  </SelectItem>
-                  <SelectItem value="1">
-                    Male
-                  </SelectItem>
-                  <SelectItem value="2">
-                    Female
-                  </SelectItem>
-                  <SelectItem value="0">
-                    Unknown
-                  </SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
 
-            <div class="space-y-1.5">
-              <div class="text-xs font-medium text-muted-foreground">
-                Customer type
+              <div class="space-y-1.5">
+                <div class="text-xs font-medium text-muted-foreground">
+                  Tag
+                </div>
+                <Input v-model="filters.tag" placeholder="Tag name or id" />
               </div>
-              <Select v-model="filters.type">
-                <SelectTrigger class="w-full">
-                  <SelectValue placeholder="All types" />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem value="all">
-                    All types
-                  </SelectItem>
-                  <SelectItem value="1">
-                    WeChat
-                  </SelectItem>
-                  <SelectItem value="2">
-                    Enterprise
-                  </SelectItem>
-                  <SelectItem value="0">
-                    Unknown
-                  </SelectItem>
-                </SelectContent>
-              </Select>
-            </div>
 
-            <div class="space-y-1.5 xl:col-span-1">
-              <div class="text-xs font-medium text-muted-foreground">
-                Follow createtime
+              <div class="space-y-1.5">
+                <div class="text-xs font-medium text-muted-foreground">
+                  Gender
+                </div>
+                <Select v-model="filters.gender">
+                  <SelectTrigger class="w-full">
+                    <SelectValue placeholder="All genders" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">
+                      All genders
+                    </SelectItem>
+                    <SelectItem value="1">
+                      Male
+                    </SelectItem>
+                    <SelectItem value="2">
+                      Female
+                    </SelectItem>
+                    <SelectItem value="0">
+                      Unknown
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
-              <Popover v-model:open="followCreatedCalendarOpen">
-                <PopoverAnchor>
-                  <Input
-                    v-model="filters.follow_created_date"
-                    class="w-[150px] text-left"
-                    inputmode="numeric"
-                    placeholder="YYYY-MM-DD"
-                    @click="followCreatedCalendarOpen = true"
-                    @focus="followCreatedCalendarOpen = true"
-                  />
-                </PopoverAnchor>
-                <PopoverContent class="w-auto p-0" align="start">
-                  <Calendar
-                    v-model="followCreatedCalendarValue"
-                    calendar-label="Follow createtime"
-                    initial-focus
-                    layout="month-and-year"
-                    :default-placeholder="calendarPlaceholder"
-                    @update:model-value="followCreatedCalendarOpen = false"
-                  />
-                </PopoverContent>
-              </Popover>
-            </div>
 
-            <div class="space-y-1.5 xl:col-span-1">
-              <div class="text-xs font-medium text-muted-foreground">
-                Contact updated_at
+              <div class="space-y-1.5">
+                <div class="text-xs font-medium text-muted-foreground">
+                  Customer type
+                </div>
+                <Select v-model="filters.type">
+                  <SelectTrigger class="w-full">
+                    <SelectValue placeholder="All types" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">
+                      All types
+                    </SelectItem>
+                    <SelectItem value="1">
+                      WeChat
+                    </SelectItem>
+                    <SelectItem value="2">
+                      Enterprise
+                    </SelectItem>
+                    <SelectItem value="0">
+                      Unknown
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
               </div>
-              <Popover v-model:open="updatedCalendarOpen">
-                <PopoverAnchor>
-                  <Input
-                    v-model="filters.updated_date"
-                    class="w-[150px] text-left"
-                    inputmode="numeric"
-                    placeholder="YYYY-MM-DD"
-                    @click="updatedCalendarOpen = true"
-                    @focus="updatedCalendarOpen = true"
-                  />
-                </PopoverAnchor>
-                <PopoverContent class="w-auto p-0" align="start">
-                  <Calendar
-                    v-model="updatedCalendarValue"
-                    calendar-label="Contact updated_at"
-                    initial-focus
-                    layout="month-and-year"
-                    :default-placeholder="calendarPlaceholder"
-                    @update:model-value="updatedCalendarOpen = false"
-                  />
-                </PopoverContent>
-              </Popover>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
 
-      <Card>
-        <CardHeader class="pb-3">
-          <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-            <CardTitle>Customer List</CardTitle>
-            <div class="text-sm text-muted-foreground">
-              {{ total }} customers
+              <div class="space-y-1.5 xl:col-span-1">
+                <div class="text-xs font-medium text-muted-foreground">
+                  Follow createtime
+                </div>
+                <Popover v-model:open="followCreatedCalendarOpen">
+                  <PopoverAnchor>
+                    <Input
+                      v-model="filters.follow_created_date"
+                      class="w-[150px] text-left"
+                      inputmode="numeric"
+                      placeholder="YYYY-MM-DD"
+                      @click="followCreatedCalendarOpen = true"
+                      @focus="followCreatedCalendarOpen = true"
+                    />
+                  </PopoverAnchor>
+                  <PopoverContent class="w-auto p-0" align="start">
+                    <Calendar
+                      v-model="followCreatedCalendarValue"
+                      calendar-label="Follow createtime"
+                      initial-focus
+                      layout="month-and-year"
+                      :default-placeholder="calendarPlaceholder"
+                      @update:model-value="followCreatedCalendarOpen = false"
+                    />
+                  </PopoverContent>
+                </Popover>
+              </div>
+
+              <div class="space-y-1.5 xl:col-span-1">
+                <div class="text-xs font-medium text-muted-foreground">
+                  Contact updated_at
+                </div>
+                <Popover v-model:open="updatedCalendarOpen">
+                  <PopoverAnchor>
+                    <Input
+                      v-model="filters.updated_date"
+                      class="w-[150px] text-left"
+                      inputmode="numeric"
+                      placeholder="YYYY-MM-DD"
+                      @click="updatedCalendarOpen = true"
+                      @focus="updatedCalendarOpen = true"
+                    />
+                  </PopoverAnchor>
+                  <PopoverContent class="w-auto p-0" align="start">
+                    <Calendar
+                      v-model="updatedCalendarValue"
+                      calendar-label="Contact updated_at"
+                      initial-focus
+                      layout="month-and-year"
+                      :default-placeholder="calendarPlaceholder"
+                      @update:model-value="updatedCalendarOpen = false"
+                    />
+                  </PopoverContent>
+                </Popover>
+              </div>
             </div>
-          </div>
-        </CardHeader>
-        <CardContent>
-          <div class="overflow-x-auto rounded-md border">
-            <Table>
-              <TableHeader>
-                <TableRow>
-                  <TableHead class="min-w-[220px]">
-                    Identity
-                  </TableHead>
-                  <TableHead class="min-w-[180px]">
-                    Company
-                  </TableHead>
-                  <TableHead class="min-w-[130px]">
-                    Gender / Type
-                  </TableHead>
-                  <TableHead class="min-w-[110px] text-right">
-                    Followers
-                  </TableHead>
-                  <TableHead class="min-w-[180px]">
-                    Owners
-                  </TableHead>
-                  <TableHead class="min-w-[220px]">
-                    Tags
-                  </TableHead>
-                  <TableHead class="min-w-[180px]">
-                    Updated
-                  </TableHead>
-                  <TableHead class="w-[80px]" />
-                </TableRow>
-              </TableHeader>
-              <TableBody>
-                <TableRow v-if="isLoading">
-                  <TableCell colspan="8" class="h-28 text-center text-muted-foreground">
-                    Loading customers...
-                  </TableCell>
-                </TableRow>
-                <TableRow v-else-if="isError">
-                  <TableCell colspan="8" class="h-28 text-center text-destructive">
-                    Failed to load customers.
-                  </TableCell>
-                </TableRow>
-                <TableRow v-else-if="customers.length === 0">
-                  <TableCell colspan="8" class="h-28 text-center text-muted-foreground">
-                    No customers found.
-                  </TableCell>
-                </TableRow>
-                <TableRow v-for="customer in customers" v-else :key="customer.external_userid">
-                  <TableCell>
-                    <div class="flex items-center gap-3">
-                      <img
-                        v-if="customer.avatar"
-                        :src="customer.avatar"
-                        alt=""
-                        class="size-9 shrink-0 rounded-full object-cover"
-                      >
-                      <div v-else class="bg-muted flex size-9 shrink-0 items-center justify-center rounded-full text-xs font-medium">
-                        {{ (customer.name || customer.external_userid).slice(0, 2).toUpperCase() }}
-                      </div>
-                      <div class="min-w-0">
-                        <div class="truncate font-medium">
-                          {{ customer.name || '-' }}
+          </CardContent>
+        </Card>
+
+        <Card>
+          <CardHeader class="pb-3">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <CardTitle>Customer List</CardTitle>
+              <div class="text-sm text-muted-foreground">
+                {{ total }} customers
+              </div>
+            </div>
+          </CardHeader>
+          <CardContent>
+            <div class="overflow-x-auto rounded-md border">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead class="min-w-[220px] text-center">
+                      Identity
+                    </TableHead>
+                    <TableHead class="min-w-[180px] text-center">
+                      Company
+                    </TableHead>
+                    <TableHead class="min-w-[130px] text-center">
+                      Gender / Type
+                    </TableHead>
+                    <TableHead class="min-w-[110px] text-center">
+                      Followers
+                    </TableHead>
+                    <TableHead class="min-w-[180px] text-center">
+                      Owners
+                    </TableHead>
+                    <TableHead class="min-w-[220px] text-center">
+                      Tags
+                    </TableHead>
+                    <TableHead class="min-w-[180px] text-center">
+                      Updated
+                    </TableHead>
+                    <TableHead class="w-[80px]" />
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow v-if="isLoading">
+                    <TableCell colspan="8" class="h-28 text-center text-muted-foreground">
+                      Loading customers...
+                    </TableCell>
+                  </TableRow>
+                  <TableRow v-else-if="isError">
+                    <TableCell colspan="8" class="h-28 text-center text-destructive">
+                      Failed to load customers.
+                    </TableCell>
+                  </TableRow>
+                  <TableRow v-else-if="customers.length === 0">
+                    <TableCell colspan="8" class="h-28 text-center text-muted-foreground">
+                      No customers found.
+                    </TableCell>
+                  </TableRow>
+                  <TableRow v-for="customer in customers" v-else :key="customer.external_userid">
+                    <TableCell>
+                      <div class="flex items-center gap-3">
+                        <img
+                          v-if="customer.avatar"
+                          :src="customer.avatar"
+                          alt=""
+                          class="size-9 shrink-0 rounded-full object-cover"
+                        >
+                        <div v-else class="bg-muted flex size-9 shrink-0 items-center justify-center rounded-full text-xs font-medium">
+                          {{ (customer.name || customer.external_userid).slice(0, 2).toUpperCase() }}
                         </div>
-                        <div class="truncate text-xs text-muted-foreground">
-                          {{ customer.external_userid }}
+                        <div class="min-w-0">
+                          <div class="truncate font-medium">
+                            {{ customer.name || '-' }}
+                          </div>
+                          <div class="truncate text-xs text-muted-foreground">
+                            {{ customer.external_userid }}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <div class="max-w-[220px] truncate">
-                      {{ customer.corp_name || '-' }}
-                    </div>
-                    <div class="max-w-[220px] truncate text-xs text-muted-foreground">
-                      {{ customer.position || customer.corp_full_name || '-' }}
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <div>{{ genderLabel(customer.gender) }}</div>
-                    <div class="text-xs text-muted-foreground">
-                      {{ typeLabel(customer.type) }}
-                    </div>
-                  </TableCell>
-                  <TableCell class="text-right tabular-nums">
-                    {{ customer.follower_count }}
-                  </TableCell>
-                  <TableCell>
-                    <div class="max-w-[220px] truncate">
-                      {{ customer.owner_summary || '-' }}
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <TooltipProvider>
-                      <div class="flex max-w-[260px] flex-wrap gap-1">
-                        <Badge v-for="tag in customer.tag_summary.slice(0, 4)" :key="tag" variant="secondary">
-                          {{ tag }}
-                        </Badge>
-                        <Tooltip v-if="customer.tag_summary.length > 4">
-                          <TooltipTrigger as-child>
-                            <Badge class="cursor-help" variant="outline">
-                              +{{ customer.tag_summary.length - 4 }}
-                            </Badge>
-                          </TooltipTrigger>
-                          <TooltipContent class="max-w-[320px] border bg-popover text-popover-foreground shadow-md [&_[data-slot=tooltip-arrow]]:bg-popover [&_[data-slot=tooltip-arrow]]:fill-popover">
-                            <div class="flex flex-wrap gap-1">
-                              <Badge v-for="tag in customer.tag_summary" :key="tag" variant="secondary">
-                                {{ tag }}
+                    </TableCell>
+                    <TableCell>
+                      <div class="max-w-[220px] truncate">
+                        {{ customer.corp_name || '-' }}
+                      </div>
+                      <div class="max-w-[220px] truncate text-xs text-muted-foreground">
+                        {{ customer.position || customer.corp_full_name || '-' }}
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <div>{{ genderLabel(customer.gender) }}</div>
+                      <div class="text-xs text-muted-foreground">
+                        {{ typeLabel(customer.type) }}
+                      </div>
+                    </TableCell>
+                    <TableCell class="text-right tabular-nums">
+                      {{ customer.follower_count }}
+                    </TableCell>
+                    <TableCell>
+                      <div class="max-w-[220px] truncate">
+                        {{ customer.owner_summary || '-' }}
+                      </div>
+                    </TableCell>
+                    <TableCell>
+                      <TooltipProvider>
+                        <div class="flex max-w-[260px] flex-wrap gap-1">
+                          <Badge v-for="tag in customer.tag_summary.slice(0, 4)" :key="tag" variant="secondary">
+                            {{ tag }}
+                          </Badge>
+                          <Tooltip v-if="customer.tag_summary.length > 4">
+                            <TooltipTrigger as-child>
+                              <Badge class="cursor-help" variant="outline">
+                                +{{ customer.tag_summary.length - 4 }}
                               </Badge>
-                            </div>
-                          </TooltipContent>
-                        </Tooltip>
-                        <span v-if="customer.tag_summary.length === 0" class="text-muted-foreground">-</span>
+                            </TooltipTrigger>
+                            <TooltipContent class="max-w-[320px] border bg-popover text-popover-foreground shadow-md [&_[data-slot=tooltip-arrow]]:bg-popover [&_[data-slot=tooltip-arrow]]:fill-popover">
+                              <div class="flex flex-wrap gap-1">
+                                <Badge v-for="tag in customer.tag_summary" :key="tag" variant="secondary">
+                                  {{ tag }}
+                                </Badge>
+                              </div>
+                            </TooltipContent>
+                          </Tooltip>
+                          <span v-if="customer.tag_summary.length === 0" class="text-muted-foreground">-</span>
+                        </div>
+                      </TooltipProvider>
+                    </TableCell>
+                    <TableCell>
+                      <div>{{ formatDate(customer.updated_at) }}</div>
+                      <div class="text-xs text-muted-foreground">
+                        Follow {{ formatDate(customer.latest_follow_updated_at) }}
                       </div>
-                    </TooltipProvider>
-                  </TableCell>
-                  <TableCell>
-                    <div>{{ formatDate(customer.updated_at) }}</div>
-                    <div class="text-xs text-muted-foreground">
-                      Follow {{ formatDate(customer.latest_follow_updated_at) }}
-                    </div>
-                  </TableCell>
-                  <TableCell>
-                    <Button variant="ghost" size="icon" @click="openDetail(customer)">
-                      <Eye class="size-4" />
-                      <span class="sr-only">View details</span>
-                    </Button>
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </div>
+                    </TableCell>
+                    <TableCell>
+                      <Button variant="ghost" size="icon" @click="openDetail(customer)">
+                        <Eye class="size-4" />
+                        <span class="sr-only">View details</span>
+                      </Button>
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
 
-          <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <div class="text-sm text-muted-foreground">
-              Page {{ pagination.page }} of {{ totalPages }}
+            <div class="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <div class="text-sm text-muted-foreground">
+                Page {{ pagination.page }} of {{ totalPages }}
+              </div>
+              <div class="flex items-center gap-2">
+                <Select v-model="pagination.pageSize">
+                  <SelectTrigger class="w-[110px]">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem :value="10">
+                      10 / page
+                    </SelectItem>
+                    <SelectItem :value="20">
+                      20 / page
+                    </SelectItem>
+                    <SelectItem :value="50">
+                      50 / page
+                    </SelectItem>
+                    <SelectItem :value="100">
+                      100 / page
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  :disabled="pagination.page <= 1"
+                  @click="pagination.page -= 1"
+                >
+                  Previous
+                </Button>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  :disabled="pagination.page >= totalPages"
+                  @click="pagination.page += 1"
+                >
+                  Next
+                </Button>
+              </div>
             </div>
-            <div class="flex items-center gap-2">
-              <Select v-model="pagination.pageSize">
-                <SelectTrigger class="w-[110px]">
-                  <SelectValue />
-                </SelectTrigger>
-                <SelectContent>
-                  <SelectItem :value="10">
-                    10 / page
-                  </SelectItem>
-                  <SelectItem :value="20">
-                    20 / page
-                  </SelectItem>
-                  <SelectItem :value="50">
-                    50 / page
-                  </SelectItem>
-                  <SelectItem :value="100">
-                    100 / page
-                  </SelectItem>
-                </SelectContent>
-              </Select>
-              <Button
-                variant="outline"
-                size="sm"
-                :disabled="pagination.page <= 1"
-                @click="pagination.page -= 1"
-              >
-                Previous
-              </Button>
-              <Button
-                variant="outline"
-                size="sm"
-                :disabled="pagination.page >= totalPages"
-                @click="pagination.page += 1"
-              >
-                Next
-              </Button>
+          </CardContent>
+        </Card>
+      </TabsContent>
+
+      <TabsContent value="analytics" class="space-y-4">
+        <Card>
+          <CardHeader class="pb-3">
+            <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+              <div>
+                <CardTitle>Customer Follow Analytics</CardTitle>
+                <div class="mt-1 text-sm text-muted-foreground">
+                  Daily customer adds by Apollo staff with cumulative totals.
+                </div>
+              </div>
+              <div class="flex items-center gap-2">
+                <Button variant="outline" size="sm" :disabled="analyticsQuery.isFetching.value" @click="analyticsQuery.refetch()">
+                  <RefreshCw class="mr-2 size-4" :class="{ 'animate-spin': analyticsQuery.isFetching.value }" />
+                  Refresh
+                </Button>
+                <Button variant="ghost" size="sm" @click="clearAnalyticsFilters">
+                  <X class="mr-2 size-4" />
+                  Clear
+                </Button>
+              </div>
             </div>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
+          </CardHeader>
+          <CardContent class="space-y-4">
+            <div class="grid gap-3 rounded-md border bg-muted/20 p-3 sm:grid-cols-[minmax(220px,320px)_auto] sm:items-end">
+              <div class="space-y-1.5">
+                <div class="text-xs font-medium text-muted-foreground">
+                  Apollo Staff
+                </div>
+                <Select v-model="analyticsFilters.userid">
+                  <SelectTrigger class="w-full">
+                    <SelectValue placeholder="All follower staffs" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectItem value="all">
+                      All follower staffs
+                    </SelectItem>
+                    <SelectItem v-for="userid in followerStaffOptions" :key="userid" :value="userid">
+                      {{ userid }}
+                    </SelectItem>
+                  </SelectContent>
+                </Select>
+              </div>
+
+              <div class="space-y-1.5">
+                <div class="text-xs font-medium text-muted-foreground">
+                  Added Date
+                </div>
+                <Popover v-model:open="analyticsAddedCalendarOpen">
+                  <PopoverAnchor>
+                    <Input
+                      v-model="analyticsFilters.added_date"
+                      class="w-[150px] text-left"
+                      inputmode="numeric"
+                      placeholder="YYYY-MM-DD"
+                      @click="analyticsAddedCalendarOpen = true"
+                      @focus="analyticsAddedCalendarOpen = true"
+                    />
+                  </PopoverAnchor>
+                  <PopoverContent class="w-auto p-0" align="start">
+                    <Calendar
+                      v-model="analyticsAddedCalendarValue"
+                      calendar-label="Added date"
+                      initial-focus
+                      layout="month-and-year"
+                      :default-placeholder="calendarPlaceholder"
+                      @update:model-value="analyticsAddedCalendarOpen = false"
+                    />
+                  </PopoverContent>
+                </Popover>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto rounded-md border">
+              <Table>
+                <TableHeader>
+                  <TableRow>
+                    <TableHead class="min-w-[240px] text-center">
+                      Apollo Staff
+                    </TableHead>
+                    <TableHead class="min-w-[180px] text-center">
+                      Added Date
+                    </TableHead>
+                    <TableHead class="min-w-[180px] text-center">
+                      New Customers
+                    </TableHead>
+                    <TableHead class="min-w-[220px] text-center">
+                      Cumulative Customers
+                    </TableHead>
+                  </TableRow>
+                </TableHeader>
+                <TableBody>
+                  <TableRow v-if="analyticsQuery.isLoading.value">
+                    <TableCell colspan="4" class="h-28 text-center text-muted-foreground">
+                      Loading analytics...
+                    </TableCell>
+                  </TableRow>
+                  <TableRow v-else-if="analyticsQuery.isError.value">
+                    <TableCell colspan="4" class="h-28 text-center text-destructive">
+                      Failed to load analytics.
+                    </TableCell>
+                  </TableRow>
+                  <TableRow v-else-if="analyticsRows.length === 0">
+                    <TableCell colspan="4" class="h-28 text-center text-muted-foreground">
+                      No analytics data found.
+                    </TableCell>
+                  </TableRow>
+                  <TableRow v-for="row in analyticsRows" v-else :key="`${row.userid}:${row.added_date}`">
+                    <TableCell class="font-medium">
+                      {{ row.userid }}
+                    </TableCell>
+                    <TableCell>
+                      {{ row.added_date }}
+                    </TableCell>
+                    <TableCell class="text-right tabular-nums">
+                      {{ row.new_customer_count }}
+                    </TableCell>
+                    <TableCell class="text-right tabular-nums">
+                      {{ row.cumulative_customer_count }}
+                    </TableCell>
+                  </TableRow>
+                </TableBody>
+              </Table>
+            </div>
+          </CardContent>
+        </Card>
+      </TabsContent>
+    </Tabs>
 
     <Sheet v-model:open="detailOpen">
       <SheetContent class="w-full overflow-y-auto sm:max-w-2xl">

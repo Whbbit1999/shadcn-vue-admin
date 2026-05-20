@@ -120,6 +120,13 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
+    '/marketing/prompt-editor': RouteRecordInfo<
+      '/marketing/prompt-editor',
+      '/marketing/prompt-editor',
+      Record<never, never>,
+      Record<never, never>,
+      | never
+    >,
     '/marketing/wecom-chat-history': RouteRecordInfo<
       '/marketing/wecom-chat-history',
       '/marketing/wecom-chat-history',
@@ -301,6 +308,12 @@ declare module 'vue-router/auto-routes' {
     'src/pages/marketing/index.vue': {
       routes:
         | '/marketing/'
+      views:
+        | never
+    }
+    'src/pages/marketing/prompt-editor.vue': {
+      routes:
+        | '/marketing/prompt-editor'
       views:
         | never
     }
