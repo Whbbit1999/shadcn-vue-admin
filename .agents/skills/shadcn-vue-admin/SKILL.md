@@ -52,7 +52,7 @@ Requirements:
 ## Design and implementation conventions
 
 - Use Vue 3 Composition API with TypeScript.
-- Prefer vee-validate + zod for form validation.
+- Prefer tanstack/vue-form + zod for form validation.
 - Follow existing theming strategy in `src/assets/` and `src/stores/theme.ts`.
 - Follow the existing structure for i18n in `src/plugins/i18n/`.
 

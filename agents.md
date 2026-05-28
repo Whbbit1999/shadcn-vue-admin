@@ -22,7 +22,7 @@ If the project has tests configured (e.g. a `test` script), run them as well.
 
 ## Stack
 
-- vue, shadcn-vue, tailwindcss, vee-validate, typescript, zod
+- vue, shadcn-vue, tailwindcss, tanstack/vue-form, typescript, zod
 
 ## Structure
 

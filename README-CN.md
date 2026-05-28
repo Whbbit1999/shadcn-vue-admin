@@ -25,7 +25,7 @@
 - ✅ 基于 shadcn-vue 扩展的自定义组件库
 - ✅ 基于文件结构的自动路由生成系统
 - ✅ 国际化支持（vue-i18n v11+）
-- ✅ VeeValidate + Zod 表单验证
+- ✅ @tanstack/vue-form + Zod 表单验证
 - ✅ TanStack Table/Query & Unovis 数据可视化
 - ✅ 流畅动画支持（AutoAnimate、Motion-V、TW Animate CSS）
 
@@ -40,7 +40,7 @@
 | 路由管理         | [vue-router 5+](https://router.vuejs.org/), [vite-plugin-vue-layouts 0.11+](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)                      |
 | 样式系统         | [Tailwind CSS 4+](https://tailwindcss.com/), [tailwindcss-animate 1+](https://github.com/jamiebuilds/tailwindcss-animate)                                  |
 | 数据处理         | [TanStack Vue Query 5+](https://tanstack.com/query/latest), [TanStack Vue Table 8+](https://tanstack.com/table/latest)                                     |
-| 表单验证         | [VeeValidate 4+](https://vee-validate.logaretm.com/), [Zod 4+](https://zod.dev/)                                                                           |
+| 表单验证         | [TanStack Vue Form](https://tanstack.com/form/latest/docs/overview), [Zod 4+](https://zod.dev/)                                                            |
 | 动画效果         | [@formkit/auto-animate 0.9+](https://auto-animate.formkit.com/), [motion-v 1+](https://motion-v.vercel.app/)                                               |
 | 国际化           | [vue-i18n 11+](https://vue-i18n.intlify.dev/)                                                                                                              |
 | HTTP 客户端      | [ofetch](https://github.com/unjs/ofetch)                                                                                                                   |

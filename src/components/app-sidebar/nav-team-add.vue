@@ -1,28 +1,37 @@
 <script lang="ts" setup>
-import { toTypedSchema } from '@vee-validate/zod'
-import { useForm } from 'vee-validate'
+import { useForm } from '@tanstack/vue-form'
 import { toast } from 'vue-sonner'
 
-import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { FieldDescription, FieldError } from '@/components/ui/field'
+import { FormItem } from '@/components/ui/form'
+import { Label } from '@/components/ui/label'
+
+import type { TeamAddValidator } from './validators/team.validator'
 
 import { teamAddValidator } from './validators/team.validator'
 
 const emits = defineEmits(['close'])
 
-const teamAddFormSchema = toTypedSchema(teamAddValidator)
+const defaultValues: TeamAddValidator = {
+  name: '',
+  slug: '',
+  logo: '',
+}
 
-const { handleSubmit } = useForm({
-  validationSchema: teamAddFormSchema,
-  initialValues: {},
-})
+const form = useForm({
+  defaultValues,
+  validators: {
+    onSubmit: teamAddValidator,
+    onBlur: teamAddValidator,
+  },
+  onSubmit: ({ value }) => {
+    toast('You submitted the following values:', {
+      position: 'top-center',
+      description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(value, null, 2))),
+    })
 
-const onSubmit = handleSubmit((values) => {
-  toast('You submitted the following values:', {
-    position: 'top-center',
-    description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(values, null, 2))),
-  })
-
-  emits('close')
+    emits('close')
+  },
 })
 </script>
 
@@ -37,49 +46,61 @@ const onSubmit = handleSubmit((values) => {
       </UiDialogDescription>
     </UiDialogHeader>
 
-    <form class="space-y-4" @submit="onSubmit">
-      <FormField v-slot="{ componentField }" name="name">
-        <FormItem>
-          <FormLabel class="text-base">
-            Name
-          </FormLabel>
-          <FormControl>
-            <UiInput v-bind="componentField" />
-          </FormControl>
-          <FormDescription>
-            Set the name for the team.
-          </FormDescription>
-          <FormMessage />
-        </FormItem>
-      </FormField>
-      <FormField v-slot="{ componentField }" name="slug">
-        <FormItem>
-          <FormLabel class="text-base">
-            Slug
-          </FormLabel>
-          <FormControl>
-            <UiInput v-bind="componentField" />
-          </FormControl>
-          <FormDescription>
-            Set the slug for the team.
-          </FormDescription>
-          <FormMessage />
-        </FormItem>
-      </FormField>
-      <FormField v-slot="{ componentField }" name="logo">
-        <FormItem>
-          <FormLabel class="text-base">
-            Logo
-          </FormLabel>
-          <FormControl>
-            <UiInput v-bind="componentField" />
-          </FormControl>
-          <FormDescription>
-            Set the logo of the team.
-          </FormDescription>
-          <FormMessage />
-        </FormItem>
-      </FormField>
+    <form class="space-y-4" @submit.prevent="form.handleSubmit">
+      <form.Field name="name">
+        <template #default="{ field, state }">
+          <FormItem>
+            <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive text-base">
+              Name
+            </Label>
+            <UiInput
+              :model-value="field.state.value"
+              @input="field.handleChange($event.target.value)"
+              @blur="field.handleBlur"
+            />
+            <FieldDescription>
+              Set the name for the team.
+            </FieldDescription>
+            <FieldError :errors="state.meta.errors" />
+          </FormItem>
+        </template>
+      </form.Field>
+      <form.Field name="slug">
+        <template #default="{ field, state }">
+          <FormItem>
+            <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive text-base">
+              Slug
+            </Label>
+            <UiInput
+              :model-value="field.state.value"
+              @input="field.handleChange($event.target.value)"
+              @blur="field.handleBlur"
+            />
+            <FieldDescription>
+              Set the slug for the team.
+            </FieldDescription>
+            <FieldError :errors="state.meta.errors" />
+          </FormItem>
+        </template>
+      </form.Field>
+      <form.Field name="logo">
+        <template #default="{ field, state }">
+          <FormItem>
+            <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive text-base">
+              Logo
+            </Label>
+            <UiInput
+              :model-value="field.state.value"
+              @input="field.handleChange($event.target.value)"
+              @blur="field.handleBlur"
+            />
+            <FieldDescription>
+              Set the logo of the team.
+            </FieldDescription>
+            <FieldError :errors="state.meta.errors" />
+          </FormItem>
+        </template>
+      </form.Field>
 
       <div class="flex justify-start mt-4">
         <UiButton type="submit">

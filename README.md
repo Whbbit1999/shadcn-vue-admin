@@ -25,7 +25,7 @@ Forked from [shadcn-admin](https://github.com/satnaing/shadcn-admin)
 - ✅ Custom component library with shadcn-vue extensions
 - ✅ Auto-generated routing system (based on file structure)
 - ✅ Internationalization support (vue-i18n v11+)
-- ✅ Form validation with VeeValidate + Zod
+- ✅ Form validation with tanstack/vue-form + Zod
 - ✅ Data visualization with TanStack Table/Query & Unovis
 - ✅ Animation support (AutoAnimate, Motion-V, TW Animate CSS)
 
@@ -40,7 +40,7 @@ Forked from [shadcn-admin](https://github.com/satnaing/shadcn-admin)
 | Routing              | [vue-router 5+](https://router.vuejs.org/), [vite-plugin-vue-layouts 0.11+](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)                      |
 | Styling              | [Tailwind CSS 4+](https://tailwindcss.com/), [tailwindcss-animate 1+](https://github.com/jamiebuilds/tailwindcss-animate)                                  |
 | Data Handling        | [TanStack Vue Query 5+](https://tanstack.com/query/latest), [TanStack Vue Table 8+](https://tanstack.com/table/latest)                                     |
-| Form Validation      | [VeeValidate 4+](https://vee-validate.logaretm.com/), [Zod 4+](https://zod.dev/)                                                                           |
+| Form Validation      | [TanStack Vue Form](https://tanstack.com/form/latest/docs/overview), [Zod 4+](https://zod.dev/)                                                            |
 | Animation            | [@formkit/auto-animate 0.9+](https://auto-animate.formkit.com/), [motion-v 1+](https://motion-v.vercel.app/)                                               |
 | Internationalization | [vue-i18n 11+](https://vue-i18n.intlify.dev/)                                                                                                              |
 | HTTP Client          | [ofetch](https://github.com/unjs/ofetch)                                                                                                                   |

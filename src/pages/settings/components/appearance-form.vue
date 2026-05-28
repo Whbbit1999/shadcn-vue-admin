@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
-import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { FieldDescription, FieldError } from '@/components/ui/field'
+import { FormItem } from '@/components/ui/form'
+import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Separator } from '@/components/ui/separator'
 import { Spinner } from '@/components/ui/spinner'
@@ -14,7 +16,7 @@ const DEFAULT_APPEARANCE_CONFIG_VALUE = {
   font: 'inter',
 } as const
 
-const { isGetting, isPending, onSubmit } = useSystemConfig({
+const { isGetting, isPending, form } = useSystemConfig({
   key: KEY,
   description: DESCRIPTION,
   defaultValue: DEFAULT_APPEARANCE_CONFIG_VALUE,
@@ -40,83 +42,93 @@ const { isGetting, isPending, onSubmit } = useSystemConfig({
     </Button>
   </div>
 
-  <form v-if="!isGetting" class="space-y-8" @submit="onSubmit">
-    <FormField v-slot="{ componentField }" name="font">
-      <FormItem>
-        <FormLabel>Font</FormLabel>
-        <UiSelect v-bind="componentField">
-          <UiFormControl>
+  <form v-if="!isGetting" class="space-y-8" @submit.prevent="form.handleSubmit">
+    <form.Field name="font">
+      <template #default="{ field, state }">
+        <FormItem>
+          <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
+            Font
+          </Label>
+          <UiSelect
+            :model-value="field.state.value"
+            @update:model-value="$event => {
+              field.handleChange($event as typeof DEFAULT_APPEARANCE_CONFIG_VALUE.font),
+              field.handleBlur()
+            }"
+          >
             <UiSelectTrigger>
               <UiSelectValue placeholder="Select a font" />
             </UiSelectTrigger>
-          </UiFormControl>
-          <UiSelectContent>
-            <UiSelectGroup>
-              <UiSelectItem value="inter">
-                Inter
-              </UiSelectItem>
-              <UiSelectItem value="manrope">
-                Manrope
-              </UiSelectItem>
-              <UiSelectItem value="system">
-                System
-              </UiSelectItem>
-            </UiSelectGroup>
-          </UiSelectContent>
-        </UiSelect>
-        <FormDescription>
-          Set the font you want to use in the dashboard.
-        </FormDescription>
-        <FormMessage />
-      </FormItem>
-    </FormField>
+            <UiSelectContent>
+              <UiSelectGroup>
+                <UiSelectItem value="inter">
+                  Inter
+                </UiSelectItem>
+                <UiSelectItem value="manrope">
+                  Manrope
+                </UiSelectItem>
+                <UiSelectItem value="system">
+                  System
+                </UiSelectItem>
+              </UiSelectGroup>
+            </UiSelectContent>
+          </UiSelect>
+          <FieldDescription>
+            Set the font you want to use in the dashboard.
+          </FieldDescription>
+          <FieldError :errors="state.meta.errors" />
+        </FormItem>
+      </template>
+    </form.Field>
 
-    <FormField v-slot="{ componentField }" type="radio" name="theme">
-      <FormItem class="space-y-1">
-        <FormLabel>Theme</FormLabel>
-        <FormDescription>
-          Select the theme for the dashboard.
-        </FormDescription>
-        <FormMessage />
+    <form.Field name="theme">
+      <template #default="{ field, state }">
+        <FormItem class="space-y-1">
+          <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
+            Theme
+          </Label>
+          <FieldDescription>
+            Select the theme for the dashboard.
+          </FieldDescription>
+          <FieldError :errors="state.meta.errors" />
 
-        <RadioGroup
-          class="grid max-w-md grid-cols-2 gap-8 pt-2"
-          v-bind="componentField"
-        >
-          <FormItem>
-            <FormLabel class="[&:has([data-state=checked])>div]:border-primary flex flex-col">
-              <FormControl>
+          <RadioGroup
+            class="grid max-w-md grid-cols-2 gap-8 pt-2"
+            :model-value="field.state.value"
+            @update:model-value="($event) => {
+              field.handleChange($event as typeof DEFAULT_APPEARANCE_CONFIG_VALUE.theme),
+              field.handleBlur()
+            }"
+          >
+            <FormItem>
+              <Label class="[&:has([data-state=checked])>div]:border-primary flex flex-col">
                 <RadioGroupItem value="light" class="sr-only" />
-              </FormControl>
-              <div class="items-center p-1 border-2 rounded-md border-muted hover:border-accent">
-                <div class="space-y-2 rounded-sm bg-[#ecedef] p-2">
-                  <div class="p-2 space-y-2 bg-white rounded-md shadow-xs">
-                    <div class="h-2 w-20 rounded-lg bg-[#ecedef]" />
-                    <div class="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
-                  </div>
-                  <div class="flex items-center p-2 space-x-2 bg-white rounded-md shadow-xs">
-                    <div class="h-4 w-4 rounded-full bg-[#ecedef]" />
-                    <div class="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
-                  </div>
-                  <div class="flex items-center p-2 space-x-2 bg-white rounded-md shadow-xs">
-                    <div class="h-4 w-4 rounded-full bg-[#ecedef]" />
-                    <div class="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
+                <div class="items-center p-1 border-2 rounded-md border-muted hover:border-accent">
+                  <div class="space-y-2 rounded-sm bg-[#ecedef] p-2">
+                    <div class="p-2 space-y-2 bg-white rounded-md shadow-xs">
+                      <div class="h-2 w-20 rounded-lg bg-[#ecedef]" />
+                      <div class="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
+                    </div>
+                    <div class="flex items-center p-2 space-x-2 bg-white rounded-md shadow-xs">
+                      <div class="h-4 w-4 rounded-full bg-[#ecedef]" />
+                      <div class="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
+                    </div>
+                    <div class="flex items-center p-2 space-x-2 bg-white rounded-md shadow-xs">
+                      <div class="h-4 w-4 rounded-full bg-[#ecedef]" />
+                      <div class="h-2 w-[100px] rounded-lg bg-[#ecedef]" />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <span class="block w-full p-2 font-normal text-center">
-                Light
-              </span>
-            </FormLabel>
-          </FormItem>
-          <FormItem>
-            <FormLabel class="[&:has([data-state=checked])>div]:border-primary flex flex-col">
-              <FormControl>
+                <span class="block w-full p-2 font-normal text-center">
+                  Light
+                </span>
+              </Label>
+            </FormItem>
+            <FormItem>
+              <Label class="[&:has([data-state=checked])>div]:border-primary flex flex-col">
                 <RadioGroupItem value="dark" class="sr-only" />
-              </FormControl>
-              <div class="items-center p-1 border-2 rounded-md border-muted bg-popover hover:bg-accent hover:text-accent-foreground">
-                <div class="p-2 space-y-2 rounded-sm bg-slate-950">
-                  <div class="p-2 space-y-2 rounded-md shadow-xs bg-slate-800">
+                <div class="items-center p-2 space-y-2 border-2 rounded-md border-muted bg-popover hover:bg-accent hover:text-accent-foreground">
+                  <div class="p-2 space-y-2 rounded-md shadow-xs bg-slate-950">
                     <div class="w-20 h-2 rounded-lg bg-slate-400" />
                     <div class="h-2 w-[100px] rounded-lg bg-slate-400" />
                   </div>
@@ -129,15 +141,15 @@ const { isGetting, isPending, onSubmit } = useSystemConfig({
                     <div class="h-2 w-[100px] rounded-lg bg-slate-400" />
                   </div>
                 </div>
-              </div>
-              <span class="block w-full p-2 font-normal text-center">
-                Dark
-              </span>
-            </FormLabel>
-          </FormItem>
-        </RadioGroup>
-      </FormItem>
-    </FormField>
+                <span class="block w-full p-2 font-normal text-center">
+                  Dark
+                </span>
+              </Label>
+            </FormItem>
+          </RadioGroup>
+        </FormItem>
+      </template>
+    </form.Field>
 
     <div class="flex justify-start">
       <Button type="submit" :disabled="isPending">
