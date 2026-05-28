@@ -13,19 +13,13 @@ const { navMain } = defineProps<{
 }>()
 
 const route = useRoute()
+const initialPath = route.path
 
 const { state, isMobile } = useSidebar()
 
 function isCollapsed(menu: NavItem): boolean {
-  const pathname = route.path
-  navMain.forEach((group) => {
-    group.items.forEach((item) => {
-      if (item.url === pathname) {
-        return true
-      }
-    })
-  })
-  return !!menu.items?.some(item => item.url === pathname)
+  if (menu.url === initialPath) return true
+  return !!menu.items?.some(item => item.url === initialPath)
 }
 
 function isActive(menu: NavItem): boolean {

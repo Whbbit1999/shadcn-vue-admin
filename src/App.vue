@@ -11,7 +11,7 @@ useSystemTheme()
 
   <Suspense>
     <router-view v-slot="{ Component, route }">
-      <component :is="Component" :key="route" />
+      <component :is="Component" />
     </router-view>
 
     <template #fallback>
