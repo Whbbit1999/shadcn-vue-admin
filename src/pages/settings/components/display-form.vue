@@ -1,14 +1,13 @@
 <script setup lang="ts">
-import { toTypedSchema } from '@vee-validate/zod'
-import { useForm } from 'vee-validate'
+import { useForm } from '@tanstack/vue-form'
 import { toast } from 'vue-sonner'
 
 import { Button } from '@/components/ui/button'
 import { Checkbox } from '@/components/ui/checkbox'
-import { FormControl, FormDescription, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
+import { FieldDescription, FieldError } from '@/components/ui/field'
+import { FormItem } from '@/components/ui/form'
+import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
-
-import { displayValidator } from '../validators/display.validator'
 
 const items = [
   {
@@ -37,19 +36,15 @@ const items = [
   },
 ] as const
 
-const displayFormSchema = toTypedSchema(displayValidator)
-
-const { handleSubmit } = useForm({
-  validationSchema: displayFormSchema,
-  initialValues: {
-    items: ['recents', 'home'],
+const form = useForm({
+  defaultValues: {
+    items: ['recents', 'home'] as string[],
   },
-})
-
-const onSubmit = handleSubmit((values) => {
-  toast('You submitted the following values:', {
-    description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(values, null, 2))),
-  })
+  onSubmit: ({ value }) => {
+    toast('You submitted the following values:', {
+      description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(value, null, 2))),
+    })
+  },
 })
 </script>
 
@@ -63,38 +58,37 @@ const onSubmit = handleSubmit((values) => {
     </p>
   </div>
   <Separator class="my-4" />
-  <form @submit="onSubmit">
-    <FormField name="items">
-      <FormItem>
-        <div class="mb-4">
-          <FormLabel class="text-base">
-            Sidebar
-          </FormLabel>
-          <FormDescription>
-            Select the items you want to display in the sidebar.
-          </FormDescription>
-        </div>
+  <form @submit.prevent="form.handleSubmit">
+    <form.Field name="items">
+      <template #default="{ field, state }">
+        <FormItem>
+          <div class="mb-4">
+            <Label class="text-base">
+              Sidebar
+            </Label>
+            <FieldDescription>
+              Select the items you want to display in the sidebar.
+            </FieldDescription>
+          </div>
 
-        <FormField v-for="item in items" v-slot="{ value, handleChange }" :key="item.id" name="items">
-          <FormItem :key="item.id" class="flex flex-row items-start space-x-3 space-y-0">
-            <FormControl>
+          <div v-for="item in items" :key="item.id">
+            <FormItem class="flex flex-row items-start space-x-3 space-y-0">
               <Checkbox
-                :model-value="value.includes(item.id)"
+                :model-value="(field.state.value as string[]).includes(item.id)"
                 @update:model-value="(checked: boolean | 'indeterminate') => {
-                  if (Array.isArray(value)) {
-                    handleChange(checked ? [...value, item.id] : value.filter(id => id !== item.id))
-                  }
+                  const current = [...field.state.value as string[]]
+                  field.handleChange(checked ? [...current, item.id] : current.filter(id => id !== item.id))
                 }"
               />
-            </FormControl>
-            <FormLabel class="font-normal">
-              {{ item.label }}
-            </FormLabel>
-          </FormItem>
-        </FormField>
-        <FormMessage />
-      </FormItem>
-    </FormField>
+              <Label class="font-normal">
+                {{ item.label }}
+              </Label>
+            </FormItem>
+          </div>
+          <FieldError :errors="state.meta.errors" />
+        </FormItem>
+      </template>
+    </form.Field>
 
     <div class="flex justify-start mt-4">
       <Button type="submit">

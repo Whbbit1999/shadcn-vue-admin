@@ -8,7 +8,7 @@
 - Routing: `vue-router` (v5+ with automatic routes from `src/pages`) + `vite-plugin-vue-layouts`
 - State: Pinia (with persistedstate)
 - Data: ofetch + @tanstack/vue-query
-- Forms: vee-validate + zod
+- Forms: tanstack/vue-form + zod
 - UI: shadcn-vue / reka-ui / @lucide/vue / vue-sonner
 
 ## Startup Flow
