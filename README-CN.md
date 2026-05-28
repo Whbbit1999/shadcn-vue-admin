@@ -25,7 +25,7 @@
 - ✅ 基于 shadcn-vue 扩展的自定义组件库
 - ✅ 基于文件结构的自动路由生成系统
 - ✅ 国际化支持（vue-i18n v11+）
-- ✅ @tanstack/vue-table + Zod 表单验证
+- ✅ @tanstack/vue-form + Zod 表单验证
 - ✅ TanStack Table/Query & Unovis 数据可视化
 - ✅ 流畅动画支持（AutoAnimate、Motion-V、TW Animate CSS）
 

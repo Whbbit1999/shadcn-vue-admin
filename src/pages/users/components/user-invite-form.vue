@@ -69,7 +69,10 @@ const form = useForm({
           </Label>
           <Select
             :model-value="field.state.value"
-            @update:model-value="(v: any) => field.handleChange(v)"
+            @update:model-value="(v: any) => {
+              field.handleChange(v)
+              field.handleBlur()
+            }"
           >
             <SelectTrigger class="w-full">
               <SelectValue placeholder="Select a role" />
