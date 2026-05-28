@@ -10,7 +10,7 @@ useSystemTheme()
   <Toaster />
 
   <Suspense>
-    <router-view v-slot="{ Component, route }">
+    <router-view v-slot="{ Component }">
       <component :is="Component" />
     </router-view>
 
