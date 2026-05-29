@@ -18,7 +18,8 @@ const initialPath = route.path
 const { state, isMobile } = useSidebar()
 
 function isCollapsed(menu: NavItem): boolean {
-  if (menu.url === initialPath) return true
+  if (menu.url === initialPath)
+    return true
   return !!menu.items?.some(item => item.url === initialPath)
 }
 
