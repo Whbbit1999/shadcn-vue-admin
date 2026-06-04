@@ -20,9 +20,9 @@ import type {
 
 declare module 'vue-router' {
   interface TypesConfig {
-    ParamParsers:
-      | never
+    _ParamParsers: {}
     RouteNamedMap: import('vue-router/auto-routes').RouteNamedMap
+    _RouteFileInfoMap: import('vue-router/auto-routes')._RouteFileInfoMap
   }
 }
 
@@ -276,23 +276,31 @@ declare module 'vue-router/auto-routes' {
         | '/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/[...path].vue': {
       routes:
         | '/[...path]'
       views:
         | never
+      pathParamNames:
+        | 'path'
     }
     'src/pages/ai-talk/index.vue': {
       routes:
         | '/ai-talk/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/apps/index.vue': {
       routes:
         | '/apps/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/auth.vue': {
@@ -306,11 +314,15 @@ declare module 'vue-router/auto-routes' {
         | '/auth/sign-up'
       views:
         | 'default'
+      pathParamNames:
+        | never
     }
     'src/pages/auth/index.vue': {
       routes:
         | '/auth/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/auth/forgot-password.vue': {
@@ -318,11 +330,15 @@ declare module 'vue-router/auto-routes' {
         | '/auth/forgot-password'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/auth/otp.vue': {
       routes:
         | '/auth/otp'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/auth/sign-in.vue': {
@@ -330,11 +346,15 @@ declare module 'vue-router/auto-routes' {
         | '/auth/sign-in'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/auth/sign-in-2.vue': {
       routes:
         | '/auth/sign-in-2'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/auth/sign-up.vue': {
@@ -342,17 +362,23 @@ declare module 'vue-router/auto-routes' {
         | '/auth/sign-up'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/billing/index.vue': {
       routes:
         | '/billing/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/dashboard/index.vue': {
       routes:
         | '/dashboard/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/errors.vue': {
@@ -366,11 +392,15 @@ declare module 'vue-router/auto-routes' {
         | '/errors/503'
       views:
         | 'default'
+      pathParamNames:
+        | never
     }
     'src/pages/errors/index.vue': {
       routes:
         | '/errors/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/errors/401.vue': {
@@ -378,11 +408,15 @@ declare module 'vue-router/auto-routes' {
         | '/errors/401'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/errors/403.vue': {
       routes:
         | '/errors/403'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/errors/404.vue': {
@@ -390,11 +424,15 @@ declare module 'vue-router/auto-routes' {
         | '/errors/404'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/errors/500.vue': {
       routes:
         | '/errors/500'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/errors/503.vue': {
@@ -402,11 +440,15 @@ declare module 'vue-router/auto-routes' {
         | '/errors/503'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/help-center.vue': {
       routes:
         | '/help-center'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/marketing/index.vue': {
@@ -414,11 +456,15 @@ declare module 'vue-router/auto-routes' {
         | '/marketing/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/marketing/hello.vue': {
       routes:
         | '/marketing/hello'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/prop-components/index.vue': {
@@ -426,11 +472,15 @@ declare module 'vue-router/auto-routes' {
         | '/prop-components/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/settings/index.vue': {
       routes:
         | '/settings/'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/settings/account.vue': {
@@ -438,11 +488,15 @@ declare module 'vue-router/auto-routes' {
         | '/settings/account'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/settings/appearance.vue': {
       routes:
         | '/settings/appearance'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/settings/display.vue': {
@@ -450,11 +504,15 @@ declare module 'vue-router/auto-routes' {
         | '/settings/display'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/settings/notifications.vue': {
       routes:
         | '/settings/notifications'
       views:
+        | never
+      pathParamNames:
         | never
     }
     'src/pages/tasks/index.vue': {
@@ -462,11 +520,15 @@ declare module 'vue-router/auto-routes' {
         | '/tasks/'
       views:
         | never
+      pathParamNames:
+        | never
     }
     'src/pages/users/index.vue': {
       routes:
         | '/users/'
       views:
+        | never
+      pathParamNames:
         | never
     }
   }
