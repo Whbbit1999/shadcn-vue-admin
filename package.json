@@ -68,7 +68,7 @@
     "vaul-vue": "^0.4.1",
     "vee-validate": "^4.15.1",
     "vue": "^3.5.35",
-    "vue-i18n": "^11.4.4",
+    "vue-i18n": "^11.4.5",
     "vue-input-otp": "^0.3.2",
     "vue-router": "^5.1.0",
     "vue-sonner": "^2.0.9",
@@ -82,7 +82,7 @@
     "@tailwindcss/vite": "^4.3.0",
     "@tanstack/eslint-plugin-query": "^5.101.0",
     "@tanstack/vue-query-devtools": "^6.1.34",
-    "@types/node": "^24.12.4",
+    "@types/node": "^24.13.1",
     "@types/nprogress": "^0.2.3",
     "@vitejs/plugin-vue": "^6.0.7",
     "@vitejs/plugin-vue-jsx": "^5.1.5",
@@ -104,7 +104,7 @@
     "vite-plugin-vue-devtools": "^8.1.2",
     "vite-plugin-vue-layouts": "^0.11.0",
     "vitest": "^4.1.8",
-    "vue-tsc": "^3.3.3"
+    "vue-tsc": "^3.3.4"
   },
   "simple-git-hooks": {
     "pre-commit": "./node_modules/.bin/nano-staged",
