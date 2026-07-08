@@ -2,7 +2,6 @@ import type { PluginOption } from 'vite'
 
 import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
-import vueJsx from '@vitejs/plugin-vue-jsx'
 import browserslist from 'browserslist'
 import { browserslistToTargets } from 'lightningcss'
 import { fileURLToPath, URL } from 'node:url'
@@ -10,7 +9,6 @@ import { visualizer } from 'rollup-plugin-visualizer'
 import AutoImport from 'unplugin-auto-import/vite'
 import Component from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
-import vueDevTools from 'vite-plugin-vue-devtools'
 import Layouts from 'vite-plugin-vue-layouts'
 import { VueRouterAutoImports } from 'vue-router/unplugin'
 import VueRouter from 'vue-router/vite'
@@ -24,8 +22,6 @@ export default defineConfig({
       dts: 'src/types/route-map.d.ts',
     }),
     vue(),
-    vueJsx(),
-    vueDevTools(),
     tailwindcss(),
     visualizer({ gzipSize: true, brotliSize: true }) as PluginOption,
     Layouts({

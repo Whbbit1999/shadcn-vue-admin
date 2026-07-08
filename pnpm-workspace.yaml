@@ -3,3 +3,7 @@ shellEmulator: true
 
 trustPolicy: no-downgrade
 autoInstallPeers: false
+allowBuilds:
+  maplibre-gl: true
+  simple-git-hooks: true
+  vue-demi: true
