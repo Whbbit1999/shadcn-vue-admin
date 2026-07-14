@@ -4,11 +4,13 @@ import { createI18n } from 'vue-i18n'
 
 import type { Language } from '.'
 
-import { appLocale, DEFAULT_LOCALE } from '.'
+import { appLocale, DEFAULT_LOCALE, validateAppLocale } from '.'
 import en from './en.json'
 import zh from './zh.json'
 
 export function setupI18n(app: App) {
+  validateAppLocale()
+
   const i18n = createI18n({
     legacy: false,
     locale: appLocale.value,

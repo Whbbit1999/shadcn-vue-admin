@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TSort } from '@/components/sort-select/types'
+import type { TSort } from '@/components/sort-select'
 
 import { BasicPage } from '@/components/global-layout'
 import { SortSelect } from '@/components/sort-select'

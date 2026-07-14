@@ -11,8 +11,8 @@ export const DEFAULT_LOCALE: Language = 'en'
 
 export const appLocale = useStorage<Language>('app-locale', DEFAULT_LOCALE)
 
-watch(appLocale, (newLocale) => {
-  if (!SUPPORTED_LOCALES.has(newLocale)) {
+export function validateAppLocale() {
+  if (!SUPPORTED_LOCALES.has(appLocale.value)) {
     appLocale.value = DEFAULT_LOCALE
   }
-}, { immediate: true })
+}

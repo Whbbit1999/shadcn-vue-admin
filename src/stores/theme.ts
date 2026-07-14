@@ -27,5 +27,7 @@ export const useThemeStore = defineStore('system-config', () => {
     setContentLayout,
   }
 }, {
-  persist: true,
+  persist: {
+    storage: typeof localStorage !== 'undefined' ? localStorage : undefined,
+  },
 })

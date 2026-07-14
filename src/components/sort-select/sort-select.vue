@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ArrowDownAZIcon, ArrowDownZAIcon, SlidersHorizontalIcon } from '@lucide/vue'
 
-import type { TSort } from './types'
+export type TSort = 'asc' | 'desc'
 
 const sort = defineModel<TSort>('sort', { default: 'asc' })
 </script>

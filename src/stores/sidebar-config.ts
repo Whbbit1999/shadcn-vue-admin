@@ -22,6 +22,8 @@ export const useSidebarConfigStore = defineStore(
     }
   },
   {
-    persist: true,
+    persist: {
+      storage: typeof localStorage !== 'undefined' ? localStorage : undefined,
+    },
   },
 )
