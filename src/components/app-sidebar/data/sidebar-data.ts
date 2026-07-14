@@ -1,6 +1,6 @@
 import { AudioWaveformIcon, CommandIcon, GalleryVerticalEndIcon } from '@lucide/vue'
 
-import { useSidebar } from '@/composables/use-sidebar'
+import { navData } from '@/constants/sidebar-data'
 
 import type { SidebarData, Team, User } from '../types'
 
@@ -28,10 +28,8 @@ const teams: Team[] = [
   },
 ]
 
-const { navData } = useSidebar()
-
 export const sidebarData: SidebarData = {
   user,
   teams,
-  navMain: navData.value!,
+  navMain: navData,
 }

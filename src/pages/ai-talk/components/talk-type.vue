@@ -1,18 +1,16 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { RadioTowerIcon, SparklesIcon } from '@lucide/vue'
 
-const emit = defineEmits(['update:type'])
+import type { TalkMode } from '../types'
 
-const type = ref('deep-think')
+const type = defineModel<TalkMode>('type', {
+  default: 'deep-think',
+})
 
 const types = [
   { type: 'deep-think', icon: SparklesIcon },
   { type: 'online', icon: RadioTowerIcon },
-]
-
-watch(type, () => {
-  emit('update:type', type.value)
-}, { immediate: true })
+] satisfies { type: TalkMode, icon: Component }[]
 </script>
 
 <template>

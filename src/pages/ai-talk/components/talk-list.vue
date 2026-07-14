@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { IMessage } from '../types'
 
 import TalkItem from './talk-item.vue'

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import Autoplay from 'embla-carousel-autoplay'
 
 const images = [

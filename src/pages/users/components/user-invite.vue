@@ -7,7 +7,7 @@ import { Button } from '@/components/ui/button'
 import UserInviteForm from './user-invite-form.vue'
 
 const { isDesktop } = useModal()
-const isOpen = ref(false)
+const isOpen = shallowRef(false)
 </script>
 
 <template>

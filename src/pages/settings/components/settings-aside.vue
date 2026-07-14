@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { ChevronsUpDownIcon } from '@lucide/vue'
 
-import { useSidebar } from '@/composables/use-sidebar'
+import { settingsNavItems } from '@/constants/sidebar-data'
 
 const route = useRoute()
 const currentPath = computed(() => route.path)
 const activeClass = 'text-primary font-semibold bg-primary/5'
-
-const { settingsNavItems } = useSidebar()
 const currentLink = computed(() => settingsNavItems.find(link => link.url === currentPath.value))
 </script>
 

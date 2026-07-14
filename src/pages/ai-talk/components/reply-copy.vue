@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ClipboardCheckIcon, ClipboardIcon } from '@lucide/vue'
 import { useClipboard } from '@vueuse/core'
 

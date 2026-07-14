@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import Footer from '@/components/marketing-layout/the-footer.vue'
 import Header from '@/components/marketing-layout/the-header.vue'
 </script>

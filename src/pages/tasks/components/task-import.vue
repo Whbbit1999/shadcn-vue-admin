@@ -1,12 +1,12 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { DownloadIcon } from '@lucide/vue'
 import { toast } from 'vue-sonner'
 
 import { Modal, ModalContent, ModalDescription, ModalFooter, ModalHeader, ModalTitle, ModalTrigger } from '@/components/prop-ui/modal'
 
-const isOpen = ref(false)
-const file = ref()
-const error = ref()
+const isOpen = shallowRef(false)
+const file = shallowRef()
+const error = shallowRef()
 
 watch(file, () => {
   error.value = null

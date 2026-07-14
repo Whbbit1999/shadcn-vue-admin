@@ -7,7 +7,7 @@ export function useAuth() {
 
   const authStore = useAuthStore()
   const { isLogin } = storeToRefs(authStore)
-  const loading = ref(false)
+  const loading = shallowRef(false)
 
   function logout() {
     isLogin.value = false

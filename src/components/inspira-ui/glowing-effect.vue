@@ -35,7 +35,7 @@ const lastPosition = ref({
   x: 0,
   y: 0,
 })
-const animationFrame = ref(0)
+const animationFrame = shallowRef(0)
 
 const containerStyles = computed(() => {
   return {

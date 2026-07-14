@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { PaintbrushIcon } from '@lucide/vue'
 
 import { Button } from '@/components/ui/button'

@@ -1,11 +1,11 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { PlusIcon } from '@lucide/vue'
 
 import { Modal, ModalContent, ModalTrigger } from '@/components/prop-ui/modal'
 
 import TaskResourceDialog from './task-resource-dialog.vue'
 
-const isOpen = ref(false)
+const isOpen = shallowRef(false)
 </script>
 
 <template>

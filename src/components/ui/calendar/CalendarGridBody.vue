@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { CalendarGridBodyProps } from "reka-ui"
 import { CalendarGridBody } from "reka-ui"
 

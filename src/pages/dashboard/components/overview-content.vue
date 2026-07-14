@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import OverviewChart from './overview-chart.vue'
 import RecentSales from './recent-sales.vue'
 </script>

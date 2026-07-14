@@ -1,17 +1,12 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia'
 
-import { THEME_PRIMARY_COLORS, THEMES } from '@/constants/themes'
+import { THEME_PRIMARY_COLORS } from '@/constants/themes'
 import { useThemeStore } from '@/stores/theme'
 
 const themeStore = useThemeStore()
 const { setTheme } = themeStore
 const { theme: t } = storeToRefs(themeStore)
-
-watchEffect(() => {
-  document.documentElement.classList.remove(...THEMES.map(theme => `theme-${theme}`))
-  document.documentElement.classList.add(`theme-${t.value}`)
-})
 </script>
 
 <template>

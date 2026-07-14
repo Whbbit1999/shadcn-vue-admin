@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { VisuallyHidden } from 'reka-ui'
 
 import { ModalDescription, ModalHeader, ModalTitle } from '@/components/prop-ui/modal'

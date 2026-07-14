@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { toast } from 'vue-sonner'
 
 import type { IMessage } from './types'

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ChevronRightIcon, LayoutListIcon } from '@lucide/vue'
 import { storeToRefs } from 'pinia'
 

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { useForm } from '@tanstack/vue-form'
 import { toast } from 'vue-sonner'
 
@@ -10,7 +10,9 @@ import type { TeamAddValidator } from './validators/team.validator'
 
 import { teamAddValidator } from './validators/team.validator'
 
-const emits = defineEmits(['close'])
+const emits = defineEmits<{
+  close: []
+}>()
 
 const defaultValues: TeamAddValidator = {
   name: '',

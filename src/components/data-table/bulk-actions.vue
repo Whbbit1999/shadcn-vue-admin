@@ -1,4 +1,4 @@
-<script lang='ts' setup generic="T">
+<script setup lang="ts" generic="T">
 import type { Table as VueTable } from '@tanstack/vue-table'
 
 import { XIcon } from '@lucide/vue'

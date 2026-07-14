@@ -1,16 +1,23 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ArrowUpIcon, PaperclipIcon } from '@lucide/vue'
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupText, InputGroupTextarea } from '@/components/ui/input-group'
 import { Separator } from '@/components/ui/separator'
 
+import type { TalkMode } from '../types'
+
 import TalkType from './talk-type.vue'
 
-const emit = defineEmits(['submit', 'typeChange'])
-const text = ref('')
+const emit = defineEmits<{
+  submit: [content: string]
+  typeChange: [type: TalkMode]
+}>()
 
-function handleTypeChange(type: string) {
+const text = shallowRef('')
+const talkType = shallowRef<TalkMode>('deep-think')
+
+function handleTypeChange(type: TalkMode) {
   emit('typeChange', type)
 }
 
@@ -24,7 +31,7 @@ function handleSubmit() {
   <InputGroup>
     <InputGroupTextarea v-model="text" placeholder="Ask, Search or Chat..." />
     <InputGroupAddon align="block-end">
-      <TalkType @update:type="handleTypeChange" />
+      <TalkType v-model:type="talkType" @update:type="handleTypeChange" />
 
       <InputGroupButton
         variant="ghost"

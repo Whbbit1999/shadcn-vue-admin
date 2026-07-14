@@ -1,11 +1,11 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { UserRoundPlusIcon } from '@lucide/vue'
 
 import { Modal, ModalContent, ModalTrigger } from '@/components/prop-ui/modal'
 
 import UserResource from './user-resource.vue'
 
-const isOpen = ref(false)
+const isOpen = shallowRef(false)
 </script>
 
 <template>

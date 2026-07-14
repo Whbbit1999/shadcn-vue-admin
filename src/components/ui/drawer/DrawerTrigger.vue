@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { DrawerTriggerProps } from "vaul-vue"
 import { DrawerTrigger } from "vaul-vue"
 

@@ -3,14 +3,7 @@ import { ArrowDownAZIcon, ArrowDownZAIcon, SlidersHorizontalIcon } from '@lucide
 
 import type { TSort } from './types'
 
-const emits = defineEmits<{
-  (e: 'update:sort', payload: TSort): void
-}>()
-
-const sort = defineModel<TSort>({ default: 'asc' })
-watch(sort, (newValue) => {
-  emits('update:sort', newValue!)
-})
+const sort = defineModel<TSort>('sort', { default: 'asc' })
 </script>
 
 <template>

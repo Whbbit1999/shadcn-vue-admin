@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import { ref } from 'vue'
+import { shallowRef } from 'vue'
 
 export type NavigationMode = 'collapsible' | 'vercel'
 
@@ -10,7 +10,7 @@ export type NavigationMode = 'collapsible' | 'vercel'
 export const useSidebarConfigStore = defineStore(
   'sidebar-config',
   () => {
-    const navigationMode = ref<NavigationMode>('collapsible')
+    const navigationMode = shallowRef<NavigationMode>('collapsible')
 
     function setNavigationMode(mode: NavigationMode) {
       navigationMode.value = mode

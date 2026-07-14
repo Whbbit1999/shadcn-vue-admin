@@ -1,15 +1,13 @@
 <script setup lang="ts">
-import { useSidebar } from '@/composables/use-sidebar'
+import { navData, otherPages } from '@/constants/sidebar-data'
 
 import type { NavGroup, NavItem } from '../app-sidebar/types'
 
 import CommandItemHasIcon from './command-item-has-icon.vue'
 
 const emit = defineEmits<{
-  (e: 'click'): void
+  click: []
 }>()
-
-const { navData, otherPages } = useSidebar()
 
 function getFlatNavItems(navData: NavGroup[]): NavItem[] {
   const flatItems: NavItem[] = []
@@ -26,7 +24,7 @@ function getFlatNavItems(navData: NavGroup[]): NavItem[] {
   return flatItems
 }
 
-const commands = getFlatNavItems([...navData.value!, ...otherPages.value!])
+const commands = getFlatNavItems([...navData, ...otherPages])
 
 const router = useRouter()
 const route = useRoute()

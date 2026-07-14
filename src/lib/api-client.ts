@@ -5,7 +5,7 @@ import { ofetch } from 'ofetch'
 
 import { API_BASE_URL, API_TIMEOUT } from '@/constants/app-config'
 
-const apiFetch = ofetch.create({
+export const apiFetch = ofetch.create({
   baseURL: API_BASE_URL,
   timeout: API_TIMEOUT ?? false,
   onRequest: (_request) => {},
@@ -13,9 +13,3 @@ const apiFetch = ofetch.create({
   onResponse: (_response) => {},
   onResponseError: (_error) => {},
 })
-
-export function useApiFetch() {
-  return {
-    apiFetch,
-  }
-}

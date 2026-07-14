@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { LayoutHeaderProps } from './types'
 
 import BasicHeader from './basic-header.vue'

@@ -1,4 +1,4 @@
-<script lang="ts" setup generic="T = Task">
+<script setup lang="ts" generic="T = Task">
 import type { Table as VueTable } from '@tanstack/vue-table'
 
 import { toast } from 'vue-sonner'
@@ -17,7 +17,7 @@ const openModel = defineModel<boolean>('open', {
 
 const CONFIRM_WORD = 'DELETE'
 
-const confirmValue = ref('')
+const confirmValue = shallowRef('')
 
 const selectedRows = computed(() => table.getSelectedRowModel().rows)
 const selectedCount = computed(() => selectedRows.value.length || 0)

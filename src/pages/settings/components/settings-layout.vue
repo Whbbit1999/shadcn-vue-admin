@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { BasicPage, TwoColAside, TwoColLayout } from '@/components/global-layout'
-
-const { settingsNavItems } = useSidebar()
+import { settingsNavItems } from '@/constants/sidebar-data'
 </script>
 
 <template>

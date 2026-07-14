@@ -1,7 +1,7 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { Copy } from '@/components/prop-ui/copy'
 
-const content = ref('copy something')
+const content = shallowRef('copy something')
 </script>
 
 <template>

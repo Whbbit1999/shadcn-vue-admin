@@ -5,7 +5,7 @@ import { useColorMode } from '@vueuse/core'
 import CommandItemHasIcon from './command-item-has-icon.vue'
 
 defineEmits<{
-  (e: 'click'): void
+  click: []
 }>()
 
 const mode = useColorMode()

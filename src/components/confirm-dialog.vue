@@ -1,4 +1,4 @@
-<script lang='ts' setup>
+<script setup lang="ts">
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -26,7 +26,7 @@ const {
 } = defineProps<ConfirmDialogProps>()
 
 const emits = defineEmits<{
-  (e: 'confirm'): void
+  confirm: []
 }>()
 
 const openModel = defineModel<boolean>('open', {
