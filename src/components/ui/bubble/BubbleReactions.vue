@@ -1,30 +1,32 @@
-<script setup lang="ts">
+<script lang='ts' setup>
 import type { PrimitiveProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
-import type { ButtonVariants } from "."
+import type { BubbleReactionsVariants } from "."
 import { Primitive } from "reka-ui"
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "."
+import { bubbleReactionsVariants } from "."
 
 interface Props extends PrimitiveProps {
-  variant?: ButtonVariants["variant"]
-  size?: ButtonVariants["size"]
+  side?: BubbleReactionsVariants["side"]
+  align?: BubbleReactionsVariants["align"]
   class?: HTMLAttributes["class"]
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  as: "button",
+  side: "bottom",
+  align: "end",
+  as: "div",
 })
 </script>
 
 <template>
   <Primitive
-    data-slot="button"
-    :data-variant="variant"
-    :data-size="size"
+    data-slot="bubble-reactions"
+    :data-side="side"
+    :data-align="align"
     :as="as"
     :as-child="asChild"
-    :class="cn(buttonVariants({ variant, size }), props.class)"
+    :class="cn(bubbleReactionsVariants({ side, align }), props.class)"
   >
     <slot />
   </Primitive>

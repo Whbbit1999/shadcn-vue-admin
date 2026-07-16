@@ -36,7 +36,7 @@ const { contentLayout } = storeToRefs(themeStore)
 
       <main
         :class="cn(
-          'p-4 grow',
+          'p-4 grow relative',
           contentLayout === 'centered' ? 'container mx-auto ' : '',
         )"
       >

@@ -1,30 +1,26 @@
-<script setup lang="ts">
+<script setup lang='ts'>
 import type { PrimitiveProps } from "reka-ui"
 import type { HTMLAttributes } from "vue"
-import type { ButtonVariants } from "."
 import { Primitive } from "reka-ui"
 import { cn } from "@/lib/utils"
-import { buttonVariants } from "."
 
 interface Props extends PrimitiveProps {
-  variant?: ButtonVariants["variant"]
-  size?: ButtonVariants["size"]
   class?: HTMLAttributes["class"]
 }
-
 const props = withDefaults(defineProps<Props>(), {
-  as: "button",
+  as: "div",
 })
 </script>
 
 <template>
   <Primitive
-    data-slot="button"
-    :data-variant="variant"
-    :data-size="size"
+    data-slot="message-avatar"
     :as="as"
     :as-child="asChild"
-    :class="cn(buttonVariants({ variant, size }), props.class)"
+    :class="cn(
+      'min-w-8 group-has-data-[slot=message-footer]/message:-translate-y-8 flex w-fit shrink-0 items-center justify-center self-end overflow-hidden rounded-full bg-muted',
+      props.class,
+    )"
   >
     <slot />
   </Primitive>
