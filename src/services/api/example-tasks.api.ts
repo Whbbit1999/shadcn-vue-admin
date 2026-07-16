@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/vue-query'
 
-import { useApiFetch } from '@/composables/use-fetch'
+import { apiFetch } from '@/lib/api-client'
 
 import type { IResponse } from '../types/response.type'
 
@@ -11,8 +11,6 @@ export interface ITask {
 }
 
 export function useGetTasksQuery() {
-  const { apiFetch } = useApiFetch()
-
   return useQuery<IResponse<ITask[]>, Error>({
     queryKey: ['useGetTasksQuery'],
     queryFn: async () => await apiFetch<IResponse<ITask[]>>('/tasks', {
@@ -22,8 +20,6 @@ export function useGetTasksQuery() {
 }
 
 export function useGetTaskByIdQuery(id: number) {
-  const { apiFetch } = useApiFetch()
-
   return useQuery<IResponse<ITask>, Error>({
     queryKey: ['useGetTaskQuery', id],
     queryFn: async () => await apiFetch<IResponse<ITask>>(`/tasks/${id}`, {
@@ -33,7 +29,6 @@ export function useGetTaskByIdQuery(id: number) {
 }
 
 export function useUpdateTaskMutation(id: number) {
-  const { apiFetch } = useApiFetch()
   const queryClient = useQueryClient()
 
   return useMutation<IResponse<boolean>, Error, Partial<ITask>>({
@@ -50,7 +45,6 @@ export function useUpdateTaskMutation(id: number) {
 }
 
 export function useCreateTaskMutation() {
-  const { apiFetch } = useApiFetch()
   const queryClient = useQueryClient()
 
   return useMutation<IResponse<ITask>, Error, ITask>({
@@ -66,7 +60,6 @@ export function useCreateTaskMutation() {
 }
 
 export function useDeleteTaskMutation() {
-  const { apiFetch } = useApiFetch()
   const queryClient = useQueryClient()
 
   return useMutation<IResponse<boolean>, Error, number>({

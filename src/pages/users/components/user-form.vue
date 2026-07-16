@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { useForm } from '@tanstack/vue-form'
 import { toast } from 'vue-sonner'
 
@@ -14,38 +14,37 @@ import type { UserValidator } from '../validators/user.validator'
 
 import { userValidator } from '../validators/user.validator'
 
-const { user } = defineProps<{
+const props = defineProps<{
   user?: User
 }>()
 
 const emits = defineEmits<{
-  (e: 'close'): void
+  close: []
 }>()
 
 const roles = ['superadmin', 'admin', 'cashier', 'manager'] as const
 const status = ['active', 'inactive', 'invited', 'suspended'] as const
 
-const initialValues: UserValidator = {
-  firstName: user?.firstName || '',
-  lastName: user?.lastName || '',
-  username: user?.username || '',
-  email: user?.email || '',
-  phoneNumber: user?.phoneNumber || '',
-  status: user?.status || 'active',
-  role: user?.role || 'cashier',
+function getInitialValues(user?: User): UserValidator {
+  return {
+    firstName: user?.firstName || '',
+    lastName: user?.lastName || '',
+    username: user?.username || '',
+    email: user?.email || '',
+    phoneNumber: user?.phoneNumber || '',
+    status: user?.status || 'active',
+    role: user?.role || 'cashier',
+  }
 }
 
 const form = useForm({
-  defaultValues: initialValues,
+  defaultValues: getInitialValues(props.user),
   validators: {
     onSubmit: userValidator,
     onBlur: userValidator,
   },
   onSubmit: ({ value }) => {
-    const submitUser: any = { ...value }
-    if (user) {
-      submitUser.id = user.id
-    }
+    const submitUser = props.user ? { ...value, id: props.user.id } : value
     toast('You submitted the following values:', {
       description: h(
         'pre',
@@ -56,6 +55,10 @@ const form = useForm({
 
     emits('close')
   },
+})
+
+watch(() => props.user, (user) => {
+  form.reset(getInitialValues(user), { keepDefaultValues: true })
 })
 </script>
 

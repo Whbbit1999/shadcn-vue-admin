@@ -1,5 +1,5 @@
 import { useSessionStorage } from '@vueuse/core'
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
 import type { NavGroup, NavItem } from '@/components/app-sidebar/types'
@@ -171,16 +171,6 @@ export function useSidebarNavigation(navMain: Readonly<NavGroup[]>) {
   onMounted(() => {
     loadNavigationPath()
   })
-
-  // Optionally clear navigation path when route changes to a leaf menu item
-  // This prevents staying in a nested menu view when directly navigating to a page
-  watch(
-    () => route.path,
-    () => {
-      // Note: You could add logic here to auto-reset navigation when navigating to a page
-      // For now, we keep the navigation state when route changes
-    },
-  )
 
   return {
     navigationPath,

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { DrawerCloseProps } from "vaul-vue"
 import { DrawerClose } from "vaul-vue"
 

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { sidebarData } from './data/sidebar-data'
 import NavFooter from './nav-footer.vue'
 import NavTeam from './nav-team.vue'

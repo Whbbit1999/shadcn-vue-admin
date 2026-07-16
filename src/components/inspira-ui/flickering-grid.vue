@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { cn } from '@/lib/utils'
 
 interface FlickeringGridProps {
@@ -26,7 +26,7 @@ const containerRef = useTemplateRef<HTMLDivElement>('containerRef')
 const canvasRef = useTemplateRef<HTMLCanvasElement>('canvasRef')
 const context = ref<CanvasRenderingContext2D>()
 
-const isInView = ref(false)
+const isInView = shallowRef(false)
 const canvasSize = ref({ width: 0, height: 0 })
 
 const hexColorRegex = /^#/

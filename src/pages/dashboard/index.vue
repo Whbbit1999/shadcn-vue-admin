@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { toast } from 'vue-sonner'
 
 import { BasicPage } from '@/components/global-layout'
@@ -6,14 +6,14 @@ import { Button } from '@/components/ui/button'
 
 import OverviewContent from './components/overview-content.vue'
 
-const tabs = ref([
+const tabs = [
   { name: 'Overview', value: 'overview' },
   { name: 'Analytics', value: 'analytics', disabled: true },
   { name: 'Reports', value: 'reports', disabled: true },
   { name: 'Notifications', value: 'notifications', disabled: true },
-])
+]
 
-const activeTab = ref(tabs.value[0].value)
+const defaultTab = tabs[0].value
 </script>
 
 <template>
@@ -32,7 +32,7 @@ const activeTab = ref(tabs.value[0].value)
       </Button>
     </template>
 
-    <UiTabs :default-value="activeTab" class="w-full">
+    <UiTabs :default-value="defaultTab" class="w-full">
       <UiTabsList>
         <UiTabsTrigger
           v-for="tab in tabs" :key="tab.value"

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { TSort } from '@/components/sort-select/types'
+import type { TSort } from '@/components/sort-select'
 
 import { BasicPage } from '@/components/global-layout'
 import { SortSelect } from '@/components/sort-select'
@@ -7,45 +7,35 @@ import { SortSelect } from '@/components/sort-select'
 import AppCard from './components/app-card.vue'
 import apps from './data/apps'
 
-const appList = ref(apps)
-
 type AppType = 'all' | 'connected' | 'notConnected'
 
-const searchTerm = ref('')
-const appType = ref<AppType>('all')
+const searchTerm = shallowRef('')
+const appType = shallowRef<AppType>('all')
 const appTypes: AppType[] = [
   'all',
   'connected',
   'notConnected',
 ]
 
-const sort = ref<TSort>('asc')
+const sort = shallowRef<TSort>('asc')
 
-watch(searchTerm, (newValue) => {
-  if (!newValue)
-    appList.value = apps
+const appList = computed(() => {
+  const normalizedSearchTerm = searchTerm.value.trim().toLowerCase()
 
-  appList.value = apps.filter((app) => {
-    return app.name.toLowerCase().includes(newValue.toLowerCase())
-  })
-})
-
-watch(sort, (newValue) => {
-  appList.value = apps.sort((a, b) => {
-    if (newValue === 'asc')
-      return a.name.localeCompare(b.name)
-    return b.name.localeCompare(a.name)
-  })
-})
-
-watch(appType, (newValue) => {
-  appList.value = apps.filter((app) => {
-    if (newValue === 'all')
-      return true
-    return newValue === 'connected'
-      ? app.connected
-      : !app.connected
-  })
+  return apps
+    .filter((app) => {
+      return !normalizedSearchTerm || app.name.toLowerCase().includes(normalizedSearchTerm)
+    })
+    .filter((app) => {
+      if (appType.value === 'all')
+        return true
+      return appType.value === 'connected' ? app.connected : !app.connected
+    })
+    .sort((a, b) => {
+      if (sort.value === 'asc')
+        return a.name.localeCompare(b.name)
+      return b.name.localeCompare(a.name)
+    })
 })
 </script>
 
@@ -79,7 +69,7 @@ watch(appType, (newValue) => {
     </div>
     <main class="grid grid-cols-1 gap-4 mt-2 lg:grid-cols-3">
       <AppCard
-        v-for="(app, index) in appList" :key="index"
+        v-for="app in appList" :key="app.name"
         :app="app"
       />
     </main>

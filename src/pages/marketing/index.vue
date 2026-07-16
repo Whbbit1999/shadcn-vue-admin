@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import Evaluation from '@/components/marketing/evaluation.vue'
 import Features from '@/components/marketing/features.vue'
 import Hero from '@/components/marketing/hero.vue'

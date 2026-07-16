@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { InlineTip } from '@/components/prop-ui/inline-tip'
 </script>
 

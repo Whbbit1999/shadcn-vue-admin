@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { DialogDescriptionProps } from 'reka-ui'
 import type { DrawerDescriptionProps } from 'vaul-vue'
 import type { HTMLAttributes } from 'vue'

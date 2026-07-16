@@ -1,4 +1,4 @@
-<script lang='ts' setup>
+<script setup lang='ts'>
 import { FolderOpenIcon } from '@lucide/vue'
 
 import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'

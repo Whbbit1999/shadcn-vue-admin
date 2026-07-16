@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ArrowUpRightIcon, BadgeCheckIcon, ChevronRightIcon } from '@lucide/vue'
 
 import { BasicPage } from '@/components/global-layout'

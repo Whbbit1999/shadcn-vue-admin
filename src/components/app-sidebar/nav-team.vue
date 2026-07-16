@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { useSidebar } from '@/components/ui/sidebar'
 import { useSidebarConfigStore } from '@/stores/sidebar-config'
 

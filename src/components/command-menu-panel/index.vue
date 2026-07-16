@@ -7,7 +7,7 @@ import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/
 import CommandChangeTheme from './command-change-theme.vue'
 import CommandToPage from './command-to-page.vue'
 
-const open = ref(false)
+const open = shallowRef(false)
 
 useEventListener('keydown', (event: KeyboardEvent) => {
   if (event.key === 'k' && (event.metaKey || event.ctrlKey)) {

@@ -20,9 +20,9 @@ import type { AccountValidator } from '../validators/account.validator'
 
 import { accountValidator } from '../validators/account.validator'
 
-const open = ref(false)
-const dateValue = ref()
-const placeholder = ref()
+const open = shallowRef(false)
+const dateValue = shallowRef()
+const placeholder = shallowRef()
 
 const languages = [
   { label: 'English', value: 'en' },

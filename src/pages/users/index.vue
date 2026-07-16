@@ -9,7 +9,7 @@ import UserCreate from './components/user-create.vue'
 import UserInvite from './components/user-invite.vue'
 import { users } from './data/users'
 
-const loading = ref(false)
+const loading = shallowRef(false)
 
 function mockLoading() {
   loading.value = true

@@ -17,7 +17,7 @@ const props = defineProps<DataTableRowActionsProps>()
 
 const billing = computed(() => billingSchema.parse(props.row.original))
 const showComponent = shallowRef<Component | null>(null)
-const isOpen = ref(false)
+const isOpen = shallowRef(false)
 
 type TCommand = 'detail'
 

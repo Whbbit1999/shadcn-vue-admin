@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { BasicPage } from '@/components/global-layout'
 
 import BillingHistory from './components/billing-history/index.vue'

@@ -24,7 +24,7 @@ import type { ProfileValidator } from '../validators/profile.validator'
 
 import { profileValidator } from '../validators/profile.validator'
 
-const verifiedEmails = ref(['m@example.com', 'm@google.com', 'm@support.com'])
+const verifiedEmails = ['m@example.com', 'm@google.com', 'm@support.com']
 
 const defaultValues: ProfileValidator = {
   username: '',

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ChevronLeftIcon, ChevronRightIcon } from '@lucide/vue'
 
 import { useSidebarNavigation } from '@/composables/use-sidebar-navigation'

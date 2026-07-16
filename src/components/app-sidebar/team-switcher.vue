@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ChevronsUpDownIcon, PlusIcon } from '@lucide/vue'
 
 import { useSidebar } from '@/components/ui/sidebar'
@@ -16,7 +16,7 @@ function setActiveTeam(team: Team) {
   activeTeam.value = team
 }
 
-const isOpen = ref(false)
+const isOpen = shallowRef(false)
 
 const showComponent = shallowRef<Component | null>(null)
 type TComponent = 'team-add'

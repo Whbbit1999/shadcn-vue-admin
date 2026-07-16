@@ -8,25 +8,29 @@ import { Modal, ModalContent } from '@/components/prop-ui/modal'
 
 import type { User } from '../data/schema'
 
+import UserResource from './user-resource.vue'
+
 interface DataTableRowActionsProps {
   row: Row<User>
 }
 const props = defineProps<DataTableRowActionsProps>()
 const user = computed(() => props.row.original)
-const isOpen = ref(false)
+const isOpen = shallowRef(false)
 
 const showComponent = shallowRef<Component | null>(null)
 type TCommand = 'edit' | 'delete'
 
-const componentLoader: Record<TCommand, () => Promise<{ default: Component }>> = {
-  edit: () => import('./user-resource.vue'),
-  delete: () => import('./user-delete.vue'),
+async function loadComponent(command: TCommand): Promise<Component> {
+  if (command === 'edit')
+    return UserResource
+
+  const { default: component } = await import('./user-delete.vue')
+  return component
 }
 
 async function handleSelect(command: TCommand) {
   try {
-    const { default: component } = await componentLoader[command]()
-    showComponent.value = component
+    showComponent.value = await loadComponent(command)
     isOpen.value = true
   }
   catch (e) {

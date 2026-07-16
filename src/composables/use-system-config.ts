@@ -7,6 +7,28 @@ import { toast } from 'vue-sonner'
 
 import { useCreateSystemMutation, useGetSystemConfigByKeyQuery, useUpdateSystemConfigByKeyMutation } from '@/services/api/example-system-config.api'
 
+function cloneConfig<S extends z.ZodObject<z.ZodRawShape>>(value: Readonly<z.input<S>>): z.input<S> {
+  return { ...value } as z.input<S>
+}
+
+export function resolveSystemConfigValue<S extends z.ZodObject<z.ZodRawShape>>(
+  rawValue: string | undefined,
+  schema: S,
+  fallback: Readonly<z.input<S>>,
+): z.input<S> {
+  if (!rawValue)
+    return cloneConfig<S>(fallback)
+
+  try {
+    const parsed: unknown = JSON.parse(rawValue)
+    const result = schema.safeParse(parsed)
+    return result.success ? result.data as z.input<S> : cloneConfig<S>(fallback)
+  }
+  catch {
+    return cloneConfig<S>(fallback)
+  }
+}
+
 export function useSystemConfig<S extends z.ZodObject<z.ZodRawShape>>({
   key,
   defaultValue,
@@ -18,9 +40,10 @@ export function useSystemConfig<S extends z.ZodObject<z.ZodRawShape>>({
   description: string
   schema: S
 }) {
-  const initialConfig = { ...defaultValue } as z.input<S>
+  const initialConfig = cloneConfig<S>(defaultValue)
 
   const localCacheConfig = useStorage<z.input<S>>(key, initialConfig)
+  const didCreateDefaultConfig = shallowRef(false)
 
   const { data: systemConfigData, isPending: isGetSystemConfigByKeyQueryPending } = useGetSystemConfigByKeyQuery(key)
   const { mutate: createSystemConfigMutate, isPending: isCreateSystemConfigPending } = useCreateSystemMutation()
@@ -56,30 +79,40 @@ export function useSystemConfig<S extends z.ZodObject<z.ZodRawShape>>({
     },
   })
 
-  watch(systemConfigData, () => {
-    if (!isGetSystemConfigByKeyQueryPending.value && !systemConfigData.value) {
-      localCacheConfig.value = systemConfigData.value
+  watch([systemConfigData, isGetSystemConfigByKeyQueryPending], ([configData, isGetting]) => {
+    if (isGetting)
+      return
+
+    if (!configData) {
+      const configValue = cloneConfig<S>(initialConfig)
+      localCacheConfig.value = configValue
+      form.reset(configValue, { keepDefaultValues: true })
+
+      if (didCreateDefaultConfig.value)
+        return
+
+      didCreateDefaultConfig.value = true
       createSystemConfigMutate({
         key,
         description,
-        value: JSON.stringify(defaultValue),
+        value: JSON.stringify(configValue),
       }, {
         onSuccess: () => {
-          localCacheConfig.value = initialConfig
+          localCacheConfig.value = configValue
           toast('System config created with default value.', {
-            description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify({ key, description, value: defaultValue }, null, 2))),
+            description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify({ key, description, value: configValue }, null, 2))),
           })
         },
       })
       return
     }
 
-    const configValue: z.input<S> = systemConfigData.value?.data?.value
-      ? JSON.parse(systemConfigData.value.data.value)
-      : initialConfig
+    didCreateDefaultConfig.value = false
+
+    const configValue = resolveSystemConfigValue(configData.data.value, schema, initialConfig)
     localCacheConfig.value = configValue
     form.reset(configValue, { keepDefaultValues: true })
-  }, { immediate: true, deep: true })
+  }, { immediate: true })
 
   return {
     isPending,

@@ -10,6 +10,7 @@ import type { Task } from '../data/schema'
 
 import { labels } from '../data/data'
 import { taskSchema } from '../data/schema'
+import TaskResourceDialog from './task-resource-dialog.vue'
 
 const props = defineProps<DataTableRowActionsProps>()
 
@@ -18,23 +19,24 @@ interface DataTableRowActionsProps {
 }
 const task = computed(() => taskSchema.parse(props.row.original))
 
-const taskLabel = ref(task.value.label)
+const taskLabel = shallowRef(task.value.label)
 
+const isOpen = shallowRef(false)
 const showComponent = shallowRef<Component | null>(null)
-const isOpen = ref(false)
 
-type TCommand = 'edit' | 'create' | 'delete'
+type TCommand = 'edit' | 'delete'
 
-const componentLoader: Record<TCommand, () => Promise<{ default: Component }>> = {
-  edit: () => import('./task-resource-dialog.vue'),
-  create: () => import('./task-resource-dialog.vue'),
-  delete: () => import('./task-delete.vue'),
+async function loadComponent(command: TCommand): Promise<Component> {
+  if (command === 'edit')
+    return TaskResourceDialog
+
+  const { default: component } = await import('./task-delete.vue')
+  return component
 }
 
 async function handleSelect(command: TCommand) {
   try {
-    const { default: component } = await componentLoader[command]()
-    showComponent.value = component
+    showComponent.value = await loadComponent(command)
     isOpen.value = true
   }
   catch (e) {

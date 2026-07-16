@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { Status, StatusBadge } from '@/components/prop-ui/status-badge'
 </script>
 

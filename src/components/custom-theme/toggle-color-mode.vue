@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { BasicColorSchema } from '@vueuse/core'
 import type { Component } from 'vue'
 

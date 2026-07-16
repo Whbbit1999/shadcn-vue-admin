@@ -13,7 +13,7 @@ import TaskDeleteBatch from './task-delete-batch.vue'
 const props = defineProps<DataTableProps<Task>>()
 const table = useGenerateVueTable<Task>(props)
 
-const taskDeleteBatchOpen = ref(false)
+const taskDeleteBatchOpen = shallowRef(false)
 </script>
 
 <template>

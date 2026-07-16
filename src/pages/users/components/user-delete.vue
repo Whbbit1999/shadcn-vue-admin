@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { toast } from 'vue-sonner'
 
 import { ModalClose, ModalDescription, ModalFooter, ModalHeader, ModalTitle } from '@/components/prop-ui/modal'
@@ -10,7 +10,7 @@ const { user } = defineProps<{
 }>()
 
 const emits = defineEmits<{
-  (e: 'remove'): void
+  remove: []
 }>()
 
 function handleRemove() {

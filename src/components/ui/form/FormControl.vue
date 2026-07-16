@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { Slot } from "reka-ui"
 import { useFormField } from "./useFormField"
 

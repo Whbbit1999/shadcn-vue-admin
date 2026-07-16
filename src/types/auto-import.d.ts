@@ -9,13 +9,9 @@ declare global {
   const API_BASE_URL: typeof import('../constants/app-config').API_BASE_URL
   const API_TIMEOUT: typeof import('../constants/app-config').API_TIMEOUT
   const CONTENT_LAYOUTS: typeof import('../constants/themes').CONTENT_LAYOUTS
-  const DEFAULT_PAGE_SIZE: typeof import('../constants/pagination').DEFAULT_PAGE_SIZE
   const EffectScope: typeof import('vue').EffectScope
-  const PAGE_SIZES: typeof import('../constants/pagination').PAGE_SIZES
   const RADIUS: typeof import('../constants/themes').RADIUS
-  const RouterPath: typeof import('../constants/route-path').RouterPath
   const THEMES: typeof import('../constants/themes').THEMES
-  const THEMES_COLOR: typeof import('../constants/themes')['THEMES_COLOR']
   const THEME_PRIMARY_COLORS: typeof import('../constants/themes').THEME_PRIMARY_COLORS
   const computed: typeof import('vue').computed
   const createApp: typeof import('vue').createApp
@@ -36,6 +32,7 @@ declare global {
   const isShallow: typeof import('vue').isShallow
   const logout: typeof import('../composables/use-auth')['logout']
   const markRaw: typeof import('vue').markRaw
+  const navData: typeof import('../constants/sidebar-data').navData
   const nextTick: typeof import('vue').nextTick
   const onActivated: typeof import('vue').onActivated
   const onBeforeMount: typeof import('vue').onBeforeMount
@@ -53,11 +50,14 @@ declare global {
   const onUnmounted: typeof import('vue').onUnmounted
   const onUpdated: typeof import('vue').onUpdated
   const onWatcherCleanup: typeof import('vue').onWatcherCleanup
+  const otherPages: typeof import('../constants/sidebar-data').otherPages
   const provide: typeof import('vue').provide
   const reactive: typeof import('vue').reactive
   const readonly: typeof import('vue').readonly
   const ref: typeof import('vue').ref
   const resolveComponent: typeof import('vue').resolveComponent
+  const resolveSystemConfigValue: typeof import('../composables/use-system-config').resolveSystemConfigValue
+  const settingsNavItems: typeof import('../constants/sidebar-data').settingsNavItems
   const shallowReactive: typeof import('vue').shallowReactive
   const shallowReadonly: typeof import('vue').shallowReadonly
   const shallowRef: typeof import('vue').shallowRef
@@ -67,7 +67,6 @@ declare global {
   const toValue: typeof import('vue').toValue
   const triggerRef: typeof import('vue').triggerRef
   const unref: typeof import('vue').unref
-  const useApiFetch: typeof import('../composables/use-fetch').useApiFetch
   const useAttrs: typeof import('vue').useAttrs
   const useAuth: typeof import('../composables/use-auth').useAuth
   const useAuthStore: typeof import('../stores/auth').useAuthStore
@@ -79,7 +78,6 @@ declare global {
   const useModel: typeof import('vue').useModel
   const useRoute: typeof import('vue-router').useRoute
   const useRouter: typeof import('vue-router').useRouter
-  const useSidebar: typeof import('../composables/use-sidebar').useSidebar
   const useSidebarConfigStore: typeof import('../stores/sidebar-config').useSidebarConfigStore
   const useSidebarNavigation: typeof import('../composables/use-sidebar-navigation').useSidebarNavigation
   const useSlots: typeof import('vue').useSlots

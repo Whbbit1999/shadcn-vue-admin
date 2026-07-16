@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import Marquee from '@/components/inspira-ui/marquee/index.vue'
 import MarqueeReviewCard from '@/components/inspira-ui/marquee/review-card.vue'
 

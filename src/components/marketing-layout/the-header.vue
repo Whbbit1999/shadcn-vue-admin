@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { useColorMode } from '@vueuse/core'
 
 import LanguageChange from '@/components/language-change.vue'

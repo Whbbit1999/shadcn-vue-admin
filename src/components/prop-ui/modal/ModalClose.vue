@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import type { DialogCloseProps } from 'reka-ui'
 import type { DrawerCloseProps } from 'vaul-vue'
 

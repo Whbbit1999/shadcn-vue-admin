@@ -1,4 +1,5 @@
 export type TalkRole = 'user' | 'system'
+export type TalkMode = 'deep-think' | 'online'
 
 export interface IMessage {
   role: TalkRole

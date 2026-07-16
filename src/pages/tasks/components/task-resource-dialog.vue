@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ModalDescription, ModalHeader, ModalTitle } from '@/components/prop-ui/modal'
 
 import type { Task } from '../data/schema'
@@ -8,7 +8,9 @@ import TaskForm from './task-form.vue'
 const props = defineProps<{
   task: Task | null
 }>()
-defineEmits(['close'])
+const emit = defineEmits<{
+  close: []
+}>()
 
 const task = computed(() => props.task)
 const title = computed(() => task.value?.id ? `Edit Task` : 'New Task')
@@ -25,6 +27,6 @@ const description = computed(() => task.value?.id ? `Edit task ${task.value.id}`
         {{ description }}
       </ModalDescription>
     </ModalHeader>
-    <TaskForm class="mt-2" :task="task" @close="$emit('close')" />
+    <TaskForm class="mt-2" :task="task" @close="emit('close')" />
   </div>
 </template>

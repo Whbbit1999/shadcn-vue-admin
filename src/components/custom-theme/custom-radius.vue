@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { storeToRefs } from 'pinia'
 
 import { RADIUS } from '@/constants/themes'
@@ -7,10 +7,6 @@ import { useThemeStore } from '@/stores/theme'
 const themeStore = useThemeStore()
 const { setRadius } = themeStore
 const { radius } = storeToRefs(themeStore)
-
-watchEffect(() => {
-  document.documentElement.style.setProperty('--radius', `${radius.value}rem`)
-})
 </script>
 
 <template>

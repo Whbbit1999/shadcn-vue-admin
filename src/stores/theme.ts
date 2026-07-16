@@ -3,16 +3,16 @@ import { defineStore } from 'pinia'
 import type { ContentLayout, Radius, Theme } from '@/constants/themes'
 
 export const useThemeStore = defineStore('system-config', () => {
-  const radius = ref(0.5)
+  const radius = shallowRef(0.5)
   function setRadius(newRadius: Radius) {
     radius.value = newRadius
   }
-  const theme = ref<Theme>('zinc')
+  const theme = shallowRef<Theme>('zinc')
   function setTheme(newTheme: Theme) {
     theme.value = newTheme
   }
 
-  const contentLayout = ref<ContentLayout>('centered')
+  const contentLayout = shallowRef<ContentLayout>('centered')
   function setContentLayout(newContentLayout: ContentLayout) {
     contentLayout.value = newContentLayout
   }
@@ -27,5 +27,7 @@ export const useThemeStore = defineStore('system-config', () => {
     setContentLayout,
   }
 }, {
-  persist: true,
+  persist: {
+    storage: typeof localStorage !== 'undefined' ? localStorage : undefined,
+  },
 })

@@ -1,4 +1,4 @@
-<script lang="ts" setup>
+<script setup lang="ts">
 import { useForm } from '@tanstack/vue-form'
 import { toast } from 'vue-sonner'
 
@@ -15,17 +15,21 @@ import { taskValidator } from '../validators/task.validator'
 const props = defineProps<{
   task: Task | null
 }>()
-const emits = defineEmits(['close'])
+const emits = defineEmits<{
+  close: []
+}>()
 
-const initialValues: TaskValidator = {
-  title: props.task ? props.task.title : '',
-  status: props.task ? props.task.status : 'backlog',
-  label: props.task ? props.task.label : 'feature',
-  priority: props.task ? props.task.priority : 'medium',
+function getInitialValues(task: Task | null): TaskValidator {
+  return {
+    title: task ? task.title : '',
+    status: task ? task.status : 'backlog',
+    label: task ? task.label : 'feature',
+    priority: task ? task.priority : 'medium',
+  }
 }
 
 const form = useForm({
-  defaultValues: initialValues,
+  defaultValues: getInitialValues(props.task),
   validators: {
     onSubmit: taskValidator,
     onBlur: taskValidator,
@@ -36,6 +40,10 @@ const form = useForm({
     })
     emits('close')
   },
+})
+
+watch(() => props.task, (task) => {
+  form.reset(getInitialValues(task), { keepDefaultValues: true })
 })
 </script>
 
