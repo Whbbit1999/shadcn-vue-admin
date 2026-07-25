@@ -3,12 +3,8 @@ import Error from '@/components/custom-error.vue'
 
 import { resolveErrorPage } from './data/error-pages'
 
-const route = useRoute()
-const code = computed(() => {
-  const value = (route.params as { code?: string | string[] }).code
-  return Array.isArray(value) ? (value[0] ?? '') : (value ?? '')
-})
-const errorPage = computed(() => resolveErrorPage(code.value))
+const route = useRoute('/errors/[code]')
+const errorPage = computed(() => resolveErrorPage(route.params.code))
 </script>
 
 <template>
