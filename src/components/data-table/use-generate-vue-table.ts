@@ -2,7 +2,6 @@ import type { ColumnFiltersState, ColumnPinningState, PaginationState, SortingSt
 
 import { getCoreRowModel, getFacetedRowModel, getFacetedUniqueValues, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useVueTable } from '@tanstack/vue-table'
 
-import { DEFAULT_PAGE_SIZE } from '@/config/app'
 import { valueUpdater } from '@/lib/utils'
 
 import type { DataTableProps } from './types'

@@ -2,9 +2,10 @@
 import type { Column, Table as VueTable } from '@tanstack/vue-table'
 import type { CSSProperties } from 'vue'
 
+import { FolderOpenIcon } from '@lucide/vue'
 import { FlexRender } from '@tanstack/vue-table'
 
-import NoResultFound from '@/components/no-result-found.vue'
+import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 
 import type { DataTableProps } from './types'
@@ -69,7 +70,17 @@ function getCommonPinningStyles(column: Column<T>): CSSProperties {
               :colspan="columns.length"
               class="h-24 text-center"
             >
-              <NoResultFound />
+              <Empty>
+                <EmptyHeader>
+                  <EmptyMedia variant="icon">
+                    <FolderOpenIcon />
+                  </EmptyMedia>
+                  <EmptyTitle>No result found.</EmptyTitle>
+                  <EmptyDescription>
+                    Please try a different search term or check the spelling.
+                  </EmptyDescription>
+                </EmptyHeader>
+              </Empty>
             </TableCell>
           </TableRow>
         </TableBody>

@@ -61,7 +61,6 @@ declare module 'vue' {
     MarketingLogos: typeof import('./../components/marketing/logos.vue')['default']
     MarketingPricingPlans: typeof import('./../components/marketing/pricing-plans/index.vue')['default']
     MarketingSetup: typeof import('./../components/marketing/setup.vue')['default']
-    NoResultFound: typeof import('./../components/no-result-found.vue')['default']
     PropUiCopy: typeof import('./../components/prop-ui/copy/Copy.vue')['default']
     PropUiInlineTip: typeof import('./../components/prop-ui/inline-tip/InlineTip.vue')['default']
     PropUiModal: typeof import('./../components/prop-ui/modal/Modal.vue')['default']

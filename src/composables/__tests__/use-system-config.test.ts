@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 import { z } from 'zod'
 
-import { resolveSystemConfigValue } from '../use-system-config'
+import { resolveSystemConfigValue } from '../use-system-config-query'
 
 const schema = z.object({
   theme: z.enum(['light', 'dark']),

@@ -3,7 +3,7 @@ import type { Table } from '@tanstack/vue-table'
 
 import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon } from '@lucide/vue'
 
-import { PAGE_SIZES } from '@/config/app'
+import { PAGE_SIZES } from '@/constants/app'
 
 import type { ServerPagination } from './types'
 
