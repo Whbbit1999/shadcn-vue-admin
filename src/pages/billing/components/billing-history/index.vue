@@ -3,7 +3,7 @@ import type { Billing } from './data/schema'
 
 import { columns } from './columns'
 import DataTable from './data-table.vue'
-import billings from './data/billings.json'
+import billings from './data/billings.json' with { type: 'json' }
 </script>
 
 <template>

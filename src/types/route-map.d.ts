@@ -133,11 +133,7 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       Record<never, never>,
       | '/errors/'
-      | '/errors/401'
-      | '/errors/403'
-      | '/errors/404'
-      | '/errors/500'
-      | '/errors/503'
+      | '/errors/[code]'
     >,
     '/errors/': RouteRecordInfo<
       '/errors/',
@@ -146,39 +142,11 @@ declare module 'vue-router/auto-routes' {
       Record<never, never>,
       | never
     >,
-    '/errors/401': RouteRecordInfo<
-      '/errors/401',
-      '/errors/401',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/errors/403': RouteRecordInfo<
-      '/errors/403',
-      '/errors/403',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/errors/404': RouteRecordInfo<
-      '/errors/404',
-      '/errors/404',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/errors/500': RouteRecordInfo<
-      '/errors/500',
-      '/errors/500',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
-    '/errors/503': RouteRecordInfo<
-      '/errors/503',
-      '/errors/503',
-      Record<never, never>,
-      Record<never, never>,
+    '/errors/[code]': RouteRecordInfo<
+      '/errors/[code]',
+      '/errors/:code',
+      { code: ParamValue<true> },
+      { code: ParamValue<false> },
       | never
     >,
     '/help-center': RouteRecordInfo<
@@ -385,11 +353,7 @@ declare module 'vue-router/auto-routes' {
       routes:
         | '/errors'
         | '/errors/'
-        | '/errors/401'
-        | '/errors/403'
-        | '/errors/404'
-        | '/errors/500'
-        | '/errors/503'
+        | '/errors/[code]'
       views:
         | 'default'
       pathParamNames:
@@ -403,45 +367,13 @@ declare module 'vue-router/auto-routes' {
       pathParamNames:
         | never
     }
-    'src/pages/errors/401.vue': {
+    'src/pages/errors/[code].vue': {
       routes:
-        | '/errors/401'
+        | '/errors/[code]'
       views:
         | never
       pathParamNames:
-        | never
-    }
-    'src/pages/errors/403.vue': {
-      routes:
-        | '/errors/403'
-      views:
-        | never
-      pathParamNames:
-        | never
-    }
-    'src/pages/errors/404.vue': {
-      routes:
-        | '/errors/404'
-      views:
-        | never
-      pathParamNames:
-        | never
-    }
-    'src/pages/errors/500.vue': {
-      routes:
-        | '/errors/500'
-      views:
-        | never
-      pathParamNames:
-        | never
-    }
-    'src/pages/errors/503.vue': {
-      routes:
-        | '/errors/503'
-      views:
-        | never
-      pathParamNames:
-        | never
+        | 'code'
     }
     'src/pages/help-center.vue': {
       routes:

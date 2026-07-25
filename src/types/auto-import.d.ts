@@ -9,7 +9,11 @@ declare global {
   const API_BASE_URL: typeof import('../constants/app-config').API_BASE_URL
   const API_TIMEOUT: typeof import('../constants/app-config').API_TIMEOUT
   const CONTENT_LAYOUTS: typeof import('../constants/themes').CONTENT_LAYOUTS
+  const DEFAULT_PAGE_SIZE: typeof import('../constants/app').DEFAULT_PAGE_SIZE
   const EffectScope: typeof import('vue').EffectScope
+  const HOME_PATH: typeof import('../constants/app').HOME_PATH
+  const LOGIN_PATH: typeof import('../constants/app').LOGIN_PATH
+  const PAGE_SIZES: typeof import('../constants/app').PAGE_SIZES
   const RADIUS: typeof import('../constants/themes').RADIUS
   const THEMES: typeof import('../constants/themes').THEMES
   const THEME_PRIMARY_COLORS: typeof import('../constants/themes').THEME_PRIMARY_COLORS
@@ -56,7 +60,7 @@ declare global {
   const readonly: typeof import('vue').readonly
   const ref: typeof import('vue').ref
   const resolveComponent: typeof import('vue').resolveComponent
-  const resolveSystemConfigValue: typeof import('../composables/use-system-config').resolveSystemConfigValue
+  const resolveSystemConfigValue: typeof import('../composables/use-system-config-query').resolveSystemConfigValue
   const settingsNavItems: typeof import('../constants/sidebar-data').settingsNavItems
   const shallowReactive: typeof import('vue').shallowReactive
   const shallowReadonly: typeof import('vue').shallowReadonly
@@ -82,6 +86,7 @@ declare global {
   const useSidebarNavigation: typeof import('../composables/use-sidebar-navigation').useSidebarNavigation
   const useSlots: typeof import('vue').useSlots
   const useSystemConfig: typeof import('../composables/use-system-config').useSystemConfig
+  const useSystemConfigQuery: typeof import('../composables/use-system-config-query').useSystemConfigQuery
   const useSystemTheme: typeof import('../composables/use-system-theme').useSystemTheme
   const useTemplateRef: typeof import('vue').useTemplateRef
   const useThemeConfig: typeof import('../composables/use-theme-config')['useThemeConfig']
