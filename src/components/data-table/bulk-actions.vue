@@ -1,5 +1,5 @@
-<script setup lang="ts" generic="T">
-import type { Table as VueTable } from '@tanstack/vue-table'
+<script setup lang="ts" generic="T extends RowData">
+import type { RowData, Table as VueTable } from '@tanstack/vue-table'
 
 import { XIcon } from '@lucide/vue'
 
@@ -8,8 +8,10 @@ import { Separator } from '@/components/ui/separator'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 
-interface BulkActionsProps<T> {
-  table: VueTable<T>
+import type { features } from './features'
+
+interface BulkActionsProps<T extends RowData> {
+  table: VueTable<typeof features, T>
   entityName: string
 }
 

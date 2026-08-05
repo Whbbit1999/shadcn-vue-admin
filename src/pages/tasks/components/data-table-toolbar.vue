@@ -3,6 +3,8 @@ import type { Table } from '@tanstack/vue-table'
 
 import { XIcon } from '@lucide/vue'
 
+import type { features } from '@/components/data-table/features'
+
 import { DataTableFacetedFilter, DataTableViewOptions } from '@/components/data-table'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
@@ -12,12 +14,12 @@ import type { Task } from '../data/schema'
 import { priorities, statuses } from '../data/data'
 
 interface DataTableToolbarProps {
-  table: Table<Task>
+  table: Table<typeof features, Task>
 }
 
 const props = defineProps<DataTableToolbarProps>()
 
-const isFiltered = computed(() => props.table.getState().columnFilters.length > 0)
+const isFiltered = computed(() => props.table.atoms.columnFilters.get().length > 0)
 </script>
 
 <template>

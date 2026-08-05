@@ -1,16 +1,18 @@
-import type { ColumnFiltersState, ColumnPinningState, PaginationState, SortingState, TableOptionsWithReactiveData, VisibilityState } from '@tanstack/vue-table'
+import type { ColumnFiltersState, ColumnPinningState, ColumnVisibilityState, PaginationState, RowData, SortingState, TableOptionsWithReactiveData } from '@tanstack/vue-table'
 
-import { getCoreRowModel, getFacetedRowModel, getFacetedUniqueValues, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useVueTable } from '@tanstack/vue-table'
+import { useTable } from '@tanstack/vue-table'
 
 import { valueUpdater } from '@/lib/utils'
 
 import type { DataTableProps } from './types'
 
-export function useGenerateVueTable<T>(props: DataTableProps<T>) {
+import { features } from './features'
+
+export function useGenerateVueTable<T extends RowData>(props: DataTableProps<T>) {
   const sorting = ref<SortingState>([])
   const columnFilters = ref<ColumnFiltersState>([])
-  const columnVisibility = ref<VisibilityState>({})
-  const columnPinning = ref<ColumnPinningState>({ left: [], right: [] })
+  const columnVisibility = ref<ColumnVisibilityState>({})
+  const columnPinning = ref<ColumnPinningState>({ start: [], end: [] })
   const rowSelection = ref({})
   const pagination = ref<PaginationState>({
     pageIndex: 0,
@@ -40,7 +42,8 @@ export function useGenerateVueTable<T>(props: DataTableProps<T>) {
     return -1
   })
 
-  const tableConfig: TableOptionsWithReactiveData<T> = {
+  const tableConfig: TableOptionsWithReactiveData<typeof features, T> = {
+    features,
     get data() { return props.data },
     get columns() { return props.columns },
     state: {
@@ -66,23 +69,14 @@ export function useGenerateVueTable<T>(props: DataTableProps<T>) {
     onColumnPinningChange: updaterOrValue => valueUpdater(updaterOrValue, columnPinning),
     onRowSelectionChange: updaterOrValue => valueUpdater(updaterOrValue, rowSelection),
     onPaginationChange: updaterOrValue => valueUpdater(updaterOrValue, pagination),
-    getCoreRowModel: getCoreRowModel(),
-    getFilteredRowModel: getFilteredRowModel(),
-    getPaginationRowModel: getPaginationRowModel(),
-    getSortedRowModel: getSortedRowModel(),
-    getFacetedRowModel: getFacetedRowModel(),
-    getFacetedUniqueValues: getFacetedUniqueValues(),
   }
 
   if (useServerPagination) {
     tableConfig.pageCount = pageCount.value
     tableConfig.manualPagination = true
   }
-  else {
-    tableConfig.getPaginationRowModel = getPaginationRowModel()
-  }
 
-  const table = useVueTable<T>(tableConfig)
+  const table = useTable(tableConfig)
 
   return table
 }

@@ -4,6 +4,8 @@ import type { Component } from 'vue'
 
 import { EllipsisIcon, FilePenLineIcon, Trash2Icon } from '@lucide/vue'
 
+import type { features } from '@/components/data-table/features'
+
 import { Modal, ModalContent } from '@/components/prop-ui/modal'
 
 import type { Task } from '../data/schema'
@@ -15,7 +17,7 @@ import TaskResourceDialog from './task-resource-dialog.vue'
 const props = defineProps<DataTableRowActionsProps>()
 
 interface DataTableRowActionsProps {
-  row: Row<Task>
+  row: Row<typeof features, Task>
 }
 const task = computed(() => taskSchema.parse(props.row.original))
 

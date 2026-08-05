@@ -1,14 +1,16 @@
-<script setup lang="ts" generic="T = Task">
-import type { Table as VueTable } from '@tanstack/vue-table'
+<script setup lang="ts" generic="T extends RowData = Task">
+import type { RowData, Table as VueTable } from '@tanstack/vue-table'
 
 import { toast } from 'vue-sonner'
+
+import type { features } from '@/components/data-table/features'
 
 import ConfirmDialog from '@/components/confirm-dialog.vue'
 
 import type { Task } from '../data/schema'
 
 const { table } = defineProps<{
-  table: VueTable<T>
+  table: VueTable<typeof features, T>
 }>()
 
 const openModel = defineModel<boolean>('open', {

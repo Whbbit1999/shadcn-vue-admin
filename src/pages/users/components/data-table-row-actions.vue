@@ -4,6 +4,8 @@ import type { Component } from 'vue'
 
 import { EllipsisIcon } from '@lucide/vue'
 
+import type { features } from '@/components/data-table/features'
+
 import { Modal, ModalContent } from '@/components/prop-ui/modal'
 
 import type { User } from '../data/schema'
@@ -11,7 +13,7 @@ import type { User } from '../data/schema'
 import UserResource from './user-resource.vue'
 
 interface DataTableRowActionsProps {
-  row: Row<User>
+  row: Row<typeof features, User>
 }
 const props = defineProps<DataTableRowActionsProps>()
 const user = computed(() => props.row.original)

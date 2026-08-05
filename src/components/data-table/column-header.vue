@@ -1,13 +1,15 @@
-<script setup lang="ts" generic="T">
-import type { Column } from '@tanstack/vue-table'
+<script setup lang="ts" generic="T extends RowData">
+import type { Column, RowData } from '@tanstack/vue-table'
 
 import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon, ChevronsUpDownIcon, EyeOffIcon, PinIcon, PinOffIcon } from '@lucide/vue'
 import { computed } from 'vue'
 
 import { cn } from '@/lib/utils'
 
+import type { features } from './features'
+
 interface DataTableColumnHeaderProps {
-  column: Column<T, any>
+  column: Column<typeof features, T, any>
   title: string
 }
 
@@ -70,11 +72,11 @@ export default {
 
         <template v-if="canPinned">
           <UiDropdownMenuSeparator />
-          <UiDropdownMenuItem @click="props.column.pin('left')">
+          <UiDropdownMenuItem @click="props.column.pin('start')">
             <ArrowLeftIcon class="mr-2 size-4 text-muted-foreground/70" />
             Pin Left
           </UiDropdownMenuItem>
-          <UiDropdownMenuItem @click="props.column.pin('right')">
+          <UiDropdownMenuItem @click="props.column.pin('end')">
             <ArrowRightIcon class="mr-2 size-4 text-muted-foreground/70" />
             Pin Right
           </UiDropdownMenuItem>
