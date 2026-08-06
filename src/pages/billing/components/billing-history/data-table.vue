@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type { ColumnDef } from '@tanstack/vue-table'
 
+import type { features } from '@/components/data-table/features'
+
 import { DataTable, useGenerateVueTable } from '@/components/data-table'
 
 import type { Billing } from './data/schema'
@@ -8,7 +10,7 @@ import type { Billing } from './data/schema'
 import DataTableToolbar from './data-table-toolbar.vue'
 
 interface DataTableProps {
-  columns: ColumnDef<Billing, any>[]
+  columns: ColumnDef<typeof features, Billing, any>[]
   data: Billing[]
 }
 

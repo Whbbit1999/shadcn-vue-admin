@@ -2,6 +2,8 @@ import type { ColumnDef } from '@tanstack/vue-table'
 
 import { h } from 'vue'
 
+import type { features } from '@/components/data-table/features'
+
 import { DataTableColumnHeader, SelectColumn } from '@/components/data-table'
 import { Copy } from '@/components/prop-ui/copy'
 import Badge from '@/components/ui/badge/Badge.vue'
@@ -11,8 +13,8 @@ import type { User } from '../data/schema'
 import { callTypes, userTypes } from '../data/data'
 import DataTableRowActions from './data-table-row-actions.vue'
 
-export const columns: ColumnDef<User>[] = [
-  SelectColumn as ColumnDef<User>,
+export const columns: ColumnDef<typeof features, User>[] = [
+  SelectColumn as ColumnDef<typeof features, User>,
   {
     accessorKey: 'username',
     header: ({ column }) => h(DataTableColumnHeader<User>, { column, title: 'username' }),

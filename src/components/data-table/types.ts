@@ -1,4 +1,6 @@
-import type { ColumnDef } from '@tanstack/vue-table'
+import type { ColumnDef, RowData } from '@tanstack/vue-table'
+
+import type { features } from './features'
 
 export interface FacetedFilterOption {
   label: string
@@ -14,9 +16,9 @@ export interface ServerPagination {
   onPageSizeChange: (pageSize: number) => void
 }
 
-export interface DataTableProps<T> {
+export interface DataTableProps<T extends RowData> {
   loading?: boolean
-  columns: ColumnDef<T, any>[]
+  columns: ColumnDef<typeof features, T, any>[]
   data: T[]
   serverPagination?: ServerPagination
 }

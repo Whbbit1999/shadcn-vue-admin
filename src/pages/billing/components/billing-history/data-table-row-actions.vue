@@ -4,6 +4,8 @@ import type { Component } from 'vue'
 
 import { EllipsisIcon } from '@lucide/vue'
 
+import type { features } from '@/components/data-table/features'
+
 import { Modal, ModalContent } from '@/components/prop-ui/modal'
 
 import type { Billing } from './data/schema'
@@ -11,7 +13,7 @@ import type { Billing } from './data/schema'
 import { billingSchema } from './data/schema'
 
 interface DataTableRowActionsProps {
-  row: Row<Billing>
+  row: Row<typeof features, Billing>
 }
 const props = defineProps<DataTableRowActionsProps>()
 

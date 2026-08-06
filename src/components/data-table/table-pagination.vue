@@ -1,14 +1,15 @@
-<script setup lang="ts" generic="T">
-import type { Table } from '@tanstack/vue-table'
+<script setup lang="ts" generic="T extends RowData">
+import type { RowData, Table } from '@tanstack/vue-table'
 
 import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon } from '@lucide/vue'
 
 import { PAGE_SIZES } from '@/constants/app'
 
+import type { features } from './features'
 import type { ServerPagination } from './types'
 
 interface DataTablePaginationProps {
-  table: Table<T>
+  table: Table<typeof features, T>
   serverPagination?: ServerPagination
 }
 const props = defineProps<DataTablePaginationProps>()
@@ -19,14 +20,14 @@ const currentPage = computed(() => {
   if (isServerPagination.value && props.serverPagination) {
     return props.serverPagination.page
   }
-  return props.table.getState().pagination.pageIndex + 1
+  return props.table.atoms.pagination.get().pageIndex + 1
 })
 
 const currentPageSize = computed(() => {
   if (isServerPagination.value && props.serverPagination) {
     return props.serverPagination.pageSize
   }
-  return props.table.getState().pagination.pageSize
+  return props.table.atoms.pagination.get().pageSize
 })
 
 const totalPages = computed(() => {

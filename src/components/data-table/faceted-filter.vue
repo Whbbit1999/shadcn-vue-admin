@@ -1,14 +1,15 @@
-<script setup lang="ts" generic="T">
-import type { Column } from '@tanstack/vue-table'
+<script setup lang="ts" generic="T extends RowData">
+import type { Column, RowData } from '@tanstack/vue-table'
 
 import { CheckIcon, CirclePlusIcon } from '@lucide/vue'
 
 import { cn } from '@/lib/utils'
 
+import type { features } from './features'
 import type { FacetedFilterOption } from './types'
 
 interface DataTableFacetedFilter {
-  column?: Column<T, any>
+  column?: Column<typeof features, T, any>
   title?: string
   options: FacetedFilterOption[]
 }

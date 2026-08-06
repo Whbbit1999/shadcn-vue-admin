@@ -1,10 +1,12 @@
-<script setup lang="ts" generic="T">
-import type { Table } from '@tanstack/vue-table'
+<script setup lang="ts" generic="T extends RowData">
+import type { RowData, Table } from '@tanstack/vue-table'
 
 import { RefreshCcwIcon, Settings2Icon } from '@lucide/vue'
 
+import type { features } from './features'
+
 interface DataTableViewOptionsProps {
-  table: Table<T>
+  table: Table<typeof features, T>
 }
 
 const props = defineProps<DataTableViewOptionsProps>()

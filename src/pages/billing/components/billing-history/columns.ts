@@ -1,5 +1,7 @@
 import type { ColumnDef } from '@tanstack/vue-table'
 
+import type { features } from '@/components/data-table/features'
+
 import { DataTableColumnHeader } from '@/components/data-table'
 import { Badge } from '@/components/ui/badge'
 
@@ -8,7 +10,7 @@ import type { Billing } from './data/schema'
 import DataTableRowActions from './data-table-row-actions.vue'
 import { statuses } from './data/data'
 
-export const columns: ColumnDef<Billing>[] = [
+export const columns: ColumnDef<typeof features, Billing>[] = [
 
   {
     accessorKey: 'id',
