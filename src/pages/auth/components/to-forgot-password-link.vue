@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { Button } from '@/components/ui/button'
 </script>
 
 <template>
-  <UiButton variant="link" class="text-muted-foreground" @click="$router.push('/auth/forgot-password')">
+  <Button variant="link" class="text-muted-foreground" @click="$router.push('/auth/forgot-password')">
     {{ $t('forgotPassword') }}
-  </UiButton>
+  </Button>
 </template>

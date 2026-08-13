@@ -4,6 +4,8 @@ import { Trash2Icon } from '@lucide/vue'
 import type { DataTableProps } from '@/components/data-table'
 
 import { DataTable, DataTableBulkActions, useGenerateVueTable } from '@/components/data-table'
+import { Button } from '@/components/ui/button'
+import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 
 import type { Task } from '../data/schema'
 
@@ -18,9 +20,9 @@ const taskDeleteBatchOpen = shallowRef(false)
 
 <template>
   <DataTableBulkActions entity-name="task" :table="table">
-    <UiTooltip>
-      <UiTooltipTrigger as-child>
-        <UiButton
+    <Tooltip>
+      <TooltipTrigger as-child>
+        <Button
           variant="destructive"
           size="icon"
           class="size-8"
@@ -30,12 +32,12 @@ const taskDeleteBatchOpen = shallowRef(false)
         >
           <Trash2Icon />
           <span class="sr-only">Delete selected tasks</span>
-        </UiButton>
-      </UiTooltipTrigger>
-      <UiTooltipContent>
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>
         <p>Delete selected tasks</p>
-      </UiTooltipContent>
-    </UiTooltip>
+      </TooltipContent>
+    </Tooltip>
 
     <TaskDeleteBatch
       v-model:open="taskDeleteBatchOpen"

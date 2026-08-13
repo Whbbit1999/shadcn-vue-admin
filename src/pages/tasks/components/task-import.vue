@@ -3,6 +3,9 @@ import { DownloadIcon } from '@lucide/vue'
 import { toast } from 'vue-sonner'
 
 import { Modal, ModalContent, ModalDescription, ModalFooter, ModalHeader, ModalTitle, ModalTrigger } from '@/components/prop-ui/modal'
+import { Button } from '@/components/ui/button'
+import { Input as FileInput } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
 const isOpen = shallowRef(false)
 const file = shallowRef()
@@ -33,10 +36,10 @@ function onSubmit() {
 <template>
   <Modal v-model:open="isOpen">
     <ModalTrigger as-child>
-      <UiButton variant="outline">
+      <Button variant="outline">
         Import
         <DownloadIcon />
-      </UiButton>
+      </Button>
     </ModalTrigger>
 
     <ModalContent>
@@ -50,18 +53,18 @@ function onSubmit() {
       </ModalHeader>
 
       <div class="grid w-full max-w-sm items-center gap-1.5">
-        <UiLabel>File</UiLabel>
-        <UiInput id="file" v-model="file" type="file" />
+        <Label>File</Label>
+        <FileInput id="file" v-model="file" type="file" />
         <span v-if="error" class="text-destructive">{{ error }}</span>
       </div>
 
       <ModalFooter>
-        <UiButton variant="secondary" @click="isOpen = false">
+        <Button variant="secondary" @click="isOpen = false">
           Cancel
-        </UiButton>
-        <UiButton @click="onSubmit">
+        </Button>
+        <Button @click="onSubmit">
           Import
-        </UiButton>
+        </Button>
       </ModalFooter>
     </ModalContent>
   </Modal>

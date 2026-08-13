@@ -3,6 +3,7 @@ import { toast } from 'vue-sonner'
 
 import { BasicPage } from '@/components/global-layout'
 import { Button } from '@/components/ui/button'
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import OverviewContent from './components/overview-content.vue'
 
@@ -32,19 +33,19 @@ const defaultTab = tabs[0].value
       </Button>
     </template>
 
-    <UiTabs :default-value="defaultTab" class="w-full">
-      <UiTabsList>
-        <UiTabsTrigger
+    <Tabs :default-value="defaultTab" class="w-full">
+      <TabsList>
+        <TabsTrigger
           v-for="tab in tabs" :key="tab.value"
           :value="tab.value"
           :disabled="tab.disabled"
         >
           {{ tab.name }}
-        </UiTabsTrigger>
-      </UiTabsList>
-      <UiTabsContent value="overview" class="space-y-4">
+        </TabsTrigger>
+      </TabsList>
+      <TabsContent value="overview" class="space-y-4">
         <OverviewContent />
-      </UiTabsContent>
-    </UiTabs>
+      </TabsContent>
+    </Tabs>
   </BasicPage>
 </template>

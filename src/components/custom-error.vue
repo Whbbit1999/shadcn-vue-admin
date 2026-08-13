@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Button } from '@/components/ui/button'
+
 defineProps<{
   code: number
   subtitle: string
@@ -21,12 +23,12 @@ defineProps<{
     <footer class="mt-8">
       <slot>
         <div class="flex justify-center gap-2">
-          <UiButton variant="outline" @click="$router.back()">
+          <Button variant="outline" @click="$router.back()">
             Go Back
-          </UiButton>
-          <UiButton @click="$router.push('/')">
+          </Button>
+          <Button @click="$router.push('/')">
             Back to Home
-          </UiButton>
+          </Button>
         </div>
       </slot>
     </footer>

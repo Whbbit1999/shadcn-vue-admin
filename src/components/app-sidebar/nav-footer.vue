@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { BadgeCheckIcon, BellIcon, ChevronsUpDownIcon, CreditCardIcon, LogOutIcon, SparklesIcon, UserRoundCogIcon } from '@lucide/vue'
 
-import { useSidebar } from '@/components/ui/sidebar'
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '@/components/ui/sidebar'
 
 import type { User } from './types'
 
@@ -14,87 +16,87 @@ const { isMobile, open } = useSidebar()
 </script>
 
 <template>
-  <UiSidebarMenu>
-    <UiSidebarMenuItem>
-      <UiDropdownMenu>
-        <UiDropdownMenuTrigger as-child>
-          <UiSidebarMenuButton
+  <SidebarMenu>
+    <SidebarMenuItem>
+      <DropdownMenu>
+        <DropdownMenuTrigger as-child>
+          <SidebarMenuButton
             size="lg"
             class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
           >
-            <UiAvatar class="size-8 rounded-lg">
-              <UiAvatarImage :src="user.avatar" :alt="user.name" />
-              <UiAvatarFallback class="rounded-lg">
+            <Avatar class="size-8 rounded-lg">
+              <AvatarImage :src="user.avatar" :alt="user.name" />
+              <AvatarFallback class="rounded-lg">
                 CN
-              </UiAvatarFallback>
-            </UiAvatar>
+              </AvatarFallback>
+            </Avatar>
             <div class="grid flex-1 text-sm leading-tight text-left">
               <span class="font-semibold truncate">{{ user.name }}</span>
               <span class="text-xs truncate">{{ user.email }}</span>
             </div>
             <ChevronsUpDownIcon class="ml-auto size-4" />
-          </UiSidebarMenuButton>
-        </UiDropdownMenuTrigger>
-        <UiDropdownMenuContent
+          </SidebarMenuButton>
+        </DropdownMenuTrigger>
+        <DropdownMenuContent
           class="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
           :side="(isMobile || open) ? 'bottom' : 'right'"
           align="start"
           :side-offset="4"
         >
-          <UiDropdownMenuLabel class="p-0 font-normal">
+          <DropdownMenuLabel class="p-0 font-normal">
             <div class="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
-              <UiAvatar class="size-8 rounded-lg">
-                <UiAvatarImage :src="user.avatar" :alt="user.name" />
-                <UiAvatarFallback class="rounded-lg">
+              <Avatar class="size-8 rounded-lg">
+                <AvatarImage :src="user.avatar" :alt="user.name" />
+                <AvatarFallback class="rounded-lg">
                   CN
-                </UiAvatarFallback>
-              </UiAvatar>
+                </AvatarFallback>
+              </Avatar>
               <div class="grid flex-1 text-sm leading-tight text-left">
                 <span class="font-semibold truncate">{{ user.name }}</span>
                 <span class="text-xs truncate">{{ user.email }}</span>
               </div>
             </div>
-          </UiDropdownMenuLabel>
+          </DropdownMenuLabel>
 
-          <UiDropdownMenuSeparator />
-          <UiDropdownMenuGroup>
-            <UiDropdownMenuItem @click="$router.push('/billing/')">
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuItem @click="$router.push('/billing/')">
               <SparklesIcon />
               Upgrade to Pro
-            </UiDropdownMenuItem>
-          </UiDropdownMenuGroup>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
 
-          <UiDropdownMenuSeparator />
-          <UiDropdownMenuGroup>
-            <UiDropdownMenuItem @click="$router.push('/billing?type=billing')">
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuItem @click="$router.push('/billing?type=billing')">
               <CreditCardIcon />
               Billing
-            </UiDropdownMenuItem>
-          </UiDropdownMenuGroup>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
 
-          <UiDropdownMenuSeparator />
-          <UiDropdownMenuGroup>
-            <UiDropdownMenuItem @click="$router.push('/settings/')">
+          <DropdownMenuSeparator />
+          <DropdownMenuGroup>
+            <DropdownMenuItem @click="$router.push('/settings/')">
               <UserRoundCogIcon />
               Profile
-            </UiDropdownMenuItem>
-            <UiDropdownMenuItem @click="$router.push('/settings/account')">
+            </DropdownMenuItem>
+            <DropdownMenuItem @click="$router.push('/settings/account')">
               <BadgeCheckIcon />
               Account
-            </UiDropdownMenuItem>
-            <UiDropdownMenuItem @click="$router.push('/settings/notifications')">
+            </DropdownMenuItem>
+            <DropdownMenuItem @click="$router.push('/settings/notifications')">
               <BellIcon />
               Notifications
-            </UiDropdownMenuItem>
-          </UiDropdownMenuGroup>
+            </DropdownMenuItem>
+          </DropdownMenuGroup>
 
-          <UiDropdownMenuSeparator />
-          <UiDropdownMenuItem @click="logout">
+          <DropdownMenuSeparator />
+          <DropdownMenuItem @click="logout">
             <LogOutIcon />
             {{ $t('logout') }}
-          </UiDropdownMenuItem>
-        </UiDropdownMenuContent>
-      </UiDropdownMenu>
-    </UiSidebarMenuItem>
-  </UiSidebarMenu>
+          </DropdownMenuItem>
+        </DropdownMenuContent>
+      </DropdownMenu>
+    </SidebarMenuItem>
+  </SidebarMenu>
 </template>

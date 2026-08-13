@@ -1,4 +1,9 @@
 <script setup lang="ts">
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+
 import AuthTitle from './components/auth-title.vue'
 </script>
 
@@ -6,39 +11,39 @@ import AuthTitle from './components/auth-title.vue'
   <div class="flex items-center justify-center min-h-screen p-4 min-w-screen">
     <main class="flex flex-col gap-4">
       <AuthTitle />
-      <UiCard>
-        <UiCardHeader>
-          <UiCardTitle class="text-2xl">
+      <Card>
+        <CardHeader>
+          <CardTitle class="text-2xl">
             Forgot Password
-          </UiCardTitle>
-          <UiCardDescription>
+          </CardTitle>
+          <CardDescription>
             Enter your registered email and we will send you a link to reset your password.
-          </UiCardDescription>
-        </UiCardHeader>
-        <UiCardContent class="grid gap-4">
+          </CardDescription>
+        </CardHeader>
+        <CardContent class="grid gap-4">
           <div class="grid gap-2">
-            <UiLabel for="email">
+            <Label for="email">
               {{ $t('email') }}
-            </UiLabel>
-            <UiInput id="email" type="email" placeholder="m@example.com" required />
+            </Label>
+            <Input id="email" type="email" placeholder="m@example.com" required />
           </div>
-        </UiCardContent>
-        <UiCardFooter class="flex flex-col gap-2">
-          <UiButton class="w-full">
+        </CardContent>
+        <CardFooter class="flex flex-col gap-2">
+          <Button class="w-full">
             {{ $t('forgotPasswordPage.continue') }}
-          </UiButton>
+          </Button>
 
           <div>
             Don't have an account?
-            <UiButton
+            <Button
               variant="link" class="px-0 text-muted-foreground"
               @click="$router.push('/auth/sign-up')"
             >
               Sign up.
-            </UiButton>
+            </Button>
           </div>
-        </UiCardFooter>
-      </UiCard>
+        </CardFooter>
+      </Card>
     </main>
   </div>
 </template>

@@ -2,6 +2,7 @@
 import { LoaderIcon } from '@lucide/vue'
 
 import { BasicPage } from '@/components/global-layout'
+import { Button } from '@/components/ui/button'
 
 import { columns } from './components/columns'
 import DataTable from './components/data-table.vue'
@@ -28,9 +29,9 @@ function mockLoading() {
     <template #actions>
       <UserInvite />
       <UserCreate />
-      <UiButton variant="outline" @click="mockLoading">
+      <Button variant="outline" @click="mockLoading">
         <LoaderIcon />Mock Loading
-      </UiButton>
+      </Button>
     </template>
     <div class="overflow-x-auto">
       <DataTable :loading :data="users" :columns="columns" />

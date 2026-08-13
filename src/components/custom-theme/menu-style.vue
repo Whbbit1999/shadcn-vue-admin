@@ -4,6 +4,8 @@ import { storeToRefs } from 'pinia'
 
 import type { NavigationMode } from '@/stores/sidebar-config'
 
+import { Button } from '@/components/ui/button'
+import { Label } from '@/components/ui/label'
 import { useSidebarConfigStore } from '@/stores/sidebar-config'
 
 const sidebarConfigStore = useSidebarConfigStore()
@@ -36,11 +38,11 @@ function handleMenuStyleChange(style: NavigationMode) {
 
 <template>
   <div class="space-y-1.5 pt-6">
-    <UiLabel for="menu-style" class="text-xs">
+    <Label for="menu-style" class="text-xs">
       Menu Style
-    </UiLabel>
+    </Label>
     <div class="grid grid-cols-2 gap-2 py-1.5">
-      <UiButton
+      <Button
         v-for="style in menuStyles"
         :key="style.value"
         variant="outline"
@@ -51,7 +53,7 @@ function handleMenuStyleChange(style: NavigationMode) {
       >
         <component :is="style.icon" class="w-4 h-4" />
         {{ style.label }}
-      </UiButton>
+      </Button>
     </div>
   </div>
 </template>

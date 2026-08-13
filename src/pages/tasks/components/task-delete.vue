@@ -2,6 +2,7 @@
 import { toast } from 'vue-sonner'
 
 import { ModalClose, ModalDescription, ModalFooter, ModalHeader, ModalTitle } from '@/components/prop-ui/modal'
+import { Button } from '@/components/ui/button'
 
 import type { Task } from '../data/schema'
 
@@ -29,15 +30,15 @@ function handleRemove() {
 
     <ModalFooter>
       <ModalClose as-child>
-        <UiButton variant="outline">
+        <Button variant="outline">
           Cancel
-        </UiButton>
+        </Button>
       </ModalClose>
 
       <ModalClose as-child>
-        <UiButton variant="destructive" @click="handleRemove">
+        <Button variant="destructive" @click="handleRemove">
           Delete
-        </UiButton>
+        </Button>
       </ModalClose>
     </ModalFooter>
   </div>

@@ -2,8 +2,11 @@
 import { useForm } from '@tanstack/vue-form'
 import { toast } from 'vue-sonner'
 
+import { Button } from '@/components/ui/button'
+import { DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog'
 import { FieldDescription, FieldError } from '@/components/ui/field'
 import { FormItem } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 
 import type { TeamAddValidator } from './validators/team.validator'
@@ -39,14 +42,14 @@ const form = useForm({
 
 <template>
   <div>
-    <UiDialogHeader>
-      <UiDialogTitle>
+    <DialogHeader>
+      <DialogTitle>
         Add New Team
-      </UiDialogTitle>
-      <UiDialogDescription>
+      </DialogTitle>
+      <DialogDescription>
         Add a new team by your self.
-      </UiDialogDescription>
-    </UiDialogHeader>
+      </DialogDescription>
+    </DialogHeader>
 
     <form class="space-y-4" @submit.prevent="form.handleSubmit">
       <form.Field name="name">
@@ -55,7 +58,7 @@ const form = useForm({
             <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive text-base">
               Name
             </Label>
-            <UiInput
+            <Input
               :model-value="field.state.value"
               @input="field.handleChange($event.target.value)"
               @blur="field.handleBlur"
@@ -73,7 +76,7 @@ const form = useForm({
             <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive text-base">
               Slug
             </Label>
-            <UiInput
+            <Input
               :model-value="field.state.value"
               @input="field.handleChange($event.target.value)"
               @blur="field.handleBlur"
@@ -91,7 +94,7 @@ const form = useForm({
             <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive text-base">
               Logo
             </Label>
-            <UiInput
+            <Input
               :model-value="field.state.value"
               @input="field.handleChange($event.target.value)"
               @blur="field.handleBlur"
@@ -105,9 +108,9 @@ const form = useForm({
       </form.Field>
 
       <div class="flex justify-start mt-4">
-        <UiButton type="submit">
+        <Button type="submit">
           Add team
-        </UiButton>
+        </Button>
       </div>
     </form>
   </div>

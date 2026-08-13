@@ -2,6 +2,7 @@
 import { PlusIcon } from '@lucide/vue'
 
 import { Modal, ModalContent, ModalTrigger } from '@/components/prop-ui/modal'
+import { Button } from '@/components/ui/button'
 
 import TaskResourceDialog from './task-resource-dialog.vue'
 
@@ -11,10 +12,10 @@ const isOpen = shallowRef(false)
 <template>
   <Modal v-model:open="isOpen">
     <ModalTrigger as-child>
-      <UiButton>
+      <Button>
         Create
         <PlusIcon />
-      </UiButton>
+      </Button>
     </ModalTrigger>
 
     <ModalContent>

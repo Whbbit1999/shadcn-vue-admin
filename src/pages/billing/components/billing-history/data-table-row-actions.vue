@@ -7,6 +7,8 @@ import { EllipsisIcon } from '@lucide/vue'
 import type { features } from '@/components/data-table/features'
 
 import { Modal, ModalContent } from '@/components/prop-ui/modal'
+import { Button } from '@/components/ui/button'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuGroup, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 
 import type { Billing } from './data/schema'
 
@@ -41,24 +43,24 @@ async function handleSelect(command: TCommand) {
 
 <template>
   <Modal v-model:open="isOpen">
-    <UiDropdownMenu :modal="false">
-      <UiDropdownMenuTrigger as-child>
-        <UiButton
+    <DropdownMenu :modal="false">
+      <DropdownMenuTrigger as-child>
+        <Button
           variant="ghost"
           class="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
         >
           <EllipsisIcon class="size-4" />
           <span class="sr-only">Open menu</span>
-        </UiButton>
-      </UiDropdownMenuTrigger>
-      <UiDropdownMenuContent>
-        <UiDropdownMenuGroup>
-          <UiDropdownMenuItem @select.stop="handleSelect('detail')">
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent>
+        <DropdownMenuGroup>
+          <DropdownMenuItem @select.stop="handleSelect('detail')">
             <span>Detail</span>
-          </UiDropdownMenuItem>
-        </UiDropdownMenuGroup>
-      </UiDropdownMenuContent>
-    </UiDropdownMenu>
+          </DropdownMenuItem>
+        </DropdownMenuGroup>
+      </DropdownMenuContent>
+    </DropdownMenu>
     <ModalContent>
       <component :is="showComponent" :billing="billing" />
     </ModalContent>

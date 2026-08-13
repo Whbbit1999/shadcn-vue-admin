@@ -1,9 +1,9 @@
 <script setup lang="ts">
-
+import { Button } from '@/components/ui/button'
 </script>
 
 <template>
-  <UiButton as="a" href="/auth/sign-in">
+  <Button as="a" href="/auth/sign-in">
     {{ $t('login') }}
-  </UiButton>
+  </Button>
 </template>

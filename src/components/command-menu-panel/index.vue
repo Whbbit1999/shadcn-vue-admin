@@ -2,7 +2,10 @@
 import { MenuIcon, SearchIcon } from '@lucide/vue'
 import { useEventListener } from '@vueuse/core'
 
+import { Button } from '@/components/ui/button'
+import { CommandDialog, CommandEmpty, CommandInput, CommandList, CommandSeparator } from '@/components/ui/command'
 import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
+import { Kbd } from '@/components/ui/kbd'
 
 import CommandChangeTheme from './command-change-theme.vue'
 import CommandToPage from './command-to-page.vue'
@@ -33,17 +36,17 @@ const firstKey = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘' 
         <SearchIcon class="size-4" />
         <span class="text-xs font-semibold text-muted-foreground">{{ $t('homePage.searchKeyWords') }}</span>
       </div>
-      <UiKbd>{{ firstKey }} + k</UiKbd>
+      <Kbd>{{ firstKey }} + k</Kbd>
     </div>
 
-    <UiButton variant="outline" size="icon" class="md:hidden" @click="handleOpenChange">
+    <Button variant="outline" size="icon" class="md:hidden" @click="handleOpenChange">
       <SearchIcon />
-    </UiButton>
+    </Button>
 
-    <UiCommandDialog v-model:open="open">
-      <UiCommandInput placeholder="Type a command or search..." />
-      <UiCommandList>
-        <UiCommandEmpty>
+    <CommandDialog v-model:open="open">
+      <CommandInput placeholder="Type a command or search..." />
+      <CommandList>
+        <CommandEmpty>
           <Empty>
             <EmptyHeader>
               <EmptyMedia variant="icon">
@@ -55,12 +58,12 @@ const firstKey = computed(() => navigator?.userAgent.includes('Mac OS') ? '⌘' 
               </EmptyDescription>
             </EmptyHeader>
           </Empty>
-        </UiCommandEmpty>
+        </CommandEmpty>
 
         <CommandToPage @click="handleOpenChange" />
-        <UiCommandSeparator />
+        <CommandSeparator />
         <CommandChangeTheme @click="handleOpenChange" />
-      </UiCommandList>
-    </UiCommandDialog>
+      </CommandList>
+    </CommandDialog>
   </div>
 </template>
