@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { toast } from 'vue-sonner'
 
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Bubble, BubbleContent } from '@/components/ui/bubble'
 import { Marker, MarkerContent, MarkerIcon } from '@/components/ui/marker'
 import { Message, MessageAvatar, MessageContent, MessageFooter } from '@/components/ui/message'
@@ -86,9 +87,9 @@ function handleTypeChange(type: string) {
         <Message :align="talk.role === 'user' ? 'end' : 'start'">
           <MessageAvatar>
             <RobotAvatar v-if="talk.role !== 'user'" />
-            <UiAvatar v-else>
-              <UiAvatarFallback>U</UiAvatarFallback>
-            </UiAvatar>
+            <Avatar v-else>
+              <AvatarFallback>U</AvatarFallback>
+            </Avatar>
           </MessageAvatar>
           <MessageContent>
             <Bubble :variant="talk.role === 'user' ? 'default' : 'secondary'">

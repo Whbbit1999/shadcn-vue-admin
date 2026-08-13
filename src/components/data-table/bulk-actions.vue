@@ -3,6 +3,7 @@ import type { RowData, Table as VueTable } from '@tanstack/vue-table'
 
 import { XIcon } from '@lucide/vue'
 
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
@@ -67,12 +68,12 @@ function handleClearSelection() {
       />
 
       <section id="bulk-actions-description" class="flex items-center gap-x-1 text-sm">
-        <UiBadge
+        <Badge
           class="min-w-8 rounded-lg"
           :aria-label="`${selectedCount} selected`"
         >
           {{ selectedCount }}
-        </UiBadge>
+        </Badge>
         {{ entityName }} selected
       </section>
 

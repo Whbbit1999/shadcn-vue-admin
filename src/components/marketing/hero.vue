@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import Autoplay from 'embla-carousel-autoplay'
 
+import { Avatar, AvatarImage } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
+import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from '@/components/ui/carousel'
+
 const images = [
   'https://picsum.photos/640/640?random=1',
   'https://picsum.photos/640/640?random=2',
@@ -29,9 +33,9 @@ const users: { avatar: string, name: string, id: number }[] = [
       </div>
 
       <div class="flex gap-4 my-12 relative">
-        <UiButton>
+        <Button>
           {{ $t('marketing.hero.getMore') }}
-        </UiButton>
+        </Button>
 
         <img
           src="@/assets/icons/arrow-dark.svg"
@@ -47,9 +51,9 @@ const users: { avatar: string, name: string, id: number }[] = [
 
       <div class="flex items-center gap-2">
         <div class="flex gap-2">
-          <UiAvatar v-for="user in users" :key="user.id">
-            <UiAvatarImage :src="user.avatar" />
-          </UiAvatar>
+          <Avatar v-for="user in users" :key="user.id">
+            <AvatarImage :src="user.avatar" />
+          </Avatar>
         </div>
 
         <span class="font-black">
@@ -59,7 +63,7 @@ const users: { avatar: string, name: string, id: number }[] = [
     </aside>
 
     <aside class="w-full lg:w-2/3 lg:px-2">
-      <UiCarousel
+      <Carousel
         :opts="{
           align: 'start',
           loop: true,
@@ -68,14 +72,14 @@ const users: { avatar: string, name: string, id: number }[] = [
           delay: 2000,
         })]"
       >
-        <UiCarouselContent>
-          <UiCarouselItem v-for="image in images" :key="image" class="basis-1/3">
+        <CarouselContent>
+          <CarouselItem v-for="image in images" :key="image" class="basis-1/3">
             <img :src="image" width="320" height="320" class="rounded-lg">
-          </UiCarouselItem>
-        </UiCarouselContent>
-        <UiCarouselPrevious class="hidden lg:flex" />
-        <UiCarouselNext class="hidden lg:flex" />
-      </UiCarousel>
+          </CarouselItem>
+        </CarouselContent>
+        <CarouselPrevious class="hidden lg:flex" />
+        <CarouselNext class="hidden lg:flex" />
+      </Carousel>
     </aside>
   </main>
 </template>

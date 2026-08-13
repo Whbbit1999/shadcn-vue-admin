@@ -3,6 +3,11 @@ import type { Column, RowData } from '@tanstack/vue-table'
 
 import { CheckIcon, CirclePlusIcon } from '@lucide/vue'
 
+import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList, CommandSeparator } from '@/components/ui/command'
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
+import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
 
 import type { features } from './features'
@@ -22,30 +27,30 @@ const filterFunction = (list: DataTableFacetedFilter['options'], term: string) =
 </script>
 
 <template>
-  <UiPopover>
-    <UiPopoverTrigger as-child>
-      <UiButton variant="outline" size="sm" class="h-8 border-dashed">
+  <Popover>
+    <PopoverTrigger as-child>
+      <Button variant="outline" size="sm" class="h-8 border-dashed">
         <CirclePlusIcon class="size-4 mr-2" />
         {{ title }}
         <template v-if="selectedValues.size > 0">
-          <UiSeparator orientation="vertical" class="h-4 mx-2" />
-          <UiBadge
+          <Separator orientation="vertical" class="h-4 mx-2" />
+          <Badge
             variant="secondary"
             class="px-1 font-normal rounded-sm lg:hidden"
           >
             {{ selectedValues.size }}
-          </UiBadge>
+          </Badge>
           <div class="hidden space-x-1 lg:flex">
-            <UiBadge
+            <Badge
               v-if="selectedValues.size > 2"
               variant="secondary"
               class="px-1 font-normal rounded-sm"
             >
               {{ selectedValues.size }} selected
-            </UiBadge>
+            </Badge>
 
             <template v-else>
-              <UiBadge
+              <Badge
                 v-for="option in options
                   .filter((option) => selectedValues.has(option.value))"
                 :key="option.value"
@@ -53,21 +58,21 @@ const filterFunction = (list: DataTableFacetedFilter['options'], term: string) =
                 class="px-1 font-normal rounded-sm"
               >
                 {{ option.label }}
-              </UiBadge>
+              </Badge>
             </template>
           </div>
         </template>
-      </UiButton>
-    </UiPopoverTrigger>
-    <UiPopoverContent class="w-[200px] p-0" align="start">
-      <UiCommand
+      </Button>
+    </PopoverTrigger>
+    <PopoverContent class="w-[200px] p-0" align="start">
+      <Command
         :filter-function="filterFunction as unknown as any"
       >
-        <UiCommandInput :placeholder="title" />
-        <UiCommandList>
-          <UiCommandEmpty>No results found.</UiCommandEmpty>
-          <UiCommandGroup>
-            <UiCommandItem
+        <CommandInput :placeholder="title" />
+        <CommandList>
+          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandGroup>
+            <CommandItem
               v-for="option in options"
               :key="option.value"
               :value="option"
@@ -100,23 +105,23 @@ const filterFunction = (list: DataTableFacetedFilter['options'], term: string) =
               <span v-if="facets?.get(option.value)" class="flex items-center justify-center size-4 ml-auto font-mono text-xs">
                 {{ facets.get(option.value) }}
               </span>
-            </UiCommandItem>
-          </UiCommandGroup>
+            </CommandItem>
+          </CommandGroup>
 
           <template v-if="selectedValues.size > 0">
-            <UiCommandSeparator />
-            <UiCommandGroup>
-              <UiCommandItem
+            <CommandSeparator />
+            <CommandGroup>
+              <CommandItem
                 :value="{ label: 'Clear filters' }"
                 class="justify-center text-center"
                 @select="column?.setFilterValue(undefined)"
               >
                 Clear filters
-              </UiCommandItem>
-            </UiCommandGroup>
+              </CommandItem>
+            </CommandGroup>
           </template>
-        </UiCommandList>
-      </UiCommand>
-    </UiPopoverContent>
-  </UiPopover>
+        </CommandList>
+      </Command>
+    </PopoverContent>
+  </Popover>
 </template>

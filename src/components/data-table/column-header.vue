@@ -4,9 +4,11 @@ import type { Column, RowData } from '@tanstack/vue-table'
 import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon, ChevronsUpDownIcon, EyeOffIcon, PinIcon, PinOffIcon } from '@lucide/vue'
 import { computed } from 'vue'
 
-import { cn } from '@/lib/utils'
+import type { features } from '@/components/data-table/features'
 
-import type { features } from './features'
+import { Button } from '@/components/ui/button'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { cn } from '@/lib/utils'
 
 interface DataTableColumnHeaderProps {
   column: Column<typeof features, T, any>
@@ -27,9 +29,9 @@ export default {
 
 <template>
   <div v-if="canSorted || canPinned" :class="cn('flex items-center space-x-2', $attrs.class ?? '')">
-    <UiDropdownMenu>
-      <UiDropdownMenuTrigger as-child>
-        <UiButton
+    <DropdownMenu>
+      <DropdownMenuTrigger as-child>
+        <Button
           variant="ghost"
           size="sm"
           class="-ml-3 h-8 data-[state=open]:bg-accent"
@@ -45,48 +47,48 @@ export default {
             <ArrowUpIcon v-else-if="props.column.getIsSorted() === 'asc'" class="ml-2 size-4" />
             <ChevronsUpDownIcon v-else class="ml-2 size-4" />
           </template>
-        </UiButton>
-      </UiDropdownMenuTrigger>
+        </Button>
+      </DropdownMenuTrigger>
 
-      <UiDropdownMenuContent align="start">
+      <DropdownMenuContent align="start">
         <template v-if="canSorted">
-          <UiDropdownMenuItem @click="props.column.toggleSorting(false)">
+          <DropdownMenuItem @click="props.column.toggleSorting(false)">
             <ArrowUpIcon class="mr-2 size-4 text-muted-foreground/70" />
             Asc
-          </UiDropdownMenuItem>
-          <UiDropdownMenuItem @click="props.column.toggleSorting(true)">
+          </DropdownMenuItem>
+          <DropdownMenuItem @click="props.column.toggleSorting(true)">
             <ArrowDownIcon class="mr-2 size-4 text-muted-foreground/70" />
             Desc
-          </UiDropdownMenuItem>
-          <UiDropdownMenuItem @click="props.column.clearSorting()">
+          </DropdownMenuItem>
+          <DropdownMenuItem @click="props.column.clearSorting()">
             <ChevronsUpDownIcon class="mr-2 size-4 text-muted-foreground/70" />
             Clear Sorting
-          </UiDropdownMenuItem>
-          <UiDropdownMenuSeparator />
+          </DropdownMenuItem>
+          <DropdownMenuSeparator />
         </template>
 
-        <UiDropdownMenuItem @click="props.column.toggleVisibility(false)">
+        <DropdownMenuItem @click="props.column.toggleVisibility(false)">
           <EyeOffIcon class="mr-2 size-4 text-muted-foreground/70" />
           Hide
-        </UiDropdownMenuItem>
+        </DropdownMenuItem>
 
         <template v-if="canPinned">
-          <UiDropdownMenuSeparator />
-          <UiDropdownMenuItem @click="props.column.pin('start')">
+          <DropdownMenuSeparator />
+          <DropdownMenuItem @click="props.column.pin('start')">
             <ArrowLeftIcon class="mr-2 size-4 text-muted-foreground/70" />
             Pin Left
-          </UiDropdownMenuItem>
-          <UiDropdownMenuItem @click="props.column.pin('end')">
+          </DropdownMenuItem>
+          <DropdownMenuItem @click="props.column.pin('end')">
             <ArrowRightIcon class="mr-2 size-4 text-muted-foreground/70" />
             Pin Right
-          </UiDropdownMenuItem>
-          <UiDropdownMenuItem @click="props.column.pin(false)">
+          </DropdownMenuItem>
+          <DropdownMenuItem @click="props.column.pin(false)">
             <PinOffIcon class="mr-2 size-4 text-muted-foreground/70" />
             Unpin
-          </UiDropdownMenuItem>
+          </DropdownMenuItem>
         </template>
-      </UiDropdownMenuContent>
-    </UiDropdownMenu>
+      </DropdownMenuContent>
+    </DropdownMenu>
   </div>
 
   <div v-else :class="$attrs?.class ?? ''">

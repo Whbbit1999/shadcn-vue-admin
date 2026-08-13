@@ -7,6 +7,8 @@ import CommandMenuPanel from '@/components/command-menu-panel/index.vue'
 import ThemePopover from '@/components/custom-theme/theme-popover.vue'
 import LanguageChange from '@/components/language-change.vue'
 import ToggleTheme from '@/components/toggle-theme.vue'
+import { Separator } from '@/components/ui/separator'
+import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
 import { SIDEBAR_COOKIE_NAME } from '@/components/ui/sidebar/utils'
 import { cn } from '@/lib/utils'
 import { useThemeStore } from '@/stores/theme'
@@ -17,14 +19,14 @@ const { contentLayout } = storeToRefs(themeStore)
 </script>
 
 <template>
-  <UiSidebarProvider :default-open="defaultOpen.get(SIDEBAR_COOKIE_NAME)">
+  <SidebarProvider :default-open="defaultOpen.get(SIDEBAR_COOKIE_NAME)">
     <AppSidebar />
-    <UiSidebarInset class="w-full max-w-full peer-data-[state=collapsed]:w-[calc(100%-var(--sidebar-width-icon)-1rem)] peer-data-[state=expanded]:w-[calc(100%-var(--sidebar-width))]">
+    <SidebarInset class="w-full max-w-full peer-data-[state=collapsed]:w-[calc(100%-var(--sidebar-width-icon)-1rem)] peer-data-[state=expanded]:w-[calc(100%-var(--sidebar-width))]">
       <header
         class="flex items-center gap-3 sm:gap-4 h-16 p-4 shrink-0 transition-[width,height] ease-linear"
       >
-        <UiSidebarTrigger class="-ml-1" />
-        <UiSeparator orientation="vertical" class="h-6" />
+        <SidebarTrigger class="-ml-1" />
+        <Separator orientation="vertical" class="h-6" />
         <CommandMenuPanel />
         <div class="flex-1" />
         <div class="ml-auto flex items-center space-x-4">
@@ -42,6 +44,6 @@ const { contentLayout } = storeToRefs(themeStore)
       >
         <router-view />
       </main>
-    </UiSidebarInset>
-  </UiSidebarProvider>
+    </SidebarInset>
+  </SidebarProvider>
 </template>

@@ -15,11 +15,9 @@ import {
 } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 
-import { copyVariants } from '.'
-
 interface Props {
   content: string
-  size?: 'sm' | 'default'
+  size?: ButtonVariants['size']
   variant?: ButtonVariants['variant']
   class?: HTMLAttributes['class']
   copyTooltipText?: string
@@ -31,14 +29,6 @@ const props = withDefaults(defineProps<Props>(), {
   variant: 'outline',
   copyTooltipText: 'Copy',
   copiedTooltipText: 'Copied',
-})
-
-const iconSize = computed(() => {
-  return props.size === 'sm' ? 'sm' : 'default'
-})
-
-const size = computed(() => {
-  return props.size === 'sm' ? 'sm' : 'icon'
 })
 
 const source = computed(() => props.content)
@@ -57,8 +47,8 @@ const { copy, copied, isSupported } = useClipboard({ source })
             :class="cn(props.class)"
             @click="copy(source)"
           >
-            <CopyIcon v-if="!copied" :class="cn(copyVariants({ iconSize }))" />
-            <CopyCheckIcon v-else :class="cn(copyVariants({ iconSize }))" />
+            <CopyIcon v-if="!copied" />
+            <CopyCheckIcon v-else />
           </Button>
         </TooltipTrigger>
         <TooltipContent>

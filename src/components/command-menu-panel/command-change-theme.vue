@@ -2,6 +2,8 @@
 import { MoonIcon, SunIcon, SunMoonIcon } from '@lucide/vue'
 import { useColorMode } from '@vueuse/core'
 
+import { CommandGroup, CommandItem } from '@/components/ui/command'
+
 import CommandItemHasIcon from './command-item-has-icon.vue'
 
 defineEmits<{
@@ -12,15 +14,15 @@ const mode = useColorMode()
 </script>
 
 <template>
-  <UiCommandGroup heading="Theme">
-    <UiCommandItem value="light" @click="mode = 'light', $emit('click')">
+  <CommandGroup heading="Theme">
+    <CommandItem value="light" @click="mode = 'light', $emit('click')">
       <CommandItemHasIcon name="Light" :icon="SunIcon" />
-    </UiCommandItem>
-    <UiCommandItem value="dark" @click="mode = 'dark', $emit('click')">
+    </CommandItem>
+    <CommandItem value="dark" @click="mode = 'dark', $emit('click')">
       <CommandItemHasIcon name="Dark" :icon="MoonIcon" />
-    </UiCommandItem>
-    <UiCommandItem value="system" @click="mode = 'auto', $emit('click')">
+    </CommandItem>
+    <CommandItem value="system" @click="mode = 'auto', $emit('click')">
       <CommandItemHasIcon name="System" :icon="SunMoonIcon" />
-    </UiCommandItem>
-  </UiCommandGroup>
+    </CommandItem>
+  </CommandGroup>
 </template>

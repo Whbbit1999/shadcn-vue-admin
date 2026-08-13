@@ -2,9 +2,13 @@
 import { useForm } from '@tanstack/vue-form'
 import { toast } from 'vue-sonner'
 
+import { Button } from '@/components/ui/button'
 import { FieldError } from '@/components/ui/field'
 import { FormItem } from '@/components/ui/form'
+import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 
 import type { Task } from '../data/schema'
 import type { TaskValidator } from '../validators/task.validator'
@@ -54,7 +58,7 @@ watch(() => props.task, (task) => {
         <template #default="{ field, state }">
           <FormItem>
             <Label>Title</Label>
-            <UiInput
+            <Input
               type="text"
               placeholder="shadcn"
               :model-value="field.state.value"
@@ -70,24 +74,24 @@ watch(() => props.task, (task) => {
         <template #default="{ field, state }">
           <FormItem>
             <Label>status</Label>
-            <UiSelect
+            <Select
               :model-value="field.state.value"
               @update:model-value="(v) => field.handleChange(v as string)"
             >
-              <UiSelectTrigger class="w-[180px]">
-                <UiSelectValue placeholder="Select a status" />
-              </UiSelectTrigger>
-              <UiSelectContent>
-                <UiSelectGroup>
-                  <UiSelectItem v-for="status in statuses" :key="status.value" :value="status.value">
+              <SelectTrigger class="w-[180px]">
+                <SelectValue placeholder="Select a status" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectItem v-for="status in statuses" :key="status.value" :value="status.value">
                     <div class="flex items-center gap-2">
                       <component :is="status.icon" class="size-4 shrink-0" />
                       {{ status.label }}
                     </div>
-                  </UiSelectItem>
-                </UiSelectGroup>
-              </UiSelectContent>
-            </UiSelect>
+                  </SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
             <FieldError :errors="state.meta.errors" />
           </FormItem>
         </template>
@@ -97,7 +101,7 @@ watch(() => props.task, (task) => {
         <template #default="{ field, state }">
           <FormItem>
             <Label>label</Label>
-            <UiRadioGroup
+            <RadioGroup
               class="flex flex-col space-y-1"
               :model-value="field.state.value"
               @update:model-value="(v) => field.handleChange(v as string)"
@@ -106,12 +110,12 @@ watch(() => props.task, (task) => {
                 v-for="label in labels" :key="label.value"
                 class="flex items-center space-y-0 gap-x-3"
               >
-                <UiRadioGroupItem :value="label.value" />
+                <RadioGroupItem :value="label.value" />
                 <Label class="font-normal">
                   {{ label.label }}
                 </Label>
               </FormItem>
-            </UiRadioGroup>
+            </RadioGroup>
             <FieldError :errors="state.meta.errors" />
           </FormItem>
         </template>
@@ -120,7 +124,7 @@ watch(() => props.task, (task) => {
         <template #default="{ field, state }">
           <FormItem>
             <Label>priority</Label>
-            <UiRadioGroup
+            <RadioGroup
               class="flex flex-col space-y-1"
               :model-value="field.state.value"
               @update:model-value="(v) => field.handleChange(v as string)"
@@ -129,20 +133,20 @@ watch(() => props.task, (task) => {
                 v-for="priority in priorities" :key="priority.value"
                 class="flex items-center space-y-0 gap-x-3"
               >
-                <UiRadioGroupItem :value="priority.value" />
+                <RadioGroupItem :value="priority.value" />
                 <Label class="font-normal">
                   {{ priority.label }}
                 </Label>
               </FormItem>
-            </UiRadioGroup>
+            </RadioGroup>
             <FieldError :errors="state.meta.errors" />
           </FormItem>
         </template>
       </form.Field>
 
-      <UiButton type="submit">
+      <Button type="submit">
         Submit
-      </UiButton>
+      </Button>
     </form>
   </div>
 </template>

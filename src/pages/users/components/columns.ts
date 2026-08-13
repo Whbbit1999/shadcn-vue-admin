@@ -29,7 +29,7 @@ export const columns: ColumnDef<typeof features, User>[] = [
     header: ({ column }) => h(DataTableColumnHeader<User>, { column, title: 'Email' }),
     cell: ({ row }) => h('div', { }, [
       h('span', {}, row.getValue('email')),
-      h(Copy, { class: 'ml-2', size: 'sm', content: (row.getValue('email') || '') as string }),
+      h(Copy, { class: 'ml-2', size: 'icon-xs', content: (row.getValue('email') || '') as string }),
     ]),
     enableSorting: false,
     enableResizing: true,

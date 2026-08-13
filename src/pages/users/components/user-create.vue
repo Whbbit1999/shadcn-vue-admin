@@ -2,6 +2,7 @@
 import { UserRoundPlusIcon } from '@lucide/vue'
 
 import { Modal, ModalContent, ModalTrigger } from '@/components/prop-ui/modal'
+import { Button } from '@/components/ui/button'
 
 import UserResource from './user-resource.vue'
 
@@ -11,10 +12,10 @@ const isOpen = shallowRef(false)
 <template>
   <Modal v-model:open="isOpen">
     <ModalTrigger as-child>
-      <UiButton>
+      <Button>
         <UserRoundPlusIcon />
         Create User
-      </UiButton>
+      </Button>
     </ModalTrigger>
 
     <ModalContent>

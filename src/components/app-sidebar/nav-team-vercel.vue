@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ChevronLeftIcon, ChevronRightIcon } from '@lucide/vue'
 
+import { SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, SidebarMenuItem, SidebarSeparator } from '@/components/ui/sidebar'
 import { useSidebarNavigation } from '@/composables/use-sidebar-navigation'
 import { isExternalUrl } from '@/utils/is-external-url'
 
@@ -34,23 +35,23 @@ function handleGoBack() {
     <Transition name="nav-view" mode="out-in">
       <!-- Root level: show all groups -->
       <div v-if="navigationPath.length === 0" key="root">
-        <UiSidebarGroup v-for="group in navMain" :key="group.title">
-          <UiSidebarGroupLabel>{{ group.title }}</UiSidebarGroupLabel>
-          <UiSidebarMenu>
+        <SidebarGroup v-for="group in navMain" :key="group.title">
+          <SidebarGroupLabel>{{ group.title }}</SidebarGroupLabel>
+          <SidebarMenu>
             <template v-for="menu in group.items" :key="menu.title">
               <!-- Leaf item -->
-              <UiSidebarMenuItem v-if="!menu.items">
+              <SidebarMenuItem v-if="!menu.items">
                 <MenuButton
                   :is-active="isMenuItemActive(menu)"
                   :tooltip="menu.title"
                   :is-external-url="isExternalUrl(menu.url)"
                   :menu="menu as NavItem"
                 />
-              </UiSidebarMenuItem>
+              </SidebarMenuItem>
 
               <!-- Parent item: click to enter next level -->
-              <UiSidebarMenuItem v-else>
-                <UiSidebarMenuButton
+              <SidebarMenuItem v-else>
+                <SidebarMenuButton
                   class="cursor-pointer"
                   :tooltip="menu.title"
                   :is-active="isMenuItemActive(menu)"
@@ -59,21 +60,21 @@ function handleGoBack() {
                   <component :is="menu.icon" v-if="menu.icon" />
                   <span>{{ menu.title }}</span>
                   <ChevronRightIcon class="ml-auto w-4 h-4" />
-                </UiSidebarMenuButton>
-              </UiSidebarMenuItem>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             </template>
-          </UiSidebarMenu>
-        </UiSidebarGroup>
+          </SidebarMenu>
+        </SidebarGroup>
       </div>
 
       <!-- Nested level: show back button and current level items -->
       <div v-else :key="`nested-${navigationPath.join('-')}`">
-        <UiSidebarGroup>
+        <SidebarGroup>
           <!-- Menu items -->
-          <UiSidebarMenu>
+          <SidebarMenu>
             <!-- Navigation header with back button -->
-            <UiSidebarMenuItem>
-              <UiSidebarMenuButton
+            <SidebarMenuItem>
+              <SidebarMenuButton
                 class="cursor-pointer hover:bg-muted/50"
                 tooltip=""
                 @click="handleGoBack"
@@ -83,24 +84,24 @@ function handleGoBack() {
                   {{ currentMenuTitle }}
                 </div>
                 <ChevronRightIcon class="invisible" />
-              </UiSidebarMenuButton>
-            </UiSidebarMenuItem>
+              </SidebarMenuButton>
+            </SidebarMenuItem>
 
-            <UiSidebarSeparator class="mx-0" />
+            <SidebarSeparator class="mx-0" />
             <template v-for="item in currentMenuItems" :key="item.title">
               <!-- Leaf item -->
-              <UiSidebarMenuItem v-if="!item.items">
+              <SidebarMenuItem v-if="!item.items">
                 <MenuButton
                   :is-active="isMenuItemActive(item as NavItem)"
                   :tooltip="item.title"
                   :is-external-url="isExternalUrl((item as any).url)"
                   :menu="item as NavItem"
                 />
-              </UiSidebarMenuItem>
+              </SidebarMenuItem>
 
               <!-- Parent item: click to enter next level -->
-              <UiSidebarMenuItem v-else>
-                <UiSidebarMenuButton
+              <SidebarMenuItem v-else>
+                <SidebarMenuButton
                   class="cursor-pointer"
                   :tooltip="item.title"
                   @click="enterMenu(item as NavItem)"
@@ -108,11 +109,11 @@ function handleGoBack() {
                   <component :is="item.icon" v-if="item.icon" />
                   <span>{{ item.title }}</span>
                   <ChevronRightIcon class="ml-auto w-4 h-4" />
-                </UiSidebarMenuButton>
-              </UiSidebarMenuItem>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
             </template>
-          </UiSidebarMenu>
-        </UiSidebarGroup>
+          </SidebarMenu>
+        </SidebarGroup>
       </div>
     </Transition>
   </div>

@@ -6,6 +6,9 @@ import { toast } from 'vue-sonner'
 import type { features } from '@/components/data-table/features'
 
 import ConfirmDialog from '@/components/confirm-dialog.vue'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
 import type { Task } from '../data/schema'
 
@@ -59,20 +62,20 @@ function handleConfirm() {
     </template>
 
     <template #default>
-      <UiLabel class="my-4 flex flex-col items-start gap-1.5">
+      <Label class="my-4 flex flex-col items-start gap-1.5">
         <span>Confirm by typing {{ CONFIRM_WORD }}:</span>
-        <UiInput
+        <Input
           v-model="confirmValue"
           :placeholder="`Type &quot;${CONFIRM_WORD}&quot; to confirm.`"
         />
-      </UiLabel>
+      </Label>
 
-      <UiAlert variant="destructive">
-        <UiAlertTitle>Warning!</UiAlertTitle>
-        <UiAlertDescription>
+      <Alert variant="destructive">
+        <AlertTitle>Warning!</AlertTitle>
+        <AlertDescription>
           Please be careful, this operation can not be rolled back.
-        </UiAlertDescription>
-      </UiAlert>
+        </AlertDescription>
+      </Alert>
     </template>
   </ConfirmDialog>
 </template>

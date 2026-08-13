@@ -4,6 +4,7 @@ import { FieldDescription, FieldError } from '@/components/ui/field'
 import { FormItem } from '@/components/ui/form'
 import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
+import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { Separator } from '@/components/ui/separator'
 import { Spinner } from '@/components/ui/spinner'
 
@@ -49,30 +50,30 @@ const { isGetting, isPending, form } = useSystemConfig({
           <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
             Font
           </Label>
-          <UiSelect
+          <Select
             :model-value="field.state.value"
             @update:model-value="$event => {
               field.handleChange($event as typeof DEFAULT_APPEARANCE_CONFIG_VALUE.font),
               field.handleBlur()
             }"
           >
-            <UiSelectTrigger>
-              <UiSelectValue placeholder="Select a font" />
-            </UiSelectTrigger>
-            <UiSelectContent>
-              <UiSelectGroup>
-                <UiSelectItem value="inter">
+            <SelectTrigger>
+              <SelectValue placeholder="Select a font" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectGroup>
+                <SelectItem value="inter">
                   Inter
-                </UiSelectItem>
-                <UiSelectItem value="manrope">
+                </SelectItem>
+                <SelectItem value="manrope">
                   Manrope
-                </UiSelectItem>
-                <UiSelectItem value="system">
+                </SelectItem>
+                <SelectItem value="system">
                   System
-                </UiSelectItem>
-              </UiSelectGroup>
-            </UiSelectContent>
-          </UiSelect>
+                </SelectItem>
+              </SelectGroup>
+            </SelectContent>
+          </Select>
           <FieldDescription>
             Set the font you want to use in the dashboard.
           </FieldDescription>

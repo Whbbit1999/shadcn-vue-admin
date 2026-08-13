@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 
+import { Button } from '@/components/ui/button'
+import { Label } from '@/components/ui/label'
 import { THEME_PRIMARY_COLORS } from '@/constants/themes'
 import { useThemeStore } from '@/stores/theme'
 
@@ -11,11 +13,11 @@ const { theme: t } = storeToRefs(themeStore)
 
 <template>
   <div class="space-y-1.5 pt-6">
-    <UiLabel for="radius" class="text-xs">
+    <Label for="radius" class="text-xs">
       Color
-    </UiLabel>
+    </Label>
     <div class="grid grid-cols-2 gap-2 py-1.5">
-      <UiButton
+      <Button
         v-for="theme in THEME_PRIMARY_COLORS" :key="theme.theme"
         variant="outline"
         class="justify-center h-8 px-3"
@@ -29,7 +31,7 @@ const { theme: t } = storeToRefs(themeStore)
           class="size-2 rounded-full bg-(--theme-primary)"
         />
         <span class="text-xs">{{ theme.theme[0].toUpperCase() }}{{ theme.theme.slice(1) }}</span>
-      </UiButton>
+      </Button>
     </div>
   </div>
 </template>

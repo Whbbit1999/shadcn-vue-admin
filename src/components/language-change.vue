@@ -6,6 +6,8 @@ import { useI18n } from 'vue-i18n'
 
 import type { Language } from '@/plugins/i18n'
 
+import { Button } from '@/components/ui/button'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { appLocale, DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@/plugins/i18n'
 
 const { locale } = useI18n()
@@ -27,9 +29,9 @@ function handleLocaleChange(val: AcceptableValue) {
 </script>
 
 <template>
-  <UiDropdownMenu>
-    <UiDropdownMenuTrigger as-child>
-      <UiButton
+  <DropdownMenu>
+    <DropdownMenuTrigger as-child>
+      <Button
         variant="outline"
         size="icon"
         aria-label="Change language"
@@ -37,22 +39,22 @@ function handleLocaleChange(val: AcceptableValue) {
       >
         <Icon icon="mdi:translate" />
         <span class="sr-only">Change language</span>
-      </UiButton>
-    </UiDropdownMenuTrigger>
-    <UiDropdownMenuContent align="end">
-      <UiDropdownMenuRadioGroup
+      </Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent align="end">
+      <DropdownMenuRadioGroup
         v-model="locale"
         @update:model-value="handleLocaleChange"
       >
-        <UiDropdownMenuRadioItem value="en">
+        <DropdownMenuRadioItem value="en">
           <Icon icon="flag:us-4x3" />
           <span>English</span>
-        </UiDropdownMenuRadioItem>
-        <UiDropdownMenuRadioItem value="zh">
+        </DropdownMenuRadioItem>
+        <DropdownMenuRadioItem value="zh">
           <Icon icon="flag:cn-4x3" />
           <span>中文</span>
-        </UiDropdownMenuRadioItem>
-      </UiDropdownMenuRadioGroup>
-    </UiDropdownMenuContent>
-  </UiDropdownMenu>
+        </DropdownMenuRadioItem>
+      </DropdownMenuRadioGroup>
+    </DropdownMenuContent>
+  </DropdownMenu>
 </template>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { CommandGroup, CommandItem } from '@/components/ui/command'
 import { navData, otherPages } from '@/constants/sidebar-data'
 
 import type { NavGroup, NavItem } from '../app-sidebar/types'
@@ -37,14 +38,14 @@ function commandItemClick(url: string) {
 </script>
 
 <template>
-  <UiCommandGroup heading="Pages">
-    <UiCommandItem
+  <CommandGroup heading="Pages">
+    <CommandItem
       v-for="command in commands"
       :key="command.title"
       :value="command.title"
       @click="commandItemClick(command.url!)"
     >
       <CommandItemHasIcon :name="command.title" :icon="command.icon" />
-    </UiCommandItem>
-  </UiCommandGroup>
+    </CommandItem>
+  </CommandGroup>
 </template>
