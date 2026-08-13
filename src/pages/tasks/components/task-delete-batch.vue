@@ -1,14 +1,19 @@
-<script setup lang="ts" generic="T = Task">
-import type { Table as VueTable } from '@tanstack/vue-table'
+<script setup lang="ts" generic="T extends RowData = Task">
+import type { RowData, Table as VueTable } from '@tanstack/vue-table'
 
 import { toast } from 'vue-sonner'
 
+import type { features } from '@/components/data-table/features'
+
 import ConfirmDialog from '@/components/confirm-dialog.vue'
+import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 
 import type { Task } from '../data/schema'
 
 const { table } = defineProps<{
-  table: VueTable<T>
+  table: VueTable<typeof features, T>
 }>()
 
 const openModel = defineModel<boolean>('open', {
@@ -57,20 +62,20 @@ function handleConfirm() {
     </template>
 
     <template #default>
-      <UiLabel class="my-4 flex flex-col items-start gap-1.5">
+      <Label class="my-4 flex flex-col items-start gap-1.5">
         <span>Confirm by typing {{ CONFIRM_WORD }}:</span>
-        <UiInput
+        <Input
           v-model="confirmValue"
           :placeholder="`Type &quot;${CONFIRM_WORD}&quot; to confirm.`"
         />
-      </UiLabel>
+      </Label>
 
-      <UiAlert variant="destructive">
-        <UiAlertTitle>Warning!</UiAlertTitle>
-        <UiAlertDescription>
+      <Alert variant="destructive">
+        <AlertTitle>Warning!</AlertTitle>
+        <AlertDescription>
           Please be careful, this operation can not be rolled back.
-        </UiAlertDescription>
-      </UiAlert>
+        </AlertDescription>
+      </Alert>
     </template>
   </ConfirmDialog>
 </template>

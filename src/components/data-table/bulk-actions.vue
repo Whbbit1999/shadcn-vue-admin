@@ -1,15 +1,18 @@
-<script setup lang="ts" generic="T">
-import type { Table as VueTable } from '@tanstack/vue-table'
+<script setup lang="ts" generic="T extends RowData">
+import type { RowData, Table as VueTable } from '@tanstack/vue-table'
 
 import { XIcon } from '@lucide/vue'
 
+import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
 import { cn } from '@/lib/utils'
 
-interface BulkActionsProps<T> {
-  table: VueTable<T>
+import type { features } from './features'
+
+interface BulkActionsProps<T extends RowData> {
+  table: VueTable<typeof features, T>
   entityName: string
 }
 
@@ -65,12 +68,12 @@ function handleClearSelection() {
       />
 
       <section id="bulk-actions-description" class="flex items-center gap-x-1 text-sm">
-        <UiBadge
+        <Badge
           class="min-w-8 rounded-lg"
           :aria-label="`${selectedCount} selected`"
         >
           {{ selectedCount }}
-        </UiBadge>
+        </Badge>
         {{ entityName }} selected
       </section>
 

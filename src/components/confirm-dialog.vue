@@ -8,6 +8,7 @@ import {
   AlertDialogHeader,
   AlertDialogTitle,
 } from '@/components/ui/alert-dialog'
+import { Button } from '@/components/ui/button'
 
 interface ConfirmDialogProps {
   isLoading?: boolean
@@ -58,13 +59,13 @@ function handleConfirm() {
           {{ cancelButtonText }}
         </AlertDialogCancel>
 
-        <UiButton
+        <Button
           :variant="destructive ? 'destructive' : 'default'"
           :disabled="disabled || isLoading"
           @click="handleConfirm"
         >
           {{ confirmButtonText }}
-        </UiButton>
+        </Button>
       </AlertDialogFooter>
     </AlertDialogContent>
   </AlertDialog>

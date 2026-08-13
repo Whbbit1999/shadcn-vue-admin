@@ -4,7 +4,11 @@ import type { Component } from 'vue'
 
 import { EllipsisIcon, FilePenLineIcon, Trash2Icon } from '@lucide/vue'
 
+import type { features } from '@/components/data-table/features'
+
 import { Modal, ModalContent } from '@/components/prop-ui/modal'
+import { Button } from '@/components/ui/button'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuRadioGroup, DropdownMenuRadioItem, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuSub, DropdownMenuSubContent, DropdownMenuSubTrigger, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 
 import type { Task } from '../data/schema'
 
@@ -15,7 +19,7 @@ import TaskResourceDialog from './task-resource-dialog.vue'
 const props = defineProps<DataTableRowActionsProps>()
 
 interface DataTableRowActionsProps {
-  row: Row<Task>
+  row: Row<typeof features, Task>
 }
 const task = computed(() => taskSchema.parse(props.row.original))
 
@@ -47,50 +51,50 @@ async function handleSelect(command: TCommand) {
 
 <template>
   <Modal v-model:open="isOpen">
-    <UiDropdownMenu>
-      <UiDropdownMenuTrigger as-child>
-        <UiButton
+    <DropdownMenu>
+      <DropdownMenuTrigger as-child>
+        <Button
           variant="ghost"
           class="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
         >
           <EllipsisIcon class="size-4" />
           <span class="sr-only">Open menu</span>
-        </UiButton>
-      </UiDropdownMenuTrigger>
-      <UiDropdownMenuContent align="end" class="w-[160px]">
-        <UiDropdownMenuItem @select.stop="handleSelect('edit')">
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end" class="w-[160px]">
+        <DropdownMenuItem @select.stop="handleSelect('edit')">
           <span>Edit</span>
-          <UiDropdownMenuShortcut> <FilePenLineIcon class="size-4" /> </UiDropdownMenuShortcut>
-        </UiDropdownMenuItem>
+          <DropdownMenuShortcut> <FilePenLineIcon class="size-4" /> </DropdownMenuShortcut>
+        </DropdownMenuItem>
 
-        <UiDropdownMenuItem disabled>
+        <DropdownMenuItem disabled>
           Make a copy
-        </UiDropdownMenuItem>
-        <UiDropdownMenuItem disabled>
+        </DropdownMenuItem>
+        <DropdownMenuItem disabled>
           Favorite
-        </UiDropdownMenuItem>
+        </DropdownMenuItem>
 
-        <UiDropdownMenuSeparator />
+        <DropdownMenuSeparator />
 
-        <UiDropdownMenuSub>
-          <UiDropdownMenuSubTrigger>Labels</UiDropdownMenuSubTrigger>
-          <UiDropdownMenuSubContent>
-            <UiDropdownMenuRadioGroup v-model="taskLabel">
-              <UiDropdownMenuRadioItem v-for="label in labels" :key="label.value" :value="label.value">
+        <DropdownMenuSub>
+          <DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
+          <DropdownMenuSubContent>
+            <DropdownMenuRadioGroup v-model="taskLabel">
+              <DropdownMenuRadioItem v-for="label in labels" :key="label.value" :value="label.value">
                 {{ label.label }}
-              </UiDropdownMenuRadioItem>
-            </UiDropdownMenuRadioGroup>
-          </UiDropdownMenuSubContent>
-        </UiDropdownMenuSub>
+              </DropdownMenuRadioItem>
+            </DropdownMenuRadioGroup>
+          </DropdownMenuSubContent>
+        </DropdownMenuSub>
 
-        <UiDropdownMenuSeparator />
+        <DropdownMenuSeparator />
 
-        <UiDropdownMenuItem @select.stop="handleSelect('delete')">
+        <DropdownMenuItem @select.stop="handleSelect('delete')">
           <span>Delete</span>
-          <UiDropdownMenuShortcut> <Trash2Icon class="size-4" /> </UiDropdownMenuShortcut>
-        </UiDropdownMenuItem>
-      </UiDropdownMenuContent>
-    </UiDropdownMenu>
+          <DropdownMenuShortcut> <Trash2Icon class="size-4" /> </DropdownMenuShortcut>
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
 
     <ModalContent>
       <component :is="showComponent" :task="task" @close="isOpen = false" />

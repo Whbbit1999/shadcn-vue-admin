@@ -1,10 +1,15 @@
-<script setup lang="ts" generic="T">
-import type { Table } from '@tanstack/vue-table'
+<script setup lang="ts" generic="T extends RowData">
+import type { RowData, Table } from '@tanstack/vue-table'
 
 import { RefreshCcwIcon, Settings2Icon } from '@lucide/vue'
 
+import { Button } from '@/components/ui/button'
+import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+
+import type { features } from './features'
+
 interface DataTableViewOptionsProps {
-  table: Table<T>
+  table: Table<typeof features, T>
 }
 
 const props = defineProps<DataTableViewOptionsProps>()
@@ -21,22 +26,22 @@ function resetColumnVisible() {
 </script>
 
 <template>
-  <UiDropdownMenu>
-    <UiDropdownMenuTrigger as-child>
-      <UiButton
+  <DropdownMenu>
+    <DropdownMenuTrigger as-child>
+      <Button
         variant="outline"
         size="sm"
         class="hidden h-8 ml-auto lg:flex"
       >
         <Settings2Icon class="size-4 mr-2" />
         Columns View
-      </UiButton>
-    </UiDropdownMenuTrigger>
-    <UiDropdownMenuContent align="end" class="w-[150px]">
-      <UiDropdownMenuLabel>Toggle columns</UiDropdownMenuLabel>
-      <UiDropdownMenuSeparator />
+      </Button>
+    </DropdownMenuTrigger>
+    <DropdownMenuContent align="end" class="w-[150px]">
+      <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
+      <DropdownMenuSeparator />
 
-      <UiDropdownMenuCheckboxItem
+      <DropdownMenuCheckboxItem
         v-for="column in columns"
         :key="column.id"
         class="capitalize"
@@ -44,16 +49,16 @@ function resetColumnVisible() {
         @update:model-value="(value:boolean) => column.toggleVisibility(!!value)"
       >
         {{ column.id }}
-      </UiDropdownMenuCheckboxItem>
+      </DropdownMenuCheckboxItem>
 
-      <UiDropdownMenuSeparator />
-      <UiDropdownMenuItem
+      <DropdownMenuSeparator />
+      <DropdownMenuItem
         class="capitalize"
         @click="resetColumnVisible"
       >
         <RefreshCcwIcon />
         Reset
-      </UiDropdownMenuItem>
-    </UiDropdownMenuContent>
-  </UiDropdownMenu>
+      </DropdownMenuItem>
+    </DropdownMenuContent>
+  </DropdownMenu>
 </template>

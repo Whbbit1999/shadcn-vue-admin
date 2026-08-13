@@ -2,6 +2,8 @@ import type { ColumnDef } from '@tanstack/vue-table'
 
 import { h } from 'vue'
 
+import type { features } from '@/components/data-table/features'
+
 import { DataTableColumnHeader, SelectColumn } from '@/components/data-table'
 import { Badge } from '@/components/ui/badge'
 
@@ -10,8 +12,8 @@ import type { Task } from '../data/schema'
 import { labels, priorities, statuses } from '../data/data'
 import DataTableRowActions from './data-table-row-actions.vue'
 
-export const columns: ColumnDef<Task>[] = [
-  SelectColumn as ColumnDef<Task>,
+export const columns: ColumnDef<typeof features, Task>[] = [
+  SelectColumn as ColumnDef<typeof features, Task>,
   {
     accessorKey: 'id',
     header: ({ column }) => h(DataTableColumnHeader<Task>, { column, title: 'Task' }),

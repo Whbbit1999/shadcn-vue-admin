@@ -4,6 +4,8 @@ import { h } from 'vue'
 
 import { Checkbox } from '@/components/ui/checkbox'
 
+import type { features } from './features'
+
 import RadioCell from './radio-cell.vue'
 
 const FIXED_WIDTH_COLUMN = {
@@ -13,7 +15,7 @@ const FIXED_WIDTH_COLUMN = {
   enableResizing: false,
 } as const
 
-export const SelectColumn: ColumnDef<any> = {
+export const SelectColumn: ColumnDef<typeof features, any> = {
   id: 'select',
   ...FIXED_WIDTH_COLUMN,
   header: ({ table }) => h(Checkbox, {
@@ -30,7 +32,7 @@ export const SelectColumn: ColumnDef<any> = {
   enableHiding: false,
 }
 
-export const RadioSelectColumn: ColumnDef<any> = {
+export const RadioSelectColumn: ColumnDef<typeof features, any> = {
   id: 'radio-select',
   ...FIXED_WIDTH_COLUMN,
   header: () => null,

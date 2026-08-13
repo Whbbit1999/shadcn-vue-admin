@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
+import { Separator } from '@/components/ui/separator'
+import { Spinner } from '@/components/ui/spinner'
 import { useAuth } from '@/composables/use-auth'
 
 import GitHubButton from './github-button.vue'
@@ -11,57 +17,57 @@ const { login, loading } = useAuth()
 </script>
 
 <template>
-  <UiCard class="w-full max-w-sm">
-    <UiCardHeader>
-      <UiCardTitle class="text-2xl">
+  <Card class="w-full max-w-sm">
+    <CardHeader>
+      <CardTitle class="text-2xl">
         Login
-      </UiCardTitle>
-      <UiCardDescription>
+      </CardTitle>
+      <CardDescription>
         Enter your email and password below to log into your account.
         Not have an account?
-        <UiButton
+        <Button
           variant="link" class="px-0 text-muted-foreground"
           @click="$router.push('/auth/sign-up')"
         >
           Sign Up
-        </UiButton>
-      </UiCardDescription>
-    </UiCardHeader>
-    <UiCardContent class="grid gap-4">
+        </Button>
+      </CardDescription>
+    </CardHeader>
+    <CardContent class="grid gap-4">
       <div class="grid gap-2">
-        <UiLabel for="email">
+        <Label for="email">
           {{ $t('email') }}
-        </UiLabel>
-        <UiInput id="email" type="email" placeholder="m@example.com" required />
+        </Label>
+        <Input id="email" type="email" placeholder="m@example.com" required />
       </div>
       <div class="grid gap-2">
         <div class="flex items-center justify-between">
-          <UiLabel for="password">
+          <Label for="password">
             {{ $t('password') }}
-          </UiLabel>
+          </Label>
           <ToForgotPasswordLink />
         </div>
-        <UiInput id="password" type="password" required placeholder="*********" />
+        <Input id="password" type="password" required placeholder="*********" />
       </div>
 
-      <UiButton class="w-full" @click="login">
-        <UiSpinner v-if="loading" class="mr-2" />
+      <Button class="w-full" @click="login">
+        <Spinner v-if="loading" class="mr-2" />
         {{ $t('login') }}
-      </UiButton>
+      </Button>
 
-      <UiSeparator label="Or continue with" />
+      <Separator label="Or continue with" />
 
       <div class="flex flex-col items-center justify-between gap-4">
         <GitHubButton />
         <GoogleButton />
       </div>
 
-      <UiCardDescription>
+      <CardDescription>
         By clicking login, you agree to our
         <TermsOfServiceButton />
         and
         <PrivacyPolicyButton />
-      </UiCardDescription>
-    </UiCardContent>
-  </UiCard>
+      </CardDescription>
+    </CardContent>
+  </Card>
 </template>

@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 
+import { Button } from '@/components/ui/button'
+import { Label } from '@/components/ui/label'
 import { RADIUS } from '@/constants/themes'
 import { useThemeStore } from '@/stores/theme'
 
@@ -11,11 +13,11 @@ const { radius } = storeToRefs(themeStore)
 
 <template>
   <div class="space-y-1.5 pt-6">
-    <UiLabel for="radius" class="text-xs">
+    <Label for="radius" class="text-xs">
       Radius
-    </UiLabel>
+    </Label>
     <div class="grid grid-cols-5 gap-2 py-1.5">
-      <UiButton
+      <Button
         v-for="rayon in RADIUS" :key="rayon"
         variant="outline"
         class="justify-center h-8 px-3"
@@ -23,7 +25,7 @@ const { radius } = storeToRefs(themeStore)
         @click="setRadius(rayon)"
       >
         <span class="text-xs">{{ rayon }}</span>
-      </UiButton>
+      </Button>
     </div>
   </div>
 </template>

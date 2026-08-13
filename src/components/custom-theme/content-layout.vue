@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { storeToRefs } from 'pinia'
 
+import { Button } from '@/components/ui/button'
+import { Label } from '@/components/ui/label'
 import { CONTENT_LAYOUTS } from '@/constants/themes'
 import { useThemeStore } from '@/stores/theme'
 
@@ -11,11 +13,11 @@ const { contentLayout } = storeToRefs(themeStore)
 
 <template>
   <div class="space-y-1.5 pt-6">
-    <UiLabel for="radius" class="text-xs">
+    <Label for="radius" class="text-xs">
       Content Layout
-    </UiLabel>
+    </Label>
     <div class="grid grid-cols-2 gap-2 py-1.5">
-      <UiButton
+      <Button
         v-for="layout in CONTENT_LAYOUTS" :key="layout.label"
         variant="outline"
         class="justify-center h-8 px-3"
@@ -24,7 +26,7 @@ const { contentLayout } = storeToRefs(themeStore)
       >
         <component :is="layout.icon" />
         {{ layout.label }}
-      </UiButton>
+      </Button>
     </div>
   </div>
 </template>

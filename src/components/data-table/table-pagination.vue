@@ -1,14 +1,17 @@
-<script setup lang="ts" generic="T">
-import type { Table } from '@tanstack/vue-table'
+<script setup lang="ts" generic="T extends RowData">
+import type { RowData, Table } from '@tanstack/vue-table'
 
 import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon } from '@lucide/vue'
 
+import { Button } from '@/components/ui/button'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { PAGE_SIZES } from '@/constants/app'
 
+import type { features } from './features'
 import type { ServerPagination } from './types'
 
 interface DataTablePaginationProps {
-  table: Table<T>
+  table: Table<typeof features, T>
   serverPagination?: ServerPagination
 }
 const props = defineProps<DataTablePaginationProps>()
@@ -19,14 +22,14 @@ const currentPage = computed(() => {
   if (isServerPagination.value && props.serverPagination) {
     return props.serverPagination.page
   }
-  return props.table.getState().pagination.pageIndex + 1
+  return props.table.atoms.pagination.get().pageIndex + 1
 })
 
 const currentPageSize = computed(() => {
   if (isServerPagination.value && props.serverPagination) {
     return props.serverPagination.pageSize
   }
-  return props.table.getState().pagination.pageSize
+  return props.table.atoms.pagination.get().pageSize
 })
 
 const totalPages = computed(() => {
@@ -107,25 +110,25 @@ function goToLastPage() {
         <p class="hidden text-sm font-medium line-clamp-1 md:block">
           Rows per page
         </p>
-        <UiSelect
+        <Select
           :model-value="`${currentPageSize}`"
           @update:model-value="handlePageSizeChange"
         >
-          <UiSelectTrigger class="h-8 w-[70px]">
-            <UiSelectValue :placeholder="`${currentPageSize}`" />
-          </UiSelectTrigger>
-          <UiSelectContent side="top">
-            <UiSelectItem v-for="pageSize in PAGE_SIZES" :key="pageSize" :value="`${pageSize}`">
+          <SelectTrigger class="h-8 w-[70px]">
+            <SelectValue :placeholder="`${currentPageSize}`" />
+          </SelectTrigger>
+          <SelectContent side="top">
+            <SelectItem v-for="pageSize in PAGE_SIZES" :key="pageSize" :value="`${pageSize}`">
               {{ pageSize }}
-            </UiSelectItem>
-          </UiSelectContent>
-        </UiSelect>
+            </SelectItem>
+          </SelectContent>
+        </Select>
       </div>
       <div class="flex w-[100px] items-center justify-center text-sm font-medium">
         Page {{ currentPage }} of {{ totalPages }}
       </div>
       <div class="flex items-center space-x-2">
-        <UiButton
+        <Button
           variant="outline"
           class="hidden size-8 p-0 lg:flex"
           :disabled="!canPreviousPage"
@@ -133,8 +136,8 @@ function goToLastPage() {
         >
           <span class="sr-only">Go to first page</span>
           <ChevronsLeftIcon class="size-4" />
-        </UiButton>
-        <UiButton
+        </Button>
+        <Button
           variant="outline"
           class="size-8 p-0"
           :disabled="!canPreviousPage"
@@ -142,8 +145,8 @@ function goToLastPage() {
         >
           <span class="sr-only">Go to previous page</span>
           <ChevronLeftIcon class="size-4" />
-        </UiButton>
-        <UiButton
+        </Button>
+        <Button
           variant="outline"
           class="size-8 p-0"
           :disabled="!canNextPage"
@@ -151,8 +154,8 @@ function goToLastPage() {
         >
           <span class="sr-only">Go to next page</span>
           <ChevronRightIcon class="size-4" />
-        </UiButton>
-        <UiButton
+        </Button>
+        <Button
           variant="outline"
           class="hidden size-8 p-0 lg:flex"
           :disabled="!canNextPage"
@@ -160,7 +163,7 @@ function goToLastPage() {
         >
           <span class="sr-only">Go to last page</span>
           <ChevronsRightIcon class="size-4" />
-        </UiButton>
+        </Button>
       </div>
     </div>
   </div>

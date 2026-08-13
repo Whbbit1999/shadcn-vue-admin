@@ -1,5 +1,5 @@
-<script setup lang="ts" generic="T">
-import type { Column, Table as VueTable } from '@tanstack/vue-table'
+<script setup lang="ts" generic="T extends RowData">
+import type { Column, RowData, Table as VueTable } from '@tanstack/vue-table'
 import type { CSSProperties } from 'vue'
 
 import { FolderOpenIcon } from '@lucide/vue'
@@ -8,20 +8,21 @@ import { FlexRender } from '@tanstack/vue-table'
 import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'
 
+import type { features } from './features'
 import type { DataTableProps } from './types'
 
 import DataTableLoading from './table-loading.vue'
 import DataTablePagination from './table-pagination.vue'
 
 defineProps<DataTableProps<T> & {
-  table: VueTable<T>
+  table: VueTable<typeof features, T>
 }>()
 
-function getCommonPinningStyles(column: Column<T>): CSSProperties {
+function getCommonPinningStyles(column: Column<typeof features, T>): CSSProperties {
   const isPinned = column.getIsPinned()
   return {
-    left: isPinned === 'left' ? `${column.getStart('left')}px` : undefined,
-    right: isPinned === 'right' ? `${column.getAfter('right')}px` : undefined,
+    left: isPinned === 'start' ? `${column.getStart('start')}px` : undefined,
+    right: isPinned === 'end' ? `${column.getAfter('end')}px` : undefined,
     position: isPinned ? 'sticky' : 'relative',
     width: `${column.getSize()}px`,
     zIndex: isPinned ? 1 : 0,
@@ -43,7 +44,7 @@ function getCommonPinningStyles(column: Column<T>): CSSProperties {
               :style="getCommonPinningStyles(header.column)"
               :class="{ 'bg-background': header.column.getIsPinned() }"
             >
-              <FlexRender v-if="!header.isPlaceholder" :render="header.column.columnDef.header" :props="header.getContext()" />
+              <FlexRender v-if="!header.isPlaceholder" :header="header" />
             </TableHead>
           </TableRow>
         </TableHeader>
@@ -60,7 +61,7 @@ function getCommonPinningStyles(column: Column<T>): CSSProperties {
                 :style="getCommonPinningStyles(cell.column)"
                 :class="{ 'bg-background': cell.column.getIsPinned() }"
               >
-                <FlexRender :render="cell.column.columnDef.cell" :props="cell.getContext()" />
+                <FlexRender :cell="cell" />
               </TableCell>
             </TableRow>
           </template>

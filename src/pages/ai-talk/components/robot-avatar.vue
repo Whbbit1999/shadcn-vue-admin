@@ -1,10 +1,10 @@
 <script setup lang="ts">
-
+import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 </script>
 
 <template>
-  <UiAvatar>
-    <UiAvatarImage src="/robot.png" alt="robot" />
-    <UiAvatarFallback>Robot</UiAvatarFallback>
-  </UiAvatar>
+  <Avatar>
+    <AvatarImage src="/robot.png" alt="robot" />
+    <AvatarFallback>Robot</AvatarFallback>
+  </Avatar>
 </template>

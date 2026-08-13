@@ -2,6 +2,9 @@
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
 
+import { Button } from '@/components/ui/button'
+import { Card } from '@/components/ui/card'
+
 const { t } = useI18n()
 
 interface Plan {
@@ -93,7 +96,7 @@ const plans = computed<Plan[]>(() => [
     <div
       class="flex flex-col lg:flex-row lg:items-start items-center justify-center gap-4 mt-8"
     >
-      <UiCard
+      <Card
         v-for="plan in plans"
         :key="plan.id"
         class="w-full lg:w-1/5"
@@ -131,11 +134,11 @@ const plans = computed<Plan[]>(() => [
           </ul>
         </div>
         <div class="flex justify-center mx-8">
-          <UiButton block>
+          <Button block>
             {{ $t('marketing.pricingPlans.buy') }}
-          </UiButton>
+          </Button>
         </div>
-      </UiCard>
+      </Card>
     </div>
   </div>
 </template>

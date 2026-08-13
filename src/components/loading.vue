@@ -1,3 +1,7 @@
+<script setup lang="ts">
+import { Spinner } from '@/components/ui/spinner'
+</script>
+
 <template>
-  <UiSpinner class="w-24 h-24 animate-spin" />
+  <Spinner class="w-24 h-24 animate-spin" />
 </template>

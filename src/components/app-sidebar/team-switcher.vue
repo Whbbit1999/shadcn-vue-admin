@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { ChevronsUpDownIcon, PlusIcon } from '@lucide/vue'
 
-import { useSidebar } from '@/components/ui/sidebar'
+import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
+import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from '@/components/ui/sidebar'
 
 import type { Team } from './types'
 
@@ -31,12 +33,12 @@ function handleSelect(command: TComponent) {
 </script>
 
 <template>
-  <UiSidebarMenu>
-    <UiSidebarMenuItem>
-      <UiDialog v-model:open="isOpen">
-        <UiDropdownMenu>
-          <UiDropdownMenuTrigger as-child>
-            <UiSidebarMenuButton
+  <SidebarMenu>
+    <SidebarMenuItem>
+      <Dialog v-model:open="isOpen">
+        <DropdownMenu>
+          <DropdownMenuTrigger as-child>
+            <SidebarMenuButton
               size="lg"
               class="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
             >
@@ -50,18 +52,18 @@ function handleSelect(command: TComponent) {
                 <span class="text-xs truncate">{{ activeTeam.plan }}</span>
               </div>
               <ChevronsUpDownIcon class="ml-auto" />
-            </UiSidebarMenuButton>
-          </UiDropdownMenuTrigger>
-          <UiDropdownMenuContent
+            </SidebarMenuButton>
+          </DropdownMenuTrigger>
+          <DropdownMenuContent
             class="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
             align="start"
             :side="(isMobile || open) ? 'bottom' : 'right'"
             :side-offset="4"
           >
-            <UiDropdownMenuLabel class="text-xs text-muted-foreground">
+            <DropdownMenuLabel class="text-xs text-muted-foreground">
               Teams
-            </UiDropdownMenuLabel>
-            <UiDropdownMenuItem
+            </DropdownMenuLabel>
+            <DropdownMenuItem
               v-for="(team, index) in teams"
               :key="team.name"
               class="gap-2 p-2"
@@ -71,27 +73,27 @@ function handleSelect(command: TComponent) {
                 <component :is="team.logo" class="size-4 shrink-0" />
               </div>
               {{ team.name }}
-              <UiDropdownMenuShortcut>⌘{{ index + 1 }}</UiDropdownMenuShortcut>
-            </UiDropdownMenuItem>
-            <UiDropdownMenuSeparator />
+              <DropdownMenuShortcut>⌘{{ index + 1 }}</DropdownMenuShortcut>
+            </DropdownMenuItem>
+            <DropdownMenuSeparator />
 
-            <UiDialogTrigger as-child>
-              <UiDropdownMenuItem class="gap-2 p-2" @click.stop="handleSelect('team-add')">
+            <DialogTrigger as-child>
+              <DropdownMenuItem class="gap-2 p-2" @click.stop="handleSelect('team-add')">
                 <div class="flex items-center justify-center border rounded-md size-6 bg-background">
                   <PlusIcon class="size-4" />
                 </div>
                 <div class="font-medium text-muted-foreground">
                   Add team
                 </div>
-              </UiDropdownMenuItem>
-            </UiDialogTrigger>
-          </UiDropdownMenuContent>
-        </UiDropdownMenu>
+              </DropdownMenuItem>
+            </DialogTrigger>
+          </DropdownMenuContent>
+        </DropdownMenu>
 
-        <UiDialogContent>
+        <DialogContent>
           <component :is="showComponent" @close="isOpen = false" />
-        </UiDialogContent>
-      </UiDialog>
-    </UiSidebarMenuItem>
-  </UiSidebarMenu>
+        </DialogContent>
+      </Dialog>
+    </SidebarMenuItem>
+  </SidebarMenu>
 </template>

@@ -1,18 +1,21 @@
 <script setup lang="ts">
 import { ThumbsUpIcon } from '@lucide/vue'
+
+import { Button } from '@/components/ui/button'
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip'
 </script>
 
 <template>
-  <UiTooltipProvider>
-    <UiTooltip>
-      <UiTooltipTrigger as-child>
-        <UiButton variant="ghost" class="p-1">
+  <TooltipProvider>
+    <Tooltip>
+      <TooltipTrigger as-child>
+        <Button variant="ghost" class="p-1">
           <ThumbsUpIcon class="size-4" />
-        </UiButton>
-      </UiTooltipTrigger>
-      <UiTooltipContent>
+        </Button>
+      </TooltipTrigger>
+      <TooltipContent>
         <p>Good Job</p>
-      </UiTooltipContent>
-    </UiTooltip>
-  </UiTooltipProvider>
+      </TooltipContent>
+    </Tooltip>
+  </TooltipProvider>
 </template>
