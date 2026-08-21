@@ -2,9 +2,9 @@ import type { ColumnDef, RowData } from '@tanstack/vue-table'
 
 import type { features } from './features'
 
-export interface FacetedFilterOption {
+export interface FacetedFilterOption<T extends string = string> {
   label: string
-  value: string
+  value: T
   icon?: Component
 }
 

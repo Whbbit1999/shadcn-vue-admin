@@ -13,9 +13,8 @@ import { Textarea } from '@/components/ui/textarea'
 
 import type { UserInviteValidator } from '../validators/user-invite.validator'
 
+import { userRoles } from '../data/schema'
 import { userInviteValidator } from '../validators/user-invite.validator'
-
-const roles = ['superadmin', 'admin', 'cashier', 'manager'] as const
 
 const defaultValues: UserInviteValidator = {
   email: '',
@@ -79,7 +78,7 @@ const form = useForm({
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
-                <SelectItem v-for="role in roles" :key="role" :value="role">
+                <SelectItem v-for="role in userRoles" :key="role" :value="role">
                   {{ role }}
                 </SelectItem>
               </SelectGroup>

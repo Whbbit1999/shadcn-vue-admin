@@ -3,7 +3,9 @@ import { h } from 'vue'
 
 import type { FacetedFilterOption } from '@/components/data-table'
 
-export const callTypes: (FacetedFilterOption & { style: string })[] = [
+import type { UserRole, UserStatus } from './schema'
+
+export const callTypes = [
   {
     label: 'Active',
     value: 'active',
@@ -24,9 +26,9 @@ export const callTypes: (FacetedFilterOption & { style: string })[] = [
     value: 'suspended',
     style: 'bg-destructive/10 dark:bg-destructive/50 text-destructive dark:text-primary border-destructive/10',
   },
-]
+] satisfies (FacetedFilterOption<UserStatus> & { style: string })[]
 
-export const userTypes: FacetedFilterOption[] = [
+export const userTypes = [
   {
     label: 'Superadmin',
     value: 'superadmin',
@@ -47,4 +49,4 @@ export const userTypes: FacetedFilterOption[] = [
     value: 'cashier',
     icon: h(ShieldIcon),
   },
-] as const
+] satisfies FacetedFilterOption<UserRole>[]

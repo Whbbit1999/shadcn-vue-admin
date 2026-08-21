@@ -12,6 +12,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectTrigger, SelectVa
 import type { User } from '../data/schema'
 import type { UserValidator } from '../validators/user.validator'
 
+import { userRoles, userStatus } from '../data/schema'
 import { userValidator } from '../validators/user.validator'
 
 const props = defineProps<{
@@ -21,9 +22,6 @@ const props = defineProps<{
 const emits = defineEmits<{
   close: []
 }>()
-
-const roles = ['superadmin', 'admin', 'cashier', 'manager'] as const
-const status = ['active', 'inactive', 'invited', 'suspended'] as const
 
 function getInitialValues(user?: User): UserValidator {
   return {
@@ -166,7 +164,7 @@ watch(() => props.user, (user) => {
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem v-for="st in status" :key="st" :value="st">
+                  <SelectItem v-for="st in userStatus" :key="st" :value="st">
                     {{ st }}
                   </SelectItem>
                 </SelectGroup>
@@ -194,7 +192,7 @@ watch(() => props.user, (user) => {
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
-                  <SelectItem v-for="role in roles" :key="role" :value="role">
+                  <SelectItem v-for="role in userRoles" :key="role" :value="role">
                     {{ role }}
                   </SelectItem>
                 </SelectGroup>

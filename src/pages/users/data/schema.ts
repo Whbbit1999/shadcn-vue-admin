@@ -1,9 +1,11 @@
 import { z } from 'zod'
 
-export const userStatusSchema = z.enum(['active', 'inactive', 'invited', 'suspended'])
+export const userStatus = ['active', 'inactive', 'invited', 'suspended'] as const
+export const userStatusSchema = z.enum(userStatus)
 export type UserStatus = z.infer<typeof userStatusSchema>
 
-export const userRoleSchema = z.enum(['superadmin', 'admin', 'cashier', 'manager'])
+export const userRoles = ['superadmin', 'admin', 'cashier', 'manager'] as const
+export const userRoleSchema = z.enum(userRoles)
 export type UserRole = z.infer<typeof userRoleSchema>
 
 export const userSchema = z.object({
