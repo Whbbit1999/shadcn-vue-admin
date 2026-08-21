@@ -1,8 +1,10 @@
 import { z } from 'zod'
 
+import { userRoleSchema } from '../data/schema'
+
 export const userInviteValidator = z.object({
   email: z.email(),
-  role: z.enum(['superadmin', 'admin', 'cashier', 'manager']),
+  role: userRoleSchema,
   description: z.string().optional(),
 })
 

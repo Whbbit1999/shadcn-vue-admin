@@ -24,6 +24,20 @@ const props = defineProps<DataTableFacetedFilter>()
 const facets = computed(() => props.column?.getFacetedUniqueValues())
 const selectedValues = computed(() => new Set(props.column?.getFilterValue() as string[]))
 const filterFunction = (list: DataTableFacetedFilter['options'], term: string) => list.filter(i => i.label.toLowerCase()?.includes(term))
+
+function handleSelect(option: FacetedFilterOption) {
+  const isSelected = selectedValues.value.has(option.value)
+  if (isSelected) {
+    selectedValues.value.delete(option.value)
+  }
+  else {
+    selectedValues.value.add(option.value)
+  }
+  const filterValues = Array.from(selectedValues.value)
+  props.column?.setFilterValue(
+    filterValues.length ? filterValues : undefined,
+  )
+}
 </script>
 
 <template>
@@ -66,7 +80,7 @@ const filterFunction = (list: DataTableFacetedFilter['options'], term: string) =
     </PopoverTrigger>
     <PopoverContent class="w-[200px] p-0" align="start">
       <Command
-        :filter-function="filterFunction as unknown as any"
+        :filter-function="filterFunction"
       >
         <CommandInput :placeholder="title" />
         <CommandList>
@@ -76,19 +90,7 @@ const filterFunction = (list: DataTableFacetedFilter['options'], term: string) =
               v-for="option in options"
               :key="option.value"
               :value="option"
-              @select="(_e) => {
-                const isSelected = selectedValues.has(option.value)
-                if (isSelected) {
-                  selectedValues.delete(option.value)
-                }
-                else {
-                  selectedValues.add(option.value)
-                }
-                const filterValues = Array.from(selectedValues)
-                column?.setFilterValue(
-                  filterValues.length ? filterValues : undefined,
-                )
-              }"
+              @select="handleSelect(option)"
             >
               <div
                 :class="cn(
