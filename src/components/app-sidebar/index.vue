@@ -9,7 +9,7 @@ import TeamSwitcher from './team-switcher.vue'
 
 <template>
   <Sidebar collapsible="icon" class="z-50">
-    <SidebarHeader>
+    <SidebarHeader class="border-b h-14 py-1 group-data-[collapsible=icon]:justify-center">
       <TeamSwitcher :teams="sidebarData.teams" />
     </SidebarHeader>
 
@@ -17,7 +17,7 @@ import TeamSwitcher from './team-switcher.vue'
       <NavTeam :nav-main="sidebarData.navMain" />
     </SidebarContent>
 
-    <SidebarFooter>
+    <SidebarFooter class="border-t h-14 py-1 group-data-[collapsible=icon]:justify-center">
       <NavFooter :user="sidebarData.user" />
     </SidebarFooter>
 

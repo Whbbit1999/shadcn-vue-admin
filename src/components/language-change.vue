@@ -33,7 +33,7 @@ function handleLocaleChange(val: AcceptableValue) {
     <DropdownMenuTrigger as-child>
       <Button
         variant="outline"
-        size="icon"
+        size="icon-sm"
         aria-label="Change language"
         title="Change language"
       >
