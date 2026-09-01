@@ -2,6 +2,7 @@
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { PinInput, PinInputGroup, PinInputInput } from '@/components/ui/pin-input'
+import { AUTH_CONFIG } from '@/config/auth.ts'
 
 import AuthTitle from './components/auth-title.vue'
 
@@ -33,8 +34,9 @@ function handleComplete(e: string[]) {
               placeholder="○"
               @complete="handleComplete"
             >
-              <span class="text-xl">SA</span>
-              <span>-</span>
+              <span v-if="AUTH_CONFIG.otpPrefix" class="text-xl">{{ AUTH_CONFIG.otpPrefix }}</span>
+              <span v-if="AUTH_CONFIG.otpPrefix">-</span>
+
               <PinInputGroup>
                 <PinInputInput
                   v-for="(id, index) in 6"

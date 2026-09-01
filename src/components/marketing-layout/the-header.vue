@@ -6,6 +6,7 @@ import SignInButton from '@/components/sign-in-button.vue'
 import SignUpButton from '@/components/sign-up-button.vue'
 import ToggleTheme from '@/components/toggle-theme.vue'
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
+import { SITE_CONFIG } from '@/config/site'
 
 const mode = useColorMode()
 </script>
@@ -14,7 +15,7 @@ const mode = useColorMode()
   <header class="h-14 flex items-center marketing-header sticky top-0 z-99">
     <router-link to="/" class="flex items-center gap-2">
       <Avatar>
-        <AvatarImage :src="`${mode === 'dark' ? '/logo.svg' : '/logo-black.svg'}`" alt="Logo" />
+        <AvatarImage :src="`${mode === 'dark' ? SITE_CONFIG.logo.dark : SITE_CONFIG.logo.light}`" alt="Logo" />
       </Avatar>
       <span class="text-base font-bold">Shadcn Vue Admin</span>
     </router-link>
