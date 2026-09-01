@@ -4,6 +4,7 @@ import { useColorMode } from '@vueuse/core'
 
 import { Avatar, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
+import { SITE_CONFIG } from '@/config/site'
 
 const mode = useColorMode()
 
@@ -29,7 +30,7 @@ const links = [
 <template>
   <footer class="min-h-18 flex items-center justify-between">
     <Avatar>
-      <AvatarImage :src="`${mode === 'dark' ? '/logo.svg' : '/logo-black.svg'}`" alt="Logo" />
+      <AvatarImage :src="`${mode === 'dark' ? SITE_CONFIG.logo.dark : SITE_CONFIG.logo.light}`" alt="Logo" />
     </Avatar>
 
     <div>© 2025 Whbbit1999</div>
