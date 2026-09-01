@@ -12,7 +12,7 @@ const { user } = defineProps<
 >()
 
 const { logout } = useAuth()
-const { isMobile, open } = useSidebar()
+const { isMobile } = useSidebar()
 </script>
 
 <template>
@@ -39,7 +39,7 @@ const { isMobile, open } = useSidebar()
         </DropdownMenuTrigger>
         <DropdownMenuContent
           class="w-(--radix-dropdown-menu-trigger-width) min-w-56 rounded-lg"
-          :side="(isMobile || open) ? 'bottom' : 'right'"
+          :side="isMobile ? 'bottom' : 'right'"
           align="start"
           :side-offset="4"
         >

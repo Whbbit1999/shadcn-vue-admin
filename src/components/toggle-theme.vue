@@ -13,7 +13,7 @@ const mode = useColorMode()
     <DropdownMenuTrigger as-child>
       <Button
         variant="outline"
-        size="icon"
+        size="icon-sm"
         aria-label="Toggle theme"
         title="Toggle theme"
       >

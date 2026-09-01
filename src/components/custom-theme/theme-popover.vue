@@ -19,7 +19,7 @@ import ToggleColorMode from './toggle-color-mode.vue'
 <template>
   <Popover>
     <PopoverTrigger>
-      <Button variant="outline" size="icon">
+      <Button variant="outline" size="icon-sm">
         <PaintbrushIcon />
       </Button>
     </PopoverTrigger>

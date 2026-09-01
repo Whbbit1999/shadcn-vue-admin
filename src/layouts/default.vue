@@ -23,13 +23,13 @@ const { contentLayout } = storeToRefs(themeStore)
     <AppSidebar />
     <SidebarInset class="w-full max-w-full peer-data-[state=collapsed]:w-[calc(100%-var(--sidebar-width-icon)-1rem)] peer-data-[state=expanded]:w-[calc(100%-var(--sidebar-width))]">
       <header
-        class="flex items-center gap-3 sm:gap-4 h-16 p-4 shrink-0 transition-[width,height] ease-linear"
+        class="flex items-center gap-3 sm:gap-4 h-14 p-4 shrink-0 transition-[width,height] ease-linear border-b sticky top-0"
       >
         <SidebarTrigger class="-ml-1" />
-        <Separator orientation="vertical" class="h-6" />
+        <Separator orientation="vertical" />
         <CommandMenuPanel />
         <div class="flex-1" />
-        <div class="ml-auto flex items-center space-x-4">
+        <div class="ml-auto flex items-center space-x-2">
           <LanguageChange />
           <ToggleTheme />
           <ThemePopover />
