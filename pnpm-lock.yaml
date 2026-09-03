@@ -41,9 +41,9 @@ importers:
       class-variance-authority:
         specifier: ^0.7.1
         version: 0.7.1
-      clsx:
-        specifier: ^2.1.1
-        version: 2.1.1
+      cn:
+        specifier: ^0.2.3
+        version: 0.2.3
       dayjs:
         specifier: ^1.11.23
         version: 1.11.23
@@ -71,9 +71,6 @@ importers:
       reka-ui:
         specifier: ^2.10.4
         version: 2.10.4(vue@3.5.41(typescript@6.0.3))
-      tailwind-merge:
-        specifier: ^3.6.0
-        version: 3.6.0
       universal-cookie:
         specifier: ^8.1.2
         version: 8.1.2
@@ -1687,6 +1684,11 @@ packages:
   clsx@2.1.1:
     resolution: {integrity: sha512-eYm0QWBtUrBWZWG0d386OGAw16Z995PiOVo2B7bjWSbHedGl5e0ZWaq65kOGgUSNesEIDkB9ISbTg/JK9dhCZA==}
     engines: {node: '>=6'}
+
+  cn@0.2.3:
+    resolution: {integrity: sha512-z1S2v7FdtqcoXQzJWqNPBJ3KPG1or9FlefB0x+Eu8322BMmCSSVqzeI7itNj/6YRjyendnlWDJnKQkBhukT3fg==}
+    engines: {node: '>=20'}
+    hasBin: true
 
   commander@2.20.3:
     resolution: {integrity: sha512-GpVkmM8vF2vQUkj2LvZmD35JxeJOLCwJ9cUkugyk2nuhbv3+mJvpLYYt+0+USMxE+oj+ey/lJEnhZw75x/OMcQ==}
@@ -3368,9 +3370,6 @@ packages:
   synckit@0.11.13:
     resolution: {integrity: sha512-eNRKgb3z66Yp3D2CixVujOUvXLFUTij/zVnV8KRyvFdQwpz7I5DS8UfRkTeLzb64u+dkzDSdelE24izu+zSSUg==}
     engines: {node: ^14.18.0 || >=16.0.0}
-
-  tailwind-merge@3.6.0:
-    resolution: {integrity: sha512-uxL7qAVQriqRQPAyK3pj66VqskWqoZ37PW94jwOTwNfq/z9oyu1V+eqrZqtR2+fCiXdYOZe/Modt8GtvqNzu+w==}
 
   tailwindcss-animate@1.0.7:
     resolution: {integrity: sha512-bl6mpH3T7I3UFxuvDEXLxy/VuFxBk5bbzplh7tXI68mwMokNYd1t9qPBHlnyTwfa4JGC4zP516I1hYYtQ/vspA==}
@@ -5399,6 +5398,8 @@ snapshots:
 
   clsx@2.1.1: {}
 
+  cn@0.2.3: {}
+
   commander@2.20.3: {}
 
   commander@7.2.0: {}
@@ -7220,8 +7221,6 @@ snapshots:
   synckit@0.11.13:
     dependencies:
       '@pkgr/core': 0.3.6
-
-  tailwind-merge@3.6.0: {}
 
   tailwindcss-animate@1.0.7(tailwindcss@4.3.3):
     dependencies:
