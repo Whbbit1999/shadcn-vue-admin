@@ -1,5 +1,4 @@
 import { AwardIcon, BadgeDollarSignIcon, HandshakeIcon, ShieldIcon } from '@lucide/vue'
-import { h } from 'vue'
 
 import type { FacetedFilterOption } from '@/components/data-table'
 
@@ -32,21 +31,21 @@ export const userTypes = [
   {
     label: 'Superadmin',
     value: 'superadmin',
-    icon: h(BadgeDollarSignIcon),
+    icon: BadgeDollarSignIcon,
   },
   {
     label: 'Admin',
     value: 'admin',
-    icon: h(HandshakeIcon),
+    icon: HandshakeIcon,
   },
   {
     label: 'Manager',
     value: 'manager',
-    icon: h(AwardIcon),
+    icon: AwardIcon,
   },
   {
     label: 'Cashier',
     value: 'cashier',
-    icon: h(ShieldIcon),
+    icon: ShieldIcon,
   },
 ] satisfies FacetedFilterOption<UserRole>[]

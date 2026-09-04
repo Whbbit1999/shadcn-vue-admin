@@ -1,15 +1,15 @@
 <script setup lang="ts" generic="T extends RowData">
-import type { RowData, Table } from '@tanstack/vue-table'
+import type { RowData } from '@tanstack/vue-table'
 
 import { RefreshCcwIcon, Settings2Icon } from '@lucide/vue'
 
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 
-import type { features } from './features'
+import type { DataTableInstance } from './table'
 
 interface DataTableViewOptionsProps {
-  table: Table<typeof features, T>
+  table: DataTableInstance<T>
 }
 
 const props = defineProps<DataTableViewOptionsProps>()

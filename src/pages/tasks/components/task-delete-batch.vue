@@ -1,9 +1,7 @@
-<script setup lang="ts" generic="T extends RowData = Task">
-import type { RowData, Table as VueTable } from '@tanstack/vue-table'
-
+<script setup lang="ts">
 import { toast } from 'vue-sonner'
 
-import type { features } from '@/components/data-table/features'
+import type { DataTableInstance } from '@/components/data-table'
 
 import ConfirmDialog from '@/components/confirm-dialog.vue'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
@@ -13,7 +11,7 @@ import { Label } from '@/components/ui/label'
 import type { Task } from '../data/schema'
 
 const { table } = defineProps<{
-  table: VueTable<typeof features, T>
+  table: DataTableInstance<Task>
 }>()
 
 const openModel = defineModel<boolean>('open', {

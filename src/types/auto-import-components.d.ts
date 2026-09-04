@@ -39,6 +39,7 @@ declare module 'vue' {
     DataTableRadioCell: typeof import('./../components/data-table/radio-cell.vue')['default']
     DataTableTableLoading: typeof import('./../components/data-table/table-loading.vue')['default']
     DataTableTablePagination: typeof import('./../components/data-table/table-pagination.vue')['default']
+    DataTableTableToolbar: typeof import('./../components/data-table/table-toolbar.vue')['default']
     DataTableViewOptions: typeof import('./../components/data-table/view-options.vue')['default']
     GlobalLayoutBasicHeader: typeof import('./../components/global-layout/basic-header.vue')['default']
     GlobalLayoutBasicPage: typeof import('./../components/global-layout/basic-page.vue')['default']

@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type { Row } from '@tanstack/vue-table'
 import type { Component } from 'vue'
 
 import { EllipsisIcon } from '@lucide/vue'
 
-import type { features } from '@/components/data-table/features'
+import type { DataTableRow } from '@/components/data-table'
 
 import { Modal, ModalContent } from '@/components/prop-ui/modal'
 import { Button } from '@/components/ui/button'
@@ -15,7 +14,7 @@ import type { User } from '../data/schema'
 import UserResource from './user-resource.vue'
 
 interface DataTableRowActionsProps {
-  row: Row<typeof features, User>
+  row: DataTableRow<User>
 }
 const props = defineProps<DataTableRowActionsProps>()
 const user = computed(() => props.row.original)

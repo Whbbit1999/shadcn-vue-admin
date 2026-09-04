@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends RowData">
-import type { Column, RowData } from '@tanstack/vue-table'
+import type { RowData } from '@tanstack/vue-table'
 
 import { CheckIcon, CirclePlusIcon } from '@lucide/vue'
 
@@ -10,11 +10,10 @@ import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover
 import { Separator } from '@/components/ui/separator'
 import { cn } from '@/lib/utils'
 
-import type { features } from './features'
-import type { FacetedFilterOption } from './types'
+import type { DataTableColumn, FacetedFilterOption } from './table'
 
 interface DataTableFacetedFilter {
-  column?: Column<typeof features, T, any>
+  column?: DataTableColumn<T>
   title?: string
   options: FacetedFilterOption[]
 }

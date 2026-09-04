@@ -1,5 +1,4 @@
 import { ArrowDownIcon, ArrowRightIcon, ArrowUpIcon, CircleCheckIcon, CircleHelpIcon, CircleIcon, CirclePlusIcon, TimerOffIcon } from '@lucide/vue'
-import { h } from 'vue'
 
 export const labels = [
   {
@@ -20,27 +19,27 @@ export const statuses = [
   {
     value: 'backlog',
     label: 'Backlog',
-    icon: h(CircleHelpIcon),
+    icon: CircleHelpIcon,
   },
   {
     value: 'todo',
     label: 'Todo',
-    icon: h(CircleIcon),
+    icon: CircleIcon,
   },
   {
     value: 'in progress',
     label: 'In Progress',
-    icon: h(TimerOffIcon),
+    icon: TimerOffIcon,
   },
   {
     value: 'done',
     label: 'Done',
-    icon: h(CircleCheckIcon),
+    icon: CircleCheckIcon,
   },
   {
     value: 'canceled',
     label: 'Canceled',
-    icon: h(CirclePlusIcon),
+    icon: CirclePlusIcon,
   },
 ]
 
@@ -48,16 +47,16 @@ export const priorities = [
   {
     value: 'low',
     label: 'Low',
-    icon: h(ArrowDownIcon),
+    icon: ArrowDownIcon,
   },
   {
     value: 'medium',
     label: 'Medium',
-    icon: h(ArrowRightIcon),
+    icon: ArrowRightIcon,
   },
   {
     value: 'high',
     label: 'High',
-    icon: h(ArrowUpIcon),
+    icon: ArrowUpIcon,
   },
 ]
