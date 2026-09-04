@@ -1,0 +1,7 @@
+interface:
+  display_name: "Table Pagination"
+  short_description: "Client and server table pagination guidance"
+  default_prompt: "Use $table-pagination to design or review a table with client-side or server-side pagination."
+
+policy:
+  allow_implicit_invocation: true

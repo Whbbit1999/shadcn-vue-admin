@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="T extends RowData">
-import type { RowData, Table } from '@tanstack/vue-table'
+import type { RowData } from '@tanstack/vue-table'
 
 import { ChevronLeftIcon, ChevronRightIcon, ChevronsLeftIcon, ChevronsRightIcon } from '@lucide/vue'
 
@@ -7,98 +7,26 @@ import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import { PAGE_SIZES } from '@/constants/app'
 
-import type { features } from './features'
-import type { ServerPagination } from './types'
+import type { DataTableInstance } from './table'
 
 interface DataTablePaginationProps {
-  table: Table<typeof features, T>
-  serverPagination?: ServerPagination
+  table: DataTableInstance<T>
 }
 const props = defineProps<DataTablePaginationProps>()
 
-const isServerPagination = computed(() => !!props.serverPagination)
+const currentPage = computed(() => props.table.atoms.pagination.get().pageIndex + 1)
+const currentPageSize = computed(() => props.table.atoms.pagination.get().pageSize)
+const totalPages = computed(() => props.table.getPageCount())
+const canPreviousPage = computed(() => props.table.getCanPreviousPage())
+const canNextPage = computed(() => props.table.getCanNextPage())
 
-const currentPage = computed(() => {
-  if (isServerPagination.value && props.serverPagination) {
-    return props.serverPagination.page
-  }
-  return props.table.atoms.pagination.get().pageIndex + 1
-})
-
-const currentPageSize = computed(() => {
-  if (isServerPagination.value && props.serverPagination) {
-    return props.serverPagination.pageSize
-  }
-  return props.table.atoms.pagination.get().pageSize
-})
-
-const totalPages = computed(() => {
-  if (isServerPagination.value && props.serverPagination) {
-    return Math.ceil(props.serverPagination.total / props.serverPagination.pageSize)
-  }
-  return props.table.getPageCount()
-})
-
-const canPreviousPage = computed(() => {
-  if (isServerPagination.value) {
-    return currentPage.value > 1
-  }
-  return props.table.getCanPreviousPage()
-})
-
-const canNextPage = computed(() => {
-  if (isServerPagination.value) {
-    return currentPage.value < totalPages.value
-  }
-  return props.table.getCanNextPage()
-})
-
-function handlePageSizeChange(value: any) {
-  if (!value)
+function handlePageSizeChange(value: unknown) {
+  if (typeof value !== 'string' && typeof value !== 'number')
     return
+
   const newPageSize = Number(value)
-  if (isServerPagination.value && props.serverPagination?.onPageSizeChange) {
-    props.serverPagination.onPageSizeChange(newPageSize)
-  }
-  else {
+  if (Number.isFinite(newPageSize) && newPageSize > 0)
     props.table.setPageSize(newPageSize)
-  }
-}
-
-function goToFirstPage() {
-  if (isServerPagination.value && props.serverPagination?.onPageChange) {
-    props.serverPagination.onPageChange(1)
-  }
-  else {
-    props.table.setPageIndex(0)
-  }
-}
-
-function goToPreviousPage() {
-  if (isServerPagination.value && props.serverPagination?.onPageChange) {
-    props.serverPagination.onPageChange(currentPage.value - 1)
-  }
-  else {
-    props.table.previousPage()
-  }
-}
-
-function goToNextPage() {
-  if (isServerPagination.value && props.serverPagination?.onPageChange) {
-    props.serverPagination.onPageChange(currentPage.value + 1)
-  }
-  else {
-    props.table.nextPage()
-  }
-}
-
-function goToLastPage() {
-  if (isServerPagination.value && props.serverPagination?.onPageChange) {
-    props.serverPagination.onPageChange(totalPages.value)
-  }
-  else {
-    props.table.setPageIndex(props.table.getPageCount() - 1)
-  }
 }
 </script>
 
@@ -132,7 +60,7 @@ function goToLastPage() {
           variant="outline"
           class="hidden size-8 p-0 lg:flex"
           :disabled="!canPreviousPage"
-          @click="goToFirstPage"
+          @click="table.firstPage()"
         >
           <span class="sr-only">Go to first page</span>
           <ChevronsLeftIcon class="size-4" />
@@ -141,7 +69,7 @@ function goToLastPage() {
           variant="outline"
           class="size-8 p-0"
           :disabled="!canPreviousPage"
-          @click="goToPreviousPage"
+          @click="table.previousPage()"
         >
           <span class="sr-only">Go to previous page</span>
           <ChevronLeftIcon class="size-4" />
@@ -150,7 +78,7 @@ function goToLastPage() {
           variant="outline"
           class="size-8 p-0"
           :disabled="!canNextPage"
-          @click="goToNextPage"
+          @click="table.nextPage()"
         >
           <span class="sr-only">Go to next page</span>
           <ChevronRightIcon class="size-4" />
@@ -159,7 +87,7 @@ function goToLastPage() {
           variant="outline"
           class="hidden size-8 p-0 lg:flex"
           :disabled="!canNextPage"
-          @click="goToLastPage"
+          @click="table.lastPage()"
         >
           <span class="sr-only">Go to last page</span>
           <ChevronsRightIcon class="size-4" />

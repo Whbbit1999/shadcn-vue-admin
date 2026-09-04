@@ -1,17 +1,17 @@
 <script setup lang="ts" generic="T extends RowData">
-import type { Column, RowData } from '@tanstack/vue-table'
+import type { RowData } from '@tanstack/vue-table'
 
 import { ArrowDownIcon, ArrowLeftIcon, ArrowRightIcon, ArrowUpIcon, ChevronsUpDownIcon, EyeOffIcon, PinIcon, PinOffIcon } from '@lucide/vue'
 import { computed } from 'vue'
 
-import type { features } from '@/components/data-table/features'
+import type { DataTableColumn } from '@/components/data-table/table'
 
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { cn } from '@/lib/utils'
 
 interface DataTableColumnHeaderProps {
-  column: Column<typeof features, T, any>
+  column: DataTableColumn<T>
   title: string
 }
 

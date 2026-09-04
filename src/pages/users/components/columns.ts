@@ -1,10 +1,8 @@
-import type { ColumnDef } from '@tanstack/vue-table'
-
 import { h } from 'vue'
 
-import type { features } from '@/components/data-table/features'
+import type { DataTableColumnDef } from '@/components/data-table'
 
-import { DataTableColumnHeader, SelectColumn } from '@/components/data-table'
+import { createSelectColumn, DataTableColumnHeader } from '@/components/data-table'
 import { Copy } from '@/components/prop-ui/copy'
 import Badge from '@/components/ui/badge/Badge.vue'
 
@@ -13,8 +11,8 @@ import type { User } from '../data/schema'
 import { callTypes, userTypes } from '../data/data'
 import DataTableRowActions from './data-table-row-actions.vue'
 
-export const columns: ColumnDef<typeof features, User>[] = [
-  SelectColumn as ColumnDef<typeof features, User>,
+export const columns: DataTableColumnDef<User>[] = [
+  createSelectColumn<User>(),
   {
     accessorKey: 'username',
     header: ({ column }) => h(DataTableColumnHeader<User>, { column, title: 'username' }),
@@ -55,9 +53,7 @@ export const columns: ColumnDef<typeof features, User>[] = [
 
       return h(Badge, { class: `${callType.style || ''}`, variant: 'outline' }, () => callType.label)
     },
-    filterFn: (row, id, value) => {
-      return value.includes(row.getValue(id))
-    },
+    filterFn: 'arrHas',
     enableResizing: true,
   },
 
@@ -79,6 +75,7 @@ export const columns: ColumnDef<typeof features, User>[] = [
     },
     enableSorting: false,
     enableResizing: true,
+    filterFn: 'arrHas',
   },
 
   {

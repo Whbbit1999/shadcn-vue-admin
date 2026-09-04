@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type { Row } from '@tanstack/vue-table'
 import type { Component } from 'vue'
 
 import { EllipsisIcon, FilePenLineIcon, Trash2Icon } from '@lucide/vue'
 
-import type { features } from '@/components/data-table/features'
+import type { DataTableRow } from '@/components/data-table'
 
 import { Modal, ModalContent } from '@/components/prop-ui/modal'
 import { Button } from '@/components/ui/button'
@@ -19,7 +18,7 @@ import TaskResourceDialog from './task-resource-dialog.vue'
 const props = defineProps<DataTableRowActionsProps>()
 
 interface DataTableRowActionsProps {
-  row: Row<typeof features, Task>
+  row: DataTableRow<Task>
 }
 const task = computed(() => taskSchema.parse(props.row.original))
 

@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type { Row } from '@tanstack/vue-table'
 import type { Component } from 'vue'
 
 import { EllipsisIcon } from '@lucide/vue'
 
-import type { features } from '@/components/data-table/features'
+import type { DataTableRow } from '@/components/data-table'
 
 import { Modal, ModalContent } from '@/components/prop-ui/modal'
 import { Button } from '@/components/ui/button'
@@ -15,7 +14,7 @@ import type { Billing } from './data/schema'
 import { billingSchema } from './data/schema'
 
 interface DataTableRowActionsProps {
-  row: Row<typeof features, Billing>
+  row: DataTableRow<Billing>
 }
 const props = defineProps<DataTableRowActionsProps>()
 

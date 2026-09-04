@@ -1,10 +1,10 @@
-import type { ColumnDef } from '@tanstack/vue-table'
+import type { RowData } from '@tanstack/vue-table'
 
 import { h } from 'vue'
 
 import { Checkbox } from '@/components/ui/checkbox'
 
-import type { features } from './features'
+import type { DataTableColumnDef } from './table'
 
 import RadioCell from './radio-cell.vue'
 
@@ -15,37 +15,39 @@ const FIXED_WIDTH_COLUMN = {
   enableResizing: false,
 } as const
 
-export const SelectColumn: ColumnDef<typeof features, any> = {
-  id: 'select',
-  ...FIXED_WIDTH_COLUMN,
-  header: ({ table }) => h(Checkbox, {
-    'modelValue': table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && 'indeterminate'),
-    'onUpdate:modelValue': value => table.toggleAllPageRowsSelected(!!value),
-    'ariaLabel': 'Select all',
-  }),
-  cell: ({ row }) => h(Checkbox, {
-    'modelValue': row.getIsSelected(),
-    'onUpdate:modelValue': value => row.toggleSelected(!!value),
-    'ariaLabel': 'Select row',
-  }),
-  enableSorting: false,
-  enableHiding: false,
+export function createSelectColumn<T extends RowData>(): DataTableColumnDef<T> {
+  return {
+    id: 'select',
+    ...FIXED_WIDTH_COLUMN,
+    header: ({ table }) => h(Checkbox, {
+      'modelValue': table.getIsAllPageRowsSelected() || (table.getIsSomePageRowsSelected() && 'indeterminate'),
+      'onUpdate:modelValue': value => table.toggleAllPageRowsSelected(!!value),
+      'ariaLabel': 'Select all',
+    }),
+    cell: ({ row }) => h(Checkbox, {
+      'modelValue': row.getIsSelected(),
+      'onUpdate:modelValue': value => row.toggleSelected(!!value),
+      'ariaLabel': 'Select row',
+    }),
+    enableSorting: false,
+    enableHiding: false,
+  }
 }
 
-export const RadioSelectColumn: ColumnDef<typeof features, any> = {
-  id: 'radio-select',
-  ...FIXED_WIDTH_COLUMN,
-  header: () => null,
-  cell: ({ row, table }) => h(RadioCell, {
-    checked: row.getIsSelected(),
-    onClick: (event: MouseEvent) => {
-      event.stopPropagation()
-      // cancel selection of all rows
-      table.toggleAllRowsSelected(false)
-      // select the current row
-      row.toggleSelected(true)
-    },
-  }),
-  enableSorting: false,
-  enableHiding: false,
+export function createRadioSelectColumn<T extends RowData>(): DataTableColumnDef<T> {
+  return {
+    id: 'radio-select',
+    ...FIXED_WIDTH_COLUMN,
+    header: () => null,
+    cell: ({ row, table }) => h(RadioCell, {
+      checked: row.getIsSelected(),
+      onClick: (event: MouseEvent) => {
+        event.stopPropagation()
+        table.toggleAllRowsSelected(false)
+        row.toggleSelected(true)
+      },
+    }),
+    enableSorting: false,
+    enableHiding: false,
+  }
 }
