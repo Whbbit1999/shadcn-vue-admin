@@ -69,7 +69,7 @@ export function useCreateSystemMutation() {
   const queryClient = useQueryClient()
 
   return useMutation<IResponse<ISystemConfig>, Error, ISystemConfig>({
-    mutationKey: ['useCreateTaskMutation'],
+    mutationKey: ['useCreateSystemMutation'],
     mutationFn: async (data: ISystemConfig) => {
       return new Promise<IResponse<ISystemConfig>>((resolve) => {
         setTimeout(() => {

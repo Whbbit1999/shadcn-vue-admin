@@ -5,7 +5,7 @@ import { SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuButton, Sideba
 import { useSidebarNavigation } from '@/composables/use-sidebar-navigation'
 import { isExternalUrl } from '@/utils/is-external-url'
 
-import type { NavGroup, NavItem } from './types'
+import type { NavGroup } from './types'
 
 import MenuButton from './menu-button.vue'
 
@@ -45,7 +45,7 @@ function handleGoBack() {
                   :is-active="isMenuItemActive(menu)"
                   :tooltip="menu.title"
                   :is-external-url="isExternalUrl(menu.url)"
-                  :menu="menu as NavItem"
+                  :menu="menu"
                 />
               </SidebarMenuItem>
 
@@ -92,10 +92,10 @@ function handleGoBack() {
               <!-- Leaf item -->
               <SidebarMenuItem v-if="!item.items">
                 <MenuButton
-                  :is-active="isMenuItemActive(item as NavItem)"
+                  :is-active="isMenuItemActive(item)"
                   :tooltip="item.title"
-                  :is-external-url="isExternalUrl((item as any).url)"
-                  :menu="item as NavItem"
+                  :is-external-url="isExternalUrl(item.url)"
+                  :menu="item"
                 />
               </SidebarMenuItem>
 
@@ -104,7 +104,7 @@ function handleGoBack() {
                 <SidebarMenuButton
                   class="cursor-pointer"
                   :tooltip="item.title"
-                  @click="enterMenu(item as NavItem)"
+                  @click="enterMenu(item)"
                 >
                   <component :is="item.icon" v-if="item.icon" />
                   <span>{{ item.title }}</span>

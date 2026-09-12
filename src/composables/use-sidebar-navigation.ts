@@ -2,7 +2,7 @@ import { useSessionStorage } from '@vueuse/core'
 import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 
-import type { NavGroup, NavItem } from '@/components/app-sidebar/types'
+import type { NavGroup, NavItem, NavSubItem } from '@/components/app-sidebar/types'
 
 /**
  * Composable for managing Vercel-style sidebar menu navigation
@@ -22,13 +22,13 @@ export function useSidebarNavigation(navMain: Readonly<NavGroup[]>) {
    * Find a menu item by its path in the navigation hierarchy
    * Searches across all NavGroups to find the item
    */
-  function findItemByPath(path: string[]): NavItem | null {
+  function findItemByPath(path: string[]): NavSubItem | null {
     if (path.length === 0)
       return null
 
     // First, find the initial item from any NavGroup
     const firstTitle = path[0]
-    let current: any = null
+    let current: NavSubItem | null = null
 
     // Search in all NavGroups for the first level item
     for (const group of navMain as NavGroup[]) {
@@ -47,16 +47,17 @@ export function useSidebarNavigation(navMain: Readonly<NavGroup[]>) {
     // Continue traversing deeper levels
     for (let i = 1; i < path.length; i++) {
       const title = path[i]
-      if (!current.items)
+      const items: NavSubItem[] | undefined = current?.items
+      if (!items)
         return null
 
-      const found = current.items.find((item: NavItem) => item.title === title)
-      if (!found)
+      const next: NavSubItem | undefined = items.find(item => item.title === title)
+      if (!next)
         return null
       if (i === path.length - 1)
-        return found
+        return next
 
-      current = found
+      current = next
     }
 
     return current
@@ -65,7 +66,7 @@ export function useSidebarNavigation(navMain: Readonly<NavGroup[]>) {
   /**
    * Get current menu items based on navigation path
    */
-  const currentMenuItems = computed<any[]>(() => {
+  const currentMenuItems = computed<NavSubItem[]>(() => {
     if (navigationPath.value.length === 0) {
       // Root level: return first NavGroup's items
       return navMain[0]?.items || []
@@ -88,7 +89,7 @@ export function useSidebarNavigation(navMain: Readonly<NavGroup[]>) {
   /**
    * Enter next level menu
    */
-  function enterMenu(item: NavItem) {
+  function enterMenu(item: NavSubItem) {
     if (item.items && item.items.length > 0) {
       navigationPath.value.push(item.title)
       saveNavigationPath()
@@ -135,7 +136,7 @@ export function useSidebarNavigation(navMain: Readonly<NavGroup[]>) {
   /**
    * Check if a menu item is currently active based on route
    */
-  function isMenuItemActive(item: NavItem): boolean {
+  function isMenuItemActive(item: NavSubItem): boolean {
     const currentPath = route.path
     if (item.url) {
       return currentPath === item.url

@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest'
+import { afterEach, describe, expect, it, vi } from 'vitest'
 
 import { EnvSchema } from '@/validators/env.validator'
 
@@ -152,6 +152,41 @@ describe('envSchema validation', () => {
 
       const result = EnvSchema.safeParse(invalidEnv)
       expect(result.success).toBe(false)
+    })
+  })
+})
+
+describe('env module', () => {
+  afterEach(() => {
+    vi.restoreAllMocks()
+    vi.unstubAllEnvs()
+    vi.resetModules()
+  })
+
+  it('falls back to safe values instead of crashing when env is invalid', async () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {})
+    vi.stubEnv('VITE_SERVER_API_URL', 'not-a-url')
+
+    const { env, envError } = await import('@/utils/env')
+
+    expect(envError).not.toBeNull()
+    expect(env.VITE_SERVER_API_URL).toBe('')
+    expect(env.VITE_SERVER_API_PREFIX).toBe('/api')
+    expect(env.VITE_SERVER_API_TIMEOUT).toBe(5000)
+  })
+
+  it('uses the parsed values when env is valid', async () => {
+    vi.stubEnv('VITE_SERVER_API_URL', 'https://api.example.com')
+    vi.stubEnv('VITE_SERVER_API_PREFIX', '/v1')
+    vi.stubEnv('VITE_SERVER_API_TIMEOUT', '9000')
+
+    const { env, envError } = await import('@/utils/env')
+
+    expect(envError).toBeNull()
+    expect(env).toEqual({
+      VITE_SERVER_API_URL: 'https://api.example.com',
+      VITE_SERVER_API_PREFIX: '/v1',
+      VITE_SERVER_API_TIMEOUT: 9000,
     })
   })
 })

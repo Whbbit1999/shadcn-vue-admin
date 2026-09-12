@@ -12,7 +12,7 @@
 基于 **Shadcn-vue**、**Vue 3.5+** 和 **Vite** 构建的企业级管理仪表板 UI，专注于响应式设计、可访问性与开发者体验。
 本项目 Fork 自 [shadcn-admin](https://github.com/satnaing/shadcn-admin)
 
-![cover](public/shadcn-vue-admin.png)
+![cover](.github/assets/shadcn-vue-admin.png)
 
 > ⚠️ 版本说明：本项目为可直接使用的起始模板，后续将持续新增组件与功能。
 
@@ -38,7 +38,7 @@
 | 构建工具         | [Vite](https://vitejs.dev/), [@vitejs/plugin-vue 6+](https://github.com/vitejs/vite-plugin-vue)                                                            |
 | 状态管理         | [Pinia 3+](https://pinia.vuejs.org/), [pinia-plugin-persistedstate 4+](https://prazdevs.github.io/pinia-plugin-persistedstate/)                            |
 | 路由管理         | [vue-router 5+](https://router.vuejs.org/), [vite-plugin-vue-layouts 0.11+](https://github.com/JohnCampionJr/vite-plugin-vue-layouts)                      |
-| 样式系统         | [Tailwind CSS 4+](https://tailwindcss.com/), [tailwindcss-animate 1+](https://github.com/jamiebuilds/tailwindcss-animate)                                  |
+| 样式系统         | [Tailwind CSS 4+](https://tailwindcss.com/), [tw-animate-css 1+](https://github.com/Wombosvideo/tw-animate-css)                                            |
 | 数据处理         | [TanStack Vue Query 5+](https://tanstack.com/query/latest), [TanStack Vue Table 8+](https://tanstack.com/table/latest)                                     |
 | 表单验证         | [TanStack Vue Form](https://tanstack.com/form/latest/docs/overview), [Zod 4+](https://zod.dev/)                                                            |
 | 动画效果         | [@formkit/auto-animate 0.9+](https://auto-animate.formkit.com/), [motion-v 1+](https://motion-v.vercel.app/)                                               |

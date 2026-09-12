@@ -4,12 +4,13 @@ import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
 import browserslist from 'browserslist'
 import { browserslistToTargets } from 'lightningcss'
+import process from 'node:process'
 import { fileURLToPath, URL } from 'node:url'
 import { visualizer } from 'rollup-plugin-visualizer'
 import AutoImport from 'unplugin-auto-import/vite'
 import Component from 'unplugin-vue-components/vite'
-import { defineConfig } from 'vite'
 import Layouts from 'vite-plugin-vue-layouts'
+import { defineConfig } from 'vitest/config'
 import { VueRouterAutoImports } from 'vue-router/unplugin'
 import VueRouter from 'vue-router/vite'
 
@@ -23,7 +24,9 @@ export default defineConfig({
     }),
     vue(),
     tailwindcss(),
-    visualizer({ gzipSize: true, brotliSize: true }) as PluginOption,
+    ...(process.env.ANALYZE
+      ? [visualizer({ gzipSize: true, brotliSize: true }) as PluginOption]
+      : []),
     Layouts({
       defaultLayout: 'default',
     }),
@@ -63,6 +66,23 @@ export default defineConfig({
     transformer: 'lightningcss',
     lightningcss: {
       targets: browserslistToTargets(browserslist(['> 1%', 'last 2 versions'])),
+    },
+  },
+
+  test: {
+    coverage: {
+      provider: 'v8',
+      reporter: ['text', 'html'],
+      include: [
+        'src/lib/**/*.ts',
+        'src/services/**/*.ts',
+        'src/stores/**/*.ts',
+        'src/composables/**/*.ts',
+        'src/utils/**/*.ts',
+        'src/validators/**/*.ts',
+        'src/router/guard/**/*.ts',
+      ],
+      exclude: ['src/**/*.d.ts'],
     },
   },
 })

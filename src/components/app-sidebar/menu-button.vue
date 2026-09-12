@@ -3,13 +3,13 @@ import { ExternalLinkIcon } from '@lucide/vue'
 
 import { SidebarMenuButton } from '@/components/ui/sidebar'
 
-import type { NavItem } from './types'
+import type { NavSubItem } from './types'
 
 defineProps<{
   isActive: boolean
   tooltip?: string
   isExternalUrl?: boolean
-  menu: NavItem
+  menu: NavSubItem
 }>()
 </script>
 

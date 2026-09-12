@@ -10,13 +10,23 @@ interface BaseNavItem {
 
 export type NavItem
   = | BaseNavItem & {
-    items: (BaseNavItem & { url?: string })[]
+    items: NavSubItem[]
     url?: never
     isActive?: boolean
   } | BaseNavItem & {
     url: string
     items?: never
   }
+
+/**
+ * A navigation entry as exposed by `useSidebarNavigation()`.
+ * Covers top-level items and nested sub-items (whose `url` is optional).
+ */
+export type NavSubItem = BaseNavItem & {
+  url?: string
+  items?: NavSubItem[]
+  isActive?: boolean
+}
 
 export interface NavGroup {
   title: string
