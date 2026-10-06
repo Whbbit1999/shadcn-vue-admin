@@ -2,8 +2,6 @@ import type { PluginOption } from 'vite'
 
 import tailwindcss from '@tailwindcss/vite'
 import vue from '@vitejs/plugin-vue'
-import browserslist from 'browserslist'
-import { browserslistToTargets } from 'lightningcss'
 import process from 'node:process'
 import { fileURLToPath, URL } from 'node:url'
 import { visualizer } from 'rollup-plugin-visualizer'
@@ -59,13 +57,6 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url)),
-    },
-  },
-
-  css: {
-    transformer: 'lightningcss',
-    lightningcss: {
-      targets: browserslistToTargets(browserslist(['> 1%', 'last 2 versions'])),
     },
   },
 
