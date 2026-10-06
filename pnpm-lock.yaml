@@ -15,23 +15,23 @@ importers:
         specifier: ^3.12.4
         version: 3.12.4
       '@lucide/vue':
-        specifier: ^1.47.0
+        specifier: ^1.48.0
         version: 1.48.0(vue@3.5.43(typescript@6.0.3))
       '@tanstack/vue-form':
         specifier: ^1.33.5
         version: 1.33.5(vue@3.5.43(typescript@6.0.3))
       '@tanstack/vue-query':
-        specifier: ^5.103.1
+        specifier: ^5.104.0
         version: 5.104.0(vue@3.5.43(typescript@6.0.3))
       '@tanstack/vue-table':
         specifier: ^9.2.4
         version: 9.2.4(vue@3.5.43(typescript@6.0.3))
       '@unovis/ts':
-        specifier: ^1.7.0
-        version: 1.7.0(supports-color@7.2.0)
+        specifier: ^1.7.1
+        version: 1.7.1(supports-color@7.2.0)
       '@unovis/vue':
-        specifier: ^1.7.0
-        version: 1.7.0(@unovis/ts@1.7.0(supports-color@7.2.0))(vue@3.5.43(typescript@6.0.3))
+        specifier: ^1.7.1
+        version: 1.7.1(@unovis/ts@1.7.1(supports-color@7.2.0))(vue@3.5.43(typescript@6.0.3))
       '@vueuse/core':
         specifier: ^15.0.0
         version: 15.0.0(vue@3.5.43(typescript@6.0.3))
@@ -69,7 +69,7 @@ importers:
         specifier: ^4.7.1
         version: 4.7.1(pinia@4.0.3(@vue/devtools-api@8.2.1)(typescript@6.0.3)(vue@3.5.43(typescript@6.0.3)))
       reka-ui:
-        specifier: ^2.10.4
+        specifier: ^2.10.5
         version: 2.10.5(vue@3.5.43(typescript@6.0.3))
       universal-cookie:
         specifier: ^8.1.2
@@ -103,19 +103,19 @@ importers:
         specifier: ^9.5.1
         version: 9.5.1(@typescript-eslint/typescript-estree@8.70.1(supports-color@7.2.0)(typescript@6.0.3))(@typescript-eslint/utils@8.70.1(eslint@10.11.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3))(@vue/compiler-sfc@3.5.43)(eslint-plugin-format@2.0.1(eslint@10.11.0(jiti@2.7.0)(supports-color@7.2.0)))(eslint@10.11.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3)(vitest@4.1.11)
       '@iconify-json/simple-icons':
-        specifier: ^1.2.97
-        version: 1.2.97
+        specifier: ^1.2.98
+        version: 1.2.99
       '@iconify/vue':
-        specifier: ^5.0.2
+        specifier: ^5.0.3
         version: 5.0.3(vue@3.5.43(typescript@6.0.3))
       '@tailwindcss/vite':
         specifier: ^4.3.3
         version: 4.3.3(vite@8.3.1(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.1))
       '@tanstack/eslint-plugin-query':
-        specifier: ^5.103.1
+        specifier: ^5.104.0
         version: 5.104.0(eslint@10.11.0(jiti@2.7.0)(supports-color@7.2.0))(supports-color@7.2.0)(typescript@6.0.3)
       '@types/node':
-        specifier: ^26.6.2
+        specifier: ^26.6.3
         version: 26.6.3
       '@types/nprogress':
         specifier: ^0.2.3
@@ -129,9 +129,6 @@ importers:
       '@vue/test-utils':
         specifier: ^2.5.1
         version: 2.5.1(@vue/compiler-dom@3.5.43)(@vue/server-renderer@3.5.43)(vue@3.5.43(typescript@6.0.3))
-      browserslist:
-        specifier: ^4.29.0
-        version: 4.29.1
       eslint:
         specifier: ^10.11.0
         version: 10.11.0(jiti@2.7.0)(supports-color@7.2.0)
@@ -141,9 +138,6 @@ importers:
       happy-dom:
         specifier: ^20.14.5
         version: 20.14.5
-      lightningcss:
-        specifier: ^1.33.0
-        version: 1.33.0
       nano-staged:
         specifier: ^1.0.2
         version: 1.0.2
@@ -169,7 +163,7 @@ importers:
         specifier: ^32.1.0
         version: 32.1.0(rolldown@1.2.11)(vite@8.3.1(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))
       vite:
-        specifier: ^8.3.0
+        specifier: ^8.3.1
         version: 8.3.1(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.1)
       vite-plugin-vue-layouts:
         specifier: ^0.11.0
@@ -473,8 +467,8 @@ packages:
     resolution: {integrity: sha512-bV0Tgo9K4hfPCek+aMAn81RppFKv2ySDQeMoSZuvTASywNTnVJCArCZE2FWqpvIatKu7VMRLWlR1EazvVhDyhQ==}
     engines: {node: '>=18.18'}
 
-  '@iconify-json/simple-icons@1.2.97':
-    resolution: {integrity: sha512-Z6PmM6jvWVU7rmLzqbxCLJA7SeqCnK6lMHXtjyzHPLZebwuoojBEcHHycppahDzEeN9xujRkrV5J8QpOhMyNrg==}
+  '@iconify-json/simple-icons@1.2.99':
+    resolution: {integrity: sha512-kouZhqvUoNdxEe+lZksbJJZMCZv4b4Ob62O1GW3fcpz/I0mVPzM+9/Qf/DUuv5ns8l6c46D8M/ubhJjjbLp9HQ==}
 
   '@iconify/types@2.0.0':
     resolution: {integrity: sha512-+wluvCrRhXrhyOmRDJ3q8mux9JkKy5SJ/v8ol2tu4FVjyYvtEzkc/3pK15ET6RKg4b4w4BmTk1+gsCUhf21Ykg==}
@@ -1254,13 +1248,13 @@ packages:
   '@unovis/graphlibrary@2.2.0-3':
     resolution: {integrity: sha512-ReEjk/cDih+q+z0U0EluHpPWlfj31v+nIglmfCNUuNuTv5FtGOKTYHbUSISX6SxHR1RZMLfP/kNniPr0H9KRIw==}
 
-  '@unovis/ts@1.7.0':
-    resolution: {integrity: sha512-aEilfV47FNsU8VarSUjUUekhlt/a1dP4XjTLEEPSMgIVHUsyX+xMGFfgXr1r9eAv6NOJIIeTlJiEYz2LOOiUWw==}
+  '@unovis/ts@1.7.1':
+    resolution: {integrity: sha512-QjSbkTU+0PlLubGosCrvgxbtiaZgbSwyYDZQcx/pYYDLKmtlgSuuWkNJI5U496KO8no9mzxuKoM9Ogi2MRQI8Q==}
 
-  '@unovis/vue@1.7.0':
-    resolution: {integrity: sha512-kLFvoaf63bnYEGDTfRfHvaJJjpUo2NrqsGJllK1/2S5S3mqBvz9KsYd1j/272Y56YCXhgiNH6dcIS/RzzqwXsA==}
+  '@unovis/vue@1.7.1':
+    resolution: {integrity: sha512-lkA+97pTGLmcya57EOw1r0Czb4EfymB/UXJWKVOpJVh8lleGiogKcBWBdtpk9QkvXOMapS0GYzjE+m5/BDeEeA==}
     peerDependencies:
-      '@unovis/ts': 1.7.0
+      '@unovis/ts': 1.7.1
       vue: ^3
 
   '@vitejs/plugin-vue@6.0.9':
@@ -1583,8 +1577,8 @@ packages:
     resolution: {integrity: sha512-yQbXgO/OSZVD2IsiLlro+7Hf6Q18EJrKSEsdoMzKePKXct3gvD8oLcOQdIzGupr5Fj+EDe8gO/lxc1BzfMpxvA==}
     engines: {node: '>=8'}
 
-  browserslist@4.29.1:
-    resolution: {integrity: sha512-AUdjuRyCNGUYtqpqfTmWyM4fXay8yIQhmLnvYe/THMGfT9B/34X7xQd3ifKxwyNPPpowVBjLb+64BN9Rn1mizw==}
+  browserslist@4.29.3:
+    resolution: {integrity: sha512-1R4kiYKXGViqEN0CnoDrXc1StD9niAwu+j2dukWzrD4bJgsD4lDmEp0CRbc6E/vYJIfTHwPmwyaKtVSudICdPA==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
     hasBin: true
 
@@ -1611,8 +1605,8 @@ packages:
     resolution: {integrity: sha512-P8BjAsXvZS+VIDUI11hHCQEv74YT67YUi5JJFNWIqL235sBmjX4+qx9Muvls5ivyNENctx46xQLQ3aTuE7ssaQ==}
     engines: {node: '>=6'}
 
-  caniuse-lite@1.0.30001812:
-    resolution: {integrity: sha512-qN+QNNBr93TCmFrmte0bBCjSDMuRvt78VlHT99qIGPszm4QsqCX8lnyWUFkHi8B7ZBAPq8SH+UqyXNy/odMdng==}
+  caniuse-lite@1.0.30001814:
+    resolution: {integrity: sha512-/Uaf1lAzr59XcMpW0o96WoEfr+VXK2OX4U9AgFoiSHsVJ4HppnIFUjtYzsyDH2+tgANaQb2/oxYGwCPapN1FpA==}
 
   ccount@2.0.1:
     resolution: {integrity: sha512-eyrF0jiFpY+3drT6383f1qhkbGsLSifNAjA61IUjZjmLCWjItY6LB9ft9YhoDgwfmclB2zhu51Lc7+95b8NRAg==}
@@ -4190,7 +4184,7 @@ snapshots:
 
   '@humanwhocodes/retry@0.4.3': {}
 
-  '@iconify-json/simple-icons@1.2.97':
+  '@iconify-json/simple-icons@1.2.99':
     dependencies:
       '@iconify/types': 2.0.0
 
@@ -4894,7 +4888,7 @@ snapshots:
     dependencies:
       lodash-es: 4.18.1
 
-  '@unovis/ts@1.7.0(supports-color@7.2.0)':
+  '@unovis/ts@1.7.1(supports-color@7.2.0)':
     dependencies:
       '@emotion/css': 11.13.5(supports-color@7.2.0)
       '@juggle/resize-observer': 3.4.0
@@ -4968,9 +4962,9 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@unovis/vue@1.7.0(@unovis/ts@1.7.0(supports-color@7.2.0))(vue@3.5.43(typescript@6.0.3))':
+  '@unovis/vue@1.7.1(@unovis/ts@1.7.1(supports-color@7.2.0))(vue@3.5.43(typescript@6.0.3))':
     dependencies:
-      '@unovis/ts': 1.7.0(supports-color@7.2.0)
+      '@unovis/ts': 1.7.1(supports-color@7.2.0)
       vue: 3.5.43(typescript@6.0.3)
 
   '@vitejs/plugin-vue@6.0.9(vite@8.3.1(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.1))(vue@3.5.43(typescript@6.0.3))':
@@ -5320,13 +5314,13 @@ snapshots:
     dependencies:
       fill-range: 7.1.1
 
-  browserslist@4.29.1:
+  browserslist@4.29.3:
     dependencies:
       baseline-browser-mapping: 2.11.26
-      caniuse-lite: 1.0.30001812
+      caniuse-lite: 1.0.30001814
       electron-to-chromium: 1.5.439
       node-releases: 2.0.57
-      update-browserslist-db: 1.3.3(browserslist@4.29.1)
+      update-browserslist-db: 1.3.3(browserslist@4.29.3)
 
   buffer-image-size@0.6.4:
     dependencies:
@@ -5350,7 +5344,7 @@ snapshots:
 
   callsites@3.1.0: {}
 
-  caniuse-lite@1.0.30001812: {}
+  caniuse-lite@1.0.30001814: {}
 
   ccount@2.0.1: {}
 
@@ -5415,7 +5409,7 @@ snapshots:
 
   core-js-compat@3.50.0:
     dependencies:
-      browserslist: 4.29.1
+      browserslist: 4.29.3
 
   cosmiconfig@7.1.0:
     dependencies:
@@ -5884,7 +5878,7 @@ snapshots:
     dependencies:
       '@eslint-community/eslint-utils': 4.10.1(eslint@10.11.0(jiti@2.7.0)(supports-color@7.2.0))
       '@eslint/css-tree': 4.1.1
-      browserslist: 4.29.1
+      browserslist: 4.29.3
       change-case: 5.4.4
       ci-info: 4.4.0
       core-js-compat: 3.50.0
@@ -7460,9 +7454,9 @@ snapshots:
       rolldown: 1.2.11
       vite: 8.3.1(@types/node@26.6.3)(jiti@2.7.0)(yaml@2.9.1)
 
-  update-browserslist-db@1.3.3(browserslist@4.29.1):
+  update-browserslist-db@1.3.3(browserslist@4.29.3):
     dependencies:
-      browserslist: 4.29.1
+      browserslist: 4.29.3
       escalade: 3.2.0
       picocolors: 1.1.1
 
