@@ -45,6 +45,11 @@ const filterRange = computed(() => {
     return date >= startDate
   })
 })
+
+// Hoisted out of the template: vue-tsc (3.3.13) mis-emits `.value` for identifiers
+// indexed inline inside template prop expressions.
+const lineColor = (_d: OverviewChartData, i: number) => [chartConfig.mobile.color, chartConfig.desktop.color][i]
+const crosshairColor = (_d: OverviewChartData, i: number) => [chartConfig.mobile.color, chartConfig.desktop.color][i % 2]
 </script>
 
 <template>
@@ -93,7 +98,7 @@ const filterRange = computed(() => {
           <VisLine
             :x="(d: OverviewChartData) => d.date"
             :y="[(d: OverviewChartData) => d.mobile, (d: OverviewChartData) => d.mobile + d.desktop]"
-            :color="(_d: OverviewChartData, i: number) => [chartConfig.mobile.color, chartConfig.desktop.color][i]"
+            :color="lineColor"
             :line-width="1"
           />
           <VisAxis
@@ -127,7 +132,7 @@ const filterRange = computed(() => {
                 })
               },
             })"
-            :color="(_d: OverviewChartData, i: number) => [chartConfig.mobile.color, chartConfig.desktop.color][i % 2]"
+            :color="crosshairColor"
           />
         </VisXYContainer>
 
