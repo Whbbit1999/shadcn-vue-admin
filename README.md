@@ -4,29 +4,31 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Whbbit1999/shadcn-vue-admin/blob/main/LICENSE)
 [![Vue 3.5+](https://img.shields.io/badge/Vue-3.5+-brightgreen.svg?logo=vue.js)](https://vuejs.org/)
 [![Vite](https://img.shields.io/badge/Vite-8+-4f30e8.svg?logo=vite)](https://vitejs.dev/)
-[![pnpm 10+](https://img.shields.io/badge/pnpm-10+-orange.svg?logo=pnpm)](https://pnpm.io/)
+[![pnpm 11](https://img.shields.io/badge/pnpm-11-orange.svg?logo=pnpm)](https://pnpm.io/)
 [![TypeScript 6.0+](https://img.shields.io/badge/TypeScript-6.0+-blue.svg?logo=typescript)](https://www.typescriptlang.org/)
 
 [简体中文](./README-CN.md) | English
 
-A production-grade admin dashboard UI built with **Shadcn-vue**, **Vue 3.5+** and **Vite**, focusing on responsiveness, accessibility and developer experience.
-Forked from [shadcn-admin](https://github.com/satnaing/shadcn-admin)
+A frontend UI template built with **shadcn-vue**, **Vue 3** and **Vite**, bringing together common layouts, components and example pages that you can customize and extend.
+Adapted from [shadcn-admin](https://github.com/satnaing/shadcn-admin) for Vue.
+
+[Live Demo](https://shadcn-vue-admin.netlify.app/)
 
 ![cover](.github/assets/shadcn-vue-admin.png)
 
-> ⚠️ Version Note: This is a starter template. New components and features will be continuously added to the project.
+> This repository provides frontend examples. Login is mocked, and pages such as Tasks use local sample data. Connect your own authentication and business APIs before using it in production.
 
 ## ✨ Key Features
 
-- ✅ Light/Dark mode toggle with Pinia persistent state
+- ✅ Light, dark and system appearance, with persistent theme settings
 - ✅ Global search command palette
-- ✅ Accessible shadcn-ui sidebar navigation
-- ✅ 20+ pre-built functional pages
+- ✅ Sidebar navigation built with shadcn-vue components
+- ✅ Example pages for dashboards, tasks, users, settings, authentication and errors
 - ✅ Custom component library with shadcn-vue extensions
 - ✅ Auto-generated routing system (based on file structure)
-- ✅ Internationalization support (vue-i18n v11+)
+- ✅ English and Simplified Chinese locale resources with vue-i18n (some page copy remains hardcoded)
 - ✅ Form validation with tanstack/vue-form + Zod
-- ✅ Data visualization with TanStack Table/Query & Unovis
+- ✅ Reusable data tables with TanStack Table, query/mutation examples with TanStack Query, and charts with Unovis
 - ✅ Animation support (AutoAnimate, Motion-V, TW Animate CSS)
 
 ## 🛠️ Tech Stack & Version Constraints
@@ -49,11 +51,11 @@ Forked from [shadcn-admin](https://github.com/satnaing/shadcn-admin)
 
 ## 🚀 Quick Start
 
-### Prerequisites (Strict Version Requirements)
+### Prerequisites
 
-- Node.js ≥ 22.15 (LTS recommended)
-- **pnpm 10+** (Project-specified package manager, pinned to pnpm 11)
-- TypeScript ≥ 6.0.0
+- Node.js ≥ 22.15, as declared in `package.json`; CI uses Node.js 22.
+- Use the pnpm version specified by `packageManager` in `package.json` (currently **11.28.4**).
+- TypeScript is installed as a project dependency; no global installation is needed.
 
 ### Installation
 
@@ -100,15 +102,15 @@ pnpm release         # Bump version with bumpp
 
 ### Dependency Maintenance
 
-- All project dependencies are updated every Tuesday （UTC/GMT +8:00） to ensure security and compatibility.
-- Version constraints are strictly managed (pinned versions for critical dependencies).
-- Git hooks (pre-commit) are enabled via `simple-git-hooks` + `nano-staged` for code quality.
+- Dependency ranges are declared in `package.json`; `pnpm-lock.yaml` records the resolved versions. CI installs with `pnpm install --frozen-lockfile`.
+- Git hooks use `simple-git-hooks`: pre-commit runs `nano-staged` to fix lint issues in staged files, and pre-push runs `pnpm build`.
+- Pull request CI runs lint, build and test coverage checks for changes beyond Markdown files.
 
 ### Theme Customization
 
-If you need to change the website style, you can use the preset styles provided by [tweakcn](https://tweakcn.com/editor/theme). You only need to copy the css variables provided by tweakcn to `index.css` and change the `:root` `:dark` and `@theme inline` parts.
+Use [tweakcn](https://tweakcn.com/editor/theme) as a starting point for custom themes. Update the base CSS variables in `src/assets/index.css` under `:root` and `.dark`, and adjust the `@theme inline` mappings when needed. The selectable color themes have their own overrides in `src/assets/themes.css`; update those too when customizing a selectable theme.
 
-### Layout Customization (No `index.vue` in nested directories)
+### Layout Customization
 
 For pages in `pages/errors/` and `pages/auth/` that you don’t want to use the default layout:
 
@@ -127,15 +129,24 @@ meta:
 </route>
 ```
 
-This will generate extra empty routes like `/errors/` and `/auth/`.
-To fix it, create `index.vue` inside the directory and add redirect:
+The project already uses this pattern in `src/pages/auth.vue` and `src/pages/errors.vue`. For a new directory, add an `index.vue` if its base path should redirect to a child page:
 
 ```vue
 <script lang="ts" setup>
 const router = useRouter()
-router.replace({ name: '/errors/404' })
+router.replace('/errors/404')
 </script>
 ```
+
+### API Configuration
+
+When connecting a backend, use `.env.example` as a reference for your local environment configuration:
+
+- `VITE_SERVER_API_URL`: backend origin.
+- `VITE_SERVER_API_PREFIX`: API path prefix (defaults to `/api`).
+- `VITE_SERVER_API_TIMEOUT`: request timeout in milliseconds (defaults to `5000`).
+
+`src/lib/api-client.ts` provides the shared ofetch client, and `src/services/api/` contains API examples. The Tasks page currently uses `src/pages/tasks/data/tasks.json`; the task API examples are not wired into that page.
 
 ## 📄 License
 

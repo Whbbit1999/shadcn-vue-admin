@@ -4,29 +4,31 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/Whbbit1999/shadcn-vue-admin/blob/main/LICENSE)
 [![Vue 3.5+](https://img.shields.io/badge/Vue-3.5+-brightgreen.svg?logo=vue.js)](https://vuejs.org/)
 [![Vite](https://img.shields.io/badge/Vite-8+-4f30e8.svg?logo=vite)](https://vitejs.dev/)
-[![pnpm 10+](https://img.shields.io/badge/pnpm-10+-orange.svg?logo=pnpm)](https://pnpm.io/)
+[![pnpm 11](https://img.shields.io/badge/pnpm-11-orange.svg?logo=pnpm)](https://pnpm.io/)
 [![TypeScript 6.0+](https://img.shields.io/badge/TypeScript-6.0+-blue.svg?logo=typescript)](https://www.typescriptlang.org/)
 
 [English](./README.md) | 简体中文
 
-基于 **Shadcn-vue**、**Vue 3.5+** 和 **Vite** 构建的企业级管理仪表板 UI，专注于响应式设计、可访问性与开发者体验。
-本项目 Fork 自 [shadcn-admin](https://github.com/satnaing/shadcn-admin)
+基于 **shadcn-vue**、**Vue 3** 和 **Vite** 构建的前端 UI 模板，整合常用布局、组件与页面示例，方便按需定制和扩展。
+本项目基于 [shadcn-admin](https://github.com/satnaing/shadcn-admin) 适配 Vue 实现。
+
+[在线演示](https://shadcn-vue-admin.netlify.app/)
 
 ![cover](.github/assets/shadcn-vue-admin.png)
 
-> ⚠️ 版本说明：本项目为可直接使用的起始模板，后续将持续新增组件与功能。
+> 本仓库提供前端示例。登录采用模拟逻辑，任务列表等页面使用本地示例数据。用于生产环境前，需要接入自己的认证和业务 API。
 
 ## ✨ 核心特性
 
-- ✅ 亮/暗色模式切换，支持 Pinia 持久化存储
+- ✅ 亮色、暗色及跟随系统的外观模式，支持主题设置持久化
 - ✅ 全局搜索命令面板
-- ✅ 符合可访问性标准的 shadcn-ui 侧边栏导航
-- ✅ 20+ 个预构建的功能页面
+- ✅ 基于 shadcn-vue 组件的侧边栏导航
+- ✅ 仪表板、任务、用户、设置、认证及错误页等示例页面
 - ✅ 基于 shadcn-vue 扩展的自定义组件库
 - ✅ 基于文件结构的自动路由生成系统
-- ✅ 国际化支持（vue-i18n v11+）
+- ✅ 基于 vue-i18n 的英文、简体中文语言资源（部分页面文案仍为硬编码）
 - ✅ @tanstack/vue-form + Zod 表单验证
-- ✅ TanStack Table/Query & Unovis 数据可视化
+- ✅ 基于 TanStack Table 的可复用数据表格、TanStack Query 查询与变更示例，以及 Unovis 图表
 - ✅ 流畅动画支持（AutoAnimate、Motion-V、TW Animate CSS）
 
 ## 🛠️ 技术栈与版本约束
@@ -49,11 +51,11 @@
 
 ## 🚀 快速开始
 
-### 前置依赖（严格版本要求）
+### 环境要求
 
-- Node.js ≥ 22.15（推荐 LTS 版本）
-- **pnpm 10+**（项目指定包管理器，锁定为 pnpm 11）
-- TypeScript ≥ 6.0.0
+- `package.json` 声明 Node.js ≥ 22.15，CI 使用 Node.js 22。
+- 使用 `package.json` 中 `packageManager` 指定的 pnpm 版本（当前为 **11.28.4**）。
+- TypeScript 随项目依赖安装，无需全局安装。
 
 ### 安装步骤
 
@@ -100,19 +102,15 @@ pnpm release         # 使用 bumpp 升级版本
 
 ### 依赖维护
 
-- 所有项目依赖每周二（UTC/GMT +8:00）更新，以确保安全性与兼容性。
-- 关键依赖版本严格锁定，避免兼容性问题。
-- 通过 `simple-git-hooks` + `nano-staged` 启用 Git 钩子（pre-commit），保障代码质量。
+- `package.json` 声明依赖版本范围，`pnpm-lock.yaml` 记录解析后的版本。CI 使用 `pnpm install --frozen-lockfile` 安装依赖。
+- 通过 `simple-git-hooks` 配置 Git 钩子：pre-commit 使用 `nano-staged` 修复暂存文件的 lint 问题，pre-push 执行 `pnpm build`。
+- PR 包含 Markdown 以外的文件变更时，CI 执行 lint、构建和测试覆盖率检查。
 
 ### 主题定制
 
-如需自定义网站样式，可使用 [tweakcn](https://tweakcn.com/editor/theme) 提供的预设样式：
+可参考 [tweakcn](https://tweakcn.com/editor/theme) 生成自定义主题。在 `src/assets/index.css` 的 `:root` 和 `.dark` 中调整基础 CSS 变量，按需修改 `@theme inline` 映射。主题选择器中的配色在 `src/assets/themes.css` 中还有独立覆盖；定制这些配色时，需要同步修改对应变量。
 
-1. 从 tweakcn 复制生成的 CSS 变量
-2. 将其粘贴到项目的 `index.css` 文件中
-3. 修改 `:root`、`:dark` 和 `@theme inline` 部分即可应用自定义样式
-
-### 布局定制（嵌套目录无 `index.vue` 场景）
+### 布局定制
 
 如果希望 `pages/errors/` 和 `pages/auth/` 等目录下的页面不使用默认布局，可按以下步骤操作：
 
@@ -131,12 +129,9 @@ meta:
 </route>
 ```
 
-#### 步骤 2：解决冗余路由问题
+#### 步骤 2：配置目录入口跳转
 
-上述操作会生成空的父路由（如 `/errors/`、`/auth/`），可通过以下方式修复：
-
-1. 在目标目录中创建 `index.vue`（如 `pages/errors/index.vue`）
-2. 在该文件中添加重定向逻辑（基于 Vue 3.5+ 组合式 API）：
+项目中的 `src/pages/auth.vue` 和 `src/pages/errors.vue` 已采用上述结构。新建目录时，如果希望访问目录根路径后跳转到子页面，可在目录下添加 `index.vue`，例如 `src/pages/errors/index.vue`：
 
 ```vue
 <script lang="ts" setup>
@@ -144,9 +139,19 @@ import { useRouter } from 'vue-router'
 
 const router = useRouter()
 // 示例：重定向至 404 页面
-router.replace({ name: '/errors/404' })
+router.replace('/errors/404')
 </script>
 ```
+
+### API 配置
+
+接入后端时，参考 `.env.example` 配置本地环境变量：
+
+- `VITE_SERVER_API_URL`：后端服务地址。
+- `VITE_SERVER_API_PREFIX`：API 路径前缀，默认为 `/api`。
+- `VITE_SERVER_API_TIMEOUT`：请求超时时间，单位为毫秒，默认为 `5000`。
+
+共享 ofetch 客户端位于 `src/lib/api-client.ts`，API 示例位于 `src/services/api/`。任务页面目前使用 `src/pages/tasks/data/tasks.json`，尚未接入任务 API 示例。
 
 ## 📄 许可证
 
