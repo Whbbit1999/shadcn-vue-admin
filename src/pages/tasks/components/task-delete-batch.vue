@@ -30,13 +30,14 @@ function handleConfirm() {
     return
   }
 
+  const deletedCount = selectedCount.value
   openModel.value = false
 
   toast.promise(new Promise(resolve => setTimeout(resolve, 2000)), {
     loading: 'Deleting tasks...',
     success: () => {
       table.resetRowSelection()
-      return `Successfully deleted ${selectedRows.value.length} tasks.`
+      return `Successfully deleted ${deletedCount} tasks.`
     },
     error: 'Failed to delete tasks.',
   })

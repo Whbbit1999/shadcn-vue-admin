@@ -50,7 +50,7 @@ meta:
 
 ## Data Fetching / API
 
-- ofetch: `src/composables/use-fetch.ts`
+- ofetch: `src/lib/api-client.ts`
 - Vue Query plugin: `src/plugins/tanstack-vue-query/setup.ts`
 - API modules: `src/services/api/*.api.ts`
 - Shared response types: `src/services/types/response.type.ts`
@@ -69,7 +69,7 @@ Plugin initialization entry: `src/plugins/index.ts`
 ## Form Validation
 
 - Validators: `src/pages/**/validators/*.validator.ts` (zod)
-- Forms: `src/pages/**/components/*-form.vue` (commonly: `toTypedSchema` + `useForm`)
+- Forms: `src/pages/**/components/*-form.vue` (`useForm` from `@tanstack/vue-form` with Zod schemas in `validators`)
 
 ## UI Component Directories
 
@@ -100,7 +100,7 @@ Plugin initialization entry: `src/plugins/index.ts`
 - Add/modify a layout: edit `src/layouts/*.vue`, then set `meta.layout` in the page.
 - Add a plugin: create `src/plugins/<plugin>/setup.ts`, then register it in `src/plugins/index.ts`.
 - Add an API module: create `src/services/api/*.api.ts`; put shared request/response types in `src/services/types/*` or `src/services/api/types/*`.
-- Add data fetching: use ofetch (`src/composables/use-fetch.ts`) + Vue Query (setup: `src/plugins/tanstack-vue-query/setup.ts`).
+- Add data fetching: use ofetch (`src/lib/api-client.ts`) + Vue Query (setup: `src/plugins/tanstack-vue-query/setup.ts`).
 - Add a form: define a zod validator in `src/pages/**/validators/*.validator.ts`, then use it from `src/pages/**/components/*-form.vue`.
 - Add a store: create `src/stores/*.ts` (Pinia; persistedstate is enabled).
 

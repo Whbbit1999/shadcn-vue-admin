@@ -141,7 +141,7 @@ function isInvalid(field: any) {
 
     <div>
       <form.Field name="urls" mode="array">
-        <template #default="{ field, state }">
+        <template #default="{ field }">
           <div v-for="(_, index) in field.state.value" :key="`urls-${index}`" class="mb-2">
             <form.Field :name="`urls[${index}].value`">
               <template #default="{ field: subField, state: subState }">
@@ -167,7 +167,7 @@ function isInvalid(field: any) {
                       <XIcon class="w-3" />
                     </button>
                   </div>
-                  <FieldError :errors="state.meta.errors" />
+                  <FieldError :errors="subState.meta.errors" />
                 </FormItem>
               </template>
             </form.Field>

@@ -26,8 +26,8 @@ export function useAuth() {
     isLogin.value = true
     loading.value = false
 
-    const redirect = router.currentRoute.value.query.redirect as string
-    if (!redirect || redirect.startsWith('//')) {
+    const redirect = router.currentRoute.value.query.redirect
+    if (typeof redirect !== 'string' || !redirect.startsWith('/') || redirect.startsWith('//')) {
       toHome()
     }
     else {

@@ -2,8 +2,11 @@
 
 ## Current State
 
-- This repo currently has no dedicated test runner configured (no `pnpm test` script in `package.json`).
-- For now, treat `pnpm build` (typecheck + Vite build) as the primary safety net.
+- Vitest is configured in `vite.config.ts`. Existing tests cover utilities, stores, API behavior, configuration parsing, error pages, and shared table behavior.
+- Use `pnpm test` for watch mode, `pnpm test:run` for a single run, and `pnpm test:coverage` for coverage reports.
+- Component tests use `@vue/test-utils` with `// @vitest-environment happy-dom` where a DOM is required.
+- CI runs lint, build, and test coverage for pull requests with non-Markdown changes. No coverage threshold is configured.
+- Run `pnpm build` as well: it checks TypeScript and the production bundle.
 
 ## Policy (Strong Constraints)
 
@@ -24,13 +27,13 @@
 3. If a test script exists (e.g. `test`, `test:unit`, `test:e2e`), run the relevant command(s).
 4. For core logic changes, add/adjust tests (see Policy).
 
-## What To Test (If Adding Tests Later)
+## What To Test
 
 - Pure logic/utils: unit tests (fast, deterministic).
 - Composables: unit tests with mocked dependencies.
 - UI components/pages: component tests only for critical interactions; prefer testing behavior over implementation details.
 
-## Recommended Tooling (Optional)
+## Tooling
 
-- Unit/component: Vitest + @vue/test-utils
-- E2E (only if needed): Playwright
+- Unit/component: Vitest + @vue/test-utils (installed).
+- E2E: no runner is configured. Add Playwright only when end-to-end coverage is needed.
