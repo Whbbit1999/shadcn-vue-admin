@@ -104,8 +104,8 @@ const form = useForm({
                 </p>
               </div>
               <Switch
-                :checked="field.state.value"
-                @update:checked="(v: any) => field.handleChange(v)"
+                :model-value="field.state.value"
+                @update:model-value="field.handleChange"
               />
             </FormItem>
           </template>
@@ -123,8 +123,8 @@ const form = useForm({
                 </FieldDescription>
               </div>
               <Switch
-                :checked="field.state.value"
-                @update:checked="(v: any) => field.handleChange(v)"
+                :model-value="field.state.value"
+                @update:model-value="field.handleChange"
               />
             </FormItem>
           </template>
@@ -142,8 +142,8 @@ const form = useForm({
                 </FieldDescription>
               </div>
               <Switch
-                :checked="field.state.value"
-                @update:checked="(v: any) => field.handleChange(v)"
+                :model-value="field.state.value"
+                @update:model-value="field.handleChange"
               />
             </FormItem>
           </template>
@@ -161,8 +161,8 @@ const form = useForm({
                 </FieldDescription>
               </div>
               <Switch
-                :checked="field.state.value"
-                @update:checked="(v: any) => field.handleChange(v)"
+                :model-value="field.state.value"
+                @update:model-value="field.handleChange"
               />
             </FormItem>
           </template>
