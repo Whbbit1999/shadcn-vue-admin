@@ -24,7 +24,7 @@ interface Props {
         </Button>
       </TooltipTrigger>
       <TooltipContent>
-        <p>Copy</p>
+        <p>{{ $t('aiTalk.reply.copy') }}</p>
       </TooltipContent>
     </Tooltip>
   </TooltipProvider>

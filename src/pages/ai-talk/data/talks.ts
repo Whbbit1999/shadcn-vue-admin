@@ -1,16 +1,21 @@
-import type { IMessage } from '../types'
+import type { TalkRole } from '../types'
 
-export const exampleTalks: IMessage[] = [
+export interface IExampleTalk {
+  role: TalkRole
+  contentKey: string
+}
+
+export const exampleTalks: IExampleTalk[] = [
   {
     role: 'system',
-    content: `Hello, I'm your smart assistant, how can I help you?`,
+    contentKey: 'aiTalk.demo.greeting',
   },
   {
     role: 'user',
-    content: 'Hi, who are you?',
+    contentKey: 'aiTalk.demo.user',
   },
   {
     role: 'system',
-    content: `I can answer your questions, provide information, and help you solve your problems. You can ask me anything and I'll do my best to answer it.`,
+    contentKey: 'aiTalk.demo.reply',
   },
 ]

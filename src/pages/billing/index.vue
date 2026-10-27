@@ -7,8 +7,8 @@ import BillingPlan from './components/billing-plan/index.vue'
 
 <template>
   <BasicPage
-    title="Plans & Billing"
-    description="Manage your plan and billing history here."
+    :title="$t('billing.title')"
+    :description="$t('billing.description')"
   >
     <BillingPlan />
     <BillingHistory class="mt-2" />

@@ -20,10 +20,10 @@ function handleComplete(e: string[]) {
       <Card class="w-full max-w-sm">
         <CardHeader>
           <CardTitle class="text-2xl">
-            Two-Factor Authentication
+            {{ $t('auth.twoFactorTitle') }}
           </CardTitle>
           <CardDescription>
-            Please enter the authentication code.We have sent the authentication code to your email.
+            {{ $t('auth.twoFactorDescription') }}
           </CardDescription>
         </CardHeader>
         <CardContent class="grid gap-4">
@@ -49,13 +49,13 @@ function handleComplete(e: string[]) {
         </CardContent>
         <CardFooter class="flex flex-col gap-2">
           <Button class="w-full" :disabled="value.length < 6">
-            Verify
+            {{ $t('auth.verify') }}
           </Button>
 
           <CardDescription>
-            Haven't received it?
+            {{ $t('auth.noCodeReceived') }}
             <Button variant="link" class="px-0 text-muted-foreground">
-              Resend a new code.
+              {{ $t('auth.resendCode') }}
             </Button>
           </CardDescription>
         </CardFooter>

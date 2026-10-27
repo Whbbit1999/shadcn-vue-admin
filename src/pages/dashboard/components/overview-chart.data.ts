@@ -96,16 +96,28 @@ export const chartData = [
 
 export type OverviewChartData = typeof chartData[number]
 
-export const chartConfig = {
-  mobile: {
-    label: 'Mobile',
-    color: 'var(--chart-2)',
-  },
-  desktop: {
-    label: 'Desktop',
-    color: 'var(--chart-1)',
-  },
-} satisfies ChartConfig
+export const chartColors = {
+  mobile: 'var(--chart-2)',
+  desktop: 'var(--chart-1)',
+}
+
+export const chartSeries = {
+  mobile: 'dashboard.chart.series.mobile',
+  desktop: 'dashboard.chart.series.desktop',
+}
+
+export function createChartConfig(t: (key: string) => string): ChartConfig {
+  return {
+    mobile: {
+      label: t(chartSeries.mobile),
+      color: chartColors.mobile,
+    },
+    desktop: {
+      label: t(chartSeries.desktop),
+      color: chartColors.desktop,
+    },
+  }
+}
 
 export const overviewChartSvgDefs = `
   <linearGradient id="fillDesktop" x1="0" y1="0" x2="0" y2="1">

@@ -57,30 +57,30 @@ async function handleSelect(command: TCommand) {
           class="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
         >
           <EllipsisIcon class="size-4" />
-          <span class="sr-only">Open menu</span>
+          <span class="sr-only">{{ $t('tasks.actions.openMenu') }}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" class="w-[160px]">
         <DropdownMenuItem @select.stop="handleSelect('edit')">
-          <span>Edit</span>
+          <span>{{ $t('tasks.actions.edit') }}</span>
           <DropdownMenuShortcut> <FilePenLineIcon class="size-4" /> </DropdownMenuShortcut>
         </DropdownMenuItem>
 
         <DropdownMenuItem disabled>
-          Make a copy
+          {{ $t('tasks.actions.makeCopy') }}
         </DropdownMenuItem>
         <DropdownMenuItem disabled>
-          Favorite
+          {{ $t('tasks.actions.favorite') }}
         </DropdownMenuItem>
 
         <DropdownMenuSeparator />
 
         <DropdownMenuSub>
-          <DropdownMenuSubTrigger>Labels</DropdownMenuSubTrigger>
+          <DropdownMenuSubTrigger>{{ $t('tasks.actions.labels') }}</DropdownMenuSubTrigger>
           <DropdownMenuSubContent>
             <DropdownMenuRadioGroup v-model="taskLabel">
               <DropdownMenuRadioItem v-for="label in labels" :key="label.value" :value="label.value">
-                {{ label.label }}
+                {{ $t(label.labelKey) }}
               </DropdownMenuRadioItem>
             </DropdownMenuRadioGroup>
           </DropdownMenuSubContent>
@@ -89,7 +89,7 @@ async function handleSelect(command: TCommand) {
         <DropdownMenuSeparator />
 
         <DropdownMenuItem @select.stop="handleSelect('delete')">
-          <span>Delete</span>
+          <span>{{ $t('tasks.actions.delete') }}</span>
           <DropdownMenuShortcut> <Trash2Icon class="size-4" /> </DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>

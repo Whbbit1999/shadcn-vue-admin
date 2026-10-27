@@ -19,6 +19,12 @@ const appTypes: AppType[] = [
   'notConnected',
 ]
 
+const appTypeLabelKeys: Record<AppType, string> = {
+  all: 'apps.filter.all',
+  connected: 'apps.filter.connected',
+  notConnected: 'apps.filter.notConnected',
+}
+
 const sort = shallowRef<TSort>('asc')
 
 const appList = computed(() => {
@@ -43,25 +49,25 @@ const appList = computed(() => {
 
 <template>
   <BasicPage
-    title="Apps"
-    description="Apps description"
+    :title="$t('apps.title')"
+    :description="$t('apps.description')"
     sticky
   >
     <div class="flex items-end justify-between sm:items-center">
       <div class="flex flex-col gap-4 sm:flex-row">
         <Input
           v-model:model-value="searchTerm"
-          placeholder="Filter apps..."
+          :placeholder="$t('apps.searchPlaceholder')"
           class="h-9 w-40 lg:w-[250px]"
         />
 
         <Select v-model:model-value="appType">
           <SelectTrigger class-name="w-36">
-            <SelectValue>{{ appType }}</SelectValue>
+            <SelectValue>{{ $t(appTypeLabelKeys[appType]) }}</SelectValue>
           </SelectTrigger>
           <SelectContent>
             <SelectItem v-for="type in appTypes" :key="type" :value="type">
-              {{ type }}
+              {{ $t(appTypeLabelKeys[type]) }}
             </SelectItem>
           </SelectContent>
         </Select>

@@ -332,10 +332,6 @@
       "vercelDescription": "点击进入下一级菜单"
     }
   },
-  "notFound": {
-    "subtitle": "页面不存在",
-    "description": "你要找的页面可能已被删除、改名，或暂时无法访问。"
-  },
   "propComponents": {
     "title": "属性组件",
     "description": "一组为 shadcn-vue 扩展的组件。",
@@ -357,6 +353,416 @@
         "title": "状态徽标",
         "description": "用于展示项目状态的徽标。"
       }
+    }
+  },
+  "users": {
+    "title": "用户",
+    "description": "用户列表与账号管理",
+    "actions": {
+      "create": "创建用户",
+      "invite": "邀请用户",
+      "mockLoading": "模拟加载",
+      "edit": "编辑",
+      "delete": "删除",
+      "cancel": "取消",
+      "openMenu": "打开菜单"
+    },
+    "table": {
+      "username": "用户名",
+      "email": "邮箱",
+      "phoneNumber": "电话号码",
+      "status": "状态",
+      "role": "角色",
+      "searchPlaceholder": "按用户名筛选用户..."
+    },
+    "filters": {
+      "status": "状态",
+      "role": "角色"
+    },
+    "status": {
+      "active": "活跃",
+      "inactive": "未激活",
+      "invited": "已邀请",
+      "suspended": "已停用"
+    },
+    "role": {
+      "superadmin": "超级管理员",
+      "admin": "管理员",
+      "manager": "经理",
+      "cashier": "收银员"
+    },
+    "create": {
+      "title": "新建用户",
+      "description": "创建新用户"
+    },
+    "edit": {
+      "title": "编辑用户",
+      "description": "编辑用户 {username}"
+    },
+    "invite": {
+      "title": "邀请用户",
+      "description": "通过发送电子邮件邀请新用户加入您的团队。分配角色以定义其访问级别。"
+    },
+    "inviteForm": {
+      "email": "邮箱地址",
+      "role": "角色",
+      "description": "描述（可选）",
+      "submit": "邀请"
+    },
+    "form": {
+      "firstName": "名字",
+      "lastName": "姓氏",
+      "username": "用户名",
+      "email": "邮箱地址",
+      "phoneNumber": "电话号码",
+      "status": "状态",
+      "role": "角色",
+      "selectStatus": "选择状态",
+      "selectRole": "选择角色",
+      "saveChanges": "保存修改"
+    },
+    "delete": {
+      "title": "删除此用户：{username}？",
+      "description": "您即将删除 ID 为 {id} 的用户。此操作无法撤销。",
+      "toastTitle": "已删除以下用户："
+    },
+    "empty": {
+      "title": "未找到结果。",
+      "description": "请尝试其他搜索词，或检查拼写。"
+    },
+    "toast": {
+      "submitted": "您提交了以下值："
+    }
+  },
+  "tasks": {
+    "title": "任务",
+    "description": "任务列表与进度管理",
+    "actions": {
+      "create": "创建",
+      "import": "导入",
+      "edit": "编辑",
+      "delete": "删除",
+      "cancel": "取消",
+      "makeCopy": "创建副本",
+      "favorite": "收藏",
+      "labels": "标签",
+      "openMenu": "打开菜单",
+      "deleteSelected": "删除所选任务"
+    },
+    "table": {
+      "task": "任务",
+      "title": "标题",
+      "status": "状态",
+      "priority": "优先级",
+      "searchPlaceholder": "筛选任务..."
+    },
+    "filters": {
+      "status": "状态",
+      "priority": "优先级"
+    },
+    "status": {
+      "backlog": "积压",
+      "todo": "待办",
+      "inProgress": "进行中",
+      "done": "已完成",
+      "canceled": "已取消"
+    },
+    "priority": {
+      "low": "低",
+      "medium": "中",
+      "high": "高"
+    },
+    "label": {
+      "bug": "缺陷",
+      "feature": "功能",
+      "documentation": "文档"
+    },
+    "create": {
+      "title": "新建任务",
+      "description": "创建新任务"
+    },
+    "edit": {
+      "title": "编辑任务",
+      "description": "编辑任务 {id}"
+    },
+    "form": {
+      "title": "标题",
+      "titlePlaceholder": "例如：shadcn",
+      "status": "状态",
+      "label": "标签",
+      "priority": "优先级",
+      "selectStatus": "选择状态",
+      "submit": "提交"
+    },
+    "importDialog": {
+      "title": "导入任务",
+      "description": "从 CSV 文件快速导入任务。",
+      "file": "文件",
+      "fileRequired": "请选择文件"
+    },
+    "delete": {
+      "title": "删除此任务：{id}？",
+      "description": "您即将删除 ID 为 {id} 的任务。此操作无法撤销。",
+      "toastTitle": "已删除以下任务："
+    },
+    "deleteBatch": {
+      "title": "删除 {count} 个任务？",
+      "description": "确定要删除所选任务吗？",
+      "warning": "此操作无法撤销。",
+      "confirmHint": "输入 {word} 以确认：",
+      "confirmPlaceholder": "请输入“{word}”以确认。",
+      "warningTitle": "警告！",
+      "warningDescription": "请小心，此操作无法回滚。",
+      "confirmInvalid": "请输入“{word}”以确认删除。",
+      "loading": "正在删除任务...",
+      "success": "已成功删除 {count} 个任务。",
+      "error": "删除任务失败。"
+    },
+    "empty": {
+      "title": "未找到结果。",
+      "description": "请尝试其他搜索词，或检查拼写。"
+    },
+    "bulk": {
+      "entityName": "任务"
+    },
+    "toast": {
+      "submitted": "您提交了以下值："
+    }
+  },
+  "billing": {
+    "title": "套餐与账单",
+    "description": "在此管理你的套餐和账单记录。",
+    "plan": {
+      "billingCycle": "月",
+      "current": "当前套餐",
+      "switch": "切换到该套餐",
+      "basic": {
+        "title": "基础版"
+      },
+      "free": {
+        "title": "免费版",
+        "description": "从免费套餐开始，体验全部功能。",
+        "features": {
+          "feature1": "功能 1",
+          "feature2": "功能 2",
+          "feature3": "功能 3"
+        }
+      },
+      "smallBusiness": {
+        "title": "小微企业版",
+        "description": "使用小微企业套餐，开始拓展你的业务。",
+        "features": {
+          "feature1": "包含免费套餐的全部功能",
+          "feature2": "10 个用户",
+          "feature3": "10G 存储空间"
+        }
+      },
+      "enterprise": {
+        "title": "企业版",
+        "description": "使用企业套餐，享受最全面的服务。",
+        "features": {
+          "feature1": "包含小微企业套餐的全部功能",
+          "feature2": "不限用户数",
+          "feature3": "不限存储空间"
+        }
+      }
+    },
+    "history": {
+      "title": "账单记录",
+      "columns": {
+        "id": "编号",
+        "amount": "金额",
+        "date": "账单日期",
+        "plan": "账单套餐",
+        "status": "状态",
+        "orderId": "订单编号"
+      },
+      "status": {
+        "paid": "已支付",
+        "unpaid": "未支付",
+        "overdue": "已逾期",
+        "cancelled": "已取消"
+      },
+      "noValue": "无",
+      "actions": {
+        "openMenu": "打开菜单",
+        "detail": "详情"
+      }
+    },
+    "transaction": {
+      "cardTitle": "账单卡片 {cardNo}",
+      "lastUpdate": "最后更新",
+      "notes": "备注",
+      "invoiceNo": "发票号 {invoiceNo}"
+    }
+  },
+  "apps": {
+    "title": "应用",
+    "description": "应用描述",
+    "searchPlaceholder": "筛选应用...",
+    "filter": {
+      "all": "全部",
+      "connected": "已连接",
+      "notConnected": "未连接"
+    },
+    "card": {
+      "connect": "连接",
+      "connected": "已连接"
+    },
+    "list": {
+      "telegram": "连接 Telegram，实时沟通。",
+      "notion": "轻松同步 Notion 页面，实现无缝协作。",
+      "figma": "在一个地方查看 Figma 设计并协同编辑。",
+      "trello": "同步 Trello 卡片，简化项目管理。",
+      "slack": "集成 Slack，实现高效的团队沟通",
+      "zoom": "直接从控制台发起 Zoom 会议。",
+      "stripe": "轻松管理 Stripe 交易和付款。",
+      "gmail": "轻松访问和管理 Gmail 邮件。",
+      "medium": "在控制台探索和分享 Medium 文章。",
+      "skype": "无缝连接 Skype 联系人。",
+      "docker": "在控制台轻松管理 Docker 容器。",
+      "github": "通过 GitHub 集成简化代码管理。",
+      "gitlab": "通过 GitLab 集成高效管理代码项目。",
+      "discord": "连接 Discord，实现无缝的团队沟通。",
+      "whatsapp": "轻松集成 WhatsApp，直接收发消息。"
+    }
+  },
+  "aiTalk": {
+    "robot": {
+      "alt": "机器人",
+      "name": "机器人"
+    },
+    "thinking": "正在思考...",
+    "input": {
+      "placeholder": "提问、搜索或聊天...",
+      "addFile": "添加文件",
+      "usage": "已使用 52%"
+    },
+    "mode": {
+      "auto": "自动",
+      "agent": "智能体",
+      "manual": "手动"
+    },
+    "talkType": {
+      "deepThink": "深度思考",
+      "online": "联网"
+    },
+    "feedback": {
+      "good": "回答不错",
+      "bad": "回答不好"
+    },
+    "reply": {
+      "copy": "复制",
+      "refresh": "重新生成"
+    },
+    "toast": {
+      "typeTitle": "类型"
+    },
+    "demo": {
+      "greeting": "你好，我是你的智能助手，有什么可以帮你的吗？",
+      "user": "你好，你是谁？",
+      "reply": "我可以回答你的问题、提供信息，并帮你解决问题。你可以问我任何问题，我会尽力回答。"
+    },
+    "answer": {
+      "greeting": "你好！我是你的 AI 助手，有什么可以帮你的吗？你可以向我提问、让我查询信息，或者和我一起讨论各种话题。",
+      "capabilities": "我可以帮你做很多事情：\n\n- 💬 回答知识类问题\n- 📝 协助写作、翻译和总结\n- 💻 提供代码示例和技术方案\n- 🧠 头脑风暴和创意讨论\n- 📊 数据分析和解读\n- 🌐 实时信息查询（联网模式）\n\n告诉我你需要什么吧！",
+      "strengths": "我的优势包括：\n\n✨ **响应迅速** —— 立即处理你的问题\n✨ **知识面广** —— 涵盖多个领域\n✨ **耐心细致** —— 不怕重复提问\n✨ **全天候在线** —— 随时随地为你服务\n\n而且我一直在学习和进步！",
+      "weaknesses": "我也存在一些局限：\n\n⚠️ 我的知识仅更新到训练数据截止的时间\n⚠️ 我无法执行现实世界中的物理操作\n⚠️ 复杂推理有时可能出现偏差\n⚠️ 我没有真实的情感体验\n\n但我会不断进化，感谢你的理解！🙏",
+      "weather": "抱歉，我目前无法获取实时天气数据。建议你开启联网搜索模式，或查看天气应用以获取最新信息。",
+      "defaults": {
+        "default1": "这是个好问题！让我想想…… 可以从几个角度来考虑：\n\n首先，从技术角度看……\n其次，从实际应用角度看……\n第三，从未来发展的角度看……\n\n哪个方向最符合你的需求呢？",
+        "default2": "谢谢你的提问！🙌 说说我的想法：\n\n这个问题涉及多个方面。我建议从以下几个维度来探讨。当然，这只是我的看法，希望能给你一些启发！",
+        "default3": "收到你的消息！让我先整理一下思路：\n\n1️⃣ 首先，我们需要明确核心目标\n2️⃣ 然后，分析关键影响因素\n3️⃣ 最后，制定可行的方案\n\n你觉得这个思路怎么样？我们可以继续讨论。",
+        "default4": "这是个有趣的话题！🤔 根据我的了解：\n\n业界有几种常见的做法，各自适用于不同的场景。关键是根据你的具体需求，选择最合适的方案。\n\n需要我就某个方向展开讲讲吗？"
+      }
+    }
+  },
+  "auth": {
+    "loginDescription": "请在下方输入您的邮箱和密码以登录账户。",
+    "noAccount": "还没有账户？",
+    "signUp": "注册",
+    "signIn": "登录",
+    "signUpDescription": "请输入您的邮箱和密码以创建账户。",
+    "haveAccount": "已有账户？",
+    "forgotPasswordTitle": "忘记密码",
+    "forgotPasswordDescription": "请输入您注册的邮箱，我们将向您发送重置密码的链接。",
+    "dontHaveAccount": "还没有账户？",
+    "signUpLink": "注册。",
+    "firstName": "名",
+    "lastName": "姓",
+    "confirmPassword": "确认密码",
+    "createAccount": "创建账户",
+    "orContinueWith": "或使用以下方式继续",
+    "agreeToLogin": "点击登录即表示您同意我们的",
+    "agreeToSignUp": "创建账户即表示您同意我们的",
+    "and": "和",
+    "termsOfService": "服务条款",
+    "privacyPolicy": "隐私政策",
+    "twoFactorTitle": "双重身份验证",
+    "twoFactorDescription": "请输入验证码。我们已将验证码发送至您的邮箱。",
+    "verify": "验证",
+    "noCodeReceived": "没有收到验证码？",
+    "resendCode": "重新发送验证码。"
+  },
+  "errors": {
+    "unauthorized": {
+      "title": "未授权",
+      "description": "您没有访问此页面的权限。"
+    },
+    "forbidden": {
+      "title": "禁止访问",
+      "description": "您没有访问此页面的权限。"
+    },
+    "pageNotFound": {
+      "title": "页面未找到",
+      "description": "您要查找的页面可能已被移除、更名或暂时不可用。"
+    },
+    "internalServerError": {
+      "title": "服务器内部错误",
+      "description": "服务器遇到了意外情况，无法完成该请求。"
+    },
+    "serviceUnavailable": {
+      "title": "服务暂时不可用",
+      "description": "由于服务器临时过载或正在维护，目前无法处理该请求。"
+    },
+    "goBack": "返回上一页",
+    "backToHome": "返回首页"
+  },
+  "dashboard": {
+    "title": "工作区",
+    "description": "工作区说明",
+    "toastGreeting": "你好",
+    "tabs": {
+      "overview": "概览",
+      "analytics": "分析",
+      "reports": "报表",
+      "notifications": "通知"
+    },
+    "stats": {
+      "totalRevenue": "总收入",
+      "subscriptions": "订阅数",
+      "sales": "销售额",
+      "activeNow": "当前在线",
+      "changeFromLastMonth": "较上月 +{percent}%",
+      "changeSinceLastHour": "较上一小时 +{count}"
+    },
+    "chart": {
+      "title": "面积图 - 交互式",
+      "description": "展示最近 3 个月的总访客数",
+      "selectRange": "选择时间范围",
+      "ranges": {
+        "last3Months": "最近 3 个月",
+        "last30Days": "最近 30 天",
+        "last7Days": "最近 7 天"
+      },
+      "series": {
+        "mobile": "移动端",
+        "desktop": "桌面端"
+      }
+    },
+    "recentSales": {
+      "title": "最近销售",
+      "description": "本月您已完成 {count} 笔销售。"
     }
   }
 }

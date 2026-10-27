@@ -20,7 +20,7 @@ defineProps<{ app: IApp }>()
           :variant="app.connected ? 'secondary' : 'outline'"
           size="sm"
         >
-          {{ app.connected ? 'Connected' : 'Connect' }}
+          {{ app.connected ? $t('apps.card.connected') : $t('apps.card.connect') }}
         </Button>
       </div>
     </CardHeader>
@@ -29,7 +29,7 @@ defineProps<{ app: IApp }>()
         {{ app.name }}
       </CardTitle>
       <CardDescription class="mt-2">
-        {{ app.desc }}
+        {{ $t(app.descKey) }}
       </CardDescription>
     </CardContent>
   </Card>

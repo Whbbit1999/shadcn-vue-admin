@@ -14,7 +14,7 @@ const isOpen = shallowRef(false)
     <ModalTrigger as-child>
       <Button>
         <UserRoundPlusIcon />
-        Create User
+        {{ $t('users.actions.create') }}
       </Button>
     </ModalTrigger>
 

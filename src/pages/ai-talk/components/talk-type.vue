@@ -10,16 +10,16 @@ const type = defineModel<TalkMode>('type', {
 })
 
 const types = [
-  { type: 'deep-think', icon: SparklesIcon },
-  { type: 'online', icon: RadioTowerIcon },
-] satisfies { type: TalkMode, icon: Component }[]
+  { type: 'deep-think', icon: SparklesIcon, labelKey: 'aiTalk.talkType.deepThink' },
+  { type: 'online', icon: RadioTowerIcon, labelKey: 'aiTalk.talkType.online' },
+] satisfies { type: TalkMode, icon: Component, labelKey: string }[]
 </script>
 
 <template>
   <ToggleGroup v-model="type" type="single" variant="outline" size="sm">
-    <ToggleGroupItem v-for="modelType in types" :key="modelType.type" class="px-4" :value="modelType.type" :aria-label="modelType.type">
+    <ToggleGroupItem v-for="modelType in types" :key="modelType.type" class="px-4" :value="modelType.type" :aria-label="$t(modelType.labelKey)">
       <component :is="modelType.icon" class="size-4 mr-1" />
-      {{ modelType.type }}
+      {{ $t(modelType.labelKey) }}
     </ToggleGroupItem>
   </ToggleGroup>
 </template>

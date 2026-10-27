@@ -19,16 +19,16 @@ import TermsOfServiceButton from './components/terms-of-service-button.vue'
       <Card class="max-w-sm mx-auto">
         <CardHeader>
           <CardTitle class="text-xl">
-            Sign Up
+            {{ $t('auth.signUp') }}
           </CardTitle>
           <CardDescription>
-            Enter your email and password to create an account.
-            Already have an account?
+            {{ $t('auth.signUpDescription') }}
+            {{ $t('auth.haveAccount') }}
             <Button
               variant="link" class="px-0 text-muted-foreground"
               @click="$router.push('/auth/sign-in')"
             >
-              Sign In
+              {{ $t('auth.signIn') }}
             </Button>
           </CardDescription>
         </CardHeader>
@@ -37,20 +37,20 @@ import TermsOfServiceButton from './components/terms-of-service-button.vue'
             <div class="grid grid-cols-2 gap-4">
               <div class="grid gap-2">
                 <Label for="first-name">
-                  First name
+                  {{ $t('auth.firstName') }}
                 </Label>
                 <Input id="first-name" placeholder="Max" required />
               </div>
               <div class="grid gap-2">
                 <Label for="last-name">
-                  Last name
+                  {{ $t('auth.lastName') }}
                 </Label>
                 <Input id="last-name" placeholder="Robinson" required />
               </div>
             </div>
             <div class="grid gap-2">
               <Label for="email">
-                Email
+                {{ $t('email') }}
               </Label>
               <Input
                 id="email"
@@ -61,21 +61,21 @@ import TermsOfServiceButton from './components/terms-of-service-button.vue'
             </div>
             <div class="grid gap-2">
               <Label for="password">
-                Password
+                {{ $t('password') }}
               </Label>
               <Input id="password" type="password" placeholder="******" />
             </div>
             <div class="grid gap-2">
               <Label for="password">
-                Confirm Password
+                {{ $t('auth.confirmPassword') }}
               </Label>
               <Input id="password" type="password" placeholder="******" />
             </div>
             <Button type="submit" class="w-full">
-              Create Account
+              {{ $t('auth.createAccount') }}
             </Button>
 
-            <Separator label="Or continue with" />
+            <Separator :label="$t('auth.orContinueWith')" />
 
             <div class="flex flex-col items-center justify-between gap-4">
               <GitHubButton />
@@ -83,9 +83,9 @@ import TermsOfServiceButton from './components/terms-of-service-button.vue'
             </div>
 
             <CardDescription>
-              By creating an account, you agree to our
+              {{ $t('auth.agreeToSignUp') }}
               <TermsOfServiceButton />
-              and
+              {{ $t('auth.and') }}
               <PrivacyPolicyButton />
             </CardDescription>
           </div>

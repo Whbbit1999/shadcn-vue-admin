@@ -86,6 +86,32 @@ describe('locale files', () => {
   })
 })
 
+describe('locale files: message shape', () => {
+  const interpolation = (value: string) => [...value.matchAll(/\{(\w+)\}/g)].map(match => match[1]).sort()
+
+  it('uses the same interpolation placeholders in both locales', () => {
+    for (const key of collectKeys(en)) {
+      const enValue = getMessage(en, key)
+      const zhValue = getMessage(zh, key)
+
+      if (typeof enValue !== 'string' || typeof zhValue !== 'string')
+        continue
+
+      expect(interpolation(zhValue), `${key} has different placeholders in zh`).toEqual(interpolation(enValue))
+    }
+  })
+
+  it('does not fall back to the key itself', () => {
+    for (const [locale, messages] of locales) {
+      for (const key of collectKeys(messages)) {
+        // vue-i18n renders the key when a message is missing; a copy-pasted key
+        // would show up in the UI the same way.
+        expect(getMessage(messages, key), `${locale}: ${key}`).not.toBe(key)
+      }
+    }
+  })
+})
+
 describe('navigation labels', () => {
   it('resolve in every locale', () => {
     for (const key of mainNavKeys()) {

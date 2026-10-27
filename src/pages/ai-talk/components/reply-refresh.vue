@@ -14,7 +14,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
         </Button>
       </TooltipTrigger>
       <TooltipContent>
-        <p>refresh</p>
+        <p>{{ $t('aiTalk.reply.refresh') }}</p>
       </TooltipContent>
     </Tooltip>
   </TooltipProvider>

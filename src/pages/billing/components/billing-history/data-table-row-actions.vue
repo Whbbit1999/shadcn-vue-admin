@@ -49,13 +49,13 @@ async function handleSelect(command: TCommand) {
           class="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
         >
           <EllipsisIcon class="size-4" />
-          <span class="sr-only">Open menu</span>
+          <span class="sr-only">{{ $t('billing.history.actions.openMenu') }}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent>
         <DropdownMenuGroup>
           <DropdownMenuItem @select.stop="handleSelect('detail')">
-            <span>Detail</span>
+            <span>{{ $t('billing.history.actions.detail') }}</span>
           </DropdownMenuItem>
         </DropdownMenuGroup>
       </DropdownMenuContent>

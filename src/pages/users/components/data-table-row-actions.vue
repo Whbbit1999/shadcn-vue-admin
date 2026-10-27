@@ -51,16 +51,16 @@ async function handleSelect(command: TCommand) {
           class="flex h-8 w-8 p-0 data-[state=open]:bg-muted"
         >
           <EllipsisIcon class="size-4" />
-          <span class="sr-only">Open menu</span>
+          <span class="sr-only">{{ $t('users.actions.openMenu') }}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" class="w-[160px]">
         <DropdownMenuItem @click.stop="handleSelect('edit')">
-          Edit
+          {{ $t('users.actions.edit') }}
         </DropdownMenuItem>
 
         <DropdownMenuItem @click.stop="handleSelect('delete')">
-          Delete
+          {{ $t('users.actions.delete') }}
           <DropdownMenuShortcut>⌘⌫</DropdownMenuShortcut>
         </DropdownMenuItem>
       </DropdownMenuContent>

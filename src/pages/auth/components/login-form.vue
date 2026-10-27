@@ -20,16 +20,16 @@ const { login, loading } = useAuth()
   <Card class="w-full max-w-sm">
     <CardHeader>
       <CardTitle class="text-2xl">
-        Login
+        {{ $t('login') }}
       </CardTitle>
       <CardDescription>
-        Enter your email and password below to log into your account.
-        Not have an account?
+        {{ $t('auth.loginDescription') }}
+        {{ $t('auth.noAccount') }}
         <Button
           variant="link" class="px-0 text-muted-foreground"
           @click="$router.push('/auth/sign-up')"
         >
-          Sign Up
+          {{ $t('auth.signUp') }}
         </Button>
       </CardDescription>
     </CardHeader>
@@ -55,7 +55,7 @@ const { login, loading } = useAuth()
         {{ $t('login') }}
       </Button>
 
-      <Separator label="Or continue with" />
+      <Separator :label="$t('auth.orContinueWith')" />
 
       <div class="flex flex-col items-center justify-between gap-4">
         <GitHubButton />
@@ -63,9 +63,9 @@ const { login, loading } = useAuth()
       </div>
 
       <CardDescription>
-        By clicking login, you agree to our
+        {{ $t('auth.agreeToLogin') }}
         <TermsOfServiceButton />
-        and
+        {{ $t('auth.and') }}
         <PrivacyPolicyButton />
       </CardDescription>
     </CardContent>

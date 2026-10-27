@@ -29,7 +29,7 @@ function handleSubmit() {
 
 <template>
   <InputGroup>
-    <InputGroupTextarea v-model="text" placeholder="Ask, Search or Chat..." />
+    <InputGroupTextarea v-model="text" :placeholder="$t('aiTalk.input.placeholder')" />
     <InputGroupAddon align="block-end">
       <TalkType v-model:type="talkType" @update:type="handleTypeChange" />
 
@@ -39,13 +39,13 @@ function handleSubmit() {
         size="icon-xs"
       >
         <PaperclipIcon class="size-4" />
-        <span class="sr-only">Add File</span>
+        <span class="sr-only">{{ $t('aiTalk.input.addFile') }}</span>
       </InputGroupButton>
 
       <DropdownMenu>
         <DropdownMenuTrigger as-child>
           <InputGroupButton variant="ghost">
-            Auto
+            {{ $t('aiTalk.mode.auto') }}
           </InputGroupButton>
         </DropdownMenuTrigger>
         <DropdownMenuContent
@@ -53,14 +53,14 @@ function handleSubmit() {
           align="start"
           class="[--radius:0.95rem]"
         >
-          <DropdownMenuItem>Auto</DropdownMenuItem>
-          <DropdownMenuItem>Agent</DropdownMenuItem>
-          <DropdownMenuItem>Manual</DropdownMenuItem>
+          <DropdownMenuItem>{{ $t('aiTalk.mode.auto') }}</DropdownMenuItem>
+          <DropdownMenuItem>{{ $t('aiTalk.mode.agent') }}</DropdownMenuItem>
+          <DropdownMenuItem>{{ $t('aiTalk.mode.manual') }}</DropdownMenuItem>
         </DropdownMenuContent>
       </DropdownMenu>
 
       <InputGroupText class="ml-auto">
-        52% used
+        {{ $t('aiTalk.input.usage') }}
       </InputGroupText>
       <Separator orientation="vertical" class="h-4!" />
 
@@ -72,7 +72,7 @@ function handleSubmit() {
         @click="handleSubmit"
       >
         <ArrowUpIcon class="size-4" />
-        <span class="sr-only">Add File</span>
+        <span class="sr-only">{{ $t('aiTalk.input.addFile') }}</span>
       </InputGroupButton>
     </InputGroupAddon>
   </InputGroup>
