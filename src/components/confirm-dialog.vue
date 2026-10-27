@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -22,13 +24,18 @@ const {
   isLoading = false,
   disabled = false,
   destructive = false,
-  cancelButtonText = 'Cancel',
-  confirmButtonText = 'Continue',
+  cancelButtonText,
+  confirmButtonText,
 } = defineProps<ConfirmDialogProps>()
 
 const emits = defineEmits<{
   confirm: []
 }>()
+
+const { t } = useI18n()
+
+const cancelText = computed(() => cancelButtonText ?? t('common.cancel'))
+const confirmText = computed(() => confirmButtonText ?? t('common.continue'))
 
 const openModel = defineModel<boolean>('open', {
   default: false,
@@ -56,7 +63,7 @@ function handleConfirm() {
 
       <AlertDialogFooter>
         <AlertDialogCancel :disabled="isLoading" @click="openModel = false">
-          {{ cancelButtonText }}
+          {{ cancelText }}
         </AlertDialogCancel>
 
         <Button
@@ -64,7 +71,7 @@ function handleConfirm() {
           :disabled="disabled || isLoading"
           @click="handleConfirm"
         >
-          {{ confirmButtonText }}
+          {{ confirmText }}
         </Button>
       </AlertDialogFooter>
     </AlertDialogContent>

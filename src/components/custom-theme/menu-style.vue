@@ -13,21 +13,21 @@ const { navigationMode } = storeToRefs(sidebarConfigStore)
 
 const menuStyles: Array<{
   value: NavigationMode
-  label: string
+  labelKey: string
   icon: any
-  description: string
+  descriptionKey: string
 }> = [
   {
     value: 'collapsible',
-    label: 'Collapsible',
+    labelKey: 'settings.sidebarStyle.collapsible',
     icon: LayoutListIcon,
-    description: 'Traditional collapsible menu',
+    descriptionKey: 'settings.sidebarStyle.collapsibleDescription',
   },
   {
     value: 'vercel',
-    label: 'Vercel Style',
+    labelKey: 'settings.sidebarStyle.vercel',
     icon: ChevronRightIcon,
-    description: 'Click to navigate to the next level',
+    descriptionKey: 'settings.sidebarStyle.vercelDescription',
   },
 ]
 
@@ -39,7 +39,7 @@ function handleMenuStyleChange(style: NavigationMode) {
 <template>
   <div class="space-y-1.5 pt-6">
     <Label for="menu-style" class="text-xs">
-      Menu Style
+      {{ $t('settings.sidebarStyle.label') }}
     </Label>
     <div class="grid grid-cols-2 gap-2 py-1.5">
       <Button
@@ -48,11 +48,11 @@ function handleMenuStyleChange(style: NavigationMode) {
         variant="outline"
         class="justify-center h-8 px-3"
         :class="navigationMode === style.value ? 'border-foreground border-2' : ''"
-        :title="style.description"
+        :title="$t(style.descriptionKey)"
         @click="handleMenuStyleChange(style.value)"
       >
         <component :is="style.icon" class="w-4 h-4" />
-        {{ style.label }}
+        {{ $t(style.labelKey) }}
       </Button>
     </div>
   </div>

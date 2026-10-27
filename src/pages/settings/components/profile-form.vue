@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { XIcon } from '@lucide/vue'
 import { useForm } from '@tanstack/vue-form'
+import { I18nT, useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
 
 import { Button } from '@/components/ui/button'
@@ -24,6 +25,8 @@ import type { ProfileValidator } from '../validators/profile.validator'
 
 import { profileValidator } from '../validators/profile.validator'
 
+const { t } = useI18n()
+
 const verifiedEmails = ['m@example.com', 'm@google.com', 'm@support.com']
 
 const defaultValues: ProfileValidator = {
@@ -43,7 +46,7 @@ const form = useForm({
     onBlur: profileValidator,
   },
   onSubmit: ({ value }) => {
-    toast('You submitted the following values:', {
+    toast(t('common.submittedTitle'), {
       description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(value, null, 2))),
     })
   },
@@ -56,10 +59,10 @@ function isInvalid(field: any) {
 <template>
   <div>
     <h3 class="text-lg font-medium">
-      Profile
+      {{ $t('settings.profile.title') }}
     </h3>
     <p class="text-sm text-muted-foreground">
-      This is how others will see you on the site.
+      {{ $t('settings.profile.description') }}
     </p>
   </div>
   <Separator orientation="horizontal" class="my-4" />
@@ -68,7 +71,7 @@ function isInvalid(field: any) {
       <template #default="{ field, state }">
         <FormItem>
           <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-            Username
+            {{ $t('settings.profile.username') }}
           </Label>
           <Input
             type="text"
@@ -78,7 +81,7 @@ function isInvalid(field: any) {
             @blur="field.handleBlur"
           />
           <FieldDescription>
-            This is your public display name. It can be your real name or a pseudonym. You can only change this once every 30 days.
+            {{ $t('settings.profile.usernameDescription') }}
           </FieldDescription>
           <FieldError :errors="state.meta.errors" />
         </FormItem>
@@ -89,7 +92,7 @@ function isInvalid(field: any) {
       <template #default="{ field, state }">
         <FormItem :data-invalid="isInvalid(field)">
           <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-            Email
+            {{ $t('settings.profile.email') }}
           </Label>
 
           <Select
@@ -101,7 +104,7 @@ function isInvalid(field: any) {
             }"
           >
             <SelectTrigger :aria-invalid="isInvalid(field)">
-              <SelectValue placeholder="Select an email" />
+              <SelectValue :placeholder="$t('settings.profile.emailPlaceholder')" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
@@ -112,7 +115,7 @@ function isInvalid(field: any) {
             </SelectContent>
           </Select>
           <FieldDescription>
-            You can manage verified email addresses in your email settings.
+            {{ $t('settings.profile.emailDescription') }}
           </FieldDescription>
           <FieldError :data-invalid="isInvalid(field)" :errors="state.meta.errors" />
         </FormItem>
@@ -123,16 +126,20 @@ function isInvalid(field: any) {
       <template #default="{ field, state }">
         <FormItem>
           <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-            Bio
+            {{ $t('settings.profile.bio') }}
           </Label>
           <Textarea
-            placeholder="Tell us a little bit about yourself"
+            :placeholder="$t('settings.profile.bioPlaceholder')"
             :model-value="field.state.value"
             @input="field.handleChange($event.target.value)"
             @blur="field.handleBlur"
           />
           <FieldDescription>
-            You can <span>@mention</span> other users and organizations to link to them.
+            <I18nT keypath="settings.profile.bioDescription" tag="span" scope="global">
+              <template #mention>
+                <span>@mention</span>
+              </template>
+            </I18nT>
           </FieldDescription>
           <FieldError :errors="state.meta.errors" />
         </FormItem>
@@ -151,10 +158,10 @@ function isInvalid(field: any) {
                     :data-error="!!subState.meta.errors?.length"
                     class="data-[error=true]:text-destructive"
                   >
-                    URLs
+                    {{ $t('settings.profile.urls') }}
                   </Label>
                   <p :class="cn(index !== 0 && 'sr-only')" class="text-muted-foreground text-sm">
-                    Add links to your website, blog, or social media profiles.
+                    {{ $t('settings.profile.urlsDescription') }}
                   </p>
                   <div class="relative flex items-center">
                     <Input
@@ -180,7 +187,7 @@ function isInvalid(field: any) {
             class="w-20 mt-2 text-xs"
             @click="field.pushValue({ value: '' })"
           >
-            Add URL
+            {{ $t('settings.profile.addUrl') }}
           </Button>
         </template>
       </form.Field>
@@ -188,7 +195,7 @@ function isInvalid(field: any) {
 
     <div class="flex justify-start gap-2">
       <Button type="submit">
-        Update profile
+        {{ $t('settings.profile.submit') }}
       </Button>
 
       <Button
@@ -196,7 +203,7 @@ function isInvalid(field: any) {
         variant="outline"
         @click="form.reset()"
       >
-        Reset form
+        {{ $t('common.resetForm') }}
       </Button>
     </div>
   </form>

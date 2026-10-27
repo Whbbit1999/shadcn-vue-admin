@@ -83,7 +83,7 @@ function handleSelect(option: FacetedFilterOption) {
       >
         <CommandInput :placeholder="title" />
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
+          <CommandEmpty>{{ $t('table.noFilterResults') }}</CommandEmpty>
           <CommandGroup>
             <CommandItem
               v-for="option in options"

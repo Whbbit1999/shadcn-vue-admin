@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useForm } from '@tanstack/vue-form'
+import { I18nT, useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
 import z from 'zod'
 
@@ -11,6 +12,8 @@ import { Label } from '@/components/ui/label'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Separator } from '@/components/ui/separator'
 import { Switch } from '@/components/ui/switch'
+
+const { t } = useI18n()
 
 const schema = z.object({
   type: z.enum(['all', 'mentions', 'none']),
@@ -36,7 +39,7 @@ const form = useForm({
     onSubmit: schema,
   },
   onSubmit: ({ value }) => {
-    toast('You submitted the following values:', {
+    toast(t('common.submittedTitle'), {
       description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(value, null, 2))),
     })
   },
@@ -46,10 +49,10 @@ const form = useForm({
 <template>
   <div>
     <h3 class="text-lg font-medium">
-      Notifications
+      {{ $t('settings.notifications.title') }}
     </h3>
     <p class="text-sm text-muted-foreground">
-      Configure how you receive notifications.
+      {{ $t('settings.notifications.description') }}
     </p>
   </div>
   <Separator class="my-4" />
@@ -57,7 +60,7 @@ const form = useForm({
     <form.Field name="type">
       <template #default="{ field, state }">
         <FormItem class="space-y-3">
-          <Label>Notify me about...</Label>
+          <Label>{{ $t('settings.notifications.notifyAbout') }}</Label>
           <RadioGroup
             class="flex flex-col space-y-1"
             :model-value="field.state.value"
@@ -66,19 +69,19 @@ const form = useForm({
             <FormItem class="flex items-center  space-y-0">
               <RadioGroupItem value="all" />
               <Label class="font-normal">
-                All new messages
+                {{ $t('settings.notifications.typeAll') }}
               </Label>
             </FormItem>
             <FormItem class="flex items-center  space-y-0">
               <RadioGroupItem value="mentions" />
               <Label class="font-normal">
-                Direct messages and mentions
+                {{ $t('settings.notifications.typeMentions') }}
               </Label>
             </FormItem>
             <FormItem class="flex items-center  space-y-0">
               <RadioGroupItem value="none" />
               <Label class="font-normal">
-                Nothing
+                {{ $t('settings.notifications.typeNothing') }}
               </Label>
             </FormItem>
           </RadioGroup>
@@ -89,7 +92,7 @@ const form = useForm({
 
     <div>
       <h3 class="mb-4 text-lg font-medium">
-        Email Notifications
+        {{ $t('settings.notifications.emailHeading') }}
       </h3>
       <div class="space-y-4">
         <form.Field name="communication_emails">
@@ -97,10 +100,10 @@ const form = useForm({
             <FormItem class="flex flex-row items-center justify-between p-4 border rounded-lg">
               <div class="space-y-0.5">
                 <Label class="text-base">
-                  Communication emails
+                  {{ $t('settings.notifications.communication') }}
                 </Label>
                 <p class="text-muted-foreground text-sm">
-                  Receive emails about your account activity.
+                  {{ $t('settings.notifications.communicationDescription') }}
                 </p>
               </div>
               <Switch
@@ -116,10 +119,10 @@ const form = useForm({
             <FormItem class="flex flex-row items-center justify-between p-4 border rounded-lg">
               <div class="space-y-0.5">
                 <Label class="text-base">
-                  Marketing emails
+                  {{ $t('settings.notifications.marketing') }}
                 </Label>
                 <FieldDescription>
-                  Receive emails about new products, features, and more.
+                  {{ $t('settings.notifications.marketingDescription') }}
                 </FieldDescription>
               </div>
               <Switch
@@ -135,10 +138,10 @@ const form = useForm({
             <FormItem class="flex flex-row items-center justify-between p-4 border rounded-lg">
               <div class="space-y-0.5">
                 <Label class="text-base">
-                  Social emails
+                  {{ $t('settings.notifications.social') }}
                 </Label>
                 <FieldDescription>
-                  Receive emails for friend requests, follows, and more.
+                  {{ $t('settings.notifications.socialDescription') }}
                 </FieldDescription>
               </div>
               <Switch
@@ -154,10 +157,10 @@ const form = useForm({
             <FormItem class="flex flex-row items-center justify-between p-4 border rounded-lg">
               <div class="space-y-0.5">
                 <Label class="text-base">
-                  Security emails
+                  {{ $t('settings.notifications.security') }}
                 </Label>
                 <FieldDescription>
-                  Receive emails about your account activity and security.
+                  {{ $t('settings.notifications.securityDescription') }}
                 </FieldDescription>
               </div>
               <Switch
@@ -179,13 +182,14 @@ const form = useForm({
           />
           <div class="space-y-1 leading-none">
             <Label>
-              Use different settings for my mobile devices
+              {{ $t('settings.notifications.useMobile') }}
             </Label>
             <FieldDescription>
-              You can manage your mobile notifications in the
-              <a href="/examples/forms">
-                mobile settings
-              </a> page.
+              <I18nT keypath="settings.notifications.useMobileDescription" tag="span" scope="global">
+                <template #link>
+                  <a href="/examples/forms">{{ $t('settings.notifications.mobileSettings') }}</a>
+                </template>
+              </I18nT>
             </FieldDescription>
           </div>
         </FormItem>
@@ -194,7 +198,7 @@ const form = useForm({
 
     <div class="flex justify-start">
       <Button type="submit">
-        Update notifications
+        {{ $t('settings.notifications.submit') }}
       </Button>
     </div>
   </form>

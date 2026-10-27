@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useForm } from '@tanstack/vue-form'
+import { useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
 
 import { Button } from '@/components/ui/button'
@@ -17,6 +18,8 @@ const emits = defineEmits<{
   close: []
 }>()
 
+const { t } = useI18n()
+
 const defaultValues: TeamAddValidator = {
   name: '',
   slug: '',
@@ -30,7 +33,7 @@ const form = useForm({
     onBlur: teamAddValidator,
   },
   onSubmit: ({ value }) => {
-    toast('You submitted the following values:', {
+    toast(t('common.submittedTitle'), {
       position: 'top-center',
       description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(value, null, 2))),
     })
@@ -44,10 +47,10 @@ const form = useForm({
   <div>
     <DialogHeader>
       <DialogTitle>
-        Add New Team
+        {{ $t('team.form.title') }}
       </DialogTitle>
       <DialogDescription>
-        Add a new team by your self.
+        {{ $t('team.form.description') }}
       </DialogDescription>
     </DialogHeader>
 
@@ -56,7 +59,7 @@ const form = useForm({
         <template #default="{ field, state }">
           <FormItem>
             <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive text-base">
-              Name
+              {{ $t('team.form.name') }}
             </Label>
             <Input
               :model-value="field.state.value"
@@ -64,7 +67,7 @@ const form = useForm({
               @blur="field.handleBlur"
             />
             <FieldDescription>
-              Set the name for the team.
+              {{ $t('team.form.nameDescription') }}
             </FieldDescription>
             <FieldError :errors="state.meta.errors" />
           </FormItem>
@@ -74,7 +77,7 @@ const form = useForm({
         <template #default="{ field, state }">
           <FormItem>
             <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive text-base">
-              Slug
+              {{ $t('team.form.slug') }}
             </Label>
             <Input
               :model-value="field.state.value"
@@ -82,7 +85,7 @@ const form = useForm({
               @blur="field.handleBlur"
             />
             <FieldDescription>
-              Set the slug for the team.
+              {{ $t('team.form.slugDescription') }}
             </FieldDescription>
             <FieldError :errors="state.meta.errors" />
           </FormItem>
@@ -92,7 +95,7 @@ const form = useForm({
         <template #default="{ field, state }">
           <FormItem>
             <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive text-base">
-              Logo
+              {{ $t('team.form.logo') }}
             </Label>
             <Input
               :model-value="field.state.value"
@@ -100,7 +103,7 @@ const form = useForm({
               @blur="field.handleBlur"
             />
             <FieldDescription>
-              Set the logo of the team.
+              {{ $t('team.form.logoDescription') }}
             </FieldDescription>
             <FieldError :errors="state.meta.errors" />
           </FormItem>
@@ -109,7 +112,7 @@ const form = useForm({
 
       <div class="flex justify-start mt-4">
         <Button type="submit">
-          Add team
+          {{ $t('team.add') }}
         </Button>
       </div>
     </form>

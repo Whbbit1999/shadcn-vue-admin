@@ -34,11 +34,11 @@ function handleLocaleChange(val: AcceptableValue) {
       <Button
         variant="outline"
         size="icon-sm"
-        aria-label="Change language"
-        title="Change language"
+        :aria-label="$t('language.change')"
+        :title="$t('language.change')"
       >
         <Icon icon="mdi:translate" />
-        <span class="sr-only">Change language</span>
+        <span class="sr-only">{{ $t('language.change') }}</span>
       </Button>
     </DropdownMenuTrigger>
     <DropdownMenuContent align="end">
@@ -48,11 +48,11 @@ function handleLocaleChange(val: AcceptableValue) {
       >
         <DropdownMenuRadioItem value="en">
           <Icon icon="flag:us-4x3" />
-          <span>English</span>
+          <span>{{ $t('language.english') }}</span>
         </DropdownMenuRadioItem>
         <DropdownMenuRadioItem value="zh">
           <Icon icon="flag:cn-4x3" />
-          <span>中文</span>
+          <span>{{ $t('language.chinese') }}</span>
         </DropdownMenuRadioItem>
       </DropdownMenuRadioGroup>
     </DropdownMenuContent>

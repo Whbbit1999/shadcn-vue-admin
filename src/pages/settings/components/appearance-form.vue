@@ -11,6 +11,7 @@ import { Spinner } from '@/components/ui/spinner'
 import { appearanceValidator } from '../validators/appearance.validator'
 
 const KEY = 'appearance_config'
+// Stored with the system config, so it stays in English and out of the locale files.
 const DESCRIPTION = 'Customize the appearance of the app. Automatically switch between day and night themes.'
 const DEFAULT_APPEARANCE_CONFIG_VALUE = {
   theme: 'light',
@@ -28,10 +29,10 @@ const { isGetting, isPending, form } = useSystemConfig({
 <template>
   <div>
     <h3 class="text-lg font-medium">
-      Appearance
+      {{ $t('settings.appearance.title') }}
     </h3>
     <p class="text-sm text-muted-foreground">
-      Customize the appearance of the app. Automatically switch between day and night themes.
+      {{ $t('settings.appearance.description') }}
     </p>
   </div>
   <Separator class="my-4" />
@@ -39,7 +40,7 @@ const { isGetting, isPending, form } = useSystemConfig({
   <div v-if="isGetting">
     <Button variant="secondary" disabled size="sm">
       <Spinner />
-      Please wait
+      {{ $t('common.pleaseWait') }}
     </Button>
   </div>
 
@@ -48,7 +49,7 @@ const { isGetting, isPending, form } = useSystemConfig({
       <template #default="{ field, state }">
         <FormItem>
           <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-            Font
+            {{ $t('settings.appearance.font') }}
           </Label>
           <Select
             :model-value="field.state.value"
@@ -58,7 +59,7 @@ const { isGetting, isPending, form } = useSystemConfig({
             }"
           >
             <SelectTrigger>
-              <SelectValue placeholder="Select a font" />
+              <SelectValue :placeholder="$t('settings.appearance.fontPlaceholder')" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
@@ -69,13 +70,13 @@ const { isGetting, isPending, form } = useSystemConfig({
                   Manrope
                 </SelectItem>
                 <SelectItem value="system">
-                  System
+                  {{ $t('theme.system') }}
                 </SelectItem>
               </SelectGroup>
             </SelectContent>
           </Select>
           <FieldDescription>
-            Set the font you want to use in the dashboard.
+            {{ $t('settings.appearance.fontDescription') }}
           </FieldDescription>
           <FieldError :errors="state.meta.errors" />
         </FormItem>
@@ -86,10 +87,10 @@ const { isGetting, isPending, form } = useSystemConfig({
       <template #default="{ field, state }">
         <FormItem class="space-y-1">
           <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-            Theme
+            {{ $t('settings.appearance.theme') }}
           </Label>
           <FieldDescription>
-            Select the theme for the dashboard.
+            {{ $t('settings.appearance.themeDescription') }}
           </FieldDescription>
           <FieldError :errors="state.meta.errors" />
 
@@ -121,7 +122,7 @@ const { isGetting, isPending, form } = useSystemConfig({
                   </div>
                 </div>
                 <span class="block w-full p-2 font-normal text-center">
-                  Light
+                  {{ $t('theme.light') }}
                 </span>
               </Label>
             </FormItem>
@@ -143,7 +144,7 @@ const { isGetting, isPending, form } = useSystemConfig({
                   </div>
                 </div>
                 <span class="block w-full p-2 font-normal text-center">
-                  Dark
+                  {{ $t('theme.dark') }}
                 </span>
               </Label>
             </FormItem>
@@ -155,7 +156,7 @@ const { isGetting, isPending, form } = useSystemConfig({
     <div class="flex justify-start">
       <Button type="submit" :disabled="isPending">
         <Spinner v-if="isPending" size="sm" />
-        Update preferences
+        {{ $t('settings.appearance.submit') }}
       </Button>
     </div>
   </form>

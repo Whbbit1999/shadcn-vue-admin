@@ -120,5 +120,243 @@
       "discord": "加入我们的 Discord 服务器，提问、分享你的项目并参与社区。",
       "bilibili": "在哔哩哔哩上找到我们"
     }
+  },
+  "nav": {
+    "group": {
+      "general": "常规",
+      "pages": "页面",
+      "other": "其他"
+    },
+    "dashboard": "仪表盘",
+    "tasks": "任务",
+    "apps": "应用",
+    "users": "用户",
+    "aiTalk": "AI 对话示例",
+    "auth": {
+      "title": "认证",
+      "signIn": "登录",
+      "signIn2Col": "登录（双栏）",
+      "signUp": "注册",
+      "forgotPassword": "忘记密码",
+      "otp": "动态验证码"
+    },
+    "errorPages": {
+      "title": "错误页",
+      "unauthorized": "401 | 未授权",
+      "forbidden": "403 | 禁止访问",
+      "notFound": "404 | 页面不存在",
+      "internalServerError": "500 | 服务器内部错误",
+      "maintenance": "503 | 维护中"
+    },
+    "settings": {
+      "title": "设置",
+      "profile": "个人资料",
+      "account": "账号",
+      "appearance": "外观",
+      "notifications": "通知",
+      "display": "显示"
+    },
+    "propComponents": "属性组件",
+    "helpCenter": "帮助中心",
+    "gitHub": "外部页面（GitHub）",
+    "billing": "账单",
+    "upgradeToPro": "升级到专业版",
+    "pricingPlans": "套餐与价格",
+    "home": "首页"
+  },
+  "common": {
+    "cancel": "取消",
+    "continue": "继续",
+    "pleaseWait": "请稍候",
+    "resetForm": "重置表单",
+    "submittedTitle": "你提交了以下内容：",
+    "copy": "复制",
+    "copied": "已复制",
+    "clipboardUnsupported": "你的浏览器不支持剪贴板 API",
+    "docs": "文档",
+    "configCreated": "已使用默认值创建系统配置。"
+  },
+  "theme": {
+    "toggle": "切换主题",
+    "light": "浅色",
+    "dark": "深色",
+    "system": "跟随系统"
+  },
+  "language": {
+    "change": "切换语言",
+    "english": "English",
+    "chinese": "中文"
+  },
+  "team": {
+    "switcher": {
+      "label": "团队"
+    },
+    "add": "添加团队",
+    "form": {
+      "title": "添加新团队",
+      "description": "创建你自己的新团队。",
+      "name": "名称",
+      "nameDescription": "设置团队名称。",
+      "slug": "标识",
+      "slugDescription": "设置团队标识（slug）。",
+      "logo": "图标",
+      "logoDescription": "设置团队图标。"
+    }
+  },
+  "command": {
+    "placeholder": "输入命令或搜索…",
+    "emptyTitle": "没有找到菜单。",
+    "emptyDescription": "换个关键词搜索，或检查一下拼写。",
+    "pagesHeading": "页面",
+    "themeHeading": "主题"
+  },
+  "table": {
+    "emptyTitle": "没有找到结果。",
+    "emptyDescription": "请换一个搜索词，或检查一下拼写。",
+    "noFilterResults": "没有匹配的选项。",
+    "toggleColumns": "显示/隐藏列",
+    "clearSelection": "清除选择",
+    "clearSelectionHint": "清除选择（Escape）",
+    "pagination": {
+      "first": "第一页",
+      "previous": "上一页",
+      "next": "下一页",
+      "last": "最后一页",
+      "rowsPerPage": "每页行数",
+      "page": "第 {page} / {pages} 页"
+    },
+    "sort": {
+      "ascending": "升序",
+      "descending": "降序"
+    }
+  },
+  "settings": {
+    "layout": {
+      "title": "设置",
+      "description": "管理你的商店设置。"
+    },
+    "profile": {
+      "title": "个人资料",
+      "description": "其他人在站点上看到的就是这些信息。",
+      "username": "用户名",
+      "usernameDescription": "这是你的公开显示名称，可以是真实姓名或昵称。每 30 天只能修改一次。",
+      "email": "邮箱",
+      "emailPlaceholder": "选择一个邮箱",
+      "emailDescription": "你可以在邮箱设置中管理已验证的邮箱地址。",
+      "bio": "简介",
+      "bioPlaceholder": "简单介绍一下你自己",
+      "bioDescription": "你可以 {mention} 其他用户和组织，为他们添加链接。",
+      "urls": "链接",
+      "urlsDescription": "添加你的网站、博客或社交媒体主页链接。",
+      "addUrl": "添加链接",
+      "submit": "更新个人资料"
+    },
+    "account": {
+      "title": "账号",
+      "description": "更新账号设置，选择首选语言和时区。",
+      "name": "姓名",
+      "namePlaceholder": "你的姓名",
+      "nameDescription": "这个姓名会显示在你的个人资料和邮件中。",
+      "dob": "出生日期",
+      "dobPlaceholder": "选择日期",
+      "dobDescription": "出生日期用于计算你的年龄。",
+      "language": "语言",
+      "languagePlaceholder": "选择语言…",
+      "languageSearch": "搜索语言…",
+      "languageEmpty": "没有找到语言。",
+      "languageDescription": "这是仪表盘使用的语言。",
+      "submit": "更新账号",
+      "languages": {
+        "english": "英语",
+        "french": "法语",
+        "german": "德语",
+        "spanish": "西班牙语",
+        "portuguese": "葡萄牙语",
+        "russian": "俄语",
+        "japanese": "日语",
+        "korean": "韩语",
+        "chinese": "中文"
+      }
+    },
+    "appearance": {
+      "title": "外观",
+      "description": "自定义应用外观，可按日间和夜间主题自动切换。",
+      "font": "字体",
+      "fontPlaceholder": "选择字体",
+      "fontDescription": "设置仪表盘使用的字体。",
+      "theme": "主题",
+      "themeDescription": "选择仪表盘的主题。",
+      "submit": "更新偏好设置"
+    },
+    "display": {
+      "title": "显示",
+      "description": "打开或关闭项目，控制应用中的显示内容。",
+      "sidebar": "侧边栏",
+      "sidebarDescription": "选择要显示在侧边栏中的项目。",
+      "submit": "更新显示设置",
+      "items": {
+        "recents": "最近使用",
+        "home": "主页",
+        "applications": "应用程序",
+        "desktop": "桌面",
+        "downloads": "下载",
+        "documents": "文档"
+      }
+    },
+    "notifications": {
+      "title": "通知",
+      "description": "配置接收通知的方式。",
+      "notifyAbout": "通知我…",
+      "typeAll": "所有新消息",
+      "typeMentions": "私信和提及",
+      "typeNothing": "不接收",
+      "emailHeading": "邮件通知",
+      "communication": "通讯邮件",
+      "communicationDescription": "接收与账号活动相关的邮件。",
+      "marketing": "营销邮件",
+      "marketingDescription": "接收新产品、新功能等内容的邮件。",
+      "social": "社交邮件",
+      "socialDescription": "接收好友请求、关注等相关的邮件。",
+      "security": "安全邮件",
+      "securityDescription": "接收与账号活动和安全性相关的邮件。",
+      "useMobile": "为移动设备使用不同的设置",
+      "useMobileDescription": "你可以在{link}页面管理移动端通知。",
+      "mobileSettings": "移动端设置",
+      "submit": "更新通知设置"
+    },
+    "sidebarStyle": {
+      "label": "菜单样式",
+      "collapsible": "折叠菜单",
+      "collapsibleDescription": "传统的折叠式菜单",
+      "vercel": "Vercel 风格",
+      "vercelDescription": "点击进入下一级菜单"
+    }
+  },
+  "notFound": {
+    "subtitle": "页面不存在",
+    "description": "你要找的页面可能已被删除、改名，或暂时无法访问。"
+  },
+  "propComponents": {
+    "title": "属性组件",
+    "description": "一组为 shadcn-vue 扩展的组件。",
+    "more": "更多组件来自 kit.prop.show",
+    "items": {
+      "copy": {
+        "title": "复制",
+        "description": "复制按钮组件，支持自定义样式和提示文本。"
+      },
+      "fullScreenDialog": {
+        "title": "全屏对话框",
+        "description": "以全屏方式打开的对话框。"
+      },
+      "inlineTip": {
+        "title": "行内提示",
+        "description": "行内提示组件，用于展示不同类型的提示信息。"
+      },
+      "statusBadge": {
+        "title": "状态徽标",
+        "description": "用于展示项目状态的徽标。"
+      }
+    }
   }
 }

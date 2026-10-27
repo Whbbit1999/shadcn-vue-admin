@@ -7,7 +7,8 @@ export interface LayoutHeaderProps {
 }
 
 export interface TwoColAsideNavItem {
-  title: string
+  /** Translation key of the label, for example `nav.settings.profile`. */
+  titleKey: string
   url: string
   icon?: Component
 }

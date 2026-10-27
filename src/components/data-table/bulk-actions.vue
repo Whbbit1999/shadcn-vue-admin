@@ -48,16 +48,16 @@ function handleClearSelection() {
             variant="outline"
             size="icon"
             class="size-6 rounded-full"
-            aria-label="Clear selection"
-            title="Clear selection (Escape)"
+            :aria-label="$t('table.clearSelection')"
+            :title="$t('table.clearSelectionHint')"
             @click="handleClearSelection"
           >
             <XIcon />
-            <span class="sr-only">Clear selection</span>
+            <span class="sr-only">{{ $t('table.clearSelection') }}</span>
           </Button>
         </TooltipTrigger>
         <TooltipContent>
-          <p>Clear selection (Escape)</p>
+          <p>{{ $t('table.clearSelectionHint') }}</p>
         </TooltipContent>
       </Tooltip>
 

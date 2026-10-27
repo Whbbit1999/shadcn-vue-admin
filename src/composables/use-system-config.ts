@@ -3,6 +3,7 @@ import type { z } from 'zod'
 
 import { useForm } from '@tanstack/vue-form'
 import { useStorage } from '@vueuse/core'
+import { useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
 
 import { resolveSystemConfigValue, useSystemConfigQuery } from './use-system-config-query'
@@ -18,6 +19,8 @@ export function useSystemConfig<S extends z.ZodObject<z.ZodRawShape>>({
   description: string
   schema: S
 }) {
+  const { t } = useI18n()
+
   const initialConfig = { ...defaultValue } as z.input<S>
 
   const localCacheConfig = useStorage<z.input<S>>(key, initialConfig)
@@ -40,7 +43,7 @@ export function useSystemConfig<S extends z.ZodObject<z.ZodRawShape>>({
         { ...config, value: JSON.stringify(value) },
         {
           onSuccess: () => {
-            toast('You submitted the following values:', {
+            toast(t('common.submittedTitle'), {
               description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(config, null, 2))),
             })
           },
@@ -70,7 +73,7 @@ export function useSystemConfig<S extends z.ZodObject<z.ZodRawShape>>({
         {
           onSuccess: () => {
             localCacheConfig.value = initialConfig
-            toast('System config created with default value.', {
+            toast(t('common.configCreated'), {
               description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify({ key, description, value: initialConfig }, null, 2))),
             })
           },

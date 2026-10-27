@@ -7,7 +7,6 @@ import type { NavSubItem } from './types'
 
 defineProps<{
   isActive: boolean
-  tooltip?: string
   isExternalUrl?: boolean
   menu: NavSubItem
 }>()
@@ -17,17 +16,17 @@ defineProps<{
   <SidebarMenuButton
     as-child
     :is-active="isActive"
-    :tooltip="tooltip"
+    :tooltip="$t(menu.titleKey)"
   >
     <a v-if="isExternalUrl" :href="menu.url" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2">
       <component :is="menu.icon" v-if="menu.icon" />
-      <span>{{ menu.title }}</span>
+      <span>{{ $t(menu.titleKey) }}</span>
       <ExternalLinkIcon class="w-4 h-4 ml-auto" />
     </a>
 
     <router-link v-else :to="menu.url!" class="flex items-center gap-2">
       <component :is="menu.icon" v-if="menu.icon" />
-      <span>{{ menu.title }}</span>
+      <span>{{ $t(menu.titleKey) }}</span>
     </router-link>
   </SidebarMenuButton>
 </template>

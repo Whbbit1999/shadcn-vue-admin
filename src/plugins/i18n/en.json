@@ -120,5 +120,243 @@
       "discord": "Join our Discord server to ask questions, share your projects, and get involved in the community.",
       "bilibili": "Find us on Bilibili"
     }
+  },
+  "nav": {
+    "group": {
+      "general": "General",
+      "pages": "Pages",
+      "other": "Other"
+    },
+    "dashboard": "Dashboard",
+    "tasks": "Tasks",
+    "apps": "Apps",
+    "users": "Users",
+    "aiTalk": "AI Talk Example",
+    "auth": {
+      "title": "Auth",
+      "signIn": "Sign In",
+      "signIn2Col": "Sign In (2 Col)",
+      "signUp": "Sign Up",
+      "forgotPassword": "Forgot Password",
+      "otp": "OTP"
+    },
+    "errorPages": {
+      "title": "Errors",
+      "unauthorized": "401 | Unauthorized",
+      "forbidden": "403 | Forbidden",
+      "notFound": "404 | Not Found",
+      "internalServerError": "500 | Internal Server Error",
+      "maintenance": "503 | Maintenance Error"
+    },
+    "settings": {
+      "title": "Settings",
+      "profile": "Profile",
+      "account": "Account",
+      "appearance": "Appearance",
+      "notifications": "Notifications",
+      "display": "Display"
+    },
+    "propComponents": "Prop Components",
+    "helpCenter": "Help Center",
+    "gitHub": "Outside Page (GitHub)",
+    "billing": "Billing",
+    "upgradeToPro": "Upgrade to Pro",
+    "pricingPlans": "Plans & Pricing",
+    "home": "Home"
+  },
+  "common": {
+    "cancel": "Cancel",
+    "continue": "Continue",
+    "pleaseWait": "Please wait",
+    "resetForm": "Reset form",
+    "submittedTitle": "You submitted the following values:",
+    "copy": "Copy",
+    "copied": "Copied",
+    "clipboardUnsupported": "Your browser does not support Clipboard API",
+    "docs": "Docs",
+    "configCreated": "System config created with default value."
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
+  "language": {
+    "change": "Change language",
+    "english": "English",
+    "chinese": "中文"
+  },
+  "team": {
+    "switcher": {
+      "label": "Teams"
+    },
+    "add": "Add team",
+    "form": {
+      "title": "Add New Team",
+      "description": "Add a new team by your self.",
+      "name": "Name",
+      "nameDescription": "Set the name for the team.",
+      "slug": "Slug",
+      "slugDescription": "Set the slug for the team.",
+      "logo": "Logo",
+      "logoDescription": "Set the logo of the team."
+    }
+  },
+  "command": {
+    "placeholder": "Type a command or search...",
+    "emptyTitle": "No menu found.",
+    "emptyDescription": "Try searching for a command or check the spelling.",
+    "pagesHeading": "Pages",
+    "themeHeading": "Theme"
+  },
+  "table": {
+    "emptyTitle": "No result found.",
+    "emptyDescription": "Please try a different search term or check the spelling.",
+    "noFilterResults": "No results found.",
+    "toggleColumns": "Toggle columns",
+    "clearSelection": "Clear selection",
+    "clearSelectionHint": "Clear selection (Escape)",
+    "pagination": {
+      "first": "Go to first page",
+      "previous": "Go to previous page",
+      "next": "Go to next page",
+      "last": "Go to last page",
+      "rowsPerPage": "Rows per page",
+      "page": "Page {page} of {pages}"
+    },
+    "sort": {
+      "ascending": "Ascending",
+      "descending": "Descending"
+    }
+  },
+  "settings": {
+    "layout": {
+      "title": "Settings",
+      "description": "Manage your store settings."
+    },
+    "profile": {
+      "title": "Profile",
+      "description": "This is how others will see you on the site.",
+      "username": "Username",
+      "usernameDescription": "This is your public display name. It can be your real name or a pseudonym. You can only change this once every 30 days.",
+      "email": "Email",
+      "emailPlaceholder": "Select an email",
+      "emailDescription": "You can manage verified email addresses in your email settings.",
+      "bio": "Bio",
+      "bioPlaceholder": "Tell us a little bit about yourself",
+      "bioDescription": "You can {mention} other users and organizations to link to them.",
+      "urls": "URLs",
+      "urlsDescription": "Add links to your website, blog, or social media profiles.",
+      "addUrl": "Add URL",
+      "submit": "Update profile"
+    },
+    "account": {
+      "title": "Account",
+      "description": "Update your account settings. Set your preferred language and timezone.",
+      "name": "Name",
+      "namePlaceholder": "Your name",
+      "nameDescription": "This is the name that will be displayed on your profile and in emails.",
+      "dob": "Date of birth",
+      "dobPlaceholder": "Pick a date",
+      "dobDescription": "Your date of birth is used to calculate your age.",
+      "language": "Language",
+      "languagePlaceholder": "Select language...",
+      "languageSearch": "Search language...",
+      "languageEmpty": "No language found.",
+      "languageDescription": "This is the language that will be used in the dashboard.",
+      "submit": "Update account",
+      "languages": {
+        "english": "English",
+        "french": "French",
+        "german": "German",
+        "spanish": "Spanish",
+        "portuguese": "Portuguese",
+        "russian": "Russian",
+        "japanese": "Japanese",
+        "korean": "Korean",
+        "chinese": "Chinese"
+      }
+    },
+    "appearance": {
+      "title": "Appearance",
+      "description": "Customize the appearance of the app. Automatically switch between day and night themes.",
+      "font": "Font",
+      "fontPlaceholder": "Select a font",
+      "fontDescription": "Set the font you want to use in the dashboard.",
+      "theme": "Theme",
+      "themeDescription": "Select the theme for the dashboard.",
+      "submit": "Update preferences"
+    },
+    "display": {
+      "title": "Display",
+      "description": "Turn items on or off to control what's displayed in the app.",
+      "sidebar": "Sidebar",
+      "sidebarDescription": "Select the items you want to display in the sidebar.",
+      "submit": "Update display",
+      "items": {
+        "recents": "Recents",
+        "home": "Home",
+        "applications": "Applications",
+        "desktop": "Desktop",
+        "downloads": "Downloads",
+        "documents": "Documents"
+      }
+    },
+    "notifications": {
+      "title": "Notifications",
+      "description": "Configure how you receive notifications.",
+      "notifyAbout": "Notify me about...",
+      "typeAll": "All new messages",
+      "typeMentions": "Direct messages and mentions",
+      "typeNothing": "Nothing",
+      "emailHeading": "Email Notifications",
+      "communication": "Communication emails",
+      "communicationDescription": "Receive emails about your account activity.",
+      "marketing": "Marketing emails",
+      "marketingDescription": "Receive emails about new products, features, and more.",
+      "social": "Social emails",
+      "socialDescription": "Receive emails for friend requests, follows, and more.",
+      "security": "Security emails",
+      "securityDescription": "Receive emails about your account activity and security.",
+      "useMobile": "Use different settings for my mobile devices",
+      "useMobileDescription": "You can manage your mobile notifications in the {link} page.",
+      "mobileSettings": "mobile settings",
+      "submit": "Update notifications"
+    },
+    "sidebarStyle": {
+      "label": "Menu Style",
+      "collapsible": "Collapsible",
+      "collapsibleDescription": "Traditional collapsible menu",
+      "vercel": "Vercel Style",
+      "vercelDescription": "Click to navigate to the next level"
+    }
+  },
+  "notFound": {
+    "subtitle": "Page Not Found",
+    "description": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+  },
+  "propComponents": {
+    "title": "Prop Components",
+    "description": "A collection of extended components for shadcn-vue.",
+    "more": "More components from kit.prop.show",
+    "items": {
+      "copy": {
+        "title": "Copy",
+        "description": "Copy button component, supports custom styles and tooltip text."
+      },
+      "fullScreenDialog": {
+        "title": "Full Screen Dialog",
+        "description": "A dialog that opens in full screen."
+      },
+      "inlineTip": {
+        "title": "Inline Tip",
+        "description": "Inline tip component, used to display different types of tip information."
+      },
+      "statusBadge": {
+        "title": "Status Badge",
+        "description": "A badge that shows the status of an item."
+      }
+    }
   }
 }
