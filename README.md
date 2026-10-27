@@ -54,7 +54,7 @@ Adapted from [shadcn-admin](https://github.com/satnaing/shadcn-admin) for Vue.
 ### Prerequisites
 
 - Node.js ≥ 22.15, as declared in `package.json`; CI uses Node.js 22.
-- Use the pnpm version specified by `packageManager` in `package.json` (currently **11.28.5**).
+- Use the pnpm version specified by `packageManager` in `package.json` (currently **11.28.6**).
 - TypeScript is installed as a project dependency; no global installation is needed.
 
 ### Installation
