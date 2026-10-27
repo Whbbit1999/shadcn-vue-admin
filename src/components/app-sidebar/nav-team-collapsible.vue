@@ -35,14 +35,13 @@ function isActive(menu: NavItem): boolean {
 </script>
 
 <template>
-  <SidebarGroup v-for="group in navMain" :key="group.title">
-    <SidebarGroupLabel>{{ group.title }}</SidebarGroupLabel>
+  <SidebarGroup v-for="group in navMain" :key="group.titleKey">
+    <SidebarGroupLabel>{{ $t(group.titleKey) }}</SidebarGroupLabel>
     <SidebarMenu>
-      <template v-for="menu in group.items" :key="menu.title">
+      <template v-for="menu in group.items" :key="menu.titleKey">
         <SidebarMenuItem v-if="!menu.items">
           <MenuButton
             :is-active="isActive(menu)"
-            :tooltip="menu.title"
             :is-external-url="isExternalUrl(menu.url)"
             :menu="menu as NavItem"
           />
@@ -57,9 +56,9 @@ function isActive(menu: NavItem): boolean {
           >
             <SidebarMenuItem>
               <CollapsibleTrigger as-child>
-                <SidebarMenuButton :tooltip="menu.title">
+                <SidebarMenuButton :tooltip="$t(menu.titleKey)">
                   <component :is="menu.icon" v-if="menu.icon" />
-                  <span>{{ menu.title }}</span>
+                  <span>{{ $t(menu.titleKey) }}</span>
                   <ChevronRightIcon
                     class="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90"
                   />
@@ -68,16 +67,16 @@ function isActive(menu: NavItem): boolean {
             </SidebarMenuItem>
             <CollapsibleContent>
               <SidebarMenuSub>
-                <SidebarMenuSubItem v-for="subItem in menu.items" :key="subItem.title">
+                <SidebarMenuSubItem v-for="subItem in menu.items" :key="subItem.titleKey">
                   <SidebarMenuSubButton as-child :is-active="isActive(subItem as NavItem)">
                     <a v-if="isExternalUrl(subItem?.url)" :href="subItem?.url" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2">
                       <component :is="subItem.icon" v-if="subItem.icon" />
-                      <span>{{ subItem.title }}</span>
+                      <span>{{ $t(subItem.titleKey) }}</span>
                       <ExternalLinkIcon class="w-4 h-4 ml-auto" />
                     </a>
                     <router-link v-else :to="subItem?.url || '/'">
                       <component :is="subItem.icon" v-if="subItem.icon" />
-                      <span>{{ subItem.title }}</span>
+                      <span>{{ $t(subItem.titleKey) }}</span>
                     </router-link>
                   </SidebarMenuSubButton>
                 </SidebarMenuSubItem>
@@ -88,18 +87,17 @@ function isActive(menu: NavItem): boolean {
           <!-- sidebar collapsed -->
           <DropdownMenu v-else>
             <DropdownMenuTrigger as-child>
-              <SidebarMenuButton :tooltip="menu.title">
+              <SidebarMenuButton :tooltip="$t(menu.titleKey)">
                 <component :is="menu.icon" v-if="menu.icon" />
-                <span>{{ menu.title }}</span>
+                <span>{{ $t(menu.titleKey) }}</span>
               </SidebarMenuButton>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="start" side="right">
-              <DropdownMenuLabel>{{ menu.title }}</DropdownMenuLabel>
+              <DropdownMenuLabel>{{ $t(menu.titleKey) }}</DropdownMenuLabel>
               <DropdownMenuSeparator />
-              <DropdownMenuItem v-for="subItem in menu.items" :key="subItem.title" as-child>
+              <DropdownMenuItem v-for="subItem in menu.items" :key="subItem.titleKey" as-child>
                 <MenuButton
                   :is-active="isActive(subItem as NavItem)"
-                  :tooltip="subItem.title"
                   :is-external-url="isExternalUrl(subItem?.url)"
                   :menu="subItem as NavItem"
                 />

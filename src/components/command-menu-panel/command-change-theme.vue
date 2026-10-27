@@ -14,15 +14,15 @@ const mode = useColorMode()
 </script>
 
 <template>
-  <CommandGroup heading="Theme">
+  <CommandGroup :heading="$t('command.themeHeading')">
     <CommandItem value="light" @click="mode = 'light', $emit('click')">
-      <CommandItemHasIcon name="Light" :icon="SunIcon" />
+      <CommandItemHasIcon :name="$t('theme.light')" :icon="SunIcon" />
     </CommandItem>
     <CommandItem value="dark" @click="mode = 'dark', $emit('click')">
-      <CommandItemHasIcon name="Dark" :icon="MoonIcon" />
+      <CommandItemHasIcon :name="$t('theme.dark')" :icon="MoonIcon" />
     </CommandItem>
     <CommandItem value="system" @click="mode = 'auto', $emit('click')">
-      <CommandItemHasIcon name="System" :icon="SunMoonIcon" />
+      <CommandItemHasIcon :name="$t('theme.system')" :icon="SunMoonIcon" />
     </CommandItem>
   </CommandGroup>
 </template>

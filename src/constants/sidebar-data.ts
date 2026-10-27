@@ -5,67 +5,67 @@ import type { NavGroup, NavItem } from '@/components/app-sidebar/types'
 type SidebarLink = Extract<NavItem, { url: string }>
 
 export const settingsNavItems: SidebarLink[] = [
-  { title: 'Profile', url: '/settings/', icon: UserIcon },
-  { title: 'Account', url: '/settings/account', icon: WrenchIcon },
-  { title: 'Appearance', url: '/settings/appearance', icon: PaletteIcon },
-  { title: 'Notifications', url: '/settings/notifications', icon: BellDotIcon },
-  { title: 'Display', url: '/settings/display', icon: PictureInPicture2Icon },
+  { titleKey: 'nav.settings.profile', url: '/settings/', icon: UserIcon },
+  { titleKey: 'nav.settings.account', url: '/settings/account', icon: WrenchIcon },
+  { titleKey: 'nav.settings.appearance', url: '/settings/appearance', icon: PaletteIcon },
+  { titleKey: 'nav.settings.notifications', url: '/settings/notifications', icon: BellDotIcon },
+  { titleKey: 'nav.settings.display', url: '/settings/display', icon: PictureInPicture2Icon },
 ]
 
 export const navData: NavGroup[] = [
   {
-    title: 'General',
+    titleKey: 'nav.group.general',
     items: [
-      { title: 'Dashboard', url: '/dashboard', icon: LayoutDashboardIcon },
-      { title: 'Tasks', url: '/tasks', icon: ListTodoIcon },
-      { title: 'Apps', url: '/apps', icon: BoxesIcon },
-      { title: 'Users', url: '/users', icon: UsersIcon },
-      { title: 'Ai Talk Example', url: '/ai-talk', icon: PodcastIcon },
+      { titleKey: 'nav.dashboard', url: '/dashboard', icon: LayoutDashboardIcon },
+      { titleKey: 'nav.tasks', url: '/tasks', icon: ListTodoIcon },
+      { titleKey: 'nav.apps', url: '/apps', icon: BoxesIcon },
+      { titleKey: 'nav.users', url: '/users', icon: UsersIcon },
+      { titleKey: 'nav.aiTalk', url: '/ai-talk', icon: PodcastIcon },
     ],
   },
   {
-    title: 'Pages',
+    titleKey: 'nav.group.pages',
     items: [
       {
-        title: 'Auth',
+        titleKey: 'nav.auth.title',
         icon: SquareUserRoundIcon,
         items: [
-          { title: 'Sign In', url: '/auth/sign-in' },
-          { title: 'Sign In(2 Col)', url: '/auth/sign-in-2' },
-          { title: 'Sign Up', url: '/auth/sign-up' },
-          { title: 'Forgot Password', url: '/auth/forgot-password' },
-          { title: 'OTP', url: '/auth/otp' },
+          { titleKey: 'nav.auth.signIn', url: '/auth/sign-in' },
+          { titleKey: 'nav.auth.signIn2Col', url: '/auth/sign-in-2' },
+          { titleKey: 'nav.auth.signUp', url: '/auth/sign-up' },
+          { titleKey: 'nav.auth.forgotPassword', url: '/auth/forgot-password' },
+          { titleKey: 'nav.auth.otp', url: '/auth/otp' },
         ],
       },
       {
-        title: 'Errors',
+        titleKey: 'nav.errorPages.title',
         icon: BugIcon,
         items: [
-          { title: '401 | Unauthorized', url: '/errors/401' },
-          { title: '403 | Forbidden', url: '/errors/403' },
-          { title: '404 | Not Found', url: '/errors/404' },
-          { title: '500 | Internal Server Error', url: '/errors/500' },
-          { title: '503 | Maintenance Error', url: '/errors/503' },
+          { titleKey: 'nav.errorPages.unauthorized', url: '/errors/401' },
+          { titleKey: 'nav.errorPages.forbidden', url: '/errors/403' },
+          { titleKey: 'nav.errorPages.notFound', url: '/errors/404' },
+          { titleKey: 'nav.errorPages.internalServerError', url: '/errors/500' },
+          { titleKey: 'nav.errorPages.maintenance', url: '/errors/503' },
         ],
       },
     ],
   },
   {
-    title: 'Other',
+    titleKey: 'nav.group.other',
     items: [
-      { title: 'Settings', items: settingsNavItems, icon: SettingsIcon },
-      { title: 'Prop Components', url: '/prop-components', icon: ComponentIcon },
-      { title: 'Help Center', url: '/help-center', icon: BadgeHelpIcon },
-      { title: 'Outside Page(GitHub)', url: 'https://www.github.com/Whbbit1999/shadcn-vue-admin', icon: BirdIcon },
+      { titleKey: 'nav.settings.title', items: settingsNavItems, icon: SettingsIcon },
+      { titleKey: 'nav.propComponents', url: '/prop-components', icon: ComponentIcon },
+      { titleKey: 'nav.helpCenter', url: '/help-center', icon: BadgeHelpIcon },
+      { titleKey: 'nav.gitHub', url: 'https://www.github.com/Whbbit1999/shadcn-vue-admin', icon: BirdIcon },
     ],
   },
 ]
 
 export const otherPages: NavGroup[] = [
   {
-    title: 'Other',
+    titleKey: 'nav.group.other',
     items: [
-      { title: 'Plans & Pricing', icon: CreditCardIcon, url: '/billing' },
+      { titleKey: 'nav.pricingPlans', icon: CreditCardIcon, url: '/billing' },
     ],
   },
 ]

@@ -5,8 +5,8 @@ import { settingsNavItems } from '@/constants/sidebar-data'
 
 <template>
   <BasicPage
-    title="Settings"
-    description="Manage your store settings."
+    :title="$t('settings.layout.title')"
+    :description="$t('settings.layout.description')"
   >
     <TwoColLayout>
       <template #aside>

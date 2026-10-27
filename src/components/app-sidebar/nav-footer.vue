@@ -62,7 +62,7 @@ const { isMobile } = useSidebar()
           <DropdownMenuGroup>
             <DropdownMenuItem @click="$router.push('/billing/')">
               <SparklesIcon />
-              Upgrade to Pro
+              {{ $t('nav.upgradeToPro') }}
             </DropdownMenuItem>
           </DropdownMenuGroup>
 
@@ -70,7 +70,7 @@ const { isMobile } = useSidebar()
           <DropdownMenuGroup>
             <DropdownMenuItem @click="$router.push('/billing?type=billing')">
               <CreditCardIcon />
-              Billing
+              {{ $t('nav.billing') }}
             </DropdownMenuItem>
           </DropdownMenuGroup>
 
@@ -78,15 +78,15 @@ const { isMobile } = useSidebar()
           <DropdownMenuGroup>
             <DropdownMenuItem @click="$router.push('/settings/')">
               <UserRoundCogIcon />
-              Profile
+              {{ $t('nav.settings.profile') }}
             </DropdownMenuItem>
             <DropdownMenuItem @click="$router.push('/settings/account')">
               <BadgeCheckIcon />
-              Account
+              {{ $t('nav.settings.account') }}
             </DropdownMenuItem>
             <DropdownMenuItem @click="$router.push('/settings/notifications')">
               <BellIcon />
-              Notifications
+              {{ $t('nav.settings.notifications') }}
             </DropdownMenuItem>
           </DropdownMenuGroup>
 

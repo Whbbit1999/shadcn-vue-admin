@@ -4,7 +4,11 @@ import type { FunctionalComponent } from 'vue'
 type NavIcon = FunctionalComponent<LucideProps, Record<any, any>, any, Record<any, any>>
 
 interface BaseNavItem {
-  title: string
+  /**
+   * Translation key of the label, for example `nav.dashboard`.
+   * Store a key, not text: the sidebar renders it with `$t()`.
+   */
+  titleKey: string
   icon?: NavIcon
 }
 
@@ -29,7 +33,7 @@ export type NavSubItem = BaseNavItem & {
 }
 
 export interface NavGroup {
-  title: string
+  titleKey: string
   items: NavItem[]
 }
 

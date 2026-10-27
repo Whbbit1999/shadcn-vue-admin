@@ -117,9 +117,9 @@ function getCommonPinningStyles(column: DataTableColumn<T>): CSSProperties {
                       <EmptyMedia variant="icon">
                         <FolderOpenIcon />
                       </EmptyMedia>
-                      <EmptyTitle>No result found.</EmptyTitle>
+                      <EmptyTitle>{{ $t('table.emptyTitle') }}</EmptyTitle>
                       <EmptyDescription>
-                        Please try a different search term or check the spelling.
+                        {{ $t('table.emptyDescription') }}
                       </EmptyDescription>
                     </EmptyHeader>
                   </slot>

@@ -36,7 +36,7 @@ function handlePageSizeChange(value: unknown) {
     <div class="flex items-center space-x-6 lg:space-x-8">
       <div class="flex items-center space-x-2">
         <p class="hidden text-sm font-medium line-clamp-1 md:block">
-          Rows per page
+          {{ $t('table.pagination.rowsPerPage') }}
         </p>
         <Select
           :model-value="`${currentPageSize}`"
@@ -53,7 +53,7 @@ function handlePageSizeChange(value: unknown) {
         </Select>
       </div>
       <div class="flex w-[100px] items-center justify-center text-sm font-medium">
-        Page {{ currentPage }} of {{ totalPages }}
+        {{ $t('table.pagination.page', { page: currentPage, pages: totalPages }) }}
       </div>
       <div class="flex items-center space-x-2">
         <Button
@@ -62,7 +62,7 @@ function handlePageSizeChange(value: unknown) {
           :disabled="!canPreviousPage"
           @click="table.firstPage()"
         >
-          <span class="sr-only">Go to first page</span>
+          <span class="sr-only">{{ $t('table.pagination.first') }}</span>
           <ChevronsLeftIcon class="size-4" />
         </Button>
         <Button
@@ -71,7 +71,7 @@ function handlePageSizeChange(value: unknown) {
           :disabled="!canPreviousPage"
           @click="table.previousPage()"
         >
-          <span class="sr-only">Go to previous page</span>
+          <span class="sr-only">{{ $t('table.pagination.previous') }}</span>
           <ChevronLeftIcon class="size-4" />
         </Button>
         <Button
@@ -80,7 +80,7 @@ function handlePageSizeChange(value: unknown) {
           :disabled="!canNextPage"
           @click="table.nextPage()"
         >
-          <span class="sr-only">Go to next page</span>
+          <span class="sr-only">{{ $t('table.pagination.next') }}</span>
           <ChevronRightIcon class="size-4" />
         </Button>
         <Button
@@ -89,7 +89,7 @@ function handlePageSizeChange(value: unknown) {
           :disabled="!canNextPage"
           @click="table.lastPage()"
         >
-          <span class="sr-only">Go to last page</span>
+          <span class="sr-only">{{ $t('table.pagination.last') }}</span>
           <ChevronsRightIcon class="size-4" />
         </Button>
       </div>

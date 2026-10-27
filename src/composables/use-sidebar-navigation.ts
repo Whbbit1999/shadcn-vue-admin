@@ -11,7 +11,7 @@ import type { NavGroup, NavItem, NavSubItem } from '@/components/app-sidebar/typ
 export function useSidebarNavigation(navMain: Readonly<NavGroup[]>) {
   const route = useRoute()
 
-  // Navigation path stack, e.g., ['Pages', 'Auth']
+  // Navigation path stack of title keys, e.g. ['nav.group.pages', 'nav.auth.title']
   const navigationPath = ref<string[]>([])
 
   // Session storage key for persisting navigation path
@@ -27,12 +27,12 @@ export function useSidebarNavigation(navMain: Readonly<NavGroup[]>) {
       return null
 
     // First, find the initial item from any NavGroup
-    const firstTitle = path[0]
+    const firstTitleKey = path[0]
     let current: NavSubItem | null = null
 
     // Search in all NavGroups for the first level item
     for (const group of navMain as NavGroup[]) {
-      const found = group.items.find((item: NavItem) => item.title === firstTitle)
+      const found = group.items.find((item: NavItem) => item.titleKey === firstTitleKey)
       if (found) {
         if (path.length === 1)
           return found
@@ -46,12 +46,12 @@ export function useSidebarNavigation(navMain: Readonly<NavGroup[]>) {
 
     // Continue traversing deeper levels
     for (let i = 1; i < path.length; i++) {
-      const title = path[i]
+      const titleKey = path[i]
       const items: NavSubItem[] | undefined = current?.items
       if (!items)
         return null
 
-      const next: NavSubItem | undefined = items.find(item => item.title === title)
+      const next: NavSubItem | undefined = items.find(item => item.titleKey === titleKey)
       if (!next)
         return null
       if (i === path.length - 1)
@@ -77,11 +77,11 @@ export function useSidebarNavigation(navMain: Readonly<NavGroup[]>) {
   })
 
   /**
-   * Get current menu title for breadcrumb display
+   * Get the current menu title key for breadcrumb display
    */
-  const currentMenuTitle = computed(() => {
+  const currentMenuTitleKey = computed(() => {
     if (navigationPath.value.length === 0) {
-      return navMain[0]?.title || ''
+      return navMain[0]?.titleKey || ''
     }
     return navigationPath.value.at(-1) || ''
   })
@@ -91,7 +91,7 @@ export function useSidebarNavigation(navMain: Readonly<NavGroup[]>) {
    */
   function enterMenu(item: NavSubItem) {
     if (item.items && item.items.length > 0) {
-      navigationPath.value.push(item.title)
+      navigationPath.value.push(item.titleKey)
       saveNavigationPath()
     }
   }
@@ -118,14 +118,14 @@ export function useSidebarNavigation(navMain: Readonly<NavGroup[]>) {
    * Get breadcrumb items for display
    */
   function getBreadcrumbs() {
-    const breadcrumbs: Array<{ title: string, path: string[] }> = [
-      { title: navMain[0]?.title || 'Home', path: [] },
+    const breadcrumbs: Array<{ titleKey: string, path: string[] }> = [
+      { titleKey: navMain[0]?.titleKey || 'nav.home', path: [] },
     ]
 
     for (let i = 0; i < navigationPath.value.length; i++) {
       const path = navigationPath.value.slice(0, i + 1)
       breadcrumbs.push({
-        title: path.at(-1) ?? '',
+        titleKey: path.at(-1) ?? '',
         path,
       })
     }
@@ -159,6 +159,12 @@ export function useSidebarNavigation(navMain: Readonly<NavGroup[]>) {
    */
   function loadNavigationPath() {
     navigationPath.value = savedNavigationPath.value ?? []
+
+    // A saved path can become stale: keys are renamed, or an older version of
+    // the app stored menu titles. Drop it instead of showing an empty menu.
+    if (navigationPath.value.length > 0 && !findItemByPath(navigationPath.value)) {
+      reset()
+    }
   }
 
   /**
@@ -176,7 +182,7 @@ export function useSidebarNavigation(navMain: Readonly<NavGroup[]>) {
   return {
     navigationPath,
     currentMenuItems,
-    currentMenuTitle,
+    currentMenuTitleKey,
     enterMenu,
     goBack,
     reset,

@@ -19,13 +19,13 @@ const sort = defineModel<TSort>('sort', { default: 'asc' })
       <SelectItem value="asc">
         <div class="flex items-center gap-4">
           <ArrowDownAZIcon :size="16" />
-          <span>Ascending</span>
+          <span>{{ $t('table.sort.ascending') }}</span>
         </div>
       </SelectItem>
       <SelectItem value="desc">
         <div class="flex items-center gap-4">
           <ArrowDownZAIcon :size="16" />
-          <span>Descending</span>
+          <span>{{ $t('table.sort.descending') }}</span>
         </div>
       </SelectItem>
     </SelectContent>

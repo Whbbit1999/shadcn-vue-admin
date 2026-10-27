@@ -3,6 +3,7 @@ import type { HTMLAttributes } from 'vue'
 
 import { CopyCheckIcon, CopyIcon } from '@lucide/vue'
 import { useClipboard } from '@vueuse/core'
+import { useI18n } from 'vue-i18n'
 
 import type { ButtonVariants } from '@/components/ui/button'
 
@@ -27,9 +28,14 @@ interface Props {
 const props = withDefaults(defineProps<Props>(), {
   size: 'default',
   variant: 'outline',
-  copyTooltipText: 'Copy',
-  copiedTooltipText: 'Copied',
+  copyTooltipText: undefined,
+  copiedTooltipText: undefined,
 })
+
+const { t } = useI18n()
+
+const copyTooltip = computed(() => props.copyTooltipText ?? t('common.copy'))
+const copiedTooltip = computed(() => props.copiedTooltipText ?? t('common.copied'))
 
 const source = computed(() => props.content)
 
@@ -52,11 +58,11 @@ const { copy, copied, isSupported } = useClipboard({ source })
           </Button>
         </TooltipTrigger>
         <TooltipContent>
-          <p v-if="!copied">{{ props.copyTooltipText }}: {{ props.content }}</p>
-          <p v-else>{{ props.copiedTooltipText }}: {{ props.content }}</p>
+          <p v-if="!copied">{{ copyTooltip }}: {{ props.content }}</p>
+          <p v-else>{{ copiedTooltip }}: {{ props.content }}</p>
         </TooltipContent>
       </Tooltip>
     </TooltipProvider>
   </span>
-  <span v-else>Your browser does not support Clipboard API</span>
+  <span v-else>{{ $t('common.clipboardUnsupported') }}</span>
 </template>

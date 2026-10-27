@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useForm } from '@tanstack/vue-form'
+import { useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
 
 import { Button } from '@/components/ui/button'
@@ -9,30 +10,32 @@ import { FormItem } from '@/components/ui/form'
 import { Label } from '@/components/ui/label'
 import { Separator } from '@/components/ui/separator'
 
+const { t } = useI18n()
+
 const items = [
   {
     id: 'recents',
-    label: 'Recents',
+    labelKey: 'settings.display.items.recents',
   },
   {
     id: 'home',
-    label: 'Home',
+    labelKey: 'settings.display.items.home',
   },
   {
     id: 'applications',
-    label: 'Applications',
+    labelKey: 'settings.display.items.applications',
   },
   {
     id: 'desktop',
-    label: 'Desktop',
+    labelKey: 'settings.display.items.desktop',
   },
   {
     id: 'downloads',
-    label: 'Downloads',
+    labelKey: 'settings.display.items.downloads',
   },
   {
     id: 'documents',
-    label: 'Documents',
+    labelKey: 'settings.display.items.documents',
   },
 ] as const
 
@@ -41,7 +44,7 @@ const form = useForm({
     items: ['recents', 'home'] as string[],
   },
   onSubmit: ({ value }) => {
-    toast('You submitted the following values:', {
+    toast(t('common.submittedTitle'), {
       description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(value, null, 2))),
     })
   },
@@ -51,10 +54,10 @@ const form = useForm({
 <template>
   <div>
     <h3 class="text-lg font-medium">
-      Display
+      {{ $t('settings.display.title') }}
     </h3>
     <p class="text-sm text-muted-foreground">
-      Turn items on or off to control what's displayed in the app.
+      {{ $t('settings.display.description') }}
     </p>
   </div>
   <Separator class="my-4" />
@@ -64,10 +67,10 @@ const form = useForm({
         <FormItem>
           <div class="mb-4">
             <Label class="text-base">
-              Sidebar
+              {{ $t('settings.display.sidebar') }}
             </Label>
             <FieldDescription>
-              Select the items you want to display in the sidebar.
+              {{ $t('settings.display.sidebarDescription') }}
             </FieldDescription>
           </div>
 
@@ -81,7 +84,7 @@ const form = useForm({
                 }"
               />
               <Label class="font-normal">
-                {{ item.label }}
+                {{ $t(item.labelKey) }}
               </Label>
             </FormItem>
           </div>
@@ -92,7 +95,7 @@ const form = useForm({
 
     <div class="flex justify-start mt-4">
       <Button type="submit">
-        Update display
+        {{ $t('settings.display.submit') }}
       </Button>
     </div>
   </form>

@@ -7,23 +7,23 @@ import { Item, ItemActions, ItemContent, ItemDescription, ItemMedia, ItemTitle }
 
 const components = [
   {
-    title: 'Copy',
-    description: 'Copy button component, supports custom styles and tooltip text.',
+    titleKey: 'propComponents.items.copy.title',
+    descriptionKey: 'propComponents.items.copy.description',
     link: 'https://kit.prop.show/en/components/copy',
   },
   {
-    title: 'Full Screen Dialog',
-    description: '',
+    titleKey: 'propComponents.items.fullScreenDialog.title',
+    descriptionKey: 'propComponents.items.fullScreenDialog.description',
     link: 'https://kit.prop.show/en/components/full-screen-dialog',
   },
   {
-    title: 'Inline Tip',
-    description: 'Inline tip component, used to display different types of tip information.',
+    titleKey: 'propComponents.items.inlineTip.title',
+    descriptionKey: 'propComponents.items.inlineTip.description',
     link: 'https://kit.prop.show/en/components/inline-tip',
   },
   {
-    title: 'Status Badge',
-    description: '',
+    titleKey: 'propComponents.items.statusBadge.title',
+    descriptionKey: 'propComponents.items.statusBadge.description',
     link: 'https://kit.prop.show/en/components/status-badge',
   },
 ]
@@ -31,16 +31,16 @@ const components = [
 
 <template>
   <BasicPage
-    title="Prop Components"
-    description="A collection of extended components for shadcn-vue."
+    :title="$t('propComponents.title')"
+    :description="$t('propComponents.description')"
     sticky
   >
     <div class="grid grid-cols-1 md:grid-cols-2 w-full gap-6">
-      <Item v-for="component in components" :key="component.title" variant="outline">
+      <Item v-for="component in components" :key="component.titleKey" variant="outline">
         <ItemContent>
-          <ItemTitle>{{ component.title }}</ItemTitle>
+          <ItemTitle>{{ $t(component.titleKey) }}</ItemTitle>
           <ItemDescription>
-            {{ component.description }}
+            {{ $t(component.descriptionKey) }}
           </ItemDescription>
         </ItemContent>
         <ItemActions>
@@ -51,7 +51,7 @@ const components = [
               rel="noopener noreferrer"
               class="flex items-center gap-2"
             >
-              Docs
+              {{ $t('common.docs') }}
               <ArrowUpRightIcon />
             </a>
           </Button>
@@ -64,7 +64,7 @@ const components = [
             <BadgeCheckIcon class="size-5" />
           </ItemMedia>
           <ItemContent>
-            <ItemTitle>More components from kit.prop.show</ItemTitle>
+            <ItemTitle>{{ $t('propComponents.more') }}</ItemTitle>
           </ItemContent>
           <ItemActions>
             <ChevronRightIcon class="size-4" />

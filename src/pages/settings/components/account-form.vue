@@ -3,6 +3,7 @@ import { CalendarDate, DateFormatter, getLocalTimeZone, today } from '@internati
 import { CalendarDaysIcon, CheckIcon, ChevronsUpDownIcon } from '@lucide/vue'
 import { useForm } from '@tanstack/vue-form'
 import { toDate } from 'reka-ui/date'
+import { useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
 
 import { Button } from '@/components/ui/button'
@@ -20,20 +21,22 @@ import type { AccountValidator } from '../validators/account.validator'
 
 import { accountValidator } from '../validators/account.validator'
 
+const { t } = useI18n()
+
 const open = shallowRef(false)
 const dateValue = shallowRef()
 const placeholder = shallowRef()
 
 const languages = [
-  { label: 'English', value: 'en' },
-  { label: 'French', value: 'fr' },
-  { label: 'German', value: 'de' },
-  { label: 'Spanish', value: 'es' },
-  { label: 'Portuguese', value: 'pt' },
-  { label: 'Russian', value: 'ru' },
-  { label: 'Japanese', value: 'ja' },
-  { label: 'Korean', value: 'ko' },
-  { label: 'Chinese', value: 'zh' },
+  { labelKey: 'settings.account.languages.english', value: 'en' },
+  { labelKey: 'settings.account.languages.french', value: 'fr' },
+  { labelKey: 'settings.account.languages.german', value: 'de' },
+  { labelKey: 'settings.account.languages.spanish', value: 'es' },
+  { labelKey: 'settings.account.languages.portuguese', value: 'pt' },
+  { labelKey: 'settings.account.languages.russian', value: 'ru' },
+  { labelKey: 'settings.account.languages.japanese', value: 'ja' },
+  { labelKey: 'settings.account.languages.korean', value: 'ko' },
+  { labelKey: 'settings.account.languages.chinese', value: 'zh' },
 ] as const
 
 const df = new DateFormatter('en-US', {
@@ -53,7 +56,7 @@ const form = useForm({
     onBlur: accountValidator,
   },
   onSubmit: ({ value }) => {
-    toast('You submitted the following values:', {
+    toast(t('common.submittedTitle'), {
       description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(value, null, 2))),
     })
   },
@@ -63,10 +66,10 @@ const form = useForm({
 <template>
   <div>
     <h3 class="text-lg font-medium">
-      Account
+      {{ $t('settings.account.title') }}
     </h3>
     <p class="text-sm text-muted-foreground">
-      Update your account settings. Set your preferred language and timezone.
+      {{ $t('settings.account.description') }}
     </p>
   </div>
   <Separator class="my-4" />
@@ -75,17 +78,17 @@ const form = useForm({
       <template #default="{ field, state }">
         <FormItem>
           <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-            Name
+            {{ $t('settings.account.name') }}
           </Label>
           <Input
             type="text"
-            placeholder="Your name"
+            :placeholder="$t('settings.account.namePlaceholder')"
             :model-value="field.state.value"
             @input="field.handleChange($event.target.value)"
             @blur="field.handleBlur"
           />
           <FieldDescription>
-            This is the name that will be displayed on your profile and in emails.
+            {{ $t('settings.account.nameDescription') }}
           </FieldDescription>
           <FieldError :errors="state.meta.errors" />
         </FormItem>
@@ -96,7 +99,7 @@ const form = useForm({
       <template #default="{ field, state }">
         <FormItem class="flex flex-col">
           <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-            Date of birth
+            {{ $t('settings.account.dob') }}
           </Label>
           <Popover>
             <PopoverTrigger as-child>
@@ -107,14 +110,14 @@ const form = useForm({
                 )"
               >
                 <CalendarDaysIcon class="size-4 opacity-50" />
-                <span>{{ field.state.value ? df.format(toDate(dateValue, getLocalTimeZone())) : 'Pick a date' }}</span>
+                <span>{{ field.state.value ? df.format(toDate(dateValue, getLocalTimeZone())) : $t('settings.account.dobPlaceholder') }}</span>
               </Button>
             </PopoverTrigger>
             <PopoverContent>
               <Calendar
                 v-model:placeholder="placeholder"
                 v-model="dateValue"
-                calendar-label="Date of birth"
+                :calendar-label="$t('settings.account.dob')"
                 initial-focus
                 :min-value="new CalendarDate(1900, 1, 1)"
                 :max-value="today(getLocalTimeZone())"
@@ -133,7 +136,7 @@ const form = useForm({
             </PopoverContent>
           </Popover>
           <FieldDescription>
-            Your date of birth is used to calculate your age.
+            {{ $t('settings.account.dobDescription') }}
           </FieldDescription>
           <FieldError :errors="state.meta.errors" />
         </FormItem>
@@ -144,7 +147,7 @@ const form = useForm({
       <template #default="{ field, state }">
         <FormItem class="flex flex-col">
           <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-            Language
+            {{ $t('settings.account.language') }}
           </Label>
 
           <Popover v-model:open="open">
@@ -155,21 +158,21 @@ const form = useForm({
                   !field.state.value && 'text-muted-foreground',
                 )"
               >
-                {{ field.state.value ? languages.find(
+                {{ field.state.value ? $t(languages.find(
                   (language) => language.value === field.state.value,
-                )?.label : 'Select language...' }}
+                )?.labelKey ?? 'settings.account.language') : $t('settings.account.languagePlaceholder') }}
 
                 <ChevronsUpDownIcon class="size-4 ml-2 opacity-50 shrink-0" />
               </Button>
             </PopoverTrigger>
             <PopoverContent class="w-[200px] p-0">
               <Command>
-                <CommandInput placeholder="Search language..." />
-                <CommandEmpty>No language found.</CommandEmpty>
+                <CommandInput :placeholder="$t('settings.account.languageSearch')" />
+                <CommandEmpty>{{ $t('settings.account.languageEmpty') }}</CommandEmpty>
                 <CommandList>
                   <CommandGroup>
                     <CommandItem
-                      v-for="language in languages" :key="language.value" :value="language.label"
+                      v-for="language in languages" :key="language.value" :value="$t(language.labelKey)"
                       @select="() => {
                         form.setFieldValue('language', language.value)
                         open = false
@@ -182,7 +185,7 @@ const form = useForm({
                           field.state.value === language.value ? 'opacity-100' : 'opacity-0',
                         )"
                       />
-                      {{ language.label }}
+                      {{ $t(language.labelKey) }}
                     </CommandItem>
                   </CommandGroup>
                 </CommandList>
@@ -191,7 +194,7 @@ const form = useForm({
           </Popover>
 
           <FieldDescription>
-            This is the language that will be used in the dashboard.
+            {{ $t('settings.account.languageDescription') }}
           </FieldDescription>
           <FieldError :errors="state.meta.errors" />
         </FormItem>
@@ -200,7 +203,7 @@ const form = useForm({
 
     <div class="flex justify-start">
       <Button type="submit">
-        Update account
+        {{ $t('settings.account.submit') }}
       </Button>
     </div>
   </form>

@@ -6,8 +6,8 @@ import Error from '@/components/custom-error.vue'
   <div class="flex items-center justify-center h-screen">
     <Error
       :code="404"
-      subtitle="Page Not Found"
-      error="The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+      :subtitle="$t('notFound.subtitle')"
+      :error="$t('notFound.description')"
     />
   </div>
 </template>

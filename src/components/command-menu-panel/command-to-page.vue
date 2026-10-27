@@ -38,14 +38,14 @@ function commandItemClick(url: string) {
 </script>
 
 <template>
-  <CommandGroup heading="Pages">
+  <CommandGroup :heading="$t('command.pagesHeading')">
     <CommandItem
       v-for="command in commands"
-      :key="command.title"
-      :value="command.title"
+      :key="command.titleKey"
+      :value="$t(command.titleKey)"
       @click="commandItemClick(command.url!)"
     >
-      <CommandItemHasIcon :name="command.title" :icon="command.icon" />
+      <CommandItemHasIcon :name="$t(command.titleKey)" :icon="command.icon" />
     </CommandItem>
   </CommandGroup>
 </template>

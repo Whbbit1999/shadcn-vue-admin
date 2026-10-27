@@ -61,7 +61,7 @@ function handleSelect(command: TComponent) {
             :side-offset="4"
           >
             <DropdownMenuLabel class="text-xs text-muted-foreground">
-              Teams
+              {{ $t('team.switcher.label') }}
             </DropdownMenuLabel>
             <DropdownMenuItem
               v-for="(team, index) in teams"
@@ -83,7 +83,7 @@ function handleSelect(command: TComponent) {
                   <PlusIcon class="size-4" />
                 </div>
                 <div class="font-medium text-muted-foreground">
-                  Add team
+                  {{ $t('team.add') }}
                 </div>
               </DropdownMenuItem>
             </DialogTrigger>
