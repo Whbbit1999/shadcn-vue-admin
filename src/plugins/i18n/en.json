@@ -109,5 +109,16 @@
   },
   "homePage": {
     "searchKeyWords": "Search Menu"
+  },
+  "helpCenter": {
+    "title": "Help Center",
+    "description": "Find answers, contacts and community channels",
+    "alertTitle": "Heads up!",
+    "alertDescription": "You can find answers to your questions in our help center.",
+    "community": {
+      "github": "The source code of Shadcn Vue Admin is publicly available on GitHub.",
+      "discord": "Join our Discord server to ask questions, share your projects, and get involved in the community.",
+      "bilibili": "Find us on Bilibili"
+    }
   }
 }

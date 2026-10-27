@@ -2,28 +2,18 @@
 import { BasicPage } from '@/components/global-layout'
 import { Alert, AlertDescription, AlertTitle } from '@/components/ui/alert'
 
-interface ISocialMediaAccount {
-  title: string
-  desc: string
-  url: string
-}
-
-const socialMediaAccounts = ref<ISocialMediaAccount[]>([
-  { title: 'GitHub', desc: ' The source code of Shadcn UI is publicly available on GitHub.', url: 'https://github.com/Whbbit1999/shadcn-vue-admin' },
-  { title: 'Discord', desc: 'Join our Discord server to ask questions, share your projects, and get involved in the community.', url: '' },
-  { title: 'Bilibili', desc: '在哔哩哔哩上找到我们', url: 'https://space.bilibili.com/104376935' },
-])
+import { socialMediaAccounts } from './help-center-data'
 </script>
 
 <template>
   <BasicPage
-    title="Help Center"
-    description="Help Center description"
+    :title="$t('helpCenter.title')"
+    :description="$t('helpCenter.description')"
   >
     <Alert>
-      <AlertTitle>Heads up!</AlertTitle>
+      <AlertTitle>{{ $t('helpCenter.alertTitle') }}</AlertTitle>
       <AlertDescription>
-        You can find answers to your questions in our help center.
+        {{ $t('helpCenter.alertDescription') }}
       </AlertDescription>
     </Alert>
 
@@ -34,7 +24,7 @@ const socialMediaAccounts = ref<ISocialMediaAccount[]>([
             {{ account.title }}
           </h2>
           <p class="text-sm text-stone-500">
-            {{ account.desc }}
+            {{ $t(account.descKey) }}
           </p>
         </a>
       </li>
