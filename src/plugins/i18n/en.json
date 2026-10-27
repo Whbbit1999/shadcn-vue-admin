@@ -532,5 +532,153 @@
     "toast": {
       "submitted": "You submitted the following values:"
     }
+  },
+  "billing": {
+    "title": "Plans & Billing",
+    "description": "Manage your plan and billing history here.",
+    "plan": {
+      "billingCycle": "month",
+      "current": "Current Plan",
+      "switch": "Switch to this plan",
+      "basic": {
+        "title": "Basic"
+      },
+      "free": {
+        "title": "Free",
+        "description": "Get started with the free plan and explore all the features.",
+        "features": {
+          "feature1": "Feature 1",
+          "feature2": "Feature 2",
+          "feature3": "Feature 3"
+        }
+      },
+      "smallBusiness": {
+        "title": "Small Business",
+        "description": "Start growing your business with our small business plan.",
+        "features": {
+          "feature1": "Every free plan feature",
+          "feature2": "10 users",
+          "feature3": "10G storage"
+        }
+      },
+      "enterprise": {
+        "title": "Enterprise",
+        "description": "Get the best of everything with our enterprise plan.",
+        "features": {
+          "feature1": "Every small business plan feature",
+          "feature2": "Unlimited users",
+          "feature3": "Unlimited storage"
+        }
+      }
+    },
+    "history": {
+      "title": "Billing History",
+      "columns": {
+        "id": "ID",
+        "amount": "amount",
+        "date": "billing date",
+        "plan": "billing plan",
+        "status": "status",
+        "orderId": "Order ID"
+      },
+      "status": {
+        "paid": "Paid",
+        "unpaid": "Unpaid",
+        "overdue": "Overdue",
+        "cancelled": "Cancelled"
+      },
+      "noValue": "N/A",
+      "actions": {
+        "openMenu": "Open menu",
+        "detail": "Detail"
+      }
+    },
+    "transaction": {
+      "cardTitle": "Billing Card {cardNo}",
+      "lastUpdate": "Last update",
+      "notes": "Notes",
+      "invoiceNo": "Invoice #{invoiceNo}"
+    }
+  },
+  "apps": {
+    "title": "Apps",
+    "description": "Apps description",
+    "searchPlaceholder": "Filter apps...",
+    "filter": {
+      "all": "All",
+      "connected": "Connected",
+      "notConnected": "Not Connected"
+    },
+    "card": {
+      "connect": "Connect",
+      "connected": "Connected"
+    },
+    "list": {
+      "telegram": "Connect with Telegram for real-time communication.",
+      "notion": "Effortlessly sync Notion pages for seamless collaboration.",
+      "figma": "View and collaborate on Figma designs in one place.",
+      "trello": "Sync Trello cards for streamlined project management.",
+      "slack": "Integrate Slack for efficient team communication",
+      "zoom": "Host Zoom meetings directly from the dashboard.",
+      "stripe": "Easily manage Stripe transactions and payments.",
+      "gmail": "Access and manage Gmail messages effortlessly.",
+      "medium": "Explore and share Medium stories on your dashboard.",
+      "skype": "Connect with Skype contacts seamlessly.",
+      "docker": "Effortlessly manage Docker containers on your dashboard.",
+      "github": "Streamline code management with GitHub integration.",
+      "gitlab": "Efficiently manage code projects with GitLab integration.",
+      "discord": "Connect with Discord for seamless team communication.",
+      "whatsapp": "Easily integrate WhatsApp for direct messaging."
+    }
+  },
+  "aiTalk": {
+    "robot": {
+      "alt": "robot",
+      "name": "Robot"
+    },
+    "thinking": "Thinking...",
+    "input": {
+      "placeholder": "Ask, Search or Chat...",
+      "addFile": "Add File",
+      "usage": "52% used"
+    },
+    "mode": {
+      "auto": "Auto",
+      "agent": "Agent",
+      "manual": "Manual"
+    },
+    "talkType": {
+      "deepThink": "Deep Think",
+      "online": "Online"
+    },
+    "feedback": {
+      "good": "Good Job",
+      "bad": "It's so bad"
+    },
+    "reply": {
+      "copy": "Copy",
+      "refresh": "refresh"
+    },
+    "toast": {
+      "typeTitle": "Type"
+    },
+    "demo": {
+      "greeting": "Hello, I'm your smart assistant, how can I help you?",
+      "user": "Hi, who are you?",
+      "reply": "I can answer your questions, provide information, and help you solve your problems. You can ask me anything and I'll do my best to answer it."
+    },
+    "answer": {
+      "greeting": "Hello! I'm your AI assistant. How can I help you? You can ask me questions, have me look up information, or we can discuss various topics together.",
+      "capabilities": "I can help you with many things:\n\n- 💬 Answer knowledge questions\n- 📝 Assist with writing, translation, and summarization\n- 💻 Provide code examples and technical solutions\n- 🧠 Brainstorming and creative discussions\n- 📊 Data analysis and interpretation\n- 🌐 Real-time information lookup (online mode)\n\nLet me know what you need!",
+      "strengths": "My strengths include:\n\n✨ **Fast response** — handling your questions instantly\n✨ **Broad knowledge** — covering multiple domains\n✨ **Patient and thorough** — never tired of repeated questions\n✨ **24/7 availability** — here for you anytime, anywhere\n\nAnd I'm constantly learning and improving!",
+      "weaknesses": "I also have some limitations:\n\n⚠️ My knowledge is current only up to my training data\n⚠️ I cannot perform real-world physical actions\n⚠️ Complex reasoning may occasionally have inaccuracies\n⚠️ I don't have genuine emotional experiences\n\nBut I'm always evolving, thanks for your understanding! 🙏",
+      "weather": "Sorry, I don't have access to real-time weather data at the moment. I suggest enabling web search mode or checking a weather app for the latest updates.",
+      "defaults": {
+        "default1": "That's a great question! Let me think... Here are a few angles to consider:\n\nFirst, from a technical perspective...\nSecond, from a practical standpoint...\nThird, from a future development view...\n\nWhich direction fits your needs best?",
+        "default2": "Thanks for asking! 🙌 Let me share my thoughts:\n\nThis question covers multiple aspects. I suggest we explore it from the following dimensions. Of course, this is just my perspective — hope it sparks some ideas!",
+        "default3": "Got your message! Let me quickly organize my thoughts:\n\n1️⃣ First, we need to clarify the core objective\n2️⃣ Then, analyze key influencing factors\n3️⃣ Finally, develop a feasible plan\n\nWhat do you think of this framework? We can discuss it further.",
+        "default4": "That's an interesting topic! 🤔 Based on what I know:\n\nThere are several common approaches in the industry, each suited to different scenarios. The key is choosing the most appropriate solution based on your specific needs.\n\nWould you like me to elaborate on any particular direction?"
+      }
+    }
   }
 }

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { useClipboard } from '@vueuse/core'
+import { useI18n } from 'vue-i18n'
 
 import FlickeringGrid from '@/components/inspira-ui/flickering-grid.vue'
 
@@ -20,6 +21,8 @@ interface Props {
 }
 const props = defineProps<Props>()
 
+const { t } = useI18n()
+
 const orderId = computed(() => props.orderId || '')
 const cardNo = computed(() => `**${props.cardNo.toString().slice(2)}`)
 const { copy, copied } = useClipboard({ source: orderId })
@@ -28,13 +31,19 @@ const state = computed(() => props.state)
 const currentState = computed(() => {
   return statuses.find(item => item.value === state.value)
 })
+
+const currentStateLabel = computed(() => {
+  const labelKey = currentState.value?.labelKey
+
+  return labelKey ? t(labelKey) : ''
+})
 </script>
 
 <template>
   <div class="w-full font-mono rounded-lg shadow-sm bg-background">
     <header class="relative p-5">
       <h1 class="text-lg">
-        Billing Card {{ cardNo }}
+        {{ $t('billing.transaction.cardTitle', { cardNo }) }}
       </h1>
       <div class="flex items-center gap-2 mt-1">
         <p class="text-stone-600">
@@ -54,7 +63,7 @@ const currentState = computed(() => {
     <div class="p-6 border-t ">
       <div class="">
         <h2 class="mb-2 text-xl font-extralight">
-          Last update
+          {{ $t('billing.transaction.lastUpdate') }}
         </h2>
         <div class="text-xl">
           {{ updatedAt }}
@@ -74,7 +83,7 @@ const currentState = computed(() => {
         <component :is="currentState?.icon" :style="{ color: currentState?.color }" class="size-8" />
         <div>
           <h2 class="text-xl">
-            {{ currentState?.label }}
+            {{ currentStateLabel }}
           </h2>
           <p>{{ updatedAt }}</p>
         </div>
@@ -83,10 +92,10 @@ const currentState = computed(() => {
     <div class="p-6 border-t">
       <div class="text-stone-500 ">
         <h2 class="mt-6 text-xl font-extralight">
-          Notes
+          {{ $t('billing.transaction.notes') }}
         </h2>
         <p class="text-sm">
-          Invoice #{{ invoiceNo }}
+          {{ $t('billing.transaction.invoiceNo', { invoiceNo }) }}
         </p>
         <p class="text-sm">
           {{ description }}

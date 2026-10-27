@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 <template>
   <Avatar>
-    <AvatarImage src="/robot.png" alt="robot" />
-    <AvatarFallback>Robot</AvatarFallback>
+    <AvatarImage src="/robot.png" :alt="$t('aiTalk.robot.alt')" />
+    <AvatarFallback>{{ $t('aiTalk.robot.name') }}</AvatarFallback>
   </Avatar>
 </template>

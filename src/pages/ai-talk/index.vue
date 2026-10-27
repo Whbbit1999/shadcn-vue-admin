@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
 
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
@@ -15,38 +16,16 @@ import RobotAvatar from './components/robot-avatar.vue'
 import TalkFooter from './components/talk-footer.vue'
 import ThumbDown from './components/thumb-down.vue'
 import ThumbUp from './components/thumb-up.vue'
+import { pickReply } from './data/replies'
 import { exampleTalks } from './data/talks'
 
-const talks = shallowRef<IMessage[]>([...exampleTalks])
+const { t } = useI18n()
+
+const talks = shallowRef<IMessage[]>(exampleTalks.map(talk => ({
+  role: talk.role,
+  content: t(talk.contentKey),
+})))
 const isWaitingReply = shallowRef(false)
-
-function pickReply(userContent: string): string {
-  const lower = userContent.toLowerCase()
-
-  if (lower.includes('你好') || lower.includes('hello') || lower.includes('hi'))
-    return 'Hello! I\'m your AI assistant. How can I help you? You can ask me questions, have me look up information, or we can discuss various topics together.'
-
-  if (lower.includes('功能') || lower.includes('能力') || lower.includes('what can you do'))
-    return 'I can help you with many things:\n\n- 💬 Answer knowledge questions\n- 📝 Assist with writing, translation, and summarization\n- 💻 Provide code examples and technical solutions\n- 🧠 Brainstorming and creative discussions\n- 📊 Data analysis and interpretation\n- 🌐 Real-time information lookup (online mode)\n\nLet me know what you need!'
-
-  if (lower.includes('优点') || lower.includes('优势'))
-    return 'My strengths include:\n\n✨ **Fast response** — handling your questions instantly\n✨ **Broad knowledge** — covering multiple domains\n✨ **Patient and thorough** — never tired of repeated questions\n✨ **24/7 availability** — here for you anytime, anywhere\n\nAnd I\'m constantly learning and improving!'
-
-  if (lower.includes('缺点') || lower.includes('不足') || lower.includes('劣势'))
-    return 'I also have some limitations:\n\n⚠️ My knowledge is current only up to my training data\n⚠️ I cannot perform real-world physical actions\n⚠️ Complex reasoning may occasionally have inaccuracies\n⚠️ I don\'t have genuine emotional experiences\n\nBut I\'m always evolving, thanks for your understanding! 🙏'
-
-  if (lower.includes('weather') || lower.includes('天气'))
-    return 'Sorry, I don\'t have access to real-time weather data at the moment. I suggest enabling web search mode or checking a weather app for the latest updates.'
-
-  const defaults = [
-    'That\'s a great question! Let me think... Here are a few angles to consider:\n\nFirst, from a technical perspective...\nSecond, from a practical standpoint...\nThird, from a future development view...\n\nWhich direction fits your needs best?',
-    'Thanks for asking! 🙌 Let me share my thoughts:\n\nThis question covers multiple aspects. I suggest we explore it from the following dimensions. Of course, this is just my perspective — hope it sparks some ideas!',
-    'Got your message! Let me quickly organize my thoughts:\n\n1️⃣ First, we need to clarify the core objective\n2️⃣ Then, analyze key influencing factors\n3️⃣ Finally, develop a feasible plan\n\nWhat do you think of this framework? We can discuss it further.',
-    'That\'s an interesting topic! 🤔 Based on what I know:\n\nThere are several common approaches in the industry, each suited to different scenarios. The key is choosing the most appropriate solution based on your specific needs.\n\nWould you like me to elaborate on any particular direction?',
-  ]
-
-  return defaults[Math.floor(Math.random() * defaults.length)]
-}
 
 async function handleSubmit(content: string) {
   talks.value = [
@@ -59,7 +38,7 @@ async function handleSubmit(content: string) {
   await new Promise(resolve => setTimeout(resolve, delay))
   isWaitingReply.value = false
 
-  const reply = pickReply(content)
+  const reply = pickReply(content, key => t(key))
   talks.value = [
     ...talks.value,
     { role: 'system', content: reply },
@@ -67,7 +46,7 @@ async function handleSubmit(content: string) {
 }
 
 function handleTypeChange(type: string) {
-  toast('type', {
+  toast(t('aiTalk.toast.typeTitle'), {
     description: h(
       'pre',
       { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' },
@@ -120,7 +99,7 @@ function handleTypeChange(type: string) {
                 <Spinner />
               </MarkerIcon>
               <MarkerContent class="shimmer">
-                Thinking...
+                {{ $t('aiTalk.thinking') }}
               </MarkerContent>
             </Marker>
           </MessageContent>

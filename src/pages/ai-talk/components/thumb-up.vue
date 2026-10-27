@@ -14,7 +14,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/comp
         </Button>
       </TooltipTrigger>
       <TooltipContent>
-        <p>Good Job</p>
+        <p>{{ $t('aiTalk.feedback.good') }}</p>
       </TooltipContent>
     </Tooltip>
   </TooltipProvider>

@@ -1,45 +1,60 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
 import PlanCard from './plan-card.vue'
 
-const plans = [
+interface Plan {
+  titleKey: string
+  price: number
+  billingCycleKey: string
+  descriptionKey: string
+  featureKeys: string[]
+  buttonLabelKey: string
+  discount?: number
+  active?: boolean
+}
+
+const { t } = useI18n()
+
+const plans: Plan[] = [
   {
-    title: 'Free',
+    titleKey: 'billing.plan.free.title',
     price: 0,
-    billingCycle: 'month',
-    description: 'Get started with the free plan and explore all the features.',
-    features: [
-      'Feature 1',
-      'Feature 2',
-      'Feature 3',
+    billingCycleKey: 'billing.plan.billingCycle',
+    descriptionKey: 'billing.plan.free.description',
+    featureKeys: [
+      'billing.plan.free.features.feature1',
+      'billing.plan.free.features.feature2',
+      'billing.plan.free.features.feature3',
     ],
-    buttonLabel: 'Current Plan',
+    buttonLabelKey: 'billing.plan.current',
     active: true,
   },
   {
-    title: 'Small Business',
+    titleKey: 'billing.plan.smallBusiness.title',
     price: 19.99,
     discount: 49.99,
-    billingCycle: 'month',
-    description: 'Start growing your business with our small business plan.',
-    features: [
-      'Every free plan feature',
-      '10 users',
-      '10G storage',
+    billingCycleKey: 'billing.plan.billingCycle',
+    descriptionKey: 'billing.plan.smallBusiness.description',
+    featureKeys: [
+      'billing.plan.smallBusiness.features.feature1',
+      'billing.plan.smallBusiness.features.feature2',
+      'billing.plan.smallBusiness.features.feature3',
     ],
-    buttonLabel: 'Switch to this plan',
+    buttonLabelKey: 'billing.plan.switch',
   },
   {
-    title: 'Enterprise',
+    titleKey: 'billing.plan.enterprise.title',
     price: 199.99,
     discount: 499.99,
-    billingCycle: 'month',
-    description: 'Get the best of everything with our enterprise plan.',
-    features: [
-      'Every small business plan feature',
-      'Unlimited users',
-      'Unlimited storage',
+    billingCycleKey: 'billing.plan.billingCycle',
+    descriptionKey: 'billing.plan.enterprise.description',
+    featureKeys: [
+      'billing.plan.enterprise.features.feature1',
+      'billing.plan.enterprise.features.feature2',
+      'billing.plan.enterprise.features.feature3',
     ],
-    buttonLabel: 'Switch to this plan',
+    buttonLabelKey: 'billing.plan.switch',
   },
 ]
 </script>
@@ -50,13 +65,13 @@ const plans = [
       <PlanCard
         v-for="(plan, index) in plans"
         :key="index"
-        :title="plan.title"
+        :title="t(plan.titleKey)"
         :price="plan.price"
         :discount="plan.discount"
-        :billing-cycle="plan.billingCycle"
-        :description="plan.description"
-        :features="plan.features"
-        :button-label="plan.buttonLabel"
+        :billing-cycle="t(plan.billingCycleKey)"
+        :description="t(plan.descriptionKey)"
+        :features="plan.featureKeys.map(key => t(key))"
+        :button-label="t(plan.buttonLabelKey)"
         :active="plan.active"
       />
     </div>
