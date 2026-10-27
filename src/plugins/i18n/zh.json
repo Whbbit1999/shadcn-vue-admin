@@ -332,10 +332,6 @@
       "vercelDescription": "点击进入下一级菜单"
     }
   },
-  "notFound": {
-    "subtitle": "页面不存在",
-    "description": "你要找的页面可能已被删除、改名，或暂时无法访问。"
-  },
   "propComponents": {
     "title": "属性组件",
     "description": "一组为 shadcn-vue 扩展的组件。",

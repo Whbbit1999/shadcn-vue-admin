@@ -332,10 +332,6 @@
       "vercelDescription": "Click to navigate to the next level"
     }
   },
-  "notFound": {
-    "subtitle": "Page Not Found",
-    "description": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
-  },
   "propComponents": {
     "title": "Prop Components",
     "description": "A collection of extended components for shadcn-vue.",
