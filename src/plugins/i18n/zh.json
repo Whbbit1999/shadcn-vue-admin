@@ -109,5 +109,16 @@
   },
   "homePage": {
     "searchKeyWords": "搜索菜单"
+  },
+  "helpCenter": {
+    "title": "帮助中心",
+    "description": "查找答案、联系方式和社区渠道",
+    "alertTitle": "提示",
+    "alertDescription": "你可以在帮助中心找到问题的答案。",
+    "community": {
+      "github": "Shadcn Vue Admin 的源码公开在 GitHub 上。",
+      "discord": "加入我们的 Discord 服务器，提问、分享你的项目并参与社区。",
+      "bilibili": "在哔哩哔哩上找到我们"
+    }
   }
 }
