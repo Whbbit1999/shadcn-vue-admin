@@ -13,7 +13,7 @@ const isOpen = shallowRef(false)
   <Modal v-model:open="isOpen">
     <ModalTrigger as-child>
       <Button>
-        Create
+        {{ $t('tasks.actions.create') }}
         <PlusIcon />
       </Button>
     </ModalTrigger>

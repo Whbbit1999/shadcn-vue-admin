@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
 
 import { ModalClose, ModalDescription, ModalFooter, ModalHeader, ModalTitle } from '@/components/prop-ui/modal'
@@ -10,8 +11,10 @@ const props = defineProps<{
   task: Task
 }>()
 
+const { t } = useI18n()
+
 function handleRemove() {
-  toast(`The following task has been deleted:`, {
+  toast(t('tasks.delete.toastTitle'), {
     description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(props.task, null, 2))),
   })
 }
@@ -21,23 +24,23 @@ function handleRemove() {
   <div>
     <ModalHeader>
       <ModalTitle>
-        Delete this task: {{ task.id }} ?
+        {{ $t('tasks.delete.title', { id: task.id }) }}
       </ModalTitle>
       <ModalDescription>
-        You are about to delete a task with the ID {{ task.id }}. This action cannot be undone.
+        {{ $t('tasks.delete.description', { id: task.id }) }}
       </ModalDescription>
     </ModalHeader>
 
     <ModalFooter>
       <ModalClose as-child>
         <Button variant="outline">
-          Cancel
+          {{ $t('tasks.actions.cancel') }}
         </Button>
       </ModalClose>
 
       <ModalClose as-child>
         <Button variant="destructive" @click="handleRemove">
-          Delete
+          {{ $t('tasks.actions.delete') }}
         </Button>
       </ModalClose>
     </ModalFooter>

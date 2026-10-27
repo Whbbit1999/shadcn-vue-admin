@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
 
 import type { DataTableInstance } from '@/components/data-table'
@@ -14,6 +15,8 @@ const { table } = defineProps<{
   table: DataTableInstance<Task>
 }>()
 
+const { t } = useI18n()
+
 const openModel = defineModel<boolean>('open', {
   default: false,
 })
@@ -26,7 +29,7 @@ const selectedRows = computed(() => table.getSelectedRowModel().rows)
 const selectedCount = computed(() => selectedRows.value.length || 0)
 function handleConfirm() {
   if (confirmValue.value !== CONFIRM_WORD) {
-    toast.error(`Please type "${CONFIRM_WORD}" to confirm deletion.`)
+    toast.error(t('tasks.deleteBatch.confirmInvalid', { word: CONFIRM_WORD }))
     return
   }
 
@@ -34,12 +37,12 @@ function handleConfirm() {
   openModel.value = false
 
   toast.promise(new Promise(resolve => setTimeout(resolve, 2000)), {
-    loading: 'Deleting tasks...',
+    loading: t('tasks.deleteBatch.loading'),
     success: () => {
       table.resetRowSelection()
-      return `Successfully deleted ${deletedCount} tasks.`
+      return t('tasks.deleteBatch.success', { count: deletedCount })
     },
-    error: 'Failed to delete tasks.',
+    error: t('tasks.deleteBatch.error'),
   })
 }
 </script>
@@ -47,32 +50,33 @@ function handleConfirm() {
 <template>
   <ConfirmDialog
     v-model:open="openModel"
-    confirm-button-text="Delete"
+    :confirm-button-text="$t('tasks.actions.delete')"
+    :cancel-button-text="$t('tasks.actions.cancel')"
     destructive
     :disabled="confirmValue.trim() !== CONFIRM_WORD"
     @confirm="handleConfirm"
   >
     <template #title>
-      Delete {{ selectedCount }} tasks?
+      {{ $t('tasks.deleteBatch.title', { count: selectedCount }) }}
     </template>
     <template #description>
-      Are you sure you want to delete the selected tasks? <br>
-      This action cannot be undone.
+      {{ $t('tasks.deleteBatch.description') }} <br>
+      {{ $t('tasks.deleteBatch.warning') }}
     </template>
 
     <template #default>
       <Label class="my-4 flex flex-col items-start gap-1.5">
-        <span>Confirm by typing {{ CONFIRM_WORD }}:</span>
+        <span>{{ $t('tasks.deleteBatch.confirmHint', { word: CONFIRM_WORD }) }}</span>
         <Input
           v-model="confirmValue"
-          :placeholder="`Type &quot;${CONFIRM_WORD}&quot; to confirm.`"
+          :placeholder="$t('tasks.deleteBatch.confirmPlaceholder', { word: CONFIRM_WORD })"
         />
       </Label>
 
       <Alert variant="destructive">
-        <AlertTitle>Warning!</AlertTitle>
+        <AlertTitle>{{ $t('tasks.deleteBatch.warningTitle') }}</AlertTitle>
         <AlertDescription>
-          Please be careful, this operation can not be rolled back.
+          {{ $t('tasks.deleteBatch.warningDescription') }}
         </AlertDescription>
       </Alert>
     </template>

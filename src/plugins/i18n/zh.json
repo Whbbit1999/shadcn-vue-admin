@@ -358,5 +358,179 @@
         "description": "用于展示项目状态的徽标。"
       }
     }
+  },
+  "users": {
+    "title": "用户",
+    "description": "用户列表与账号管理",
+    "actions": {
+      "create": "创建用户",
+      "invite": "邀请用户",
+      "mockLoading": "模拟加载",
+      "edit": "编辑",
+      "delete": "删除",
+      "cancel": "取消",
+      "openMenu": "打开菜单"
+    },
+    "table": {
+      "username": "用户名",
+      "email": "邮箱",
+      "phoneNumber": "电话号码",
+      "status": "状态",
+      "role": "角色",
+      "searchPlaceholder": "按用户名筛选用户..."
+    },
+    "filters": {
+      "status": "状态",
+      "role": "角色"
+    },
+    "status": {
+      "active": "活跃",
+      "inactive": "未激活",
+      "invited": "已邀请",
+      "suspended": "已停用"
+    },
+    "role": {
+      "superadmin": "超级管理员",
+      "admin": "管理员",
+      "manager": "经理",
+      "cashier": "收银员"
+    },
+    "create": {
+      "title": "新建用户",
+      "description": "创建新用户"
+    },
+    "edit": {
+      "title": "编辑用户",
+      "description": "编辑用户 {username}"
+    },
+    "invite": {
+      "title": "邀请用户",
+      "description": "通过发送电子邮件邀请新用户加入您的团队。分配角色以定义其访问级别。"
+    },
+    "inviteForm": {
+      "email": "邮箱地址",
+      "role": "角色",
+      "description": "描述（可选）",
+      "submit": "邀请"
+    },
+    "form": {
+      "firstName": "名字",
+      "lastName": "姓氏",
+      "username": "用户名",
+      "email": "邮箱地址",
+      "phoneNumber": "电话号码",
+      "status": "状态",
+      "role": "角色",
+      "selectStatus": "选择状态",
+      "selectRole": "选择角色",
+      "saveChanges": "保存修改"
+    },
+    "delete": {
+      "title": "删除此用户：{username}？",
+      "description": "您即将删除 ID 为 {id} 的用户。此操作无法撤销。",
+      "toastTitle": "已删除以下用户："
+    },
+    "empty": {
+      "title": "未找到结果。",
+      "description": "请尝试其他搜索词，或检查拼写。"
+    },
+    "toast": {
+      "submitted": "您提交了以下值："
+    }
+  },
+  "tasks": {
+    "title": "任务",
+    "description": "任务列表与进度管理",
+    "actions": {
+      "create": "创建",
+      "import": "导入",
+      "edit": "编辑",
+      "delete": "删除",
+      "cancel": "取消",
+      "makeCopy": "创建副本",
+      "favorite": "收藏",
+      "labels": "标签",
+      "openMenu": "打开菜单",
+      "deleteSelected": "删除所选任务"
+    },
+    "table": {
+      "task": "任务",
+      "title": "标题",
+      "status": "状态",
+      "priority": "优先级",
+      "searchPlaceholder": "筛选任务..."
+    },
+    "filters": {
+      "status": "状态",
+      "priority": "优先级"
+    },
+    "status": {
+      "backlog": "积压",
+      "todo": "待办",
+      "inProgress": "进行中",
+      "done": "已完成",
+      "canceled": "已取消"
+    },
+    "priority": {
+      "low": "低",
+      "medium": "中",
+      "high": "高"
+    },
+    "label": {
+      "bug": "缺陷",
+      "feature": "功能",
+      "documentation": "文档"
+    },
+    "create": {
+      "title": "新建任务",
+      "description": "创建新任务"
+    },
+    "edit": {
+      "title": "编辑任务",
+      "description": "编辑任务 {id}"
+    },
+    "form": {
+      "title": "标题",
+      "titlePlaceholder": "例如：shadcn",
+      "status": "状态",
+      "label": "标签",
+      "priority": "优先级",
+      "selectStatus": "选择状态",
+      "submit": "提交"
+    },
+    "importDialog": {
+      "title": "导入任务",
+      "description": "从 CSV 文件快速导入任务。",
+      "file": "文件",
+      "fileRequired": "请选择文件"
+    },
+    "delete": {
+      "title": "删除此任务：{id}？",
+      "description": "您即将删除 ID 为 {id} 的任务。此操作无法撤销。",
+      "toastTitle": "已删除以下任务："
+    },
+    "deleteBatch": {
+      "title": "删除 {count} 个任务？",
+      "description": "确定要删除所选任务吗？",
+      "warning": "此操作无法撤销。",
+      "confirmHint": "输入 {word} 以确认：",
+      "confirmPlaceholder": "请输入“{word}”以确认。",
+      "warningTitle": "警告！",
+      "warningDescription": "请小心，此操作无法回滚。",
+      "confirmInvalid": "请输入“{word}”以确认删除。",
+      "loading": "正在删除任务...",
+      "success": "已成功删除 {count} 个任务。",
+      "error": "删除任务失败。"
+    },
+    "empty": {
+      "title": "未找到结果。",
+      "description": "请尝试其他搜索词，或检查拼写。"
+    },
+    "bulk": {
+      "entityName": "任务"
+    },
+    "toast": {
+      "submitted": "您提交了以下值："
+    }
   }
 }

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { SendIcon } from '@lucide/vue'
 import { useForm } from '@tanstack/vue-form'
+import { useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
 
 import Button from '@/components/ui/button/Button.vue'
@@ -16,6 +17,8 @@ import type { UserInviteValidator } from '../validators/user-invite.validator'
 import { userRoles } from '../data/schema'
 import { userInviteValidator } from '../validators/user-invite.validator'
 
+const { t } = useI18n()
+
 const defaultValues: UserInviteValidator = {
   email: '',
   role: 'cashier',
@@ -29,7 +32,7 @@ const form = useForm({
     onBlur: userInviteValidator,
   },
   onSubmit: ({ value }) => {
-    toast('You submitted the following values:', {
+    toast(t('users.toast.submitted'), {
       description: h(
         'pre',
         { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' },
@@ -46,7 +49,7 @@ const form = useForm({
       <template #default="{ field, state }">
         <FormItem>
           <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-            Email address
+            {{ $t('users.inviteForm.email') }}
           </Label>
           <Input
             type="text"
@@ -63,7 +66,7 @@ const form = useForm({
       <template #default="{ field, state }">
         <FormItem>
           <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-            Role
+            {{ $t('users.inviteForm.role') }}
             <span class="text-destructive"> *</span>
           </Label>
           <Select
@@ -74,12 +77,12 @@ const form = useForm({
             }"
           >
             <SelectTrigger class="w-full">
-              <SelectValue placeholder="Select a role" />
+              <SelectValue :placeholder="$t('users.form.selectRole')" />
             </SelectTrigger>
             <SelectContent>
               <SelectGroup>
                 <SelectItem v-for="role in userRoles" :key="role" :value="role">
-                  {{ role }}
+                  {{ $t(`users.role.${role}`) }}
                 </SelectItem>
               </SelectGroup>
             </SelectContent>
@@ -93,7 +96,7 @@ const form = useForm({
       <template #default="{ field, state }">
         <FormItem>
           <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-            Description(Optional)
+            {{ $t('users.inviteForm.description') }}
           </Label>
           <Textarea
             :model-value="field.state.value"
@@ -106,7 +109,7 @@ const form = useForm({
     </form.Field>
 
     <Button type="submit" class="w-full">
-      Invite
+      {{ $t('users.inviteForm.submit') }}
       <SendIcon />
     </Button>
   </form>

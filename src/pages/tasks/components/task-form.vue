@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useForm } from '@tanstack/vue-form'
+import { useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
 
 import { Button } from '@/components/ui/button'
@@ -23,6 +24,8 @@ const emits = defineEmits<{
   close: []
 }>()
 
+const { t } = useI18n()
+
 function getInitialValues(task: Task | null): TaskValidator {
   return {
     title: task ? task.title : '',
@@ -39,7 +42,7 @@ const form = useForm({
     onBlur: taskValidator,
   },
   onSubmit: ({ value }) => {
-    toast('You submitted the following values:', {
+    toast(t('tasks.toast.submitted'), {
       description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(value, null, 2))),
     })
     emits('close')
@@ -57,10 +60,10 @@ watch(() => props.task, (task) => {
       <form.Field name="title">
         <template #default="{ field, state }">
           <FormItem>
-            <Label>Title</Label>
+            <Label>{{ $t('tasks.form.title') }}</Label>
             <Input
               type="text"
-              placeholder="shadcn"
+              :placeholder="$t('tasks.form.titlePlaceholder')"
               :model-value="field.state.value"
               @input="field.handleChange($event.target.value)"
               @blur="field.handleBlur"
@@ -73,20 +76,20 @@ watch(() => props.task, (task) => {
       <form.Field name="status">
         <template #default="{ field, state }">
           <FormItem>
-            <Label>status</Label>
+            <Label>{{ $t('tasks.form.status') }}</Label>
             <Select
               :model-value="field.state.value"
               @update:model-value="(v) => field.handleChange(v as string)"
             >
               <SelectTrigger class="w-[180px]">
-                <SelectValue placeholder="Select a status" />
+                <SelectValue :placeholder="$t('tasks.form.selectStatus')" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
                   <SelectItem v-for="status in statuses" :key="status.value" :value="status.value">
                     <div class="flex items-center gap-2">
                       <component :is="status.icon" class="size-4 shrink-0" />
-                      {{ status.label }}
+                      {{ $t(status.labelKey) }}
                     </div>
                   </SelectItem>
                 </SelectGroup>
@@ -100,7 +103,7 @@ watch(() => props.task, (task) => {
       <form.Field name="label">
         <template #default="{ field, state }">
           <FormItem>
-            <Label>label</Label>
+            <Label>{{ $t('tasks.form.label') }}</Label>
             <RadioGroup
               class="flex flex-col space-y-1"
               :model-value="field.state.value"
@@ -112,7 +115,7 @@ watch(() => props.task, (task) => {
               >
                 <RadioGroupItem :value="label.value" />
                 <Label class="font-normal">
-                  {{ label.label }}
+                  {{ $t(label.labelKey) }}
                 </Label>
               </FormItem>
             </RadioGroup>
@@ -123,7 +126,7 @@ watch(() => props.task, (task) => {
       <form.Field name="priority">
         <template #default="{ field, state }">
           <FormItem>
-            <Label>priority</Label>
+            <Label>{{ $t('tasks.form.priority') }}</Label>
             <RadioGroup
               class="flex flex-col space-y-1"
               :model-value="field.state.value"
@@ -135,7 +138,7 @@ watch(() => props.task, (task) => {
               >
                 <RadioGroupItem :value="priority.value" />
                 <Label class="font-normal">
-                  {{ priority.label }}
+                  {{ $t(priority.labelKey) }}
                 </Label>
               </FormItem>
             </RadioGroup>
@@ -145,7 +148,7 @@ watch(() => props.task, (task) => {
       </form.Field>
 
       <Button type="submit">
-        Submit
+        {{ $t('tasks.form.submit') }}
       </Button>
     </form>
   </div>

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
+
 import { ModalDescription, ModalHeader, ModalTitle } from '@/components/prop-ui/modal'
 
 import type { User } from '../data/schema'
@@ -12,9 +14,11 @@ const emit = defineEmits<{
   close: []
 }>()
 
+const { t } = useI18n()
+
 const user = computed(() => props.user)
-const title = computed(() => user.value?.id ? `Edit User` : 'New User')
-const description = computed(() => user.value?.id ? `Edit user ${user.value.username}` : 'Create new user')
+const title = computed(() => user.value?.id ? t('users.edit.title') : t('users.create.title'))
+const description = computed(() => user.value?.id ? t('users.edit.description', { username: user.value.username }) : t('users.create.description'))
 </script>
 
 <template>

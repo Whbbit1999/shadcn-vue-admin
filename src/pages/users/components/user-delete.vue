@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
 
 import { ModalClose, ModalDescription, ModalFooter, ModalHeader, ModalTitle } from '@/components/prop-ui/modal'
@@ -14,8 +15,10 @@ const emits = defineEmits<{
   remove: []
 }>()
 
+const { t } = useI18n()
+
 function handleRemove() {
-  toast(`The following task has been deleted:`, {
+  toast(t('users.delete.toastTitle'), {
     description: h('pre', { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' }, h('code', { class: 'text-white' }, JSON.stringify(user, null, 2))),
   })
 
@@ -27,24 +30,24 @@ function handleRemove() {
   <div>
     <ModalHeader>
       <ModalTitle>
-        Delete this user: {{ user.username }} ?
+        {{ $t('users.delete.title', { username: user.username }) }}
       </ModalTitle>
 
       <ModalDescription>
-        You are about to delete a user with the ID {{ user.id }}. This action cannot be undone.
+        {{ $t('users.delete.description', { id: user.id }) }}
       </ModalDescription>
     </ModalHeader>
 
     <ModalFooter>
       <ModalClose as-child>
         <Button variant="outline">
-          Cancel
+          {{ $t('users.actions.cancel') }}
         </Button>
       </ModalClose>
 
       <ModalClose as-child>
         <Button variant="destructive" @click="handleRemove">
-          Delete
+          {{ $t('users.actions.delete') }}
         </Button>
       </ModalClose>
     </ModalFooter>

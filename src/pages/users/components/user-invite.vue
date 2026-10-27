@@ -15,7 +15,7 @@ const isOpen = shallowRef(false)
     <ModalTrigger as-child>
       <Button variant="outline">
         <MailPlusIcon />
-        Invite User
+        {{ $t('users.actions.invite') }}
       </Button>
     </ModalTrigger>
 
@@ -24,11 +24,11 @@ const isOpen = shallowRef(false)
         <ModalTitle as-child>
           <div class="flex items-center gap-2">
             <MailPlusIcon />
-            <span>Invite User</span>
+            <span>{{ $t('users.invite.title') }}</span>
           </div>
         </ModalTitle>
         <ModalDescription>
-          Invite new user to join your team by sending them an email invitation. Assign a role to define their access level.
+          {{ $t('users.invite.description') }}
         </ModalDescription>
       </ModalHeader>
 
@@ -37,7 +37,7 @@ const isOpen = shallowRef(false)
       <ModalFooter v-if="!isDesktop" class="pt-2">
         <ModalClose as-child>
           <Button variant="outline">
-            Cancel
+            {{ $t('users.actions.cancel') }}
           </Button>
         </ModalClose>
       </ModalFooter>

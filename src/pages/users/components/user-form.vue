@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useForm } from '@tanstack/vue-form'
+import { useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
 
 import { Button } from '@/components/ui/button'
@@ -23,6 +24,8 @@ const emits = defineEmits<{
   close: []
 }>()
 
+const { t } = useI18n()
+
 function getInitialValues(user?: User): UserValidator {
   return {
     firstName: user?.firstName || '',
@@ -43,7 +46,7 @@ const form = useForm({
   },
   onSubmit: ({ value }) => {
     const submitUser = props.user ? { ...value, id: props.user.id } : value
-    toast('You submitted the following values:', {
+    toast(t('users.toast.submitted'), {
       description: h(
         'pre',
         { class: 'mt-2 w-[340px] rounded-md bg-slate-950 p-4' },
@@ -67,7 +70,7 @@ watch(() => props.user, (user) => {
         <template #default="{ field, state }">
           <FormItem>
             <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-              First Name
+              {{ $t('users.form.firstName') }}
             </Label>
             <Input
               type="text"
@@ -83,7 +86,7 @@ watch(() => props.user, (user) => {
         <template #default="{ field, state }">
           <FormItem>
             <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-              Last Name
+              {{ $t('users.form.lastName') }}
             </Label>
             <Input
               type="text"
@@ -99,7 +102,7 @@ watch(() => props.user, (user) => {
         <template #default="{ field, state }">
           <FormItem>
             <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-              User Name
+              {{ $t('users.form.username') }}
             </Label>
             <Input
               type="text"
@@ -116,7 +119,7 @@ watch(() => props.user, (user) => {
         <template #default="{ field, state }">
           <FormItem>
             <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-              Email address
+              {{ $t('users.form.email') }}
             </Label>
             <Input
               type="text"
@@ -133,7 +136,7 @@ watch(() => props.user, (user) => {
         <template #default="{ field, state }">
           <FormItem>
             <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-              Phone Number
+              {{ $t('users.form.phoneNumber') }}
             </Label>
             <Input
               type="text"
@@ -150,7 +153,7 @@ watch(() => props.user, (user) => {
         <template #default="{ field, state }">
           <FormItem>
             <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-              Status
+              {{ $t('users.form.status') }}
             </Label>
             <Select
               :model-value="field.state.value"
@@ -160,12 +163,12 @@ watch(() => props.user, (user) => {
               }"
             >
               <SelectTrigger class="w-full">
-                <SelectValue placeholder="Select a status" />
+                <SelectValue :placeholder="$t('users.form.selectStatus')" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
                   <SelectItem v-for="st in userStatus" :key="st" :value="st">
-                    {{ st }}
+                    {{ $t(`users.status.${st}`) }}
                   </SelectItem>
                 </SelectGroup>
               </SelectContent>
@@ -178,7 +181,7 @@ watch(() => props.user, (user) => {
         <template #default="{ field, state }">
           <FormItem>
             <Label :data-error="!!state.meta.errors?.length" class="data-[error=true]:text-destructive">
-              Role
+              {{ $t('users.form.role') }}
             </Label>
             <Select
               :model-value="field.state.value"
@@ -188,12 +191,12 @@ watch(() => props.user, (user) => {
               }"
             >
               <SelectTrigger class="w-full">
-                <SelectValue placeholder="Select a role" />
+                <SelectValue :placeholder="$t('users.form.selectRole')" />
               </SelectTrigger>
               <SelectContent>
                 <SelectGroup>
                   <SelectItem v-for="role in userRoles" :key="role" :value="role">
-                    {{ role }}
+                    {{ $t(`users.role.${role}`) }}
                   </SelectItem>
                 </SelectGroup>
               </SelectContent>
@@ -204,7 +207,7 @@ watch(() => props.user, (user) => {
       </form.Field>
 
       <Button type="submit" class="w-full">
-        SaveChanges
+        {{ $t('users.form.saveChanges') }}
       </Button>
     </form>
   </div>

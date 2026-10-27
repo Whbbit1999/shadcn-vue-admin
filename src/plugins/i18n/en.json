@@ -358,5 +358,179 @@
         "description": "A badge that shows the status of an item."
       }
     }
+  },
+  "users": {
+    "title": "Users",
+    "description": "Users description",
+    "actions": {
+      "create": "Create User",
+      "invite": "Invite User",
+      "mockLoading": "Mock Loading",
+      "edit": "Edit",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "openMenu": "Open menu"
+    },
+    "table": {
+      "username": "username",
+      "email": "Email",
+      "phoneNumber": "PhoneNumber",
+      "status": "Status",
+      "role": "Role",
+      "searchPlaceholder": "Filter users by username..."
+    },
+    "filters": {
+      "status": "Status",
+      "role": "Role"
+    },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "invited": "Invited",
+      "suspended": "Suspended"
+    },
+    "role": {
+      "superadmin": "Superadmin",
+      "admin": "Admin",
+      "manager": "Manager",
+      "cashier": "Cashier"
+    },
+    "create": {
+      "title": "New User",
+      "description": "Create new user"
+    },
+    "edit": {
+      "title": "Edit User",
+      "description": "Edit user {username}"
+    },
+    "invite": {
+      "title": "Invite User",
+      "description": "Invite new user to join your team by sending them an email invitation. Assign a role to define their access level."
+    },
+    "inviteForm": {
+      "email": "Email address",
+      "role": "Role",
+      "description": "Description(Optional)",
+      "submit": "Invite"
+    },
+    "form": {
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "username": "User Name",
+      "email": "Email address",
+      "phoneNumber": "Phone Number",
+      "status": "Status",
+      "role": "Role",
+      "selectStatus": "Select a status",
+      "selectRole": "Select a role",
+      "saveChanges": "SaveChanges"
+    },
+    "delete": {
+      "title": "Delete this user: {username} ?",
+      "description": "You are about to delete a user with the ID {id}. This action cannot be undone.",
+      "toastTitle": "The following user has been deleted:"
+    },
+    "empty": {
+      "title": "No result found.",
+      "description": "Please try a different search term or check the spelling."
+    },
+    "toast": {
+      "submitted": "You submitted the following values:"
+    }
+  },
+  "tasks": {
+    "title": "Tasks",
+    "description": "Tasks description",
+    "actions": {
+      "create": "Create",
+      "import": "Import",
+      "edit": "Edit",
+      "delete": "Delete",
+      "cancel": "Cancel",
+      "makeCopy": "Make a copy",
+      "favorite": "Favorite",
+      "labels": "Labels",
+      "openMenu": "Open menu",
+      "deleteSelected": "Delete selected tasks"
+    },
+    "table": {
+      "task": "Task",
+      "title": "Title",
+      "status": "Status",
+      "priority": "Priority",
+      "searchPlaceholder": "Filter tasks..."
+    },
+    "filters": {
+      "status": "Status",
+      "priority": "Priority"
+    },
+    "status": {
+      "backlog": "Backlog",
+      "todo": "Todo",
+      "inProgress": "In Progress",
+      "done": "Done",
+      "canceled": "Canceled"
+    },
+    "priority": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    },
+    "label": {
+      "bug": "Bug",
+      "feature": "Feature",
+      "documentation": "Documentation"
+    },
+    "create": {
+      "title": "New Task",
+      "description": "Create new task"
+    },
+    "edit": {
+      "title": "Edit Task",
+      "description": "Edit task {id}"
+    },
+    "form": {
+      "title": "Title",
+      "titlePlaceholder": "shadcn",
+      "status": "status",
+      "label": "label",
+      "priority": "priority",
+      "selectStatus": "Select a status",
+      "submit": "Submit"
+    },
+    "importDialog": {
+      "title": "Import Tasks",
+      "description": "Import tasks quickly from a CSV file.",
+      "file": "File",
+      "fileRequired": "File is required"
+    },
+    "delete": {
+      "title": "Delete this task: {id} ?",
+      "description": "You are about to delete a task with the ID {id}. This action cannot be undone.",
+      "toastTitle": "The following task has been deleted:"
+    },
+    "deleteBatch": {
+      "title": "Delete {count} tasks?",
+      "description": "Are you sure you want to delete the selected tasks?",
+      "warning": "This action cannot be undone.",
+      "confirmHint": "Confirm by typing {word}:",
+      "confirmPlaceholder": "Type \"{word}\" to confirm.",
+      "warningTitle": "Warning!",
+      "warningDescription": "Please be careful, this operation can not be rolled back.",
+      "confirmInvalid": "Please type \"{word}\" to confirm deletion.",
+      "loading": "Deleting tasks...",
+      "success": "Successfully deleted {count} tasks.",
+      "error": "Failed to delete tasks."
+    },
+    "empty": {
+      "title": "No result found.",
+      "description": "Please try a different search term or check the spelling."
+    },
+    "bulk": {
+      "entityName": "task"
+    },
+    "toast": {
+      "submitted": "You submitted the following values:"
+    }
   }
 }
