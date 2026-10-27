@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { VisArea, VisAxis, VisLine, VisXYContainer } from '@unovis/vue'
+import { useI18n } from 'vue-i18n'
 
 import {
   Card,
@@ -26,7 +27,17 @@ import {
 
 import type { OverviewChartData } from './overview-chart.data'
 
-import { chartConfig, chartData, overviewChartSvgDefs } from './overview-chart.data'
+import { chartColors, chartData, createChartConfig, overviewChartSvgDefs } from './overview-chart.data'
+
+const { t } = useI18n()
+
+const chartConfig = computed(() => createChartConfig(key => t(key)))
+
+const timeRanges = [
+  { value: '90d', labelKey: 'dashboard.chart.ranges.last3Months' },
+  { value: '30d', labelKey: 'dashboard.chart.ranges.last30Days' },
+  { value: '7d', labelKey: 'dashboard.chart.ranges.last7Days' },
+]
 
 const timeRange = shallowRef('90d')
 const filterRange = computed(() => {
@@ -48,35 +59,34 @@ const filterRange = computed(() => {
 
 // Hoisted out of the template: vue-tsc (3.3.13) mis-emits `.value` for identifiers
 // indexed inline inside template prop expressions.
-const lineColor = (_d: OverviewChartData, i: number) => [chartConfig.mobile.color, chartConfig.desktop.color][i]
-const crosshairColor = (_d: OverviewChartData, i: number) => [chartConfig.mobile.color, chartConfig.desktop.color][i % 2]
+const lineColor = (_d: OverviewChartData, i: number) => [chartColors.mobile, chartColors.desktop][i]
+const crosshairColor = (_d: OverviewChartData, i: number) => [chartColors.mobile, chartColors.desktop][i % 2]
 </script>
 
 <template>
   <Card class="pt-0">
     <CardHeader class="flex items-center gap-2 space-y-0 border-b py-5 sm:flex-row">
       <div class="grid flex-1 gap-1">
-        <CardTitle>Area Chart - Interactive</CardTitle>
+        <CardTitle>{{ $t('dashboard.chart.title') }}</CardTitle>
         <CardDescription>
-          Showing total visitors for the last 3 months
+          {{ $t('dashboard.chart.description') }}
         </CardDescription>
       </div>
       <Select v-model="timeRange">
         <SelectTrigger
           class="hidden w-[160px] rounded-lg sm:ml-auto sm:flex"
-          aria-label="Select a value"
+          :aria-label="$t('dashboard.chart.selectRange')"
         >
-          <SelectValue placeholder="Last 3 months" />
+          <SelectValue :placeholder="$t('dashboard.chart.ranges.last3Months')" />
         </SelectTrigger>
         <SelectContent class="rounded-xl">
-          <SelectItem value="90d" class="rounded-lg">
-            Last 3 months
-          </SelectItem>
-          <SelectItem value="30d" class="rounded-lg">
-            Last 30 days
-          </SelectItem>
-          <SelectItem value="7d" class="rounded-lg">
-            Last 7 days
+          <SelectItem
+            v-for="range in timeRanges"
+            :key="range.value"
+            :value="range.value"
+            class="rounded-lg"
+          >
+            {{ $t(range.labelKey) }}
           </SelectItem>
         </SelectContent>
       </Select>

@@ -680,5 +680,93 @@
         "default4": "这是个有趣的话题！🤔 根据我的了解：\n\n业界有几种常见的做法，各自适用于不同的场景。关键是根据你的具体需求，选择最合适的方案。\n\n需要我就某个方向展开讲讲吗？"
       }
     }
+  },
+  "auth": {
+    "loginDescription": "请在下方输入您的邮箱和密码以登录账户。",
+    "noAccount": "还没有账户？",
+    "signUp": "注册",
+    "signIn": "登录",
+    "signUpDescription": "请输入您的邮箱和密码以创建账户。",
+    "haveAccount": "已有账户？",
+    "forgotPasswordTitle": "忘记密码",
+    "forgotPasswordDescription": "请输入您注册的邮箱，我们将向您发送重置密码的链接。",
+    "dontHaveAccount": "还没有账户？",
+    "signUpLink": "注册。",
+    "firstName": "名",
+    "lastName": "姓",
+    "confirmPassword": "确认密码",
+    "createAccount": "创建账户",
+    "orContinueWith": "或使用以下方式继续",
+    "agreeToLogin": "点击登录即表示您同意我们的",
+    "agreeToSignUp": "创建账户即表示您同意我们的",
+    "and": "和",
+    "termsOfService": "服务条款",
+    "privacyPolicy": "隐私政策",
+    "twoFactorTitle": "双重身份验证",
+    "twoFactorDescription": "请输入验证码。我们已将验证码发送至您的邮箱。",
+    "verify": "验证",
+    "noCodeReceived": "没有收到验证码？",
+    "resendCode": "重新发送验证码。"
+  },
+  "errors": {
+    "unauthorized": {
+      "title": "未授权",
+      "description": "您没有访问此页面的权限。"
+    },
+    "forbidden": {
+      "title": "禁止访问",
+      "description": "您没有访问此页面的权限。"
+    },
+    "pageNotFound": {
+      "title": "页面未找到",
+      "description": "您要查找的页面可能已被移除、更名或暂时不可用。"
+    },
+    "internalServerError": {
+      "title": "服务器内部错误",
+      "description": "服务器遇到了意外情况，无法完成该请求。"
+    },
+    "serviceUnavailable": {
+      "title": "服务暂时不可用",
+      "description": "由于服务器临时过载或正在维护，目前无法处理该请求。"
+    },
+    "goBack": "返回上一页",
+    "backToHome": "返回首页"
+  },
+  "dashboard": {
+    "title": "工作区",
+    "description": "工作区说明",
+    "toastGreeting": "你好",
+    "tabs": {
+      "overview": "概览",
+      "analytics": "分析",
+      "reports": "报表",
+      "notifications": "通知"
+    },
+    "stats": {
+      "totalRevenue": "总收入",
+      "subscriptions": "订阅数",
+      "sales": "销售额",
+      "activeNow": "当前在线",
+      "changeFromLastMonth": "较上月 +{percent}%",
+      "changeSinceLastHour": "较上一小时 +{count}"
+    },
+    "chart": {
+      "title": "面积图 - 交互式",
+      "description": "展示最近 3 个月的总访客数",
+      "selectRange": "选择时间范围",
+      "ranges": {
+        "last3Months": "最近 3 个月",
+        "last30Days": "最近 30 天",
+        "last7Days": "最近 7 天"
+      },
+      "series": {
+        "mobile": "移动端",
+        "desktop": "桌面端"
+      }
+    },
+    "recentSales": {
+      "title": "最近销售",
+      "description": "本月您已完成 {count} 笔销售。"
+    }
   }
 }

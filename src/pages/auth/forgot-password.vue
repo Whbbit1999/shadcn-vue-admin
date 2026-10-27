@@ -14,10 +14,10 @@ import AuthTitle from './components/auth-title.vue'
       <Card>
         <CardHeader>
           <CardTitle class="text-2xl">
-            Forgot Password
+            {{ $t('auth.forgotPasswordTitle') }}
           </CardTitle>
           <CardDescription>
-            Enter your registered email and we will send you a link to reset your password.
+            {{ $t('auth.forgotPasswordDescription') }}
           </CardDescription>
         </CardHeader>
         <CardContent class="grid gap-4">
@@ -34,12 +34,12 @@ import AuthTitle from './components/auth-title.vue'
           </Button>
 
           <div>
-            Don't have an account?
+            {{ $t('auth.dontHaveAccount') }}
             <Button
               variant="link" class="px-0 text-muted-foreground"
               @click="$router.push('/auth/sign-up')"
             >
-              Sign up.
+              {{ $t('auth.signUpLink') }}
             </Button>
           </div>
         </CardFooter>

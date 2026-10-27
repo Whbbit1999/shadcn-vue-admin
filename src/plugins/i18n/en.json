@@ -680,5 +680,93 @@
         "default4": "That's an interesting topic! 🤔 Based on what I know:\n\nThere are several common approaches in the industry, each suited to different scenarios. The key is choosing the most appropriate solution based on your specific needs.\n\nWould you like me to elaborate on any particular direction?"
       }
     }
+  },
+  "auth": {
+    "loginDescription": "Enter your email and password below to log into your account.",
+    "noAccount": "Not have an account?",
+    "signUp": "Sign Up",
+    "signIn": "Sign In",
+    "signUpDescription": "Enter your email and password to create an account.",
+    "haveAccount": "Already have an account?",
+    "forgotPasswordTitle": "Forgot Password",
+    "forgotPasswordDescription": "Enter your registered email and we will send you a link to reset your password.",
+    "dontHaveAccount": "Don't have an account?",
+    "signUpLink": "Sign up.",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "confirmPassword": "Confirm Password",
+    "createAccount": "Create Account",
+    "orContinueWith": "Or continue with",
+    "agreeToLogin": "By clicking login, you agree to our",
+    "agreeToSignUp": "By creating an account, you agree to our",
+    "and": "and",
+    "termsOfService": "Terms of Service",
+    "privacyPolicy": "Privacy Policy",
+    "twoFactorTitle": "Two-Factor Authentication",
+    "twoFactorDescription": "Please enter the authentication code. We have sent the authentication code to your email.",
+    "verify": "Verify",
+    "noCodeReceived": "Haven't received it?",
+    "resendCode": "Resend a new code."
+  },
+  "errors": {
+    "unauthorized": {
+      "title": "Unauthorized",
+      "description": "You are not authorized to access this page."
+    },
+    "forbidden": {
+      "title": "Forbidden",
+      "description": "You are not authorized to access this page."
+    },
+    "pageNotFound": {
+      "title": "Page Not Found",
+      "description": "The page you are looking for might have been removed, had its name changed, or is temporarily unavailable."
+    },
+    "internalServerError": {
+      "title": "Internal Server Error",
+      "description": "The server encountered an unexpected condition which prevented it from fulfilling the request."
+    },
+    "serviceUnavailable": {
+      "title": "Service Unavailable",
+      "description": "The server is currently unable to handle the request due to a temporary overloading or maintenance of the server."
+    },
+    "goBack": "Go Back",
+    "backToHome": "Back to Home"
+  },
+  "dashboard": {
+    "title": "workspace",
+    "description": "workspace description",
+    "toastGreeting": "hello",
+    "tabs": {
+      "overview": "Overview",
+      "analytics": "Analytics",
+      "reports": "Reports",
+      "notifications": "Notifications"
+    },
+    "stats": {
+      "totalRevenue": "Total Revenue",
+      "subscriptions": "Subscriptions",
+      "sales": "Sales",
+      "activeNow": "Active Now",
+      "changeFromLastMonth": "+{percent}% from last month",
+      "changeSinceLastHour": "+{count} since last hour"
+    },
+    "chart": {
+      "title": "Area Chart - Interactive",
+      "description": "Showing total visitors for the last 3 months",
+      "selectRange": "Select a value",
+      "ranges": {
+        "last3Months": "Last 3 months",
+        "last30Days": "Last 30 days",
+        "last7Days": "Last 7 days"
+      },
+      "series": {
+        "mobile": "Mobile",
+        "desktop": "Desktop"
+      }
+    },
+    "recentSales": {
+      "title": "Recent Sales",
+      "description": "You made {count} sales this month."
+    }
   }
 }

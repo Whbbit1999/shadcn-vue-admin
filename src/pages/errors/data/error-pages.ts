@@ -1,7 +1,7 @@
 interface ErrorPage {
   code: number
-  subtitle: string
-  error: string
+  subtitleKey: string
+  descriptionKey: string
 }
 
 type ErrorCode = '401' | '403' | '404' | '500' | '503'
@@ -11,24 +11,24 @@ const FALLBACK_ERROR_CODE: ErrorCode = '404'
 
 const ERROR_PAGE_MAP: Record<ErrorCode, ErrorPageContent> = {
   401: {
-    subtitle: 'Unauthorized',
-    error: 'You are not authorized to access this page.',
+    subtitleKey: 'errors.unauthorized.title',
+    descriptionKey: 'errors.unauthorized.description',
   },
   403: {
-    subtitle: 'Forbidden',
-    error: 'You are not authorized to access this page.',
+    subtitleKey: 'errors.forbidden.title',
+    descriptionKey: 'errors.forbidden.description',
   },
   404: {
-    subtitle: 'Page Not Found',
-    error: 'The page you are looking for might have been removed, had its name changed, or is temporarily unavailable.',
+    subtitleKey: 'errors.pageNotFound.title',
+    descriptionKey: 'errors.pageNotFound.description',
   },
   500: {
-    subtitle: 'Internal Server Error',
-    error: 'The server encountered an unexpected condition which prevented it from fulfilling the request.',
+    subtitleKey: 'errors.internalServerError.title',
+    descriptionKey: 'errors.internalServerError.description',
   },
   503: {
-    subtitle: 'Service Unavailable',
-    error: 'The server is currently unable to handle the request due to a temporary overloading or maintenance of the server.',
+    subtitleKey: 'errors.serviceUnavailable.title',
+    descriptionKey: 'errors.serviceUnavailable.description',
   },
 }
 

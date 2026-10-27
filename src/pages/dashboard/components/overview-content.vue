@@ -10,7 +10,7 @@ import RecentSales from './recent-sales.vue'
     <Card>
       <CardHeader class="flex flex-row items-center justify-between pb-2 space-y-0">
         <CardTitle class="text-sm font-medium">
-          Total Revenue
+          {{ $t('dashboard.stats.totalRevenue') }}
         </CardTitle>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -30,14 +30,14 @@ import RecentSales from './recent-sales.vue'
           $45,231.89
         </div>
         <p class="text-xs text-muted-foreground">
-          +20.1% from last month
+          {{ $t('dashboard.stats.changeFromLastMonth', { percent: '20.1' }) }}
         </p>
       </CardContent>
     </Card>
     <Card>
       <CardHeader class="flex flex-row items-center justify-between pb-2 space-y-0">
         <CardTitle class="text-sm font-medium">
-          Subscriptions
+          {{ $t('dashboard.stats.subscriptions') }}
         </CardTitle>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -59,14 +59,14 @@ import RecentSales from './recent-sales.vue'
           +2350
         </div>
         <p class="text-xs text-muted-foreground">
-          +180.1% from last month
+          {{ $t('dashboard.stats.changeFromLastMonth', { percent: '180.1' }) }}
         </p>
       </CardContent>
     </Card>
     <Card>
       <CardHeader class="flex flex-row items-center justify-between pb-2 space-y-0">
         <CardTitle class="text-sm font-medium">
-          Sales
+          {{ $t('dashboard.stats.sales') }}
         </CardTitle>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -87,14 +87,14 @@ import RecentSales from './recent-sales.vue'
           +12,234
         </div>
         <p class="text-xs text-muted-foreground">
-          +19% from last month
+          {{ $t('dashboard.stats.changeFromLastMonth', { percent: '19' }) }}
         </p>
       </CardContent>
     </Card>
     <Card>
       <CardHeader class="flex flex-row items-center justify-between pb-2 space-y-0">
         <CardTitle class="text-sm font-medium">
-          Active Now
+          {{ $t('dashboard.stats.activeNow') }}
         </CardTitle>
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -114,7 +114,7 @@ import RecentSales from './recent-sales.vue'
           +573
         </div>
         <p class="text-xs text-muted-foreground">
-          +201 since last hour
+          {{ $t('dashboard.stats.changeSinceLastHour', { count: '201' }) }}
         </p>
       </CardContent>
     </Card>
@@ -124,9 +124,9 @@ import RecentSales from './recent-sales.vue'
     <OverviewChart class="col-span-1 lg:col-span-4" />
     <Card class="col-span-1 lg:col-span-3">
       <CardHeader>
-        <CardTitle>Recent Sales</CardTitle>
+        <CardTitle>{{ $t('dashboard.recentSales.title') }}</CardTitle>
         <CardDescription>
-          You made 265 sales this month.
+          {{ $t('dashboard.recentSales.description', { count: 265 }) }}
         </CardDescription>
       </CardHeader>
       <CardContent>

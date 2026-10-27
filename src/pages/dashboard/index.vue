@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useI18n } from 'vue-i18n'
 import { toast } from 'vue-sonner'
 
 import { BasicPage } from '@/components/global-layout'
@@ -7,11 +8,13 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
 
 import OverviewContent from './components/overview-content.vue'
 
+const { t } = useI18n()
+
 const tabs = [
-  { name: 'Overview', value: 'overview' },
-  { name: 'Analytics', value: 'analytics', disabled: true },
-  { name: 'Reports', value: 'reports', disabled: true },
-  { name: 'Notifications', value: 'notifications', disabled: true },
+  { titleKey: 'dashboard.tabs.overview', value: 'overview' },
+  { titleKey: 'dashboard.tabs.analytics', value: 'analytics', disabled: true },
+  { titleKey: 'dashboard.tabs.reports', value: 'reports', disabled: true },
+  { titleKey: 'dashboard.tabs.notifications', value: 'notifications', disabled: true },
 ]
 
 const defaultTab = tabs[0].value
@@ -19,13 +22,13 @@ const defaultTab = tabs[0].value
 
 <template>
   <BasicPage
-    title="workspace"
-    description="workspace description"
+    :title="$t('dashboard.title')"
+    :description="$t('dashboard.description')"
     sticky
   >
     <template #actions>
       <Button
-        @click="() => toast('hello', {
+        @click="() => toast(t('dashboard.toastGreeting'), {
           position: 'top-center',
         })"
       >
@@ -40,7 +43,7 @@ const defaultTab = tabs[0].value
           :value="tab.value"
           :disabled="tab.disabled"
         >
-          {{ tab.name }}
+          {{ $t(tab.titleKey) }}
         </TabsTrigger>
       </TabsList>
       <TabsContent value="overview" class="space-y-4">
