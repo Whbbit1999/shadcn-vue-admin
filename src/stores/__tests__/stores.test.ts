@@ -32,6 +32,17 @@ describe('stores', () => {
     expect(themeStore.contentLayout).toBe('full')
   })
 
+  it.each(['sidebar', 'inset', 'floating'] as const)('updates aside variant to %s independently of navigation mode', (variant) => {
+    const sidebarConfigStore = useSidebarConfigStore()
+
+    expect(sidebarConfigStore.asideVariant).toBe('sidebar')
+    sidebarConfigStore.setNavigationMode('vercel')
+    sidebarConfigStore.setAsideVariant(variant)
+
+    expect(sidebarConfigStore.asideVariant).toBe(variant)
+    expect(sidebarConfigStore.navigationMode).toBe('vercel')
+  })
+
   it('updates sidebar navigation mode', () => {
     const sidebarConfigStore = useSidebarConfigStore()
 

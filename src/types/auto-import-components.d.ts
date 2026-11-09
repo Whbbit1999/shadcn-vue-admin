@@ -25,6 +25,7 @@ declare module 'vue' {
     CommandMenuPanelCommandToPage: typeof import('./../components/command-menu-panel/command-to-page.vue')['default']
     ConfirmDialog: typeof import('./../components/confirm-dialog.vue')['default']
     CustomError: typeof import('./../components/custom-error.vue')['default']
+    CustomThemeAsideVariant: typeof import('./../components/custom-theme/aside-variant.vue')['default']
     CustomThemeContentLayout: typeof import('./../components/custom-theme/content-layout.vue')['default']
     CustomThemeCustomColor: typeof import('./../components/custom-theme/custom-color.vue')['default']
     CustomThemeCustomRadius: typeof import('./../components/custom-theme/custom-radius.vue')['default']
