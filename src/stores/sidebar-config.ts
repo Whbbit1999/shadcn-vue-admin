@@ -1,6 +1,8 @@
 import { defineStore } from 'pinia'
 import { shallowRef } from 'vue'
 
+import type { SidebarProps } from '@/components/ui/sidebar'
+
 export type NavigationMode = 'collapsible' | 'vercel'
 
 /**
@@ -11,6 +13,11 @@ export const useSidebarConfigStore = defineStore(
   'sidebar-config',
   () => {
     const navigationMode = shallowRef<NavigationMode>('collapsible')
+    const asideVariant = shallowRef<NonNullable<SidebarProps['variant']>>('sidebar')
+
+    function setAsideVariant(variant: NonNullable<SidebarProps['variant']>) {
+      asideVariant.value = variant
+    }
 
     function setNavigationMode(mode: NavigationMode) {
       navigationMode.value = mode
@@ -19,6 +26,8 @@ export const useSidebarConfigStore = defineStore(
     return {
       navigationMode,
       setNavigationMode,
+      asideVariant,
+      setAsideVariant,
     }
   },
   {

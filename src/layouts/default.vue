@@ -11,19 +11,22 @@ import { Separator } from '@/components/ui/separator'
 import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/sidebar'
 import { SIDEBAR_COOKIE_NAME } from '@/components/ui/sidebar/utils'
 import { cn } from '@/lib/utils'
+import { useSidebarConfigStore } from '@/stores/sidebar-config'
 import { useThemeStore } from '@/stores/theme'
 
 const defaultOpen = useCookies([SIDEBAR_COOKIE_NAME])
 const themeStore = useThemeStore()
 const { contentLayout } = storeToRefs(themeStore)
+const { asideVariant } = storeToRefs(useSidebarConfigStore())
 </script>
 
 <template>
   <SidebarProvider :default-open="defaultOpen.get(SIDEBAR_COOKIE_NAME)">
     <AppSidebar />
-    <SidebarInset class="w-full max-w-full peer-data-[state=collapsed]:w-[calc(100%-var(--sidebar-width-icon)-1rem)] peer-data-[state=expanded]:w-[calc(100%-var(--sidebar-width))]">
+    <SidebarInset class="min-w-0 max-w-full">
       <header
         class="flex items-center gap-3 sm:gap-4 h-14 p-4 shrink-0 transition-[width,height] ease-linear border-b sticky top-0 z-40 bg-background"
+        :class="asideVariant === 'inset' ? 'md:top-2 md:rounded-t-xl' : ''"
       >
         <SidebarTrigger class="-ml-1" />
         <Separator orientation="vertical" />
