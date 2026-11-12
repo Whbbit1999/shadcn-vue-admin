@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { LoaderIcon } from '@lucide/vue'
+import { shallowRef } from 'vue'
 
 import type { DataTableToolbarFilter } from '@/components/data-table'
 

@@ -23,8 +23,8 @@
   - Alias: `@` -> `src/`
   - Route generation: `vue-router/vite` (types: `src/types/route-map.d.ts`)
   - Layouts: `vite-plugin-vue-layouts` (default: `default`)
-  - Auto-import: `src/composables` / `src/constants` / `src/stores` (types: `src/types/auto-import.d.ts`)
-  - Components: `src/components` (types: `src/types/auto-import-components.d.ts`)
+  - Functions, constants, stores, and types use explicit imports from their source modules.
+  - Components use explicit imports from `src/components` or their package; router components are imported from `vue-router`.
 
 ## Routing & Layouts
 
@@ -107,7 +107,7 @@ Plugin initialization entry: `src/plugins/index.ts`
 ## Common Pitfalls
 
 - Auto-generated types/routes: when pages change, TypeScript/IDE may need a restart to pick up updated generated types (e.g. `src/types/route-map.d.ts`).
-- Auto-imported symbols: composables/constants/stores are auto-imported; name collisions can silently change which symbol you get.
+- Import Vue/Vue Router APIs and composables/constants/stores explicitly; use `import type` for types.
 - Layout meta values: ensure `meta.layout` matches an actual layout filename (and understand what `layout: false` does in this project).
 - Env vars: Vite uses `import.meta.env`; do not bypass `src/utils/env.ts` validation.
 

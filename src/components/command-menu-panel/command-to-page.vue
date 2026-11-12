@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useRoute, useRouter } from 'vue-router'
+
 import { CommandGroup, CommandItem } from '@/components/ui/command'
 import { navData, otherPages } from '@/constants/sidebar-data'
 

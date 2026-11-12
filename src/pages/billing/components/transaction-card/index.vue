@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { useClipboard } from '@vueuse/core'
+import { computed } from 'vue'
 
 import FlickeringGrid from '@/components/inspira-ui/flickering-grid.vue'
 

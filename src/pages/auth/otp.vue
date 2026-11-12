@@ -1,8 +1,10 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 import { PinInput, PinInputGroup, PinInputInput } from '@/components/ui/pin-input'
-import { AUTH_CONFIG } from '@/config/auth.ts'
+import { AUTH_CONFIG } from '@/config/auth'
 
 import AuthTitle from './components/auth-title.vue'
 

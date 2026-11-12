@@ -2,6 +2,7 @@
 import type { RowData } from '@tanstack/vue-table'
 
 import { XIcon } from '@lucide/vue'
+import { computed } from 'vue'
 
 import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'

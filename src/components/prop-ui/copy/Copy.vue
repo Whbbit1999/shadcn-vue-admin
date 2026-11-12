@@ -3,6 +3,7 @@ import type { HTMLAttributes } from 'vue'
 
 import { CopyCheckIcon, CopyIcon } from '@lucide/vue'
 import { useClipboard } from '@vueuse/core'
+import { computed } from 'vue'
 
 import type { ButtonVariants } from '@/components/ui/button'
 

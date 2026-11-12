@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ChevronRightIcon, ExternalLinkIcon } from '@lucide/vue'
+import { RouterLink, useRoute } from 'vue-router'
 
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from '@/components/ui/collapsible'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
@@ -75,10 +76,10 @@ function isActive(menu: NavItem): boolean {
                       <span>{{ subItem.title }}</span>
                       <ExternalLinkIcon class="w-4 h-4 ml-auto" />
                     </a>
-                    <router-link v-else :to="subItem?.url || '/'">
+                    <RouterLink v-else :to="subItem?.url || '/'">
                       <component :is="subItem.icon" v-if="subItem.icon" />
                       <span>{{ subItem.title }}</span>
-                    </router-link>
+                    </RouterLink>
                   </SidebarMenuSubButton>
                 </SidebarMenuSubItem>
               </SidebarMenuSub>

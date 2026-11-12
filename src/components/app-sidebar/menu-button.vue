@@ -1,5 +1,6 @@
 <script setup lang='ts'>
 import { ExternalLinkIcon } from '@lucide/vue'
+import { RouterLink } from 'vue-router'
 
 import { SidebarMenuButton } from '@/components/ui/sidebar'
 
@@ -25,9 +26,9 @@ defineProps<{
       <ExternalLinkIcon class="w-4 h-4 ml-auto" />
     </a>
 
-    <router-link v-else :to="menu.url!" class="flex items-center gap-2">
+    <RouterLink v-else :to="menu.url!" class="flex items-center gap-2">
       <component :is="menu.icon" v-if="menu.icon" />
       <span>{{ menu.title }}</span>
-    </router-link>
+    </RouterLink>
   </SidebarMenuButton>
 </template>

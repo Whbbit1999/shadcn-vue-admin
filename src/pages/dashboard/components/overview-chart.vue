@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { VisArea, VisAxis, VisLine, VisXYContainer } from '@unovis/vue'
+import { computed, shallowRef } from 'vue'
 
 import {
   Card,

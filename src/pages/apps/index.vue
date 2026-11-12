@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed, shallowRef } from 'vue'
+
 import type { TSort } from '@/components/sort-select'
 
 import { BasicPage } from '@/components/global-layout'

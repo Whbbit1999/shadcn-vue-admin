@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
+import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 import GlowingEffect from '@/components/inspira-ui/glowing-effect.vue'

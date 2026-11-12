@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+import { shallowRef } from 'vue'
 
 import type { ContentLayout, Radius, Theme } from '@/constants/themes'
 

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useCookies } from '@vueuse/integrations/useCookies'
 import { storeToRefs } from 'pinia'
+import { RouterView } from 'vue-router'
 
 import AppSidebar from '@/components/app-sidebar/index.vue'
 import CommandMenuPanel from '@/components/command-menu-panel/index.vue'
@@ -45,7 +46,7 @@ const { asideVariant } = storeToRefs(useSidebarConfigStore())
           contentLayout === 'centered' ? 'container mx-auto ' : '',
         )"
       >
-        <router-view />
+        <RouterView />
       </main>
     </SidebarInset>
   </SidebarProvider>

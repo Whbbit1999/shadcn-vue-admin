@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed, onBeforeUnmount, onMounted, ref, shallowRef, toRefs, useTemplateRef } from 'vue'
+
 import { cn } from '@/lib/utils'
 
 interface FlickeringGridProps {

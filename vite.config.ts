@@ -5,11 +5,8 @@ import vue from '@vitejs/plugin-vue'
 import process from 'node:process'
 import { fileURLToPath, URL } from 'node:url'
 import { visualizer } from 'rollup-plugin-visualizer'
-import AutoImport from 'unplugin-auto-import/vite'
-import Component from 'unplugin-vue-components/vite'
 import Layouts from 'vite-plugin-vue-layouts'
 import { defineConfig } from 'vitest/config'
-import { VueRouterAutoImports } from 'vue-router/unplugin'
 import VueRouter from 'vue-router/vite'
 
 const RouteGenerateExclude = ['**/components/**', '**/layouts/**', '**/data/**', '**/types/**']
@@ -27,31 +24,6 @@ export default defineConfig({
       : []),
     Layouts({
       defaultLayout: 'default',
-    }),
-    AutoImport({
-      include: [
-        /\.[tj]sx?$/,
-        /\.vue$/,
-      ],
-      imports: [
-        'vue',
-        VueRouterAutoImports,
-      ],
-      dirs: [
-        'src/composables/**/*.ts',
-        'src/constants/**/*.ts',
-        'src/stores/**/*.ts',
-      ],
-      defaultExportByFilename: true,
-      dts: 'src/types/auto-import.d.ts',
-    }),
-    Component({
-      dirs: [
-        'src/components',
-      ],
-      collapseSamePrefixes: true,
-      directoryAsNamespace: true,
-      dts: 'src/types/auto-import-components.d.ts',
     }),
   ],
   resolve: {

@@ -1,4 +1,5 @@
 import { Icon } from '@iconify/vue'
+import { h } from 'vue'
 
 import type { IApp } from '../type'
 

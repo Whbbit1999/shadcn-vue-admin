@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { PlusIcon } from '@lucide/vue'
+import { shallowRef } from 'vue'
 
 import { Modal, ModalContent, ModalTrigger } from '@/components/prop-ui/modal'
 import { Button } from '@/components/ui/button'

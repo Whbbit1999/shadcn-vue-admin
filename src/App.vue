@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { h, onMounted } from 'vue'
+import { RouterView } from 'vue-router'
 import { toast } from 'vue-sonner'
 import { z } from 'zod'
 
@@ -28,9 +30,9 @@ onMounted(() => {
   <Toaster />
 
   <Suspense>
-    <router-view v-slot="{ Component }">
+    <RouterView v-slot="{ Component }">
       <component :is="Component" />
-    </router-view>
+    </RouterView>
 
     <template #fallback>
       <Loading />
