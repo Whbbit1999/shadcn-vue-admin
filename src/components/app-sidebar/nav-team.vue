@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 import { useSidebar } from '@/components/ui/sidebar'
 import { useSidebarConfigStore } from '@/stores/sidebar-config'
 

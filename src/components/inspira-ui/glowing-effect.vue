@@ -2,6 +2,7 @@
 import type { HTMLAttributes } from 'vue'
 
 import { animate } from 'motion-v'
+import { computed, onMounted, onUnmounted, ref, shallowRef, useTemplateRef } from 'vue'
 
 import { cn } from '@/lib/utils'
 

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+
 import Error from '@/components/custom-error.vue'
 
 import { resolveErrorPage } from './data/error-pages'

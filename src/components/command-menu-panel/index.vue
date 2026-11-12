@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { MenuIcon, SearchIcon } from '@lucide/vue'
 import { useEventListener } from '@vueuse/core'
+import { computed, shallowRef } from 'vue'
 
 import { Button } from '@/components/ui/button'
 import { CommandDialog, CommandEmpty, CommandInput, CommandList, CommandSeparator } from '@/components/ui/command'

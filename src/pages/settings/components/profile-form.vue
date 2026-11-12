@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { XIcon } from '@lucide/vue'
 import { useForm } from '@tanstack/vue-form'
+import { h } from 'vue'
 import { toast } from 'vue-sonner'
 
 import { Button } from '@/components/ui/button'

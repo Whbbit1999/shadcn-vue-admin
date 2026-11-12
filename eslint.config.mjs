@@ -24,9 +24,6 @@ export default antfu({
   settings: {
     'import/core-modules': ['vue-router/auto-routes'],
   },
-  globals: {
-    definePage: 'readonly',
-  },
 
   imports: {
     overrides: {

@@ -8,11 +8,11 @@ interface ISocialMediaAccount {
   url: string
 }
 
-const socialMediaAccounts = ref<ISocialMediaAccount[]>([
+const socialMediaAccounts: ISocialMediaAccount[] = [
   { title: 'GitHub', desc: ' The source code of Shadcn UI is publicly available on GitHub.', url: 'https://github.com/Whbbit1999/shadcn-vue-admin' },
   { title: 'Discord', desc: 'Join our Discord server to ask questions, share your projects, and get involved in the community.', url: '' },
   { title: 'Bilibili', desc: '在哔哩哔哩上找到我们', url: 'https://space.bilibili.com/104376935' },
-])
+]
 </script>
 
 <template>

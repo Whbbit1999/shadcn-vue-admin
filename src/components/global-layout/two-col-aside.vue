@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { ChevronsUpDownIcon } from '@lucide/vue'
+import { computed } from 'vue'
+import { RouterLink, useRoute } from 'vue-router'
 
 import { Button } from '@/components/ui/button'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
@@ -19,7 +21,7 @@ const currentLink = computed(() => props.nav.find(link => link.url === currentPa
 
 <template>
   <nav class="flex flex-col gap-2">
-    <router-link
+    <RouterLink
       v-for="link in props.nav" :key="link.url"
       :to="link.url"
       class="items-center hidden px-2 py-1 rounded-md lg:flex hover:bg-primary/5"
@@ -27,7 +29,7 @@ const currentLink = computed(() => props.nav.find(link => link.url === currentPa
     >
       <component :is="link.icon" class="size-4 mr-1" />
       <span>{{ link.title }}</span>
-    </router-link>
+    </RouterLink>
 
     <DropdownMenu class="lg:hidden">
       <DropdownMenuTrigger as-child>

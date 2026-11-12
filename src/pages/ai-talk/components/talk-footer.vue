@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ArrowUpIcon, PaperclipIcon } from '@lucide/vue'
+import { nextTick, shallowRef } from 'vue'
 
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { InputGroup, InputGroupAddon, InputGroupButton, InputGroupText, InputGroupTextarea } from '@/components/ui/input-group'

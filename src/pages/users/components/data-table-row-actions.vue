@@ -2,6 +2,7 @@
 import type { Component } from 'vue'
 
 import { EllipsisIcon } from '@lucide/vue'
+import { computed, shallowRef } from 'vue'
 
 import type { DataTableRow } from '@/components/data-table'
 

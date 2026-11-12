@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { RouterView } from 'vue-router'
+
 import Footer from '@/components/marketing-layout/the-footer.vue'
 import Header from '@/components/marketing-layout/the-header.vue'
 </script>
@@ -9,7 +11,7 @@ import Header from '@/components/marketing-layout/the-header.vue'
       <Header />
 
       <main>
-        <router-view />
+        <RouterView />
       </main>
 
       <Footer />

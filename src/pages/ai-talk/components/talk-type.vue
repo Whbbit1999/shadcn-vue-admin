@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import type { Component } from 'vue'
+
 import { RadioTowerIcon, SparklesIcon } from '@lucide/vue'
 
 import { ToggleGroup, ToggleGroupItem } from '@/components/ui/toggle-group'

@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { useColorMode } from '@vueuse/core'
+import { computed } from 'vue'
 
-import { AUTH_CONFIG } from '@/config/auth.ts'
+import { AUTH_CONFIG } from '@/config/auth'
 import { SITE_CONFIG } from '@/config/site'
 
 const mode = useColorMode()

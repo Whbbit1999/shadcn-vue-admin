@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref } from 'vue'
+
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 
 interface User {

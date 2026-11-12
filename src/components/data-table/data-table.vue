@@ -4,7 +4,7 @@ import type { CSSProperties } from 'vue'
 
 import { FolderOpenIcon } from '@lucide/vue'
 import { FlexRender } from '@tanstack/vue-table'
-import { toRef } from 'vue'
+import { computed, shallowRef, toRef } from 'vue'
 
 import { Empty, EmptyDescription, EmptyHeader, EmptyMedia, EmptyTitle } from '@/components/ui/empty'
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table'

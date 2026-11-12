@@ -1,5 +1,8 @@
 <script setup lang="ts">
+import type { Component } from 'vue'
+
 import { ChevronsUpDownIcon, PlusIcon } from '@lucide/vue'
+import { defineAsyncComponent, ref, shallowRef } from 'vue'
 
 import { Dialog, DialogContent, DialogTrigger } from '@/components/ui/dialog'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuShortcut, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'

@@ -1,3 +1,5 @@
+import { h } from 'vue'
+
 import type { DataTableColumnDef } from '@/components/data-table'
 
 import { DataTableColumnHeader } from '@/components/data-table'

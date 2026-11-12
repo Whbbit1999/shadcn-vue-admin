@@ -1,4 +1,6 @@
 import { storeToRefs } from 'pinia'
+import { shallowRef } from 'vue'
+import { useRouter } from 'vue-router'
 
 import { useAuthStore } from '@/stores/auth'
 
