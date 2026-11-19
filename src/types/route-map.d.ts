@@ -45,13 +45,6 @@ declare module 'vue-router/auto-routes' {
       { path: ParamValue<false> },
       | never
     >,
-    '/ai-talk/': RouteRecordInfo<
-      '/ai-talk/',
-      '/ai-talk',
-      Record<never, never>,
-      Record<never, never>,
-      | never
-    >,
     '/apps/': RouteRecordInfo<
       '/apps/',
       '/apps',
@@ -254,14 +247,6 @@ declare module 'vue-router/auto-routes' {
         | never
       pathParamNames:
         | 'path'
-    }
-    'src/pages/ai-talk/index.vue': {
-      routes:
-        | '/ai-talk/'
-      views:
-        | never
-      pathParamNames:
-        | never
     }
     'src/pages/apps/index.vue': {
       routes:
