@@ -1,4 +1,4 @@
-import { BadgeHelpIcon, BellDotIcon, BirdIcon, BoxesIcon, BugIcon, ComponentIcon, CreditCardIcon, LayoutDashboardIcon, ListTodoIcon, PaletteIcon, PictureInPicture2Icon, PodcastIcon, SettingsIcon, SquareUserRoundIcon, UserIcon, UsersIcon, WrenchIcon } from '@lucide/vue'
+import { BadgeHelpIcon, BellDotIcon, BirdIcon, BoxesIcon, BugIcon, ComponentIcon, CreditCardIcon, LayoutDashboardIcon, ListTodoIcon, PaletteIcon, PictureInPicture2Icon, SettingsIcon, SquareUserRoundIcon, UserIcon, UsersIcon, WrenchIcon } from '@lucide/vue'
 
 import type { NavGroup, NavItem } from '@/components/app-sidebar/types'
 
@@ -20,7 +20,6 @@ export const navData: NavGroup[] = [
       { title: 'Tasks', url: '/tasks', icon: ListTodoIcon },
       { title: 'Apps', url: '/apps', icon: BoxesIcon },
       { title: 'Users', url: '/users', icon: UsersIcon },
-      { title: 'Ai Talk Example', url: '/ai-talk', icon: PodcastIcon },
     ],
   },
   {
