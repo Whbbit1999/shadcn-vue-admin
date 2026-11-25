@@ -219,7 +219,7 @@ if [[ -n "$failed_gate" ]]; then
     branch $BRANCH is checked out and keeps the changed files, nothing was pushed
     full log: $LOGDIR/gate-${failed_gate//:/-}.log
     next: fix or drop the guilty dependency, then rerun:
-          bash scripts/deps-weekly.sh --branch $BRANCH-base $BASE
+          bash scripts/deps-weekly.sh --branch <new-name> --base $BASE
 EOF
   exit 1
 fi
