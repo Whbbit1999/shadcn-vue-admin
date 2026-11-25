@@ -31,19 +31,22 @@ function readDeps(path) {
 
 const auto = dedupe(readDeps(autoPath)).sort(compareByName)
 const all = dedupe(readDeps(allPath))
-const autoNames = new Set(auto.map(dep => dep.name))
-const manual = all.filter(dep => !autoNames.has(dep.name)).sort(compareByName)
+const autoKeys = new Set(auto.map(key))
+const manual = all.filter(dep => !autoKeys.has(key(dep))).sort(compareByName)
+
+function key(dep) {
+  return `${dep.name}@${dep.currentVersion}->${dep.targetVersion}`
+}
 
 // GitHub Actions entries repeat once per workflow job, keep one row per target.
 function dedupe(list) {
   const seen = new Map()
   for (const dep of list) {
-    const key = `${dep.name}@${dep.currentVersion}->${dep.targetVersion}`
-    const hit = seen.get(key)
+    const hit = seen.get(key(dep))
     if (hit)
       hit.count += 1
     else
-      seen.set(key, { ...dep, count: 1 })
+      seen.set(key(dep), { ...dep, count: 1 })
   }
   return [...seen.values()]
 }
