@@ -53,7 +53,7 @@
 ### 环境要求
 
 - `package.json` 声明 Node.js ≥ 22.15，CI 使用 Node.js 22。
-- 使用 `package.json` 中 `packageManager` 指定的 pnpm 版本（当前为 **11.28.11**）。
+- 使用 `package.json` 中 `packageManager` 固定的 pnpm 版本；Corepack 和 `pnpm/action-setup` 都会读取它，因此不需要再同步第二处。
 - TypeScript 随项目依赖安装，无需全局安装。
 
 ### 安装步骤

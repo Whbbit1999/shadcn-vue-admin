@@ -99,19 +99,20 @@ function markdown() {
   const autoCounts = countByDiff(auto)
   const manualCounts = countByDiff(manual)
   const maturity = process.env.MATURITY_DAYS ?? '0'
+  const excluded = (process.env.EXCLUDE ?? '').trim()
+  const excludeNote = excluded ? `\n\`${excluded}\` was left out on purpose.` : ''
   const gateList = (gates ?? '').split(' ').filter(Boolean)
 
   const body = `## Automatic part
 
 Patch and minor bumps: ${auto.length} in total (patch ${autoCounts.patch}, minor ${autoCounts.minor}).
-Releases younger than ${maturity} days were skipped, and \`${process.env.EXCLUDE ?? 'none'}\` was left out on purpose.
+Releases younger than ${maturity} days were skipped.${excludeNote}
 
 ${table(auto)}
 ## Left for a human
 
 ${manual.length} dependencies stay out of this pull request (major ${manualCounts.major}, other ${manualCounts.other}).
-Major bumps are a separate decision, and \`pnpm\` must be bumped together with the
-\`version:\` pin of \`pnpm/action-setup\` in \`.github/workflows/*.yml\`.
+Major bumps are a separate decision. A \`pnpm\` major also has to raise \`engines.pnpm\` in \`package.json\`.
 
 ${table(manual)}
 ## Checks
