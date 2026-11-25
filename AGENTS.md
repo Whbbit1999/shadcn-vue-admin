@@ -33,3 +33,7 @@ If the project has tests configured (e.g. a `test` script), run them as well.
 
 - `.agents/skills/shadcn-vue-admin/references/SYSTEM_KNOWLEDGE_MAP.md`
 - `.agents/skills/shadcn-vue-admin/references/testing-strategy.md`
+
+## Dependencies
+
+Run `bash scripts/deps-weekly.sh` once a week (Tuesday). It bumps patch and minor versions, then runs `lint`, `test:coverage` and `build` before it opens a pull request. Major bumps and the `pnpm` version stay manual.
