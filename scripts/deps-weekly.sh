@@ -4,8 +4,10 @@
 #
 # The automatic part bumps patch and minor versions only, installs, then runs
 # lint, tests and build. If every gate is green, the change goes to its own
-# branch and a pull request is opened. Major bumps are only reported: they need a
-# human, and a `pnpm` major also has to raise `engines.pnpm` in package.json.
+# branch and a pull request is opened. Major bumps and `pnpm` itself are only
+# reported: they are deliberate decisions, and a `pnpm` major also has to raise
+# `engines.pnpm` in package.json. `pnpm` writes the lockfile, so a bump means a
+# new install for everyone who uses this template.
 #
 # Usage:
 #   bash scripts/deps-weekly.sh             # full run, opens a pull request
@@ -20,7 +22,7 @@
 #
 # Environment:
 #   MATURITY_DAYS     Skip releases younger than this many days (default: 7).
-#   EXCLUDE           Packages the automatic run must not touch (default: none).
+#   EXCLUDE           Packages the automatic run must not touch (default: pnpm).
 #
 set -euo pipefail
 
@@ -42,7 +44,7 @@ ROOT="${DEPS_WEEKLY_ROOT:-$(git rev-parse --show-toplevel)}"
 REPORT="${DEPS_WEEKLY_REPORT:-$ROOT/scripts/deps-weekly-report.mjs}"
 TAZE="taze@21"
 MATURITY_DAYS="${MATURITY_DAYS:-7}"
-EXCLUDE="${EXCLUDE:-}"
+EXCLUDE="${EXCLUDE:-pnpm}"
 
 # `pnpm` is not always on PATH (corepack-only installs), so resolve it once.
 PKG_CMD=()

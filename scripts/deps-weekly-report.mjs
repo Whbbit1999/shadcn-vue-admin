@@ -115,7 +115,7 @@ ${table(auto)}
 ## Left for a human
 
 ${manual.length} dependencies stay out of this pull request (major ${manualCounts.major}, other ${manualCounts.other}).
-Major bumps are a separate decision. A \`pnpm\` major also has to raise \`engines.pnpm\` in \`package.json\`.
+Major bumps are a separate decision. \`pnpm\` stays out of the automatic run: it changes the toolchain, and a pnpm major also has to raise \`engines.pnpm\` in \`package.json\`.
 
 ${table(manual)}
 ## Checks
