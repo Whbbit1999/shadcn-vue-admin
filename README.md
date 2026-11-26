@@ -6,13 +6,14 @@
 [![Vite](https://img.shields.io/badge/Vite-8+-4f30e8.svg?logo=vite)](https://vitejs.dev/)
 [![pnpm 11](https://img.shields.io/badge/pnpm-11-orange.svg?logo=pnpm)](https://pnpm.io/)
 [![TypeScript 6.0+](https://img.shields.io/badge/TypeScript-6.0+-blue.svg?logo=typescript)](https://www.typescriptlang.org/)
+[![AtomGit Stars](https://atomgit.com/Whbbit1999/shadcn-vue-admin/star/badge.svg)](https://atomgit.com/Whbbit1999/shadcn-vue-admin)
 
 [简体中文](./README-CN.md) | English
 
 A frontend UI template built with **shadcn-vue**, **Vue 3** and **Vite**, bringing together common layouts, components and example pages that you can customize and extend.
 Adapted from [shadcn-admin](https://github.com/satnaing/shadcn-admin) for Vue.
 
-[Live Demo](https://shadcn-vue-admin.netlify.app/)
+[Live Demo](https://shadcn-vue-admin.netlify.app/) · [AtomGit Mirror](https://atomgit.com/Whbbit1999/shadcn-vue-admin)
 
 ![cover](.github/assets/shadcn-vue-admin.png)
 
@@ -62,6 +63,12 @@ Adapted from [shadcn-admin](https://github.com/satnaing/shadcn-admin) for Vue.
 
    ```bash
    git clone https://github.com/Whbbit1999/shadcn-vue-admin.git
+   ```
+
+   For users in mainland China, you can also clone from the synced [AtomGit](https://atomgit.com/Whbbit1999/shadcn-vue-admin) mirror:
+
+   ```bash
+   git clone https://atomgit.com/Whbbit1999/shadcn-vue-admin.git
    ```
 
 2. Navigate to project directory

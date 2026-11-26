@@ -6,13 +6,14 @@
 [![Vite](https://img.shields.io/badge/Vite-8+-4f30e8.svg?logo=vite)](https://vitejs.dev/)
 [![pnpm 11](https://img.shields.io/badge/pnpm-11-orange.svg?logo=pnpm)](https://pnpm.io/)
 [![TypeScript 6.0+](https://img.shields.io/badge/TypeScript-6.0+-blue.svg?logo=typescript)](https://www.typescriptlang.org/)
+[![AtomGit Stars](https://atomgit.com/Whbbit1999/shadcn-vue-admin/star/badge.svg)](https://atomgit.com/Whbbit1999/shadcn-vue-admin)
 
 [English](./README.md) | 简体中文
 
 基于 **shadcn-vue**、**Vue 3** 和 **Vite** 构建的前端 UI 模板，整合常用布局、组件与页面示例，方便按需定制和扩展。
 本项目基于 [shadcn-admin](https://github.com/satnaing/shadcn-admin) 适配 Vue 实现。
 
-[在线演示](https://shadcn-vue-admin.netlify.app/)
+[在线演示](https://shadcn-vue-admin.netlify.app/) · [AtomGit 仓库（国内访问更快，同步更新）](https://atomgit.com/Whbbit1999/shadcn-vue-admin)
 
 ![cover](.github/assets/shadcn-vue-admin.png)
 
@@ -62,6 +63,12 @@
 
    ```bash
    git clone https://github.com/Whbbit1999/shadcn-vue-admin.git
+   ```
+
+   中国大陆地区推荐使用 [AtomGit](https://atomgit.com/Whbbit1999/shadcn-vue-admin) 镜像拉取（访问更快，与主仓库同步更新）：
+
+   ```bash
+   git clone https://atomgit.com/Whbbit1999/shadcn-vue-admin.git
    ```
 
 2. 进入项目目录
